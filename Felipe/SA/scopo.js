@@ -71,6 +71,7 @@ function cadastrar() {
             })
             mudarParaLogin()
             alert("voce foi cadastrado")
+            
         }
 
     }
@@ -138,9 +139,10 @@ function validarData(date) {
     if (dataNacimento.getMonth() + 1 > mesAtual || (dataNacimento.getMonth() + 1 == mesAtual && dataNacimento.getDate() >= dataAtual.getDate())) {
         idade++
     }
-    idade <= idadeMinimaCadastro ? true : false
+    let validando = idade <= idadeMinimaCadastro ? true : false
 
-    return idade
+
+    return validando
     // Antes de pesguisar saiu isso da mente hehe ....
     // let data = "2000-04-17"
     // let anoArray = []

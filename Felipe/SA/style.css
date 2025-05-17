@@ -4,13 +4,14 @@
     border: none;
     color: rgb(5, 7, 8);
     overflow: hidden;
-
     padding: 5px 10px 1px 5px;
+    width: 150px;
     /* margin: 15px; */
     /* border-radius: 15px; */
     flex-grow: 1;
     flex-shrink: 0;
     flex-basis: auto;
+    transition: 0.6s ease-in-out;
 
     input {
         border: none;
@@ -34,9 +35,12 @@
     button:hover {
         background-color: rgb(118, 201, 71);
         border: solid 1px;
-
+        cursor: pointer;
 
     }
+
+
+
 }
 
 
@@ -53,6 +57,8 @@
     flex-grow: 1;
     flex-shrink: 0;
     flex-basis: auto;
+    transition: 0.6s ease-in-out;
+    width: 150px;
 
     input {
         border: none;
@@ -76,6 +82,7 @@
     button:hover {
         background-color: rgb(118, 201, 71);
         border: solid 1px;
+        cursor: pointer;
 
 
     }
@@ -92,7 +99,7 @@
     -webkit-align-content: center;
     align-content: center;
     border: solid 1px;
-    border-radius: 10px;
+    border-radius: 10px 50px;
     overflow: hidden;
     width: 70%;
 }
@@ -105,20 +112,35 @@
     padding: 10px;
     /* margin: 15px; */
     /* border-radius: 14px; */
-    background-color: #161602;
+    background-color: #0a0a01;
     color: aliceblue;
-
-    button:hover {
-        background-color: chartreuse;
-
-    }
-
-
-
     flex: 5 0 auto;
     align-self: auto;
 }
 
 body {
-    background-color: #ADD8E6;
+    /* background-color: #ADD8E6; */
+
+    background-image: linear-gradient(-45deg,
+            rgb(118, 201, 71), rgba(218, 203, 124, 0.692), rgb(197, 108, 49));
+    background-size: 400% 400%;
+    height: 100%;
+    margin: 0;
+    animation: gradiente 10s ease infinite;
+
+}
+
+@keyframes gradiente {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
 }
