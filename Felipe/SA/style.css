@@ -1,0 +1,119 @@
+#cadastro {
+    display: none;
+    background-color: rgb(248, 221, 18);
+    border: none;
+    color: rgb(5, 7, 8);
+    width: 200px;
+    overflow: hidden;
+    text-align: center;
+    /* margin: 15px; */
+    /* border-radius: 15px; */
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
+
+    input {
+        border: none;
+        border-radius: 4px;
+    }
+
+    button {
+        border: none;
+        border-radius: 4px;
+    }
+
+    input:focus {
+        border: solid 2px black;
+
+
+    }
+
+    button:hover {
+        background-color: rgb(118, 201, 71);
+        border: solid 1px;
+
+
+    }
+}
+
+
+#login {
+    background-color: rgb(248, 221, 18);
+    border: none;
+    color: rgb(5, 7, 8);
+    width: 200px;
+    overflow: hidden;
+    padding-top: 50px;
+    padding-left: 5px;
+    /* margin: 15px; */
+    /* border-radius: 15px; */
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
+
+    input {
+        border: none;
+        border-radius: 4px;
+    }
+
+    button {
+        border: none;
+        border-radius: 4px;
+    }
+
+    input:focus {
+        border: solid 2px black;
+
+
+    }
+
+
+    button:hover {
+        background-color: rgb(118, 201, 71);
+        border: solid 1px;
+
+
+    }
+
+}
+
+#cont {
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    -webkit-flex-flow: row-reverse wrap;
+    -moz-flex-flow: row-reverse wrap;
+    flex-flow: row-reverse wrap;
+    -webkit-align-content: center;
+    align-content: center;
+    border: solid 1px;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 50%;
+}
+
+#conteudo {
+    text-align: center;
+    border: none;
+    width: 200px;
+    overflow: hidden;
+    padding: 10px 10px 10px 10px;
+    /* margin: 15px; */
+    /* border-radius: 14px; */
+    background-color: rgb(3, 3, 1);
+    color: aliceblue;
+
+    button:hover {
+        background-color: chartreuse;
+
+    }
+
+
+
+    flex: 5 0 auto;
+    align-self: auto;
+}
+
+body {
+    background-color: rgb(2, 75, 2);
+}
