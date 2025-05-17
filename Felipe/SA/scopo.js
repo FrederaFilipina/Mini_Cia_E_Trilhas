@@ -42,9 +42,11 @@ function cadastrar() {
         alert("preencha corretamente o formulario")
     } else {
         let retornocadastro = verifiarCadastro(cpfDigitado.value)
+
         let retornoUser = verificarUser(userDigitado.value)
-        let idadeMinimaCadastro = 18
-        let idade = validarData(dataNasc.value) <= idadeMinimaCadastro ? true : false
+
+        let idade = validarData(dataNasc.value)
+
         if (retornocadastro !== undefined) {
             alert("Cpf ja cadastrado em outra conta")
         } else if (retornoUser !== undefined) {
@@ -93,7 +95,6 @@ function mudarTela() {
 
 function logar() {
 
-
     const loginUser = document.getElementById("loginUser")
     console.log(loginUser.value);
 
@@ -122,15 +123,23 @@ function mudarParaLogin() {
 
 }
 function validarData(date) {
+    let idadeMinimaCadastro = 18
 
     let dataAtual = new Date
+
     let anoAtual = dataAtual.getFullYear()
+
     let mesAtual = dataAtual.getMonth() + 1
+
     let dataNacimento = new Date(date)
+
     let idade = anoAtual - dataNacimento.getFullYear() - 1
+
     if (dataNacimento.getMonth() + 1 > mesAtual || (dataNacimento.getMonth() + 1 == mesAtual && dataNacimento.getDate() >= dataAtual.getDate())) {
         idade++
     }
+    idade <= idadeMinimaCadastro ? true : false
+
     return idade
     // Antes de pesguisar saiu isso da mente hehe ....
     // let data = "2000-04-17"
