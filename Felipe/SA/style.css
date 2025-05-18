@@ -4,14 +4,16 @@
     border: none;
     color: rgb(5, 7, 8);
     overflow: hidden;
-    padding: 5px 10px 1px 5px;
+    padding: 30px 10px 1px 5px;
     width: 150px;
+
     /* margin: 15px; */
     /* border-radius: 15px; */
     flex-grow: 1;
     flex-shrink: 0;
     flex-basis: auto;
     transition: 0.6s ease-in-out;
+
 
     input {
         border: none;
@@ -49,7 +51,7 @@
     border: none;
     color: rgb(5, 7, 8);
     overflow: hidden;
-    padding-top: 50px;
+    padding-top: 70px;
     padding-left: 5px;
     padding-right: 5px;
     /* margin: 15px; */
@@ -59,6 +61,7 @@
     flex-basis: auto;
     transition: 0.6s ease-in-out;
     width: 150px;
+    height: 300px;
 
     input {
         border: none;
@@ -103,6 +106,7 @@
     overflow: hidden;
     width: 500px;
     filter: drop-shadow(10px 10px 5px rgb(0, 0, 0, 0.7));
+    transition: 0.6s ease-in-out;
 }
 
 #conteudo {
@@ -129,6 +133,7 @@ body {
     height: 100%;
     margin: 0;
     animation: gradiente 10s ease infinite;
+
 
 }
 
