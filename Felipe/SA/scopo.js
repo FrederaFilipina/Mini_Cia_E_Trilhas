@@ -71,7 +71,7 @@ function cadastrar() {
             })
             mudarParaLogin()
             alert("voce foi cadastrado")
-            
+
         }
 
     }
@@ -79,12 +79,12 @@ function cadastrar() {
 
 function verifiarCadastro(c, user) {
 
-    let cadastro = usuariosCadastrados.find(cpf => cpf.Cpf == c)
+    let cadastro = usuariosCadastrados.find(value => value.Cpf == c)
     console.log(cadastro)
     return cadastro
 }
 function verificarUser(user) {
-    let cadastro = usuariosCadastrados.find(usuario => usuario.Usuario === user)
+    let cadastro = usuariosCadastrados.find(value => value.Usuario === user)
     console.log(cadastro);
     return cadastro
 }
