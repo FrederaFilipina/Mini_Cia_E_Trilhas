@@ -117,6 +117,7 @@
     color: aliceblue;
     flex: 5 0 auto;
     align-self: auto;
+    overflow-wrap: break-word;
 }
 
 body {
