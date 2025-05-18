@@ -101,7 +101,7 @@
     border: solid 1px;
     border-radius: 10px 50px;
     overflow: hidden;
-    width: 70%;
+    width: 500px;
     filter: drop-shadow(10px 10px 5px rgb(0, 0, 0, 0.7));
 }
 
