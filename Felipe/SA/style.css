@@ -1,3 +1,7 @@
+* {
+    font-family: Georgia;
+}
+
 #cadastro {
     display: none;
     background-color: #CC5500;
