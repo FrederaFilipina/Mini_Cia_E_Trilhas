@@ -21,6 +21,8 @@ function entraCadastro(event) {
 
     const nomeUsuario = document.getElementById("userDigit")
 
+    const infoUser = document.getElementById("infoUser")
+
     let sexoUser = descobrirSexo(sexo)
 
     let cpfValidado = verificarCpf(cpf.value)
@@ -31,6 +33,41 @@ function entraCadastro(event) {
 
     let nomeUsuarioValidado = verificarUsuario(nomeUsuario.value)
 
+    if (cpfValidado !== undefined) {
+
+        infoUser.innerHTML = `<p>*Cpf ja esta sendo utilizado</p>`
+
+    } else if (emailValidado !== undefined) {
+
+        infoUser.innerHTML = `<p>*Email ja esta sendo utilizado</p>`
+
+    } else if (telefoneValidado !== undefined) {
+
+        infoUser.innerHTML = "<p>*Telefone ja esta cadastrado</p>"
+    } else if (nomeUsuarioValidado !== undefined) {
+
+        infoUser.innerHTML = "<p>*Nome de usuário ja esta sendo utilizado</p>"
+
+    } else {
+
+        cadastroUsuarios.push({
+            nomeCompleto: nomeCompleto.value,
+            cpf: cpf.value,
+            dataNacimento: dataNacimento.value,
+            sexo: sexoUser,
+            telefone: telefone.value,
+            email: email.value,
+            senha: senha.value,
+            nomeUsuario: nomeUsuario.value,
+            avaliaçãoUser: "10/10",
+            evento: false,
+            logado: false
+
+        })
+        limparInput()
+
+
+    }
 }
 
 function verificarCpf(cpf) {
@@ -56,7 +93,6 @@ function verificarUsuario(nomeUsuario) {
 
     return pesquisa
 }
-
 function descobrirSexo(sexo) {
 
     if (sexo[0].checked) {
@@ -67,10 +103,32 @@ function descobrirSexo(sexo) {
 
         return "Feminino"
     } if (sexo[2].checked) {
+        console.log(sexo[3].value);
+
 
         return sexo[3].value
-
     }
 
+
+}
+function limparInput() {
+
+    document.getElementById("nomeDigtado").value = ""
+
+    document.getElementById("cpfDig").value = ""
+
+    document.getElementById("dataNacimento").value = ""
+
+    document.getElementsByName("sexo").value = ""
+
+    document.getElementById("telefDigi").value = ""
+
+    document.getElementById("emailDigit").value = ""
+
+    document.getElementById("senhaDigit").value = ""
+
+    document.getElementById("userDigit").value = ""
+
+    document.getElementById("infoUser").innerHTML = ""
 
 }
