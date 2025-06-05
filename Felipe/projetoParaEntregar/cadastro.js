@@ -2,6 +2,86 @@ const bancoDados = localStorage
 
 let cadastroUsuarios = JSON.parse(bancoDados.getItem('CadastroUser')) || []
 
+
+function verificarCpf(cpf) {
+
+    let pesquisa = cadastroUsuarios.find(cpfBanco => cpfBanco.cpf === cpf)
+    return pesquisa
+}
+function verificarEmail(email) {
+
+    let pesquisa = cadastroUsuarios.find(emailDados => emailDados.email === email)
+
+    return pesquisa
+}
+function verificarTelefone(telef) {
+
+    let pesquisa = cadastroUsuarios.find(telefo => telefo.telefone === telef)
+
+    return pesquisa
+}
+function verificarUsuario(nomeUsuario) {
+
+    let pesquisa = cadastroUsuarios.find(UserName => UserName.nomeUsuario === nomeUsuario)
+
+    return pesquisa
+}
+function descobrirSexo(sexo) {
+    const outroSexo = document.getElementById("sexoDigit")
+    if (sexo[0].checked) {
+
+        return "Mascolino"
+
+    } else if (sexo[1].checked) {
+
+        return "Feminino"
+    } if (sexo[2].checked) {
+        console.log(outroSexo.value);
+
+
+        return outroSexo.value
+    }
+
+
+}
+function limparInput() {
+    let sexo = document.getElementsByName("sexo")
+
+    document.getElementById("nomeDigtado").value = ""
+
+    document.getElementById("cpfDig").value = ""
+
+    document.getElementById("dataNacimento").value = ""
+
+    document.getElementById("telefDigi").value = ""
+
+    document.getElementById("emailDigit").value = ""
+
+    document.getElementById("senhaDigit").value = ""
+
+    document.getElementById("userDigit").value = ""
+
+    document.getElementById("infoUser").innerHTML = ""
+
+    document.getElementById("sexoDigit").value = ""
+
+
+
+    for (let index = 0; index < sexo.length; index++) {
+
+        sexo[index].checked = false
+
+    }
+}
+function salvarBancoDados() {
+
+    bancoDados.setItem("CadastroUser", JSON.stringify(cadastroUsuarios))
+
+}
+function abrirLogin() {
+
+
+}
 function entraCadastro(event) {
     event.preventDefault()
 
@@ -32,6 +112,7 @@ function entraCadastro(event) {
     let telefoneValidado = verificarTelefone(telefone.value)
 
     let nomeUsuarioValidado = verificarUsuario(nomeUsuario.value)
+
 
     if (cpfValidado !== undefined) {
 
@@ -65,70 +146,10 @@ function entraCadastro(event) {
 
         })
         limparInput()
+        salvarBancoDados()
+        abrirLogin()
+        console.log(cadastroUsuarios)
 
 
     }
-}
-
-function verificarCpf(cpf) {
-
-    let pesquisa = cadastroUsuarios.find(cpfBanco => cpfBanco.cpf === cpf)
-    return pesquisa
-}
-function verificarEmail(email) {
-
-    let pesquisa = cadastroUsuarios.find(emailDados => emailDados.email === email)
-
-    return pesquisa
-}
-function verificarTelefone(telef) {
-
-    let pesquisa = cadastroUsuarios.find(telefo => telefo.telefone === telef)
-
-    return pesquisa
-}
-function verificarUsuario(nomeUsuario) {
-
-    let pesquisa = cadastroUsuarios.find(UserName => UserName.nomeUsuario === nomeUsuario)
-
-    return pesquisa
-}
-function descobrirSexo(sexo) {
-
-    if (sexo[0].checked) {
-
-        return "Mascolino"
-
-    } else if (sexo[1].checked) {
-
-        return "Feminino"
-    } if (sexo[2].checked) {
-        console.log(sexo[3].value);
-
-
-        return sexo[3].value
-    }
-
-
-}
-function limparInput() {
-
-    document.getElementById("nomeDigtado").value = ""
-
-    document.getElementById("cpfDig").value = ""
-
-    document.getElementById("dataNacimento").value = ""
-
-    document.getElementsByName("sexo").value = ""
-
-    document.getElementById("telefDigi").value = ""
-
-    document.getElementById("emailDigit").value = ""
-
-    document.getElementById("senhaDigit").value = ""
-
-    document.getElementById("userDigit").value = ""
-
-    document.getElementById("infoUser").innerHTML = ""
-
 }

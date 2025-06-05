@@ -27,16 +27,19 @@
                     <label for="dataNacimento">data nacimento</label>
                     <input type="date" name="dataNacimento" id="dataNacimento">
                 </div>
-                <div class="conteiner-sexo" id="contSex">
-                    <label for="sexoMasc">masculino</label>
+                <div class="conteiner-sexo" id="contSex" >
+
                     <input type="radio" name="sexo" id="sexoMasc">
+                    <label for="sexoMasc">masculino</label>
 
-                    <label for="sexoFem">feminino</label>
                     <input type="radio" name="sexo" id="sexoFem">
+                    <label for="sexoFem">feminino</label>
 
-                    <label for="sexoOutro">Outro</label>
                     <input type="radio" name="sexo" id="sexoOutro">
-                    <input type="text" name="sexoOutr" id="sexoDigit">
+                    <label for="sexoOutro">Outro</label>
+
+                    <label for="sexoDigit"></label>
+                    <input type="text" name="sexo" id="sexoDigit">
 
                 </div>
                 <div class="conteiner-telefone" id="contFone">
@@ -60,7 +63,7 @@
                     <input type="text" name="usuarioDigitado" id="userDigit">
                 </div>
                 <div id="infoUser">
-                    
+
                 </div>
                 <div class="botaoEnviar" id="buttEnviar">
                     <input type="submit" value="Salvar" onclick="entraCadastro(event)">
