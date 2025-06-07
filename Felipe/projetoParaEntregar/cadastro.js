@@ -28,6 +28,44 @@ function verificarUsuario(nomeUsuario) {
 }
 function verificarIdade(dataNaci){
 
+    const idadeMinima = 18
+
+    const dataAtual = new Date
+    const mesAtual = dataAtual.getMonth() + 1
+    const anoAtual = dataAtual.getFullYear()
+    const diaAtual = dataAtual.getDate()
+
+    const anoNacimentoUser = Number(dataNaci.split("-")[0])
+    const mesNacimentoUser = Number(dataNaci.split("-")[1])
+    const diaNacimentoUser = Number(dataNaci.split("-")[2])
+    
+    
+    
+    const idadeUser = (anoNacimentoUser - anoAtual) * -1 
+
+
+    if (idadeUser === idadeMinima || idadeUser > idadeMinima){
+        
+        return false
+
+    }else {
+        if(mesNacimentoUser < mesAtual){
+
+            return true
+        }else if(mesNacimentoUser === mesAtual){
+            if(diaNacimentoUser < diaAtual){
+
+                return true
+
+            }else return false
+
+        }else return false
+    }
+
+    
+
+
+
 }
 function descobrirSexo(sexo) {
     const outroSexo = document.getElementById("sexoDigit")
@@ -118,8 +156,12 @@ function entraCadastro(event) {
     
     let validandoIdadeMinima = verificarIdade(dataNacimento.value)
 
+    
+    if (validandoIdadeMinima) {
 
-    if (cpfValidado !== undefined) {
+        infoUser.innerHTML = `<p>*Você nao tem idade miníma para cadastrar</p>`
+        
+    } else if (cpfValidado !== undefined) {
 
         infoUser.innerHTML = `<p>*Cpf ja esta sendo utilizado</p>`
 
