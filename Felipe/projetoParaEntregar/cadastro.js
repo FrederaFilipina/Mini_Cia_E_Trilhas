@@ -26,6 +26,9 @@ function verificarUsuario(nomeUsuario) {
 
     return pesquisa
 }
+function verificarIdade(dataNaci){
+
+}
 function descobrirSexo(sexo) {
     const outroSexo = document.getElementById("sexoDigit")
     if (sexo[0].checked) {
@@ -112,6 +115,8 @@ function entraCadastro(event) {
     let telefoneValidado = verificarTelefone(telefone.value)
 
     let nomeUsuarioValidado = verificarUsuario(nomeUsuario.value)
+    
+    let validandoIdadeMinima = verificarIdade(dataNacimento.value)
 
 
     if (cpfValidado !== undefined) {
