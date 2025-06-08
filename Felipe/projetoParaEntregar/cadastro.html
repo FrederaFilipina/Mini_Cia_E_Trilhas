@@ -16,24 +16,24 @@
             <form class="formulario" id="form">
 
                 <div class="conteiner-nome" id="contNome">
-                    <label for="nomeDigtado">nome</label>
-                    <input type="text" name="nomeDigtado" id="nomeDigtado">
+                    <label for="nomeDigtado">Nome: </label>
+                    <input type="text" name="nomeDigtado" id="nomeDigtado" required>
                 </div>
                 <div class="conteiner-CPF" id="contCpf">
-                    <label for="cpfDig">cpf</label>
-                    <input type="number" name="cpfDigitado" id="cpfDig">
+                    <label for="cpfDig">Cpf: </label>
+                    <input type="text" name="cpfDigitado" id="cpfDig" maxlength="11" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')"  required>
                 </div>
                 <div class="conteiner-Data" id="contData">
-                    <label for="dataNacimento">data nacimento</label>
-                    <input type="date" name="dataNacimento" id="dataNacimento">
+                    <label for="dataNacimento">Data Nascimento: </label>
+                    <input type="date" name="dataNacimento" id="dataNacimento" required>
                 </div>
-                <div class="conteiner-sexo" id="contSex" >
+                <div class="conteiner-sexo" id="contSex">
 
                     <input type="radio" name="sexo" id="sexoMasc">
-                    <label for="sexoMasc">masculino</label>
+                    <label for="sexoMasc">Masculino</label>
 
                     <input type="radio" name="sexo" id="sexoFem">
-                    <label for="sexoFem">feminino</label>
+                    <label for="sexoFem">Feminino</label>
 
                     <input type="radio" name="sexo" id="sexoOutro">
                     <label for="sexoOutro">Outro</label>
@@ -44,23 +44,25 @@
                 </div>
                 <div class="conteiner-telefone" id="contFone">
 
-                    <label for="telefDigi">telefone</label>
-                    <input type="tel" name="telefone" id="telefDigi">
+                    <label for="telefDigi">Celular: </label>
+                    <input type="tel" name="telefone" id="telefDigi"
+                    inputmode="numeric"
+                    maxlength="11" oninput="this.value = this.value.replace(/[^0-9]/g, '')"required>
 
                 </div>
                 <div class="conteiner-email" id="contEmail">
 
-                    <label for="emailDigit">email</label>
-                    <input type="email" name="emailDigitado" id="emailDigit">
+                    <label for="emailDigit">Email: </label>
+                    <input type="email" name="emailDigitado" id="emailDigit" required>
                 </div>
                 <div class="conteiner-senha" id="contSenha">
 
-                    <label for="senhaDigit">senha</label>
-                    <input type="password" name="senhaDigitado" id="senhaDigit">
+                    <label for="senhaDigit">Senha: </label>
+                    <input type="password" name="senhaDigitado" id="senhaDigit" required>
                 </div>
                 <div class="conteiner-Usuario" id="contUser">
-                    <label for="userDigit">usuario</label>
-                    <input type="text" name="usuarioDigitado" id="userDigit">
+                    <label for="userDigit">Usuário: </label>
+                    <input type="text" name="usuarioDigitado" id="userDigit" required>
                 </div>
                 <div id="infoUser">
 

@@ -2,7 +2,63 @@ const bancoDados = localStorage
 
 let cadastroUsuarios = JSON.parse(bancoDados.getItem('CadastroUser')) || []
 
+limitarDataCadastroData()
 
+function limitarDataCadastroData() {
+
+    const inuputData = document.getElementById("dataNacimento")
+    
+    const idadeMinima = 18
+    const dataAtual = new Date()
+    
+    const idadeAnoLimite = dataAtual.getFullYear() - idadeMinima
+
+    const mesAtual= dataAtual.getMonth()- 1 
+
+    const idadeMesLimite = mesAtual > 10 ? mesAtual : `0${mesAtual}`
+    
+    const diaAtual= dataAtual.getDate()
+
+    const idadeDiaLimite = mesAtual > 10 ? diaAtual : `0${diaAtual}`
+
+
+    let dataLimiteCadastro = `${idadeAnoLimite}-${idadeMesLimite}-${idadeDiaLimite}`
+
+    console.log(dataLimiteCadastro);
+    
+    inuputData.setAttribute("max",dataLimiteCadastro)
+
+    console.log(inuputData);
+    
+}
+function verificandoIdade(dataN) {
+    const idadeMinima = 18
+
+    const dataAtual = new Date
+    const mesAtual = dataAtual.getMonth() + 1
+    const anoAtual = dataAtual.getFullYear()
+    const diaAtual = dataAtual.getDate()
+
+    const anoNacimentoUser = dataN.split("-")[0]
+    const mesNacimentoUser = dataN.split("-")[1]
+    const diaNacimentoUser = dataN.split("-")[2]
+    
+    
+    let idadeUser = (anoNacimentoUser - anoAtual) * -1 
+    console.log(typeof idadeUser);
+    
+    if(mesNacimentoUser >= mesAtual && diaNacimentoUser >= diaAtual){
+        
+         idadeUser ++ 
+
+    }
+
+    let verificaçãoIdade = idadeUser < idadeMinima ? true : false
+
+    return verificaçãoIdade
+
+    
+}
 function verificarCpf(cpf) {
 
     let pesquisa = cadastroUsuarios.find(cpfBanco => cpfBanco.cpf === cpf)
@@ -25,47 +81,6 @@ function verificarUsuario(nomeUsuario) {
     let pesquisa = cadastroUsuarios.find(UserName => UserName.nomeUsuario === nomeUsuario)
 
     return pesquisa
-}
-function verificarIdade(dataNaci){
-
-    const idadeMinima = 18
-
-    const dataAtual = new Date
-    const mesAtual = dataAtual.getMonth() + 1
-    const anoAtual = dataAtual.getFullYear()
-    const diaAtual = dataAtual.getDate()
-
-    const anoNacimentoUser = Number(dataNaci.split("-")[0])
-    const mesNacimentoUser = Number(dataNaci.split("-")[1])
-    const diaNacimentoUser = Number(dataNaci.split("-")[2])
-    
-    
-    
-    const idadeUser = (anoNacimentoUser - anoAtual) * -1 
-
-
-    if (idadeUser === idadeMinima || idadeUser > idadeMinima){
-        
-        return false
-
-    }else {
-        if(mesNacimentoUser < mesAtual){
-
-            return true
-        }else if(mesNacimentoUser === mesAtual){
-            if(diaNacimentoUser < diaAtual){
-
-                return true
-
-            }else return false
-
-        }else return false
-    }
-
-    
-
-
-
 }
 function descobrirSexo(sexo) {
     const outroSexo = document.getElementById("sexoDigit")
@@ -153,11 +168,14 @@ function entraCadastro(event) {
     let telefoneValidado = verificarTelefone(telefone.value)
 
     let nomeUsuarioValidado = verificarUsuario(nomeUsuario.value)
-    
-    let validandoIdadeMinima = verificarIdade(dataNacimento.value)
 
-    
-    if (validandoIdadeMinima) {
+    let validandoIdadeMinima = verificandoIdade(dataNacimento.value)
+
+    if (nomeCompleto.value.length ===0 || cpf.value.length ===0 ||dataNacimento.value.length ===0 ||telefone.value.length ===0 ||email.value.length ===0 ||senha.value.length ===0 ||nomeUsuario.value.length ===0 ) {
+
+        infoUser.innerHTML = `<p>*Preencha todos os campos corretamente</p>`
+        
+    } else if (validandoIdadeMinima) {
 
         infoUser.innerHTML = `<p>*Você nao tem idade miníma para cadastrar</p>`
         
