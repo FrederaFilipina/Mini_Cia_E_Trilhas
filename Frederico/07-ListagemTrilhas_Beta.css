@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    padding-top: 0.25%;
+    padding-left: 0.25%;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255);
+}
+
+#areaGeral{
+    display: flex;
+    padding-top: 0.25%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-style: dashed;
+    border-color: rgb(255, 0, 255, 0);
+    width: 300px;
+    height: 609px;
+    gap: 5px;
+}
+
+#menuBotoesRegioes{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 0, 255, 0);
+    border-style: dashed;
+    border-color: rgb(0, 0, 0, 0);
+    border-radius: 12.5px;
+    width: 290px;
+    height: 50px;
+    gap: 12.5px;
+}
+.botoesRegioes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(255, 255, 255,1);
+    border: 2px solid rgb(0, 0, 0, 1);
+    border-radius: 12.5px;
+    background-color: rgb(0, 66, 128, 1);
+    width: 55px;
+    height: 40px;
+    cursor: pointer;
+}
+
+#listagemTrilhasRegiao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    text-align: left;
+    background-color: rgb(255, 0, 255, 0);
+    border: 2px solid rgb(0, 0, 0, 1);
+    border-radius: 12.5px;
+    width: 290px;
+    height: 150px;
+}
+.listagemTrilhasGeral{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    padding-left: 20px;
+}
+.botoesNomesTrilhas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    border: 2px solid rgb(0, 0, 0, 0);
+    background-color: rgb(255, 0, 255, 0);
+    cursor: pointer;
+    width: 250px;
+    height: 15px;
+}
+#listaTrilhasN{
+    display: none;
+}
+#listaTrilhasC{
+    display: none;
+}
+#listaTrilhasL{
+    display: none;
+}
+#listaTrilhasS{
+    display: none;
+}
+
+
+
+#infTrilha{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    text-align: left;
+    background-color: rgb(255, 0, 255, 0);
+    border: 2px solid rgb(0, 0, 0, 1);
+    border-radius: 12.5px;
+    width: 290px;
+    height: 50px;
+}
+

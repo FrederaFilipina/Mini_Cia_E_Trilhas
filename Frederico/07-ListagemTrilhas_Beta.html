@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Cia EE Trilhast</title>
+    <link rel="stylesheet" href="07-ListagemTrilhas_Beta.css">
+
+</head>
+
+
+<body>
+    <div id="areaGeral">
+        <div id="menuBotoesRegioes">
+            <button class="botoesRegioes" onclick="mostrarListaTrilhasN()">Norte</button>
+            <button class="botoesRegioes" onclick="mostrarListaTrilhasC()">Centro</button>
+            <button class="botoesRegioes" onclick="mostrarListaTrilhasL()">Leste</button>
+            <button class="botoesRegioes" onclick="mostrarListaTrilhasS()">Sul</button>
+        </div>
+
+
+        <div id="listagemTrilhasRegiao">
+            <ol class="listagemTrilhasGeral" id="listaTrilhasN">
+                <li><button onclick="infTrilhaN1()" class="botoesNomesTrilhas">Nome da trilha N1</button></li>
+                <li><button class="botoesNomesTrilhas">Nome da trilha N2</button></li>
+            </ol>
+
+            <ol class="listagemTrilhasGeral" id="listaTrilhasC">
+                <li><button class="botoesNomesTrilhas">Nome da trilha C1</button></li>
+                <li><button class="botoesNomesTrilhas">Nome da trilha C2</button></li>
+            </ol>
+
+            <ol class="listagemTrilhasGeral" id="listaTrilhasL">
+                <li><button class="botoesNomesTrilhas">Nome da trilha L1</button></li>
+                <li><button class="botoesNomesTrilhas">Nome da trilha L2</button></li>
+            </ol>
+
+            <ol class="listagemTrilhasGeral" id="listaTrilhasS">
+                <li><button class="botoesNomesTrilhas">Nome da trilha S1</button></li>
+                <li><button class="botoesNomesTrilhas">Nome da trilha S2</button></li>
+            </ol>
+        </div>
+
+
+        <div id="infTrilha">
+            <p>Nome da trilha</p>
+            <p>Dist / Tempo / Dificuldade</p>
+        </div>
+    </div>
+    
+    <script src="07-ListagemTrilhas_Beta.js"></script>
+</body>
+
+</html>
