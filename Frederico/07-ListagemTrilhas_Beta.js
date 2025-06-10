@@ -8,6 +8,8 @@ function ocultarListaTrilhas(){
 function mostrarListaTrilhasN(){
     ocultarListaTrilhas()
     document.getElementById('listaTrilhasN').style.display='flex'
+
+
 }
 function mostrarListaTrilhasC(){
     ocultarListaTrilhas()
@@ -23,10 +25,20 @@ function mostrarListaTrilhasS(){
 }
 
 
-function mostrarInfTrilha(ID){
-    document.getElementById(`${ID}`).style.display='flex'
-}
+// function mostrarInfTrilha(ID){
+//     document.getElementById(`${ID}`).style.display='flex'
+// }
 
-infTotlTrilhas = [
-    {nome: TrilhaN1, regiao: norte, dist: 10km, tempo: 01h00m, dificuldade: MUITO}
+var infTrilhas = [
+    {nome: 'nomeTrilhaN1', regiao: 'norte'},
+    {nome: 'nomeTrilhaN2', regiao: 'norte'},
+
+    {nome: 'nomeTrilhaC1', regiao: 'centro'},
+    {nome: 'nomeTrilhaC2', regiao: 'centro'},
+
+    {nome: 'nomeTrilhaL1', regiao: 'leste'},
+    {nome: 'nomeTrilhaL2', regiao: 'leste'},
+
+    {nome: 'nomeTrilhaS1', regiao: 'sul'},
+    {nome: 'nomeTrilhaS2', regiao: 'sul'}
 ]
