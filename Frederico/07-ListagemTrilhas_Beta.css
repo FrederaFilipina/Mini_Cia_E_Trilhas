@@ -56,8 +56,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: left;
-    text-align: left;
     background-color: rgb(255, 0, 255, 0);
     border: 2px solid rgb(0, 0, 0, 1);
     border-radius: 12.5px;
@@ -67,8 +65,6 @@ body {
 .listagemTrilhasGeral{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    /* align-items: center; */
     padding-left: 20px;
 }
 .botoesNomesTrilhas{
@@ -98,7 +94,7 @@ body {
 
 
 #infTrilha{
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: left;

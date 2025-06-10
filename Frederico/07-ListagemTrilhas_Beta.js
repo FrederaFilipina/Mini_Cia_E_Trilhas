@@ -23,8 +23,10 @@ function mostrarListaTrilhasS(){
 }
 
 
-function mostrarInfTrilha(){
-    document.getElementById('infTrilha').style.display='flex'
+function mostrarInfTrilha(ID){
+    document.getElementById(`${ID}`).style.display='flex'
 }
 
-infTrilhaN1()
+infTotlTrilhas = [
+    {nome: TrilhaN1, regiao: norte, dist: 10km, tempo: 01h00m, dificuldade: MUITO}
+]
