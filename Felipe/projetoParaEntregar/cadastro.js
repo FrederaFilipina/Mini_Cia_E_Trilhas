@@ -15,11 +15,13 @@ function limitarDataCadastroData() {
 
     const mesAtual= dataAtual.getMonth()- 1 
 
-    const idadeMesLimite = mesAtual > 10 ? mesAtual : `0${mesAtual}`
+    const idadeMesLimite = mesAtual >= 10 ? mesAtual : `0${mesAtual}`
     
     const diaAtual= dataAtual.getDate()
+    console.log("aqui é o dia atual " + diaAtual);
+    
 
-    const idadeDiaLimite = mesAtual > 10 ? diaAtual : `0${diaAtual}`
+    const idadeDiaLimite = diaAtual >= 10 ? diaAtual : `0${diaAtual}`
 
 
     let dataLimiteCadastro = `${idadeAnoLimite}-${idadeMesLimite}-${idadeDiaLimite}`
