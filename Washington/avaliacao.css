@@ -58,7 +58,7 @@ button {
    border: none;
 }
 #compUm{
-   display: none;
+   display: flex;
 }
 #compDois{
    display: none;

@@ -1,0 +1,35 @@
+ body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #9dca6a;
+    }
+
+    .avaliacao-form, .avaliacoes-lista {
+      background-color: #40aa1f;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+
+    .comentario {
+      border-bottom: 1px solid #a4d127;
+      padding: 0.5rem 0;
+    }
+
+    .comentario:last-child {
+      border-bottom: none;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
