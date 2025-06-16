@@ -85,7 +85,7 @@ function verificarUsuario(nomeUsuario) {
     return pesquisa
 }
 function descobrirSexo(sexo) {
-    const outroSexo = document.getElementById("sexoDigit")
+    
     if (sexo[0].checked) {
 
         return "Mascolino"
@@ -94,15 +94,15 @@ function descobrirSexo(sexo) {
 
         return "Feminino"
     } if (sexo[2].checked) {
-        console.log(outroSexo.value);
-
-
-        return outroSexo.value
+        
+        return "Nao definido"
     }
 
 
 }
 function limparInput() {
+
+    //Cadastro
     let sexo = document.getElementsByName("sexo")
 
     document.getElementById("nomeDigtado").value = ""
@@ -121,15 +121,19 @@ function limparInput() {
 
     document.getElementById("infoUser").innerHTML = ""
 
-    document.getElementById("sexoDigit").value = ""
-
-
-
     for (let index = 0; index < sexo.length; index++) {
 
         sexo[index].checked = false
 
     }
+    //Login
+    document.getElementById("infoUserLogin").innerHTML = ""
+
+    document.getElementById("senhaLogin").value = ""
+
+    document.getElementById("usuarioLogin").value=""
+
+
 }
 function salvarBancoDados() {
 
@@ -177,21 +181,22 @@ function entraCadastro(event) {
 
         infoUser.innerHTML = `<p>*Preencha todos os campos corretamente</p>`
         
-    } else if (validandoIdadeMinima) {
-
-        infoUser.innerHTML = `<p>*Você nao tem idade miníma para cadastrar</p>`
-        
     } else if (cpfValidado !== undefined) {
 
         infoUser.innerHTML = `<p>*Cpf ja esta sendo utilizado</p>`
+        
+    } else if (validandoIdadeMinima ) {
 
-    } else if (emailValidado !== undefined) {
-
-        infoUser.innerHTML = `<p>*Email ja esta sendo utilizado</p>`
+        infoUser.innerHTML = `<p>*Você nao tem idade miníma para cadastrar</p>`
 
     } else if (telefoneValidado !== undefined) {
 
         infoUser.innerHTML = "<p>*Telefone ja esta cadastrado</p>"
+        
+    } else if (emailValidado !== undefined)  {
+        
+        infoUser.innerHTML = `<p>*Email ja esta sendo utilizado</p>`
+        
     } else if (nomeUsuarioValidado !== undefined) {
 
         infoUser.innerHTML = "<p>*Nome de usuário ja esta sendo utilizado</p>"
@@ -219,4 +224,36 @@ function entraCadastro(event) {
 
 
     }
+}
+function logar(event) {
+    event.preventDefault()
+
+    let infoUserLogin = document.getElementById("infoUserLogin")
+
+    let user = document.getElementById("usuarioLogin").value
+
+    let senha = document.getElementById("senhaLogin").value
+
+    let userCadastroUsuario = verificarUsuario(user)
+
+    if (user.length ===0 || senha.length ===0) {
+
+        infoUserLogin.innerHTML = "*Preencha todos os campos"
+        
+    } else if (userCadastroUsuario===undefined) {
+        
+        infoUserLogin.innerHTML = "*Usuário não cadastrado"
+        
+    } else if(userCadastroUsuario.senha === senha){
+        userCadastroUsuario.logado = true
+        salvarBancoDados()
+        abrirPaginaUsuário()
+        limparInput()
+
+
+    }else  infoUserLogin.innerHTML = "*Senha incorreta"
+    
+}
+function abrirPaginaUsuário(){
+    
 }
