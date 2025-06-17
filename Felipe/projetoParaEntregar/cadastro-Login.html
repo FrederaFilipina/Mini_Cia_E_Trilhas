@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="conteiner-CPF" id="contCpf">
-                    <label for="cpfDig">Cpf: </label>
+                    <label for="cpfDig">CPF: </label>
                     <input type="text" name="cpfDigitado" id="cpfDig" maxlength="11" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')"  required>
                 </div>
 
@@ -56,6 +56,17 @@
 
                     <label for="emailDigit">Email: </label>
                     <input type="email" name="emailDigitado" id="emailDigit" required>
+                </div>
+                <div class="conteiner-recidencia" id="contRecidenc:">
+                    <label>Você reside em Florianópolis?</label>
+                    <input type="radio" name="opcaoCep" id="sim" onclick="mostrarCep()">
+                    <label for="sim">Sim</label>
+                    <input type="radio" name="opcaoCep" id="nao" onclick="esconderCep()">
+                    <label for="nao">Não</label>
+                    <div class="conteiner-cep" id="contCep">
+                        <label for="cep">CEP: </label>
+                        <input type="text" name="CEP" id="cep" oninput="this.value = this.value.replace(/[^0-9]/g, (''))">
+                    </div>
                 </div>
 
                 <div class="conteiner-Usuario" id="contUser">
