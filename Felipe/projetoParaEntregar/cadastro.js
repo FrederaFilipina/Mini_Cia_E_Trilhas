@@ -138,6 +138,8 @@ function limparInput() {
     document.getElementById("userDigit").value = ""
 
     document.getElementById("infoUser").innerHTML = ""
+    
+    document.getElementById("cep").value = ""
 
     for (let index = 0; index < sexo.length; index++) {
 
