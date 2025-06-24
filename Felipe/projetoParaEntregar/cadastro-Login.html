@@ -9,26 +9,29 @@
 </head>
 
 <body>
-    <div class="conteiner-cadastro" id="contCadast">
+    <section class="conteiner-cadastro" id="contCadast">
 
-        <div class="conteiner-formulario" id="contForm">
+        <div class="conteiner-formulario-cadastro" id="contFormCadastro">
 
-            <form class="formulario" id="form">
+            <form class="formulario-cadastro" id="formCadastro">
 
                 <div class="conteiner-nome" id="contNome">
                     <label for="nomeDigtado">Nome: </label>
                     <input type="text" name="nomeDigtado" id="nomeDigtado" required>
                 </div>
+
                 <div class="conteiner-CPF" id="contCpf">
-                    <label for="cpfDig">Cpf: </label>
+                    <label for="cpfDig">CPF: </label>
                     <input type="text" name="cpfDigitado" id="cpfDig" maxlength="11" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')"  required>
                 </div>
+
                 <div class="conteiner-Data" id="contData">
                     <label for="dataNacimento">Data Nascimento: </label>
                     <input type="date" name="dataNacimento" id="dataNacimento" required>
                 </div>
-                <div class="conteiner-sexo" id="contSex">
 
+                <div class="conteiner-sexo" id="contSex">
+                    <label for="Sexo">Sexo:</label>
                     <input type="radio" name="sexo" id="sexoMasc">
                     <label for="sexoMasc">Masculino</label>
 
@@ -36,12 +39,10 @@
                     <label for="sexoFem">Feminino</label>
 
                     <input type="radio" name="sexo" id="sexoOutro">
-                    <label for="sexoOutro">Outro</label>
-
-                    <label for="sexoDigit"></label>
-                    <input type="text" name="sexo" id="sexoDigit">
+                    <label for="sexoOutro">Prefiro não identificar</label>
 
                 </div>
+
                 <div class="conteiner-telefone" id="contFone">
 
                     <label for="telefDigi">Celular: </label>
@@ -50,20 +51,35 @@
                     maxlength="11" oninput="this.value = this.value.replace(/[^0-9]/g, '')"required>
 
                 </div>
+
                 <div class="conteiner-email" id="contEmail">
 
                     <label for="emailDigit">Email: </label>
                     <input type="email" name="emailDigitado" id="emailDigit" required>
                 </div>
+                <div class="conteiner-recidencia" id="contRecidenc:">
+                    <label>Você reside em Florianópolis?</label>
+                    <input type="radio" name="opcaoCep" id="sim" onclick="mostrarCep()">
+                    <label for="sim">Sim</label>
+                    <input type="radio" name="opcaoCep" id="nao" onclick="esconderCep()">
+                    <label for="nao">Não</label>
+                    <div class="conteiner-cep" id="contCep">
+                        <label for="cep">CEP: </label>
+                        <input type="text" name="CEP" id="cep" oninput="this.value = this.value.replace(/[^0-9]/g, (''))">
+                    </div>
+                </div>
+
+                <div class="conteiner-Usuario" id="contUser">
+                    <label for="userDigit">Usuário: </label>
+                    <input type="text" name="usuarioDigitado" id="userDigit" required>
+                </div>
+
                 <div class="conteiner-senha" id="contSenha">
 
                     <label for="senhaDigit">Senha: </label>
                     <input type="password" name="senhaDigitado" id="senhaDigit" required>
                 </div>
-                <div class="conteiner-Usuario" id="contUser">
-                    <label for="userDigit">Usuário: </label>
-                    <input type="text" name="usuarioDigitado" id="userDigit" required>
-                </div>
+                
                 <div id="infoUser">
 
                 </div>
@@ -75,8 +91,34 @@
 
         </div>
 
-    </div>
+    </section>
 
+
+    <section class="conteiner-login" id="contLogin">
+
+        <div class="conteiner-formulario-login" id="contFormLogin">
+            <form class="formulario-login" id="formLogin">
+
+                <div class="conteiner-usuario-login" id="contUserLogin">
+                    <label for="usuarioLogin">Usuário: </label>
+                    <input type="text" name="usuarioLogin" id="usuarioLogin">
+                </div>
+                <div class="conteiner-senha-login" id="contSenhaLogin">
+                    <label for="SenhaLogin">Senha: </label>
+                    <input type="password" name="senhaLogin" id="senhaLogin">
+                </div>
+                <div id="infoUserLogin">
+
+                </div>
+                <div class="botaoLogar" id="buttLogar">
+                    <input type="submit" value="Entrar" onclick="logar(event)">
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
 
 
     <script src="cadastro.js"></script>
