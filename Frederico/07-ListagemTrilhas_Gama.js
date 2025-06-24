@@ -1,6 +1,7 @@
 var infTrilhas = [
     { nome: 'TrilhaN1', regiao: 'Norte', km: '10km', tempo: '1h00', dificuldade: 'SIM'},
     { nome: 'TrilhaN2', regiao: 'Norte', km: '20km', tempo: '2h00', dificuldade: 'SIM' },
+    // { nome: 'TrilhaN3', regiao: 'Norte', km: '20km', tempo: '2h00', dificuldade: 'SIM' },
 
     { nome: 'TrilhaC1', regiao: 'Central', km: '30km', tempo: '3h00', dificuldade: 'SIM'},
     { nome: 'TrilhaC2', regiao: 'Central', km: '40km', tempo: '4h00', dificuldade: 'SIM' },

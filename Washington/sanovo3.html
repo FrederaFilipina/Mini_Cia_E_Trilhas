@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"> <!-- Define a codificação do documento -->
+  <title>Avaliação de Trilha</title> <!-- Título da página -->
+  
+  <link rel="stylesheet" href="sanovo3.css">
+</head>
+<body>
+
+<h1>Avaliação de Trilha</h1> <!-- Título principal -->
+
+<!-- Formulário de avaliação -->
+<form id="formAvaliacao">
+  <!-- Campo para o nome do participante -->
+  <label for="nome">Seu nome:</label>
+  <input type="text" id="nome" required>
+
+  <!-- Avaliação do relevo -->
+  <label for="relevo">Avaliação do Relevo (1-5):</label>
+  <select id="relevo">
+    <option value="1">1 - Muito plano</option>
+    <option value="2">2</option>
+    <option value="3">3 - Moderado</option>
+    <option value="4">4</option>
+    <option value="5">5 - Muito irregular</option>
+  </select>
+
+  <!-- Avaliação da dificuldade -->
+  <label for="dificuldade">Dificuldade (1-5):</label>
+  <select id="dificuldade">
+    <option value="1">1 - Muito fácil</option>
+    <option value="2">2</option>
+    <option value="3">3 - Moderada</option>
+    <option value="4">4</option>
+    <option value="5">5 - Muito difícil</option>
+  </select>
+
+  <!-- Avaliação do tempo estimado -->
+  <label for="tempo">Tempo estimado (1-5):</label>
+  <select id="tempo">
+    <option value="1">1 - Rápido</option>
+    <option value="2">2</option>
+    <option value="3">3 - Médio</option>
+    <option value="4">4</option>
+    <option value="5">5 - Longo</option>
+  </select>
+
+  <!-- Campo para comentário -->
+  <label for="comentario">Comentário:</label>
+  <textarea id="comentario" rows="3"></textarea>
+
+  <!-- Botão para enviar o formulário -->
+  <button type="submit">Enviar Avaliação</button>
+</form>
+
+<!-- Div onde serão exibidas as avaliações -->
+<div id="listaAvaliacoes"></div>
+
+ <script src="sanovo3.js"></script>
+</body>
+</html>
