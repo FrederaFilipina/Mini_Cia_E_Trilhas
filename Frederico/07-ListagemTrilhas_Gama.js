@@ -1,7 +1,7 @@
 var infTrilhas = [
     { nome: 'TrilhaN1', regiao: 'Norte', km: '10km', tempo: '1h00', dificuldade: 'SIM'},
     { nome: 'TrilhaN2', regiao: 'Norte', km: '20km', tempo: '2h00', dificuldade: 'SIM' },
-    // { nome: 'TrilhaN3', regiao: 'Norte', km: '20km', tempo: '2h00', dificuldade: 'SIM' },
+
 
     { nome: 'TrilhaC1', regiao: 'Central', km: '30km', tempo: '3h00', dificuldade: 'SIM'},
     { nome: 'TrilhaC2', regiao: 'Central', km: '40km', tempo: '4h00', dificuldade: 'SIM' },
@@ -54,12 +54,9 @@ function mostrarInfTrilha(nomeTrilha){
     let trilhaNome = nomeTrilha
 
     let dadosTrilha
-    dadosTrilha = infTrilhas.filter(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
-    
-    for(const element of dadosTrilha){
-        document.getElementById('dadosDaTrilha').innerHTML =
-        `<h3> Trilha: ${element.nome},
-        <br> Distância: ${element.km}, Tempo: ${element.tempo}
-        <br> Dificuldade: ${element.dificuldade}</h3>`
-    }    
+    dadosTrilha = infTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
+    document.getElementById('dadosDaTrilha').innerHTML =
+        `<h3> Trilha: ${dadosTrilha.nome},
+        <br> Distância: ${dadosTrilha.km}, Tempo: ${dadosTrilha.tempo}
+        <br> Dificuldade: ${dadosTrilha.dificuldade}</h3>`
 }

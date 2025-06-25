@@ -1,38 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Cia EE Trilhast</title>
+    <title>Mini Cia && Trilhas</title>
     <link rel="stylesheet" href="07-ListagemTrilhas_Beta.css">
-
 </head>
-
-
 <body>
-    <div id="areaGeral">
-        <div id="menuBotoesRegioes">
-            <button class="botoesRegioes" onclick="mostrarListaTrilhas()">Norte</button>
-            <button class="botoesRegioes" onclick="mostrarListaTrilhas()">Centro</button>
-            <button class="botoesRegioes" onclick="mostrarListaTrilhas()">Leste</button>
-            <button class="botoesRegioes" onclick="mostrarListaTrilhas()">Sul</button>
-        </div>
+    <div id="areaPgTtl">
+
+        <nav id="menuNav">
+            <div id="menuNavI">
+                <h1>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#000000" viewBox="0 0 256 256"><path d="M112,80a16,16,0,1,1,16,16A16,16,0,0,1,112,80ZM64,80a64,64,0,0,1,128,0c0,59.95-57.58,93.54-60,94.95a8,8,0,0,1-7.94,0C121.58,173.54,64,140,64,80Zm16,0c0,42.2,35.84,70.21,48,78.5,12.15-8.28,48-36.3,48-78.5a48,48,0,0,0-96,0Zm122.77,67.63a8,8,0,0,0-5.54,15C213.74,168.74,224,176.92,224,184c0,13.36-36.52,32-96,32s-96-18.64-96-32c0-7.08,10.26-15.26,26.77-21.36a8,8,0,0,0-5.54-15C29.22,156.49,16,169.41,16,184c0,31.18,57.71,48,112,48s112-16.82,112-48C240,169.41,226.78,156.49,202.77,147.63Z"></path></svg>
+                </h1>
+            </div>
+
+            <div id="menuNavB">
+            <button class="botaoMenuNav" onclick="mostrarListaTrilhasRegiao('Norte')">NORTE</button>
+            <button class="botaoMenuNav" onclick="mostrarListaTrilhasRegiao('Central')">CENTRO</button>
+            <button class="botaoMenuNav" onclick="mostrarListaTrilhasRegiao('Leste')">LESTE</button>
+            <button class="botaoMenuNav" onclick="mostrarListaTrilhasRegiao('Sul')">SUL</button>
+            </div>
+        </nav>
+
+        <div id="nomeRegiaoListaTrilhas"></div>
+        <div id="dadosDaTrilha"></div>
 
 
-        <div id="listagemTrilhasRegiao">
-            
-
-        </div>
-
-
-        <div id="infTrilha">
-            <p>Nome da trilha</p>
-            <p>Dist / Tempo / Dificuldade</p>
-        </div>
     </div>
-    
+
     <script src="07-ListagemTrilhas_Beta.js"></script>
 </body>
-
 </html>
