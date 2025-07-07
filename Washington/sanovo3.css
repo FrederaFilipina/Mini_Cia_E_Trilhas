@@ -57,13 +57,13 @@
 
     /* Estilo do botão quando o mouse passa por cima */
     button:hover {
-      background-color: #388e3c; /* Verde mais escuro */
+      background-color: #10B981; /* Verde mais escuro */
     }
 
     /* Estilo da div que contém cada avaliação */
     .avaliacao {
       background-color: #fff; /* Fundo branco */
-      border-left: 5px solid #6b8e23; /* Barra verde na esquerda */
+      border-left: 5px solid #10B981; /* Barra verde na esquerda */
       margin: 15px auto; /* Espaço acima/baixo e centralizado */
       padding: 15px; /* Espaço interno */
       max-width: 500px; /* Largura máxima */
@@ -76,3 +76,5 @@
       color: #2e4600; /* Verde escuro */
     }
  
+
+   

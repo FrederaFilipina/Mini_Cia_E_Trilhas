@@ -1,14 +1,14 @@
-body {
+ body {
   font-family: Arial, sans-serif; /* Define a fonte padrão do site */
   padding: 2rem; /* Espaçamento interno em todo o corpo da página */
   background-color: #9dca6a; /* Cor de fundo verde-claro */
 }
 
 .avaliacao-form, .avaliacoes-lista {
-  background-color: #40aa1f; /* Cor de fundo verde mais escura para os blocos */
+  /*background-color: #40aa1f;  Cor de fundo verde mais escura para os blocos */
   padding: 1rem; /* Espaçamento interno dos blocos */
   border-radius: 8px; /* Bordas arredondadas */
-  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra suave */
+  /*box-shadow: 0 0 10px rgba(0,0,0,0.1);  Sombra suave */
   margin-bottom: 2rem; /* Espaço abaixo dos blocos */
 }
 
@@ -32,4 +32,4 @@ button {
 
 button:hover {
   background-color: #0056b3; /* Cor mais escura ao passar o mouse */
-}
+} 

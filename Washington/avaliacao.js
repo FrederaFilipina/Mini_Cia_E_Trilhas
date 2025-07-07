@@ -1,8 +1,14 @@
-inicializaçao()
+function inicializacao() {
+    esconderTodas(); // por exemplo: esconder tudo ao iniciar
+    document.getElementById('navAmigo').style.display = 'none'
+}
 
 function Avalicao() {
-    document.getElementById("avaAmigos").value
-    document.getElementById("avaTrilha").value
+    const avaAmigo = document.getElementById("avaAmigo")
+    document.getElementById("avaAmigo").style.display="flex"
+   const avaTrilha= document.getElementById("avaTrilha").value
+
+   document.getElementById("avaAmigo").style.display='flex'
 
 }
 function confirma() {
