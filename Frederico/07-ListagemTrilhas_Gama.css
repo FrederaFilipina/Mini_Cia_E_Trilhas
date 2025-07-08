@@ -94,7 +94,7 @@ body {
     display: flex;
     
     border: 2px solid rgb(0, 0, 0, 0);
-    background-color: rgb(255, 0, 255, 0);
+    background-color: rgb(255, 0, 255, 1);
     width: 500px;
     height: 160px;
 

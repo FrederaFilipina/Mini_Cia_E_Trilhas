@@ -1,4 +1,4 @@
-var infTrilhas = [
+const infTrilhas = [
     { nome: 'TrilhaN1', regiao: 'Norte', km: '10km', tempo: '1h00', dificuldade: 'SIM'},
     { nome: 'TrilhaN2', regiao: 'Norte', km: '20km', tempo: '2h00', dificuldade: 'SIM' },
 
@@ -17,7 +17,6 @@ function limparListagemTrilhas() {
     let limparListagemTrilhas = document.getElementById('nomeRegiaoListaTrilhas')
     limparListagemTrilhas.innerHTML = ``
 }
-
 function limparDadosTrilha() {
     let limparDadosTrilha = document.getElementById('dadosDaTrilha')
     limparDadosTrilha.innerHTML = ``
