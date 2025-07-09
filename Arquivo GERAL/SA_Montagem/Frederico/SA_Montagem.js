@@ -14,6 +14,8 @@ const infsListaTrilhas = [
     { nome: 'TrilhaS2', regiao: 'Sul', km: '80km', tempo: '8h00', dificuldade: 'SIM' }
 ]
 
+localStorage.setItem('ListagemTrilhas', JSON.stringify(infsListaTrilhas))
+
 // -------------------------
 
 /* (Fred) Área destinado aos códigos que:
