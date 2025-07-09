@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="MinhasTrilhas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+ <button class="abrir-modal" data-modal="modal-minhasTrilhas">Minhas Trilhas</button>
+
+  <dialog id="modal-minhasTrilhas">
+    <form method="dialog">
+      <div class="modal-cabecario">
+        <h1 class="titulo-modal">Minhas Trilhas</h1>
+
+        <button class="fechar-modal" data-modal="modal-minhasTrilhas" type="button">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="corpo-modal">
+          <div id="trilhas" class="trilhas"></div>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+ 
+  <dialog id="modal-editarTrilha">
+    <form method="dialog" id="form-editarTrilha">
+      <h2>Editar Trilha</h2>
+
+      <label for="edit-trilha">Trilha:
+        <input type="text" id="edit-trilha" required />
+      </label>
+      <label for="edit-data">Data:
+        <input type="date" id="edit-data" required />
+      </label>
+      <label for="edit-hora">Horário:
+        <input type="time" id="edit-hora" required />
+      </label>
+      <label for="edit-ponto">Ponto de encontro:
+        <input type="text" id="edit-ponto" required />
+      </label>
+      <label for="edit-vagas">Vagas disponíveis:
+        <input type="number" id="edit-vagas" min="0" required />
+      </label>
+
+      <button type="submit">Salvar</button>
+      <button type="button" id="fecharEditar">Cancelar</button>
+    </form>
+  </dialog>
+
+    <script src="MinhasTrilhas.js"></script>
+</body>
+</html>
