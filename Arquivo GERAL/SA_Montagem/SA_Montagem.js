@@ -19,10 +19,12 @@ const infsListaTrilhas = [
 /* (Fred) Área destinado aos códigos que:
 1 - Vão filtrar as trilhas por região ao clicar nos botões de cada região;
 2 - Vai mostrar as informações da trilha selecionada;
+
+SVG viewport para transformar as imagens do map
 */
 
 function limparTrilhas() {
-    let limparListTrilhas = document.getElementById('cont-infoListTrilhas')
+    let limparListTrilhas = document.querySelector('.cont-infoListTrilhas')
     limparListTrilhas.innerHTML = ``
 }
 // function limparDadosTrilha() {
@@ -36,8 +38,9 @@ function mostrarListTrilhasReg(RegTrilha){
     let trilhasReg = RegTrilha
         let nomeRegiao
         nomeRegiao = infsListaTrilhas.filter(filtroRegTrilha => filtroRegTrilha.regiao === trilhasReg)
-        document.getElementById('cont-infoListTrilhas').innerHTML =
+        document.querySelector('.cont-infoListTrilhas').innerHTML =
         `<h3>Essas são as trilhas da região: ${trilhasReg}</h3>
+        <br>
         <ol id="ListTrilhas"></ol>`
         let nomesTrilhas
         nomesTrilhas = document.getElementById('ListTrilhas')
