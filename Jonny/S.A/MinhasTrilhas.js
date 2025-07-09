@@ -31,9 +31,9 @@
       });
     }
 
-    lista.addEventListener("click", (e) => {
-      if (e.target.classList.contains("editar-btn")) {
-        indexEditando = e.target.getAttribute("data-index");
+    lista.addEventListener("click", (editar) => {
+      if (editar.target.classList.contains("editar-btn")) {
+        indexEditando = editar.target.getAttribute("data-index");
         const trilha = trilhasCadastradas[indexEditando];
 
         inputTrilha.value = trilha.trilha;
@@ -51,8 +51,8 @@
       document.getElementById("modal-minhasTrilhas").showModal()
     });
 
-    formEditar.addEventListener("submit", (e) => {
-      e.preventDefault();
+    formEditar.addEventListener("submit", (edita) => {
+      edita.preventDefault();
 
       trilhasCadastradas[indexEditando] = {
         trilha: inputTrilha.value,
