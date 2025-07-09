@@ -1,31 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Kapakana:wght@300..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
+
+body{
+   display: flex;
+   flex-direction: column;
+   background-image: linear-gradient(45deg, #a8e063, #56ab2f);
+   /* background-color: rgb(111, 218, 69); */
+   /* justify-content: row; */
+   margin: 0;
+   padding: o;
+   
+} 
 #ava {
-   display:flex;
-   background-image: linear-gradient(rgb(149, 221, 149) (rgb(29, 70, 29)));
-   justify-content: row;
-
-}
-
-.containerAva {
+ display:flex;
+ justify-content: center;
+ margin: 20px;
+ flex-direction: row;
+ align-items: center;
+ gap: 20px;
+ flex-wrap:wrap;
+ column-gap: normal;
+ padding: 10px 250px 10px 10px;
+ } 
+.containerAvaPai {
    display: flex;
    border: solid 1px;
    padding: 10px;
    margin: auto;
-   color: blue;
+   color: rgb(3, 3, 3);
    flex-direction: column;
    align-items: center;
    width: 300px;
    min-height: 300px;
    border-radius: 10px;
-   box-shadow: 10px 10px 10px rgb(118, 192, 118);
+   box-shadow: 10px 10px 10px #191b18;
    border: none;
    align-items: 10px;
-   justify-content: center;
+   justify-content: center; 
    gap: 20px;
-   background-color: rgb(189, 228, 84);
-   margin-bottom: 20px;
+   /* background-color: #fff; */
+   background-image: linear-gradient(to bottom, #ffffff, #d0eac3);
+   margin-bottom: 10px; 
+}
+.containerAva {
+   display: flex;
+   border: solid 1px;
+   padding: 10px;
+   margin: auto;
+   color: rgb(3, 3, 3);
+   flex-direction: column;
+   align-items: center;
+   width: 300px;
+   min-height: 300px;
+   border-radius: 10px;
+   box-shadow: 10px 10px 10px #10130e;
+   border: none;
+   align-items: 10px;
+   justify-content: center; 
+   gap: 20px;
+   /* background-color: #fff; */
+   background-image: linear-gradient(to bottom, #ffffff, #d0eac3);
+   margin-bottom: 10px; 
 }
 #navAmigo{
    display: none;
@@ -50,15 +86,19 @@ h1 {
    font-family: "kapakana", cursive;
    font-size: 50px;
    text-align: center;
-   color: rgb(6, 6, 255);
+   color: rgb(77, 77, 175);
 }
 
 button {
-   border-radius: 10px;
+   border-radius: 4cm;
    border: none;
 }
+   #containerAvaPai{
+      display: flex;
+   }
+
 #compUm{
-   display: flex;
+   display: none;
 }
 #compDois{
    display: none;

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Avaliação de Trilha</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #d0f0c0, #8ecaaa);
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2f5f2f;
+    }
+
+    .etapa {
+      display: none;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .container {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 400px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+    }
+
+    .container h2 {
+      text-align: center;
+      color: #2f5f2f;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+      font-size: 1em;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+
+    textarea {
+      min-height: 60px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #388e3c;
+    }
+
+    .resultado {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #e8f5e9;
+      border-radius: 8px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      display: none;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      color: #2f5f2f;
+    }
+  </style>
+</head>
+<body onload="mostrarEtapa(1)">
+
+  <h1>Avaliação de Trilha</h1>
+
+  <!-- Etapa 1: Avaliação da Trilha -->
+  <div class="etapa" id="etapa1" style="display: flex;">
+    <div class="container">
+      <h2>Trilha</h2>
+
+      <label for="relevo">Tipo de Relevo:</label>
+      <select id="relevo">
+        <option value="" selected>Selecione o relevo (opcional)</option>
+        <option value="Plano">Plano</option>
+        <option value="Acidentado">Acidentado</option>
+        <option value="Montanhoso">Montanhoso</option>
+      </select>
+
+      <label for="dificuldade">Grau de Dificuldade:</label>
+      <select id="dificuldade">
+        <option value="" selected>Selecione a dificuldade (opcional)</option>
+        <option value="Fácil">Fácil</option>
+        <option value="Médio">Médio</option>
+        <option value="Difícil">Difícil</option>
+      </select>
+
+      <label for="tempo">Tempo Gasto na Trilha (minutos):</label>
+      <input type="number" id="tempo" min="1" placeholder="Ex: 90 (opcional)" />
+
+      <button onclick="mostrarEtapa(2); mostrarAmigo(1)">Próximo</button>
+    </div>
+  </div>
+
+  <!-- Etapa 2: Avaliação dos Amigos (um por um) -->
+  <div class="etapa" id="etapa2">
+    <div class="container">
+      <h2>Amigos de Trilha</h2>
+
+      <!-- Amigo 1 -->
+      <div id="amigo1" class="amigo">
+        <label>Nome:</label>
+        <input type="text" id="nome1" placeholder="Nome do amigo (opcional)" />
+        <label>Nota (0 a 10):</label>
+        <input type="number" id="nota1" min="0" max="10" placeholder="Nota do amigo (opcional)" />
+        <label>Comentário:</label>
+        <textarea id="coment1" placeholder="Comentário do amigo (opcional)"></textarea>
+        <button onclick="proximoAmigo(2)">Próximo Amigo</button>
+      </div>
+
+      <!-- Amigo 2 -->
+      <div id="amigo2" class="amigo" style="display: none;">
+        <label>Nome:</label>
+        <input type="text" id="nome2" placeholder="Nome do amigo (opcional)" />
+        <label>Nota (0 a 10):</label>
+        <input type="number" id="nota2" min="0" max="10" placeholder="Nota do amigo (opcional)" />
+        <label>Comentário:</label>
+        <textarea id="coment2" placeholder="Comentário do amigo (opcional)"></textarea>
+        <button onclick="proximoAmigo(3)">Próximo Amigo</button>
+      </div>
+
+      <!-- Amigo 3 -->
+      <div id="amigo3" class="amigo" style="display: none;">
+        <label>Nome:</label>
+        <input type="text" id="nome3" placeholder="Nome do amigo (opcional)" />
+        <label>Nota (0 a 10):</label>
+        <input type="number" id="nota3" min="0" max="10" placeholder="Nota do amigo (opcional)" />
+        <label>Comentário:</label>
+        <textarea id="coment3" placeholder="Comentário do amigo (opcional)"></textarea>
+        <button onclick="proximoAmigo(4)">Próximo Amigo</button>
+      </div>
+
+      <!-- Amigo 4 -->
+      <div id="amigo4" class="amigo" style="display: none;">
+        <label>Nome:</label>
+        <input type="text" id="nome4" placeholder="Nome do amigo (opcional)" />
+        <label>Nota (0 a 10):</label>
+        <input type="number" id="nota4" min="0" max="10" placeholder="Nota do amigo (opcional)" />
+        <label>Comentário:</label>
+        <textarea id="coment4" placeholder="Comentário do amigo (opcional)"></textarea>
+        <button onclick="proximoAmigo(5)">Próximo Amigo</button>
+      </div>
+
+      <!-- Amigo 5 -->
+      <div id="amigo5" class="amigo" style="display: none;">
+        <label>Nome:</label>
+        <input type="text" id="nome5" placeholder="Nome do amigo (opcional)" />
+        <label>Nota (0 a 10):</label>
+        <input type="number" id="nota5" min="0" max="10" placeholder="Nota do amigo (opcional)" />
+        <label>Comentário:</label>
+        <textarea id="coment5" placeholder="Comentário do amigo (opcional)"></textarea>
+        <button onclick="enviarAvaliacao()">Enviar Avaliação</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resultado -->
+  <div class="resultado" id="resultado"></div>
+
+  <script>
+    function mostrarEtapa(n) {
+      document.querySelectorAll(".etapa").forEach((el) => {
+        el.style.display = "none";
+      });
+      if (n === 1 || n === 2) {
+        document.getElementById(`etapa${n}`).style.display = "flex";
+      }
+      document.getElementById("resultado").style.display = "none";
+    }
+
+    function mostrarAmigo(n) {
+      for (let i = 1; i <= 5; i++) {
+        document.getElementById(`amigo${i}`).style.display = i === n ? "block" : "none";
+      }
+    }
+
+    function proximoAmigo(n) {
+      // Não valida nada, só muda o amigo
+      mostrarAmigo(n);
+    }
+
+    function enviarAvaliacao() {
+      // Pega dados da trilha, pode estar vazio
+      const trilha = {
+        relevo: document.getElementById("relevo").value || "Não informado",
+        dificuldade: document.getElementById("dificuldade").value || "Não informado",
+        tempo: document.getElementById("tempo").value || "Não informado",
+      };
+
+      // Pega dados dos amigos (mesmo que vazios)
+      const amigos = [];
+      for (let i = 1; i <= 5; i++) {
+        amigos.push({
+          nome: document.getElementById(`nome${i}`).value.trim() || "Sem nome",
+          nota: document.getElementById(`nota${i}`).value || "Sem nota",
+          coment: document.getElementById(`coment${i}`).value.trim() || "<em>Sem comentário</em>",
+        });
+      }
+
+      let resumo = `
+        <h2>Resumo da Avaliação</h2>
+        <p><strong>Relevo:</strong> ${trilha.relevo}</p>
+        <p><strong>Dificuldade:</strong> ${trilha.dificuldade}</p>
+        <p><strong>Tempo Gasto:</strong> ${trilha.tempo} minutos</p>
+        <h3>Avaliação dos Amigos:</h3>
+      `;
+
+      amigos.forEach((a, idx) => {
+        resumo += `
+          <p><strong>${idx + 1}. ${a.nome}</strong> - Nota: ${a.nota}<br>
+          Comentário: ${a.coment}</p>
+        `;
+      });
+
+      document.getElementById("resultado").innerHTML = resumo;
+      document.getElementById("resultado").style.display = "block";
+      document.querySelectorAll(".etapa").forEach((el) => (el.style.display = "none"));
+    }
+  </script>
+</body>
+</html>

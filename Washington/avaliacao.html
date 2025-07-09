@@ -1,76 +1,127 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avalicao</title>
-    <link rel="stylesheet" href="avaliacao.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avaliação</title>
+  <link rel="stylesheet" href="avaliacao.css">
 </head>
-<body>
-        <h1>Este campo e para você fazer sua avalição </h1>
-        <h1>dos seus amigos de trilha é da trilha</h1>  
+<body onload="inicializacao()">
+  <h1>Este campo é para você fazer sua avaliação dos seus amigos de trilha e da trilha</h1>
 
-    <section id="ava" class="ava">
-        <div id="avaTrilha" class="containerAva">
-            <h2>Avalição da trilha</h2>
-            <!-- <label for="" >Avalição da trilha</label> -->
-            <!-- <input type="number" class="notaAva"> -->
-            <label for="">Tempo estimado</label>
-            <input type="text" class="escTexAva">
-            <label for="">Tipo de relevo</label>
-            <input type="text" class="escTexAva">
-            <label for="">Grau de dificuldade</label>
-            <input type="text" class="escTexAva">
-            <button onclick="confirma()" id="confrima">confirma</button>
-        </div>
-        <nav  id=" navAmigo">   
-            <div id="compUm" class="containerAva">
-                <h3 for="" >Avalição do amigo de 1 á 10</h3>
-                <label for="">Nome1</label>
-                <input type="number" class="notaAva">
-                <label for="">Comentário</label>
-                <input type="text" class="escTexAva">
-                <button onclick="amigoUm()" id="confirma()">Próximo</button>
-            </div>
-            <div id="compDois" class="containerAva">
-                <h3 for="" >Avalição do amigo de 1 á 10</h3>
-                <label for="">Nome2</label>
-                <input type="number" class="notaAva">
-                <label for="">Comentário</label>
-                <input type="text" class="escTexAva">
-                <button onclick="amigoDois()" id="confirma()">Próximo</button>
-            </div>
-            <div id="compTres" class="containerAva">
-                <h3 for="" >Avalição do amigo de 1 á 10</h3>
-                <label for="">Nome3</label>
-                <input type="number" class="notaAva">
-                <label for="">Comentário</label>
-                <input type="text" class="escTexAva">
-                <button onclick="amigoTres()" id="confirma()">Próximo</button>
-            </div>
-            <div id="compQuatro" class="containerAva">
-                <h3 for="" >Avalição do amigo de 1 á 10</h3>
-                <label for="">Nome4</label>
-                <input type="number" class="notaAva">
-                <label for="">Comentário</label>
-                <input type="text" class="escTexAva">
-                <button onclick="amigoQuatro()" id="confirma()">Próximo</button>
-            </div>
-            <div id="compCinco" class="containerAva">
-                <h3 for="" >Avalição do amigo de 1 á 10</h3>
-                <label for="">Nome5</label>
-                <input type="number" class="notaAva">
-                <label for="">Comentário</label>
-                <input type="text" class="escTexAva">
-                <button onclick="amigoCinco()" id="confirma()">Próximo</button>
-            </div>
-        </nav>  
-    </section>
-    <script src="avaliacao.js"></script>
+  <section id="ava">
+    <div id="avaTrilha" class="containerAvaPai">
+      <h2>Avaliação da trilha</h2>
+      <!-- <label>Tempo estimado</label> -->
+      <input type="text" class="escTexAva" placeholder="Tempo estimado">
+      
+      <!-- <label>Tipo de relevo</label> -->
+      <input type="text" class="escTexAva" placeholder="Tipo de relevo">
+      
+      <!-- <label>Grau de dificuldade</label> -->
+      <input type="text" class="escTexAva" placeholder="Grau de dificuldade">
+      
+      <button onclick="abrirAvaliacaoAmigos()" id="confirmaTrilha">Confirmar</button>
+    </div>
+
+    <nav id="navAmigo">
+      <div id="compUm" class="containerAva">
+        <h3>Avaliação do amigo de 1 a 5</h3>
+        <label>Nome1</label> 
+        <input type="number" class="notaAva" placeholder="nota">
+        <!-- <label>Comentário</label> -->
+        <input type="text" class="escTexAva"placeholder="comentário" >
+        <button onclick="amigoDois()">Próximo</button>
+      </div>
+
+      <div id="compDois" class="containerAva">
+        <h3>Avaliação do amigo de 1 a 5</h3>
+        <label>Nome2</label>
+        <input type="number" class="notaAva"  placeholder="nota">
+        <!-- <label>Comentário</label> -->
+        <input type="text" class="escTexAva" placeholder="comentário">
+        <button onclick="amigoTres()">Próximo</button>
+      </div>
+
+      <div id="compTres" class="containerAva">
+        <h3>Avaliação do amigo de 1 a 5</h3>
+        <label>Nome3</label>
+        <input type="number" class="notaAva"  placeholder="nota">
+        <!-- <label>Comentário</label> -->
+        <input type="text" class="escTexAva" placeholder="comentário">
+        <button onclick="amigoQuatro()">Próximo</button>
+      </div>
+
+      <div id="compQuatro" class="containerAva">
+        <h3>Avaliação do amigo de 1 a 5</h3>
+        <label>Nome4</label>
+        <input type="number" class="notaAva"  placeholder="nota">
+        <!-- <label>Comentário</label> -->
+        <input type="text" class="escTexAva" placeholder="comentário">
+        <button onclick="amigoCinco()">Próximo</button>
+      </div>
+
+      <div id="compCinco" class="containerAva">
+        <h3>Avaliação do amigo de 1 a 5</h3>
+        <label>Nome5</label>
+        <input type="number" class="notaAva"  placeholder="nota">
+        <!-- <label>Comentário</label> -->
+        <input type="text" class="escTexAva" placeholder="comentário">
+        <button onclick="confirma()">Confirmar tudo</button>
+      </div>
+    </nav>
+  </section>
+
+  <script>
+    function inicializacao() {
+      esconderTodas(); // esconde todos os blocos de amigos
+      document.getElementById('navAmigo').style.display = 'none'; // esconde nav
+    }
+
+    function abrirAvaliacaoAmigos() {
+      esconderTodas(); // esconde todos os blocos de amigos
+      document.getElementById('navAmigo').style.display = 'flex'; // mostra a área de amigos
+      document.getElementById('compUm').style.display = 'flex'; // começa com o amigo 1
+    }
+
+    function confirma() {
+      esconderTodas();
+      document.getElementById('navAmigo').style.display = 'none';
+      alert("Avaliações finalizadas com sucesso!");
+    }
+
+    function amigoUm() {
+      esconderTodas();
+      document.getElementById('compUm').style.display = 'flex';
+    }
+
+    function amigoDois() {
+      esconderTodas();
+      document.getElementById('compDois').style.display = 'flex';
+    }
+
+    function amigoTres() {
+      esconderTodas();
+      document.getElementById('compTres').style.display = 'flex';
+    }
+
+    function amigoQuatro() {
+      esconderTodas();
+      document.getElementById('compQuatro').style.display = 'flex';
+    }
+
+    function amigoCinco() {
+      esconderTodas();
+      document.getElementById('compCinco').style.display = 'flex';
+    }
+
+    function esconderTodas() {
+      document.getElementById('compUm').style.display = 'none';
+      document.getElementById('compDois').style.display = 'none';
+      document.getElementById('compTres').style.display = 'none';
+      document.getElementById('compQuatro').style.display = 'none';
+      document.getElementById('compCinco').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
-<!-- <button onclick="compUm()"> Proxímo</button>
-<button onclick="compDois()">Confirma</button>
-<button onclick="compTres()">Confirma</button>
-<button onclick="compQuatro()">Confirma</button>
-<button onclick="compCinco()">Confirma</button>  -->

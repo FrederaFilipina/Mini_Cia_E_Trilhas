@@ -1,0 +1,80 @@
+/* Estilos gerais do corpo da página */
+    body {
+      font-family: Arial, sans-serif; /* Fonte legível */
+      background-color: #58a558; /* Fundo claro esverdeado */
+      color: #333; /* Cor do texto */
+      padding: 20px; /* Espaço interno */
+    }
+
+    /* Estilo do título principal */
+    h1 {
+      text-align: center; /* Centraliza o texto */
+      color: #2f4f2f; /* Verde escuro */
+    }
+
+    /* Estilo do formulário */
+    form {
+      background-color: #e5e5dc; /* Fundo bege claro */
+      padding: 20px; /* Espaço interno */
+      border-radius: 10px; /* Cantos arredondados */
+      max-width: 500px; /* Largura máxima */
+      margin: 0 auto 30px; /* Centraliza horizontal e margem inferior */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+    }
+
+    /* Estilo dos rótulos dos campos */
+    label {
+      display: block; /* Cada label ocupa uma linha */
+      margin-top: 15px; /* Espaço acima */
+      font-weight: bold; /* Negrito */
+    }
+
+    /* Estilo dos inputs, selects e textarea */
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%; /* Ocupa toda a largura disponível */
+      padding: 8px; /* Espaço interno */
+      margin-top: 5px; /* Espaço acima */
+      border-radius: 5px; /* Bordas arredondadas */
+      border: 1px solid #aaa; /* Borda cinza clara */
+      font-size: 14px; /* Tamanho da fonte */
+      box-sizing: border-box; /* Considera bordas no tamanho */
+    }
+
+    /* Estilo do botão */
+    button {
+      background-color: #4caf50; /* Verde */
+      color: white; /* Texto branco */
+      border: none; /* Sem borda */
+      padding: 10px 20px; /* Espaço interno */
+      margin-top: 20px; /* Espaço acima */
+      border-radius: 5px; /* Bordas arredondadas */
+      cursor: pointer; /* Cursor de mão */
+      font-weight: bold; /* Negrito */
+      font-size: 16px; /* Tamanho da fonte */
+    }
+
+    /* Estilo do botão quando o mouse passa por cima */
+    button:hover {
+      background-color: #10B981; /* Verde mais escuro */
+    }
+
+    /* Estilo da div que contém cada avaliação */
+    .avaliacao {
+      background-color: #fff; /* Fundo branco */
+      border-left: 5px solid #10B981; /* Barra verde na esquerda */
+      margin: 15px auto; /* Espaço acima/baixo e centralizado */
+      padding: 15px; /* Espaço interno */
+      max-width: 500px; /* Largura máxima */
+      border-radius: 8px; /* Cantos arredondados */
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* Sombra leve */
+    }
+
+    /* Estilo do texto forte dentro das avaliações */
+    .avaliacao strong {
+      color: #2e4600; /* Verde escuro */
+    }
+ 
+
+   

@@ -4,6 +4,24 @@ let cadastroUsuarios = JSON.parse(bancoDados.getItem('CadastroUser')) || []
 
 limitarDataCadastroData()
 
+//display flex/none
+function mostrarCep(){
+    document.getElementById("contCep").style.display = "flex"
+    
+}
+function esconderCep(){
+    
+    document.getElementById("contCep").style.display = "none"
+}
+function abrirPaginaUsuário(){
+    
+}
+function abrirLogin() {
+
+
+}
+//-----------------------------------//
+
 function limitarDataCadastroData() {
 
     const inuputData = document.getElementById("dataNacimento")
@@ -120,6 +138,8 @@ function limparInput() {
     document.getElementById("userDigit").value = ""
 
     document.getElementById("infoUser").innerHTML = ""
+    
+    document.getElementById("cep").value = ""
 
     for (let index = 0; index < sexo.length; index++) {
 
@@ -138,10 +158,6 @@ function limparInput() {
 function salvarBancoDados() {
 
     bancoDados.setItem("CadastroUser", JSON.stringify(cadastroUsuarios))
-
-}
-function abrirLogin() {
-
 
 }
 function entraCadastro(event) {
@@ -177,6 +193,9 @@ function entraCadastro(event) {
 
     let validandoIdadeMinima = verificandoIdade(dataNacimento.value)
 
+    let cep = document.getElementById("cep").value || "Não reside em Florianópolis"
+    
+
     if (nomeCompleto.value.length ===0 || cpf.value.length ===0 ||dataNacimento.value.length ===0 ||telefone.value.length ===0 ||email.value.length ===0 ||senha.value.length ===0 ||nomeUsuario.value.length ===0 ) {
 
         infoUser.innerHTML = `<p>*Preencha todos os campos corretamente</p>`
@@ -202,7 +221,7 @@ function entraCadastro(event) {
         infoUser.innerHTML = "<p>*Nome de usuário ja esta sendo utilizado</p>"
 
     } else {
-
+            
         cadastroUsuarios.push({
             nomeCompleto: nomeCompleto.value,
             cpf: cpf.value,
@@ -210,9 +229,11 @@ function entraCadastro(event) {
             sexo: sexoUser,
             telefone: telefone.value,
             email: email.value,
+            cep: cep,
             senha: senha.value,
             nomeUsuario: nomeUsuario.value,
             avaliaçãoUser: "10/10",
+            avaliações: [],
             evento: false,
             logado: false
 
@@ -252,8 +273,5 @@ function logar(event) {
 
 
     }else  infoUserLogin.innerHTML = "*Senha incorreta"
-    
-}
-function abrirPaginaUsuário(){
     
 }

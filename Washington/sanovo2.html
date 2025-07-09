@@ -1,0 +1,39 @@
+<!DOCTYPE html> <!-- Define o tipo do documento HTML -->
+<html lang="pt-br"> <!-- Define o idioma da página como português brasileiro -->
+<head>
+  <meta charset="UTF-8"> <!-- Define a codificação de caracteres para UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade em dispositivos móveis -->
+  <title>Avaliações</title> <!-- Título da aba do navegador -->
+  <link rel="stylesheet" href="sanovo2.css"> <!-- Importa o arquivo de estilos CSS -->
+</head>
+<body>
+  <!-- Formulário de avaliação -->
+  <div class="avaliacao-form">
+    <h2>Deixe sua avaliação</h2>
+    <form id="formAvaliacao">
+      <!-- Campo para o nome do participante avaliado -->
+      <label for="nome">Nome do participante avaliado:</label><br>
+      <input type="text" id="nome" name="nome" required><br><br>
+
+      <!-- Campo para nota entre 1 e 5 -->
+      <label for="nota">Nota (1 a 5):</label><br>
+      <input type="number" id="nota" name="nota" min="1" max="5" required><br><br>
+
+      <!-- Campo para escrever o comentário -->
+      <label for="comentario">Comentário:</label><br>
+      <textarea id="comentario" name="comentario" rows="4" cols="50" required></textarea><br><br>
+
+      <!-- Botão para enviar a avaliação -->
+      <button type="submit">Enviar Avaliação</button>
+    </form>
+  </div>
+
+  <!-- Área onde as avaliações serão exibidas -->
+  <div class="avaliacoes-lista">
+    <h2>Avaliações Recebidas</h2>
+    <div id="listaAvaliacoes"></div> <!-- Local onde as avaliações são inseridas via JS -->
+  </div>
+
+  <script src="sanovo2.js"></script> <!-- Importa o script JavaScript -->
+</body>
+</html>

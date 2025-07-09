@@ -3,6 +3,26 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 } */
+.conteiner-cadastro{
+    width: 400px;
+    
+}
+.conteiner-formulario-cadastro{
+    display: flex;
+    flex-direction: column;
+}
+.formulario-cadastro{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.buttonCadastro{
+    width: 70px;
+    height: 30px;
+    align-self: center;
+
+}
 
 .conteiner-cadastro{
     border: 1px solid;
@@ -12,4 +32,7 @@ input[type=number]::-webkit-outer-spin-button {
 .conteiner-login{
     border: 1px solid;
     padding: 15px;
+}
+.conteiner-cep{
+    display: none;
 }
