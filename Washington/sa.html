@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>final</title>
+    <style>
+        body{
+            display: flex;
+            background-color: #b0eeb2;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+        input, button {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+     button:hover {
+      background-color: #45a049;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #fff;
+      padding: 10px;
+      margin-bottom: 8px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+     h2 {
+      color: #333;
+    }
+
+    </style>
+
+</head>
+
+<body>
+    <div id="containerAvaPai">
+        <h2>Avaliação da trilha ${buscar no evento}</h2>
+        <label>Tempo estimado</label>
+        <input type="text" class="escTexAva" id="tempoEstimado" placeholder="Tempo estimado">
+
+        <label>Tipo de relevo</label>
+        <input type="text" class="escTexAva" id="tipoDeRelevo" placeholder="Tipo de relevo">
+
+        <label>Grau de dificuldade</label>
+        <input type="text" class="escTexAva" id="grauDeDificuldade" placeholder="Grau de dificuldade">
+
+        <button onclick="avaTrilha()" >Confirmar</button>
+        <ul id="mostraTrilha"></ul>
+    </div>
+    <div id="containerAva">
+        <h3>Avaliação do amigo de 1 a 5</h3>
+        <label id="nomeAmigo">Nome ${buscar no evento}</label>
+        <input type="number" class="notaAva" id="notaAmigo" placeholder="nota">
+        <label>Comentário</label>
+        <input type="text" class="escTexAva" id="cometarioAmigo" placeholder="comentário">
+        <button onclick="avalicaoAmigo()">Próximo</button>
+        <ul id="mostraAmigo"></ul>
+    </div>
+    <script>
+        const avaliacaoGrauDeDificuldade = []
+        const avalicaoTempoEstimado = []
+        const avalicaoTipoDeRelevo = []
+
+        function avaTrilha() {
+            const avaliacaoTempo = document.getElementById("tempoEstimado").value
+            if (avaliacaoTempo.trim() !== "") // Pega o primeiro elemento que satisfa a condição
+                avalicaoTempoEstimado.push(avaliacaoTempo)
+
+            console.log(avaliacaoTempo)
+
+            const avaliacaoRelevo = document.getElementById("tipoDeRelevo").value
+            if (avaliacaoRelevo.trim() !== "")
+                avalicaoTipoDeRelevo.push(avaliacaoRelevo)
+
+            console.log(avaliacaoRelevo)
+
+            const avaDificuldade = document.getElementById("grauDeDificuldade").value
+            if (avaDificuldade.trim() !== "")
+                avaliacaoGrauDeDificuldade.push(avaDificuldade)
+
+            console.log(avaDificuldade)
+            mostraTrilha()
+            
+        }
+     function mostraTrilha() {
+      const ul = document.getElementById("mostraTrilha")
+      ul.innerHTML = "" 
+
+      
+      for (let mostra = 0; mostra < avalicaoTempoEstimado.length; mostra++) {
+        const tempo = avalicaoTempoEstimado[mostra]
+        const relevo = avalicaoTipoDeRelevo[mostra] || "N/A"
+        const dificuldade = avaliacaoGrauDeDificuldade[mostra] || "N/A"
+
+        const li = document.createElement("li")
+        li.textContent = `${tempo}
+                          ${relevo} 
+                          ${dificuldade}`
+        ul.appendChild(li)
+      }
+    }
+    const notaAmigo = []
+    const cometarioAmigo = []
+    const containerAva = []
+
+    function avalicaoAmigo(){
+
+            document.getElementById("containerAva").value
+            if(containerAva.length > 1){
+            containerAva.shift()
+        }else{
+        alert("obrigado")
+        }
+        const avaAmigo = document.getElementById("notaAmigo").value
+        if(avaAmigo.trim() !== 0)
+          notaAmigo.push(avaAmigo)
+        
+        console.log(avaAmigo)
+        const cometAmigo= document.getElementById("cometarioAmigo").value
+        if(cometAmigo.trim() !== 0)
+            cometarioAmigo.push(cometAmigo)
+            console.log(cometAmigo)
+        
+         mostraAmigo()
+    }
+     function mostraAmigo() {
+      const ul = document.getElementById("mostraAmigo")
+      ul.innerHTML = "" 
+
+      
+      for (let mostra = 0; mostra < avalicaoTempoEstimado.length; mostra++) {
+        const nota = notaAmigo [mostra]
+        const comentario = cometarioAmigo[mostra] || "N/A"
+       
+
+        const li = document.createElement("li")
+        li.textContent = `${nota}
+                          ${comentario } `
+        ul.appendChild(li)
+      }
+    }
+    </script>
+
+</body>
+
+</html>
