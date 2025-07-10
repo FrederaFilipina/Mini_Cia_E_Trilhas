@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Evento</title>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Criar Novo Evento</h2>
+
+        <form id="eventoForm">
+
+            <div class="form-group">
+                <label for="trilha">Trilha:</label>
+                <select id="trilha" required>
+                    <option value="">Selecione</option>
+                    <option value="Trilha da Lagoa">Trilha da Lagoa</option>
+                    <option value="Trilha do Campeche">Trilha do Campeche</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="data">Data:</label>
+                <input type="date" id="data" required>
+            </div>
+
+            <div class="form-group">
+                <label for="hora">Horário:</label>
+                <input type="time" id="hora" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ponto">Ponto de Encontro:</label>
+                <input type="text" id="ponto" required>
+            </div>
+
+            <div class="form-group">
+                <label for="vagas">Vagas (2 a 5):</label>
+                <input type="number" id="vagas" min="2" max="5" required>
+            </div>
+
+            <div class="form-section">
+                <h3>Dados do Usuário</h3>
+
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" required readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="idade">Idade:</label>
+                    <input type="number" id="idade" required readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="sexo">Sexo:</label>
+                    <select id="sexo" required disabled>
+                        <option value="Mascolino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Nao definido">Outro</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Cadastrar Evento</button>
+            </div>
+
+        </form>
+
+        <div id="mensagem"></div>
+    </div>
+
+    
+    <div class="container">
+        <h2>Lista de Eventos Cadastrados</h2>
+        <div id="listarEventos"></div>
+    </div>
+
+    <script src="certo.js"></script>
+</body>
+</html>
