@@ -236,8 +236,7 @@ function entraCadastro(event) {
             avaliaçãoUser: "10/10",
             avaliações: [],
             evento: false,
-            logado: false
-
+            historico: [],
         })
         limparInput()
         salvarBancoDados()
@@ -265,7 +264,7 @@ function logar(event) {
         infoUserLogin.innerHTML = "*Usuário não cadastrado"
         
     } else if(userCadastroUsuario.senha === senha){
-        userCadastroUsuario.logado = true
+        localStorage.setItem("logado",JSON.stringify(userCadastroUsuario))
         salvarBancoDados()
         abrirPaginaUsuário()
         limparInput()
