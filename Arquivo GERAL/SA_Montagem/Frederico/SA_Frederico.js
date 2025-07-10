@@ -87,7 +87,7 @@ function logInOut() {
     else {
         return false
     }*/
-    return true
+    return false
 }
 function limparTrilhas() {
     let limparListTrilhas = document.querySelector('.cont-infoListTrilhas')
@@ -120,18 +120,19 @@ function mostrarInfTrilha(nomeTrilha) {
     let trilhaNome = nomeTrilha
     let dadosTrilha
 
-    if (logInOut() != true) {
-        dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.trilha === trilhaNome)
-        document.querySelector('.cont-infoDdsTrilha').innerHTML =
-            `<p> Trilha: ${dadosTrilha.trilha}</p>
-            <br>
-            <p>Infs Básicas</p>`
-    } else {
+    if (logInOut()) {
         dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.trilha === trilhaNome)
         document.querySelector('.cont-infoDdsTrilha').innerHTML =
             `<p> Trilha: ${dadosTrilha.trilha}</p>
             <br>
             <p>Infs Completas</p>`
+    } else {
+        dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.trilha === trilhaNome)
+        document.querySelector('.cont-infoDdsTrilha').innerHTML =
+            `<p> Trilha: ${dadosTrilha.trilha}</p>
+            <br>
+            <p>Infs Básicas</p>
+            <button onclick="LOGIN">Login</button>`
     }
 }
 
