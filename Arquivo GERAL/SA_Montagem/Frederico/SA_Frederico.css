@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #4444;
+}
+
+
+.fundo{
+    height: 100vh;
+    width: 100%;
+    background-image: url(fundo7.png);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 0.53%;   
+}
+
+
+.cont-principal {
+    /* background-color: rgb(89, 102, 67); */
+    /* verde militar - https://encycolorpedia.pt/596643 */
+    background-color: rgb(71, 81, 54);
+    /* verde militar saturado e 25% mais escuro 
+    - https://encycolorpedia.pt/475136*/
+
+    margin-top: 8.5%;
+    width: 83.3vw;
+    height: 67.9vh;
+    border-right: 5px solid rgba(0, 0, 0, 0.500);
+    border-left: 5px solid rgba(0, 0, 0, 0.500);;
+
+    display: flex;
+    flex-direction: row;
+    gap: 1%;
+    padding: 5px;
+}
+
+.conts-inf-cadas-info-pro {
+    height: 100%;
+    width: 25%;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2%;
+
+
+}
+
+.conteiner-login_cadastro {
+    border: 1px solid black;
+    width: 100%;
+    height: 30%;
+    border-radius: 10px;
+
+
+}
+
+.cont-info-projeto {
+    border: 1px solid black;
+    width: 100%;
+    height: 70%;
+    border-radius: 10px;
+
+}
+
+.cont-titulo-map {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 45%;
+    gap: 5px;
+    /* border: solid 1px; */
+}
+
+.cont-titulo {
+    display: flex;
+    flex-direction: row;
+    height: 10%;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid;
+
+}
+
+.cont-map {
+    border: 1px solid black;
+    /* background-color: aqua; */
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.cont-cadastro-buttons-infos {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 30%;
+    height: 100%;
+
+}
+
+.cont-login {
+    display: flex;
+    flex-direction: row;
+    height: 10%;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid;
+
+}
+
+
+.cont-buttons-infos {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 40%;
+    gap: 2%;
+
+}
+
+.cont-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 20%;
+    width: 100%;
+
+}
+
+.cont-button-nort {
+    border: 1px solid black;
+    height: 100%;
+    width: 24%;
+    border-radius: 5px;
+
+}
+
+.cont-button-center {
+    border: 1px solid black;
+    height: 100%;
+    width: 24%;
+    border-radius: 5px;
+
+}
+
+.cont-button-lest {
+    border: 1px solid black;
+    height: 100%;
+    width: 24%;
+    border-radius: 5px;
+}
+
+.cont-button-sul {
+    border: 1px solid black;
+    height: 100%;
+    width: 24%;
+    border-radius: 5px;
+}
+
+.cont-info {
+    display: flex;
+    flex-direction: column;
+    border: 2.5px solid black;
+    height: 90%;
+    width: 100%;
+    border-radius: 5px;
+}
+.cont-infoListTrilhas {
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 2.5px solid black;
+    height: 70%;
+    width: 100%;
+}
+#ListagemTrilhas{
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+    width: 90%;
+}
+#BttnNomeTrilhas{
+    display: flex;
+
+    justify-content: left;
+    align-items: center;
+
+    cursor: pointer;
+    min-width: 400px;
+
+    border: 1px solid rgb(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+
+}
+.cont-infoDdsTrilha {
+    border-top: 2.5px solid black;
+    height: 30%;
+    width: 100%;
+}

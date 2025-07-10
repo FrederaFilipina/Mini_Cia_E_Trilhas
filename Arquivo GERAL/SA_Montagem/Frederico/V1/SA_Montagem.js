@@ -67,7 +67,7 @@ localStorage.setItem('ListagemTrilhas', JSON.stringify(infsListaTrilhas))
 SVG viewport para transformar as imagens do map
 */
 
-function logInOut(){
+function logInOut() {
     /*let usuario = localStorage.getItem("LogIN")
     if(usuario != undefined){
         return true
@@ -75,11 +75,8 @@ function logInOut(){
     else {
         return false
     }*/
-   return true
+    return false
 }
-
-
-
 function limparTrilhas() {
     let limparListTrilhas = document.querySelector('.cont-infoListTrilhas')
     limparListTrilhas.innerHTML = ``
@@ -88,42 +85,41 @@ function limparDadosTrilha() {
     let limparDdsTrilha = document.getElementById('cont-infDadosTrilha')
     limparDdsTrilha.innerHTML = ``
 }
-console.log(logInOut())
-
-function mostrarListTrilhasReg(RegTrilha){
+function mostrarListTrilhasReg(RegTrilha) {
     limparTrilhas()
     limparDadosTrilha()
     let trilhasReg = RegTrilha
-        let nomeRegiao
-        nomeRegiao = infsListaTrilhas.filter(filtroRegTrilha => filtroRegTrilha.regiao === trilhasReg)
-        document.querySelector('.cont-infoListTrilhas').innerHTML =
+    let nomeRegiao
+    nomeRegiao = infsListaTrilhas.filter(filtroRegTrilha => filtroRegTrilha.regiao === trilhasReg)
+    document.querySelector('.cont-infoListTrilhas').innerHTML =
         `<p>Essas são as trilhas da região: ${trilhasReg}</p>
         <br>
         <ol id="ListTrilhas"></ol>`
-        let nomesTrilhas
-        nomesTrilhas = document.getElementById('ListTrilhas')
-        for(const element of nomeRegiao){ 
-            nomesTrilhas.innerHTML+=
+    let nomesTrilhas
+    nomesTrilhas = document.getElementById('ListTrilhas')
+    for (const element of nomeRegiao) {
+        nomesTrilhas.innerHTML +=
             `<p><li><button onclick="mostrarInfTrilha('${element.trilha}')" class="cont-button-nomeTrilha">
             <p>${element.trilha}</p</button></li><p>`
-        }  
+    }
 }
-function mostrarInfTrilha(nomeTrilha){
-    // limparDadosTrilha()
+function mostrarInfTrilha(nomeTrilha) {
+    limparDadosTrilha()
     let trilhaNome = nomeTrilha
     let dadosTrilha
-    dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.trilha === trilhaNome)
-    document.getElementById('cont-infDadosTrilha').innerHTML =
-        `<p> Trilha: ${dadosTrilha.trilha},
-        <br> Distância: ${dadosTrilha.distancia}, Tempo: ${dadosTrilha.tempo}
-        <br> Dificuldade: ${dadosTrilha.dificuldade}</p>`
+
+    if (logInOut() != true) {
+        dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.trilha === trilhaNome)
+        document.getElementById('cont-infDadosTrilha').innerHTML =
+            `<p> Trilha: ${dadosTrilha.trilha}</p>
+            <br>
+            <p>Infs Básicas</p>`
+    } else {
+        dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.trilha === trilhaNome)
+        document.getElementById('cont-infDadosTrilha').innerHTML =
+            `<p> Trilha: ${dadosTrilha.trilha}</p>
+            <br>
+            <p>Infs Completas</p>`
+    }
 }
-
-if(logInOut() != true){
-
-
- }
-
-
-
 // (Fred)---------------
