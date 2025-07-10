@@ -1,6 +1,5 @@
-const bancoDados = localStorage
 
-let cadastroUsuarios = JSON.parse(bancoDados.getItem('CadastroUser')) || []
+let cadastroUsuarios = JSON.parse(localStorage.getItem('CadastroUser')) || []
 
 limitarDataCadastroData()
 
@@ -21,6 +20,8 @@ function abrirLogin() {
 
 }
 //-----------------------------------//
+
+
 
 function limitarDataCadastroData() {
 
@@ -157,7 +158,7 @@ function limparInput() {
 }
 function salvarBancoDados() {
 
-    bancoDados.setItem("CadastroUser", JSON.stringify(cadastroUsuarios))
+    localStorage.setItem("CadastroUser", JSON.stringify(cadastroUsuarios))
 
 }
 function entraCadastro(event) {
@@ -242,8 +243,6 @@ function entraCadastro(event) {
         salvarBancoDados()
         abrirLogin()
         console.log(cadastroUsuarios)
-
-
     }
 }
 function logar(event) {
