@@ -116,7 +116,7 @@ body{
     button{
         border-radius: 5px;
         border-color: rgba(255, 255, 255, 0);
-        background-image: url(RegNorte.png);
+        /* background-image: url(RegNorte.png); */
         background-size: cover;
         background-repeat: no-repeat;
         height: 95%;
@@ -139,7 +139,7 @@ body{
     button{
         border-radius: 5px;
         border-color: rgba(255, 255, 255, 0);
-        background-image: url(RegCentral.png);
+        /* background-image: url(RegCentral.png); */
         background-size: cover;
         background-repeat: no-repeat;
         height: 95%;
@@ -161,7 +161,7 @@ body{
     button{
         border-radius: 5px;
         border-color: rgba(255, 255, 255, 0);
-        background-image: url(RegLeste.png);
+        /* background-image: url(RegLeste.png); */
         background-size: cover;
         background-repeat: no-repeat;
         height: 95%;
@@ -183,7 +183,7 @@ body{
     button{
         border-radius: 5px;
         border-color: rgba(255, 255, 255, 0);
-        background-image: url(RegSul.png);
+        /* background-image: url(RegSul.png); */
         background-size: cover;
         background-repeat: no-repeat;
         height: 95%;

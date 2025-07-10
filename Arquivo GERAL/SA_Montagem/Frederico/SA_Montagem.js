@@ -1,17 +1,59 @@
 // Área reservada para as variáveis que vão funcionar como Banco de Dados
 
 const infsListaTrilhas = [
-    { nome: 'TrilhaN1', regiao: 'Norte', km: '10km', tempo: '1h00', dificuldade: 'SIM'},
-    { nome: 'TrilhaN2', regiao: 'Norte', km: '20km', tempo: '2h00', dificuldade: 'SIM' },
+    { trilha: 'TrilhaN1', pPartida: ``, pChegada: ``, 
+    regiao: 'Norte', cep: ``,
+    distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+    nvlTSite: ``, nvlTUsuario: [], 
+    obs: `` },
 
-    { nome: 'TrilhaC1', regiao: 'Central', km: '30km', tempo: '3h00', dificuldade: 'SIM'},
-    { nome: 'TrilhaC2', regiao: 'Central', km: '40km', tempo: '4h00', dificuldade: 'SIM' },
+    { trilha: 'TrilhaN2', pPartida: ``, pChegada: ``, 
+    regiao: 'Norte', cep: ``,
+    distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+    nvlTSite: ``, nvlTUsuario: [], 
+    obs: `` },
+    
+    //-----------------------------------------------------------------------------
 
-    { nome: 'TrilhaL1', regiao: 'Leste', km: '50km', tempo: '5h00', dificuldade: 'SIM' },
-    { nome: 'TrilhaL2', regiao: 'Leste', km: '60km', tempo: '6h00', dificuldade: 'SIM' },
+    { trilha: 'TrilhaC1', pPartida: ``, pChegada: ``, 
+    regiao: 'Central', cep: ``,
+    distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+    nvlTSite: ``, nvlTUsuario: [], 
+    obs: `` },
 
-    { nome: 'TrilhaS1', regiao: 'Sul', km: '70km', tempo: '7h00', dificuldade: 'SIM' },
-    { nome: 'TrilhaS2', regiao: 'Sul', km: '80km', tempo: '8h00', dificuldade: 'SIM' }
+    { trilha: 'TrilhaC2', pPartida: ``, pChegada: ``,
+    regiao: 'Central', cep: ``,
+    distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+    nvlTSite: ``, nvlTUsuario: [], 
+    obs: `` },
+
+    //-----------------------------------------------------------------------------
+
+    { trilha: 'TrilhaL1', pPartida: ``, pChegada: ``, 
+    regiao: 'Leste', cep: ``,
+    distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+    nvlTSite: ``, nvlTUsuario: [], 
+    obs: `` },
+    
+    { trilha: 'TrilhaL2', pPartida: ``, pChegada: ``,
+    regiao: 'Leste', cep: ``,
+    distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+    nvlTSite: ``, nvlTUsuario: [], 
+    obs: `` },
+
+    //-----------------------------------------------------------------------------
+
+    { trilha: 'TrilhaS1', pPartida: ``, pChegada: ``, 
+    regiao: 'Sul', cep: ``,
+    distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+    nvlTSite: ``, nvlTUsuario: [], 
+    obs: `` },
+        
+    { trilha: 'TrilhaS2', pPartida: ``, pChegada: ``,
+    regiao: 'Sul', cep: ``,
+    distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+    nvlTSite: ``, nvlTUsuario: [], 
+    obs: `` },
 ]
 
 localStorage.setItem('ListagemTrilhas', JSON.stringify(infsListaTrilhas))
@@ -25,42 +67,63 @@ localStorage.setItem('ListagemTrilhas', JSON.stringify(infsListaTrilhas))
 SVG viewport para transformar as imagens do map
 */
 
+function logInOut(){
+    /*let usuario = localStorage.getItem("LogIN")
+    if(usuario != undefined){
+        return true
+    }
+    else {
+        return false
+    }*/
+   return true
+}
+
+
+
 function limparTrilhas() {
     let limparListTrilhas = document.querySelector('.cont-infoListTrilhas')
     limparListTrilhas.innerHTML = ``
 }
-// function limparDadosTrilha() {
-//     let limparDdsTrilha = document.getElementById('cont-infDadosTrilha')
-//     limparDdsTrilha.innerHTML = ``
-// }
+function limparDadosTrilha() {
+    let limparDdsTrilha = document.getElementById('cont-infDadosTrilha')
+    limparDdsTrilha.innerHTML = ``
+}
+console.log(logInOut())
 
 function mostrarListTrilhasReg(RegTrilha){
     limparTrilhas()
-    // limparDadosTrilha()
+    limparDadosTrilha()
     let trilhasReg = RegTrilha
         let nomeRegiao
         nomeRegiao = infsListaTrilhas.filter(filtroRegTrilha => filtroRegTrilha.regiao === trilhasReg)
         document.querySelector('.cont-infoListTrilhas').innerHTML =
-        `<h3>Essas são as trilhas da região: ${trilhasReg}</h3>
+        `<p>Essas são as trilhas da região: ${trilhasReg}</p>
         <br>
         <ol id="ListTrilhas"></ol>`
         let nomesTrilhas
         nomesTrilhas = document.getElementById('ListTrilhas')
         for(const element of nomeRegiao){ 
             nomesTrilhas.innerHTML+=
-            `<h3><li><button onclick="mostrarInfTrilha('${element.nome}')" class="cont-button-nomeTrilha">
-            <h3>${element.nome}</h3</button></li><h3>`
+            `<p><li><button onclick="mostrarInfTrilha('${element.trilha}')" class="cont-button-nomeTrilha">
+            <p>${element.trilha}</p</button></li><p>`
         }  
 }
 function mostrarInfTrilha(nomeTrilha){
     // limparDadosTrilha()
     let trilhaNome = nomeTrilha
     let dadosTrilha
-    dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
+    dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.trilha === trilhaNome)
     document.getElementById('cont-infDadosTrilha').innerHTML =
-        `<h3> Trilha: ${dadosTrilha.nome},
-        <br> Distância: ${dadosTrilha.km}, Tempo: ${dadosTrilha.tempo}
-        <br> Dificuldade: ${dadosTrilha.dificuldade}</h3>`
+        `<p> Trilha: ${dadosTrilha.trilha},
+        <br> Distância: ${dadosTrilha.distancia}, Tempo: ${dadosTrilha.tempo}
+        <br> Dificuldade: ${dadosTrilha.dificuldade}</p>`
 }
+
+if(logInOut() != true){
+
+
+ }
+
+
 
 // (Fred)---------------
