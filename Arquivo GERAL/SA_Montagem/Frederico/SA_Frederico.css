@@ -24,23 +24,31 @@
 
 
 .cont-principal {
+    display: flex;
+    flex-direction: row;
+
+    /* margin-top: 8.5%; */
+    width: 83.3vw;
+    height: 67.9vh;
+    position: fixed;
+    top: 59.3%;
+    left: 49.7%;
+    transform: translate(-50%, -50%);
+    padding: 5px;
+
+    /* background-color: #638164; */
     /* background-color: rgb(89, 102, 67); */
     /* verde militar - https://encycolorpedia.pt/596643 */
     /* background-color: rgb(71, 81, 54); */
     /* verde militar saturado e 25% mais escuro 
     - https://encycolorpedia.pt/475136*/
-    background-color: #638164;
-    margin-top: 8.5%;
-    width: 83.3vw;
-    height: 67.9vh;
+
     border-right: 5px solid rgba(0, 0, 0, 0.500);
     border-left: 5px solid rgba(0, 0, 0, 0.500);;
-
-    display: flex;
-    flex-direction: row;
     gap: 1%;
-    padding: 5px;
 }
+
+    
 
 .conts-inf-cadas-info-pro {
     height: 100%;
