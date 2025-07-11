@@ -2,7 +2,7 @@
 
 const infsListaTrilhas = [
     {
-        trilha: 'TrilhaN1', pPartida: ``, pChegada: ``,
+        nome: 'TrilhaN1', pPartida: `Ponto A`, pChegada: `Ponto B`,
         regiao: 'Norte', cep: ``,
         distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
@@ -10,7 +10,37 @@ const infsListaTrilhas = [
     },
 
     {
-        trilha: 'TrilhaN2', pPartida: ``, pChegada: ``,
+        nome: 'TrilhaN2', pPartida: ``, pChegada: ``,
+        regiao: 'Norte', cep: ``,
+        distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+        nvlTSite: ``, nvlTUsuario: [],
+        obs: ``
+    },
+        {
+        nome: 'TrilhaN1', pPartida: `Ponto A`, pChegada: `Ponto B`,
+        regiao: 'Norte', cep: ``,
+        distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+        nvlTSite: ``, nvlTUsuario: [],
+        obs: ``
+    },
+
+    {
+        nome: 'TrilhaN2', pPartida: ``, pChegada: ``,
+        regiao: 'Norte', cep: ``,
+        distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+        nvlTSite: ``, nvlTUsuario: [],
+        obs: ``
+    },
+        {
+        nome: 'TrilhaN1', pPartida: `Ponto A`, pChegada: `Ponto B`,
+        regiao: 'Norte', cep: ``,
+        distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+        nvlTSite: ``, nvlTUsuario: [],
+        obs: ``
+    },
+
+    {
+        nome: 'TrilhaN2', pPartida: ``, pChegada: ``,
         regiao: 'Norte', cep: ``,
         distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
@@ -20,7 +50,7 @@ const infsListaTrilhas = [
     //-----------------------------------------------------------------------------
 
     {
-        trilha: 'TrilhaC1', pPartida: ``, pChegada: ``,
+        nome: 'TrilhaC1', pPartida: ``, pChegada: ``,
         regiao: 'Central', cep: ``,
         distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
@@ -28,7 +58,7 @@ const infsListaTrilhas = [
     },
 
     {
-        trilha: 'TrilhaC2', pPartida: ``, pChegada: ``,
+        nome: 'TrilhaC2', pPartida: ``, pChegada: ``,
         regiao: 'Central', cep: ``,
         distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
@@ -38,7 +68,7 @@ const infsListaTrilhas = [
     //-----------------------------------------------------------------------------
 
     {
-        trilha: 'TrilhaL1', pPartida: ``, pChegada: ``,
+        nome: 'TrilhaL1', pPartida: ``, pChegada: ``,
         regiao: 'Leste', cep: ``,
         distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
@@ -46,7 +76,7 @@ const infsListaTrilhas = [
     },
 
     {
-        trilha: 'TrilhaL2', pPartida: ``, pChegada: ``,
+        nome: 'TrilhaL2', pPartida: ``, pChegada: ``,
         regiao: 'Leste', cep: ``,
         distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
@@ -56,7 +86,7 @@ const infsListaTrilhas = [
     //-----------------------------------------------------------------------------
 
     {
-        trilha: 'TrilhaS1', pPartida: ``, pChegada: ``,
+        nome: 'TrilhaS1', pPartida: ``, pChegada: ``,
         regiao: 'Sul', cep: ``,
         distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
@@ -64,7 +94,7 @@ const infsListaTrilhas = [
     },
 
     {
-        trilha: 'TrilhaS2', pPartida: ``, pChegada: ``,
+        nome: 'TrilhaS2', pPartida: ``, pChegada: ``,
         regiao: 'Sul', cep: ``,
         distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
@@ -87,33 +117,52 @@ function logInOut() {
     else {
         return false
     }*/
-    return false
+    return true
 }
 function limparTrilhas() {
-    let limparListTrilhas = document.querySelector('.cont-infoListTrilhas')
+    let limparListTrilhas = document.querySelector('.cont-list-dados-trilhas')
     limparListTrilhas.innerHTML = ``
 }
-function limparDadosTrilha() {
-    let limparDdsTrilha = document.querySelector('.cont-infoDdsTrilha')
-    limparDdsTrilha.innerHTML = ``
-}
+
 function mostrarListTrilhasReg(RegTrilha) {
     limparTrilhas()
-    limparDadosTrilha()
+
     let trilhasReg = RegTrilha
     let nomeRegiao
     nomeRegiao = infsListaTrilhas.filter(filtroRegTrilha => filtroRegTrilha.regiao === trilhasReg)
-    document.querySelector('.cont-infoListTrilhas').innerHTML =
-        `<p>Essas são as trilhas da região: ${trilhasReg}</p>
-        <br>
-        <ol id="ListagemTrilhas"></ol>`
+    document.querySelector('.cont-info-Reg').innerHTML =
+    `<p>Essas são as trilhas da região: ${trilhasReg}</p>`
+    
     let nomesTrilhas
-    nomesTrilhas = document.getElementById('ListagemTrilhas')
-    for (const element of nomeRegiao) {
-        nomesTrilhas.innerHTML +=
-            `<p><li><button onclick="mostrarInfTrilha('${element.trilha}')" id="BttnNomeTrilhas">
-            <p>${element.trilha}</p</button></li><p>`
+    nomesTrilhas = document.querySelector('.cont-list-dados-trilhas')
+    
+    if(logInOut()){
+        for (const trilha of nomeRegiao) {
+            nomesTrilhas.innerHTML +=
+            `<div onclick="mostrarInfTrilha('${trilha.nome}')" class="bttnNomeTrilhas">
+                <p>
+                    ${trilha.nome}, LOG IN
+                    <br>Km: ${trilha.distancia}
+                    <br>Inicio: ${trilha.pPartida}
+                    <br>Chegada: ${trilha.pChegada}
+                </p>
+            </div>`
+        }
+    } else {
+        for (const trilha of nomeRegiao) {
+            nomesTrilhas.innerHTML +=
+            `<div onclick="mostrarInfTrilha('${trilha.nome}')" class="bttnNomeTrilhas">
+                <p>
+                    ${trilha.nome}, LOG OUT
+                    <br>Km: ${trilha.distancia}
+                    <br>Inicio: ${trilha.pPartida}
+                    <br>Chegada: ${trilha.pChegada}
+                </p>
+            </div>`
+        }
     }
+
+    
 }
 function mostrarInfTrilha(nomeTrilha) {
     limparDadosTrilha()

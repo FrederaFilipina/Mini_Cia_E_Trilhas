@@ -32,7 +32,7 @@
     top: 61.5%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 5px;
+    padding: 0.75%;
 
     /* background-color: #638164; */
     /* background-color: rgb(89, 102, 67); */
@@ -67,6 +67,27 @@
     /* border: 1px solid; */
 
 }
+.cont-autoExpl{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 20%;
+}
+.cont-autoExpl > img{
+    height: 100%;
+    width: 100%;
+
+}
+.cont-nomeGrupo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6vw;
+
+    min-height: 100%;
+    min-width: 80%;
+}
 .cont-map {
     display: flex;
     flex-direction: column;
@@ -100,8 +121,19 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 20%;
+    height: 10%;
     width: 100%;
+}
+.button-reg{
+    display: flex;
+
+    font-size: 1vw;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0, 0);
+    border: 0;
+
+    cursor: pointer;
+    
 }
 .cont-button-nort {
     display: flex;
@@ -113,6 +145,7 @@
     height: 100%;
     width: 24%;
     border-radius: 5px;
+    background-color: rgb(255, 203, 0, 1);
 }
 .cont-button-center {
     display: flex;
@@ -124,6 +157,7 @@
     height: 100%;
     width: 24%;
     border-radius: 5px;
+    background-color: rgb(37, 39, 40, 1);
 }
 .cont-button-lest {
     display: flex;
@@ -135,6 +169,7 @@
     height: 100%;
     width: 24%;
     border-radius: 5px;
+    background-color: rgb(0, 168, 238, 1);
 }
 .cont-button-sul {
     display: flex;
@@ -146,55 +181,59 @@
     height: 100%;
     width: 24%;
     border-radius: 5px;
+    background-color: rgb(21, 187, 73, 1);
 }
 .cont-info {
     display: flex;
     flex-direction: column;
-    border: 2.5px solid black;
+
     height: 90%;
     width: 100%;
-    border-radius: 5px;
+
+    gap:1%;
     
 }
-.cont-infoListTrilhas {
+.cont-info-Reg{
     display: flex;
-    
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    border-bottom: 2.5px solid black;
-    height: 70%;
+    height: 10%;
     width: 100%;
-}
-#ListagemTrilhas{
-    display: flex;
+    border: 2.5px solid black;
+    font-size: 1.5vw;
 
+}
+.cont-list-dados-trilhas{
+    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: start;
-
-    width: 85%;
-    background-color: rgba(255, 0, 0, 0);
+    
+    height: 90%;
+    width: 100%;
+    padding: 0.5%;
+    gap: 1.5%;
+    overflow-y: auto;
+    border: 2.5px solid black;
 }
-#BttnNomeTrilhas{
+.bttnNomeTrilhas{
     display: flex;
-
     justify-content: left;
     align-items: center;
+    padding: 0.5%;
 
-    cursor: pointer;
-    min-width: 400px;
-
-    border: 1px solid rgb(0, 0, 0, 0);
+    max-height: 25%;
+    width: 100%;
+    
+    border: 1px solid rgb(0, 0, 0, 1);
     background-color: rgba(0, 0, 0, 0);
-
+    cursor: pointer;
 }
-.cont-infoDdsTrilha {
-    border-top: 2.5px solid black;
+/* .cont-infoDdsTrilha {
     height: 30%;
     width: 100%;
-}
+    border: 2.5px solid black;
+} */
 
 /*--------------------------------------------*/
 
