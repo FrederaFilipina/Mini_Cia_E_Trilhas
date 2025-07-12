@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Eventos de Trilhas - Floripa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0fdf4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2e7d32;
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    h2 {
+      color: #2e7d32;
+      margin-bottom: 10px;
+    }
+
+    .evento {
+      border: 1px solid #c8e6c9;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 10px;
+    }
+
+    .evento strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #388e3c;
+    }
+
+    .participantes {
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      margin: 6px 0;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .estrelas {
+      display: flex;
+      gap: 5px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .estrelas span {
+      color: lightgray;
+    }
+
+    .estrelas span.selecionada {
+      color: gold;
+    }
+
+    .avaliacao {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<!-- CONTINUAÇÃO DO SEU CÓDIGO -->
+<!-- Coloque antes da tag </body> -->
+
+<!-- Modal de Evento -->
+<div id="modalEvento" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#00000080; align-items:center; justify-content:center;">
+  <div style="background:white; padding:20px; border-radius:10px; width:90%; max-width:400px;">
+    <h3>Criar Evento</h3>
+    <input type="text" id="nomePessoa" placeholder="Seu nome">
+    <input type="date" id="dataEvento">
+    <input type="time" id="horaEvento">
+    <button onclick="salvarEvento()" class="btn">Salvar Evento</button>
+    <button onclick="fecharModal()" class="btn" style="background-color:gray;">Cancelar</button>
+  </div>
+</div>
+
+<!-- Modal de Avaliação -->
+<div id="modalAvaliacao" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#00000080; align-items:center; justify-content:center;">
+  <div style="background:white; padding:20px; border-radius:10px; width:90%; max-width:400px;">
+    <h3>Avaliar Trilha</h3>
+    <textarea id="comentario" placeholder="Comentário..."></textarea>
+    <div id="estrelas" style="font-size:24px;">
+      <span data-n="1">★</span>
+      <span data-n="2">★</span>
+      <span data-n="3">★</span>
+      <span data-n="4">★</span>
+      <span data-n="5">★</span>
+    </div>
+    <button onclick="enviarAvaliacao()" class="btn">Enviar</button>
+    <button onclick="fecharAvaliacao()" class="btn" style="background-color:gray;">Cancelar</button>
+  </div>
+</div>
+
+<script>
+  let trilhaSelecionada = '';
+  let estrelaSelecionada = 0;
+
+  // Criar botão de evento e avaliação dinamicamente
+  document.querySelectorAll('.card').forEach(card => {
+    const trilha = card.querySelector('h3').innerText;
+    
+    const participantes = document.createElement('div');
+    participantes.innerHTML = "<strong>Participantes:</strong> <ul id='lista_" + trilha + "'></ul>";
+    card.appendChild(participantes);
+
+    const btnEvento = document.createElement('button');
+    btnEvento.innerText = "Criar Evento";
+    btnEvento.className = "btn";
+    btnEvento.onclick = () => abrirModalEvento(trilha);
+    card.appendChild(btnEvento);
+
+    const btnAvaliar = card.querySelector('.btn');
+    btnAvaliar.onclick = () => abrirModalAvaliacao(trilha);
+  });
+
+  function abrirModalEvento(trilha) {
+    trilhaSelecionada = trilha;
+    document.getElementById("modalEvento").style.display = "flex";
+  }
+
+  function fecharModal() {
+    document.getElementById("modalEvento").style.display = "none";
+  }
+
+  function salvarEvento() {
+    const nome = document.getElementById("nomePessoa").value.trim();
+    const data = document.getElementById("dataEvento").value;
+    const hora = document.getElementById("horaEvento").value;
+    if (!nome || !data || !hora) return alert("Preencha todos os campos!");
+
+    const item = document.createElement('li');
+    item.innerText = `${nome} - ${data} às ${hora}`;
+
+    document.getElementById("lista_" + trilhaSelecionada).appendChild(item);
+    fecharModal();
+  }
+
+  // Avaliação
+  function abrirModalAvaliacao(trilha) {
+    trilhaSelecionada = trilha;
+    estrelaSelecionada = 0;
+    atualizarEstrelas();
+    document.getElementById("comentario").value = "";
+    document.getElementById("modalAvaliacao").style.display = "flex";
+  }
+
+  function fecharAvaliacao() {
+    document.getElementById("modalAvaliacao").style.display = "none";
+  }
+
+  document.querySelectorAll('#estrelas span').forEach(star => {
+    star.addEventListener('click', () => {
+      estrelaSelecionada = parseInt(star.getAttribute('data-n'));
+      atualizarEstrelas();
+    });
+  });
+
+  function atualizarEstrelas() {
+    document.querySelectorAll('#estrelas span').forEach(star => {
+      const n = parseInt(star.getAttribute('data-n'));
+      star.style.color = n <= estrelaSelecionada ? 'gold' : 'lightgray';
+    });
+  }
+
+  function enviarAvaliacao() {
+    const comentario = document.getElementById("comentario").value.trim();
+    if (!estrelaSelecionada || !comentario) return alert("Complete a avaliação!");
+
+    alert(`Avaliação salva para "${trilhaSelecionada}": ${estrelaSelecionada} estrelas\nComentário: ${comentario}`);
+    fecharAvaliacao();
+  }
+</script>
+
+<body>
+
+  <header>
+    <h1>Eventos de Trilhas - Florianópolis</h1>
+    <p>Participe e avalie as trilhas com outros aventureiros!</p>
+  </header>
+
+  <div class="container">
+    <h2>🌄 Eventos Disponíveis</h2>
+
+    <div class="evento" id="evento1">
+      <strong>Trilha: Lagoinha do Leste</strong>
+      <p><strong>Data:</strong> 15/07/2025 às 08h</p>
+      <p><strong>Local:</strong> Pântano do Sul</p>
+      <div class="participantes"><strong>Participantes:</strong> <span id="lista1">João, Ana</span></div>
+      <button class="btn" onclick="entrarNoEvento(1)">Entrar no Evento</button>
+    </div>
+
+    <div class="evento" id="evento2">
+      <strong>Trilha: Costa da Lagoa</strong>
+      <p><strong>Data:</strong> 20/07/2025 às 09h</p>
+      <p><strong>Local:</strong> Barra da Lagoa</p>
+      <div class="participantes"><strong>Participantes:</strong> <span id="lista2">Lucas</span></div>
+      <button class="btn" onclick="entrarNoEvento(2)">Entrar no Evento</button>
+    </div>
+
+    <!-- Avaliação -->
+    <div class="avaliacao">
+      <h2>⭐ Avalie a Trilha</h2>
+      <label for="trilhaSelect">Trilha:</label>
+      <select id="trilhaSelect">
+        <option>Lagoinha do Leste</option>
+        <option>Costa da Lagoa</option>
+        <option>Praia do Saquinho</option>
+      </select>
+
+      <label>Comentário:</label>
+      <textarea id="comentario" placeholder="Escreva sua experiência..."></textarea>
+
+      <label>Nota:</label>
+      <div class="estrelas" id="estrelas">
+        <span data-nota="1">&#9733;</span>
+        <span data-nota="2">&#9733;</span>
+        <span data-nota="3">&#9733;</span>
+        <span data-nota="4">&#9733;</span>
+        <span data-nota="5">&#9733;</span>
+      </div>
+
+      <button class="btn" onclick="enviarAvaliacao()">Enviar Avaliação</button>
+    </div>
+  </div>
+
+  <script>
+    const eventos = {
+      1: ["João", "Ana"],
+      2: ["Lucas"]
+    };
+
+    function entrarNoEvento(id) {
+      const nome = prompt("Digite seu nome:");
+      if (nome && nome.trim() !== "") {
+        if (eventos[id].length >= 5) {
+          alert("Evento cheio! Máximo de 5 pessoas.");
+          return;
+        }
+        eventos[id].push(nome);
+        document.getElementById("lista" + id).textContent = eventos[id].join(", ");
+        alert("Você entrou no evento!");
+      }
+    }
+
+    // Avaliação por estrelas
+    let notaSelecionada = 0;
+    const estrelas = document.querySelectorAll("#estrelas span");
+
+    estrelas.forEach(estrela => {
+      estrela.addEventListener("click", () => {
+        notaSelecionada = parseInt(estrela.dataset.nota);
+        atualizarEstrelas(notaSelecionada);
+      });
+    });
+
+    function atualizarEstrelas(nota) {
+      estrelas.forEach(e => {
+        e.classList.remove("selecionada");
+        if (parseInt(e.dataset.nota) <= nota) {
+          e.classList.add("selecionada");
+        }
+      });
+    }
+
+    function enviarAvaliacao() {
+      const trilha = document.getElementById("trilhaSelect").value;
+      const comentario = document.getElementById("comentario").value;
+      if (notaSelecionada === 0) {
+        alert("Selecione uma nota.");
+        return;
+      }
+      alert(`Avaliação enviada para "${trilha}":\nNota: ${notaSelecionada} estrelas\nComentário: ${comentario}`);
+      document.getElementById("comentario").value = "";
+      atualizarEstrelas(0);
+    }
+  </script>
+
+</body>
+</html>

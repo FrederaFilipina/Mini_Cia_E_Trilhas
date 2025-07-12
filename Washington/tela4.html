@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Trilhas de Florianópolis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0fdf4;
+      color: #333;
+    }
+
+    header {
+      background-color: #388e3c;
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    section {
+      padding: 30px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #2e7d32;
+    }
+
+    .regiao {
+      background-color: #ffffff;
+      margin-bottom: 40px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .trilhas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #e8f5e9;
+      flex: 1 1 250px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .card h3 { margin-top: 0; color: #2e7d32; }
+
+    .card p { margin: 10px 0; }
+
+    .btn {
+      background-color: #4caf50;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    .btn:hover { background-color: #388e3c; }
+
+    .participantes {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    ul { padding-left: 20px; }
+
+    @media (max-width: 700px) {
+      .trilhas { flex-direction: column; }
+    }
+
+    /* Modal básico */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    #estrelas span {
+      font-size: 24px;
+      color: lightgray;
+      cursor: pointer;
+    }
+
+    #estrelas span.selecionada {
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Trilhas de Florianópolis</h1>
+    <p>Explore, participe de eventos e avalie as trilhas da ilha</p>
+  </header>
+
+  <!-- Regiões e Trilhas -->
+  <section class="regiao">
+    <h2>🌿 Região Norte</h2>
+    <div class="trilhas">
+      <div class="card">
+        <h3>Trilha da Lagoinha do Leste (via Matadeiro)</h3>
+        <p><strong>Dificuldade:</strong> Alta</p>
+        <p><strong>Duração:</strong> 2h30</p>
+        <div class="participantes"><strong>Participantes:</strong><ul id="lista_Trilha da Lagoinha do Leste (via Matadeiro)"></ul></div>
+        <button class="btn" onclick="abrirModalEvento('Trilha da Lagoinha do Leste (via Matadeiro)')">Criar Evento</button>
+        <button class="btn" onclick="abrirModalAvaliacao('Trilha da Lagoinha do Leste (via Matadeiro)')">Avaliar</button>
+      </div>
+
+      <div class="card">
+        <h3>Trilha do Forte de São José da Ponta Grossa</h3>
+        <p><strong>Dificuldade:</strong> Fácil</p>
+        <p><strong>Duração:</strong> 30 min</p>
+        <div class="participantes"><strong>Participantes:</strong><ul id="lista_Trilha do Forte de São José da Ponta Grossa"></ul></div>
+        <button class="btn" onclick="abrirModalEvento('Trilha do Forte de São José da Ponta Grossa')">Criar Evento</button>
+        <button class="btn" onclick="abrirModalAvaliacao('Trilha do Forte de São José da Ponta Grossa')">Avaliar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Outras regiões (mesmo formato, apenas altere os títulos e ids) -->
+  <section class="regiao">
+    <h2>🏞️ Região Leste</h2>
+    <div class="trilhas">
+      <div class="card">
+        <h3>Trilha da Barra da Lagoa até a Prainha</h3>
+        <p><strong>Dificuldade:</strong> Média</p>
+        <p><strong>Duração:</strong> 1h</p>
+        <div class="participantes"><strong>Participantes:</strong><ul id="lista_Trilha da Barra da Lagoa até a Prainha"></ul></div>
+        <button class="btn" onclick="abrirModalEvento('Trilha da Barra da Lagoa até a Prainha')">Criar Evento</button>
+        <button class="btn" onclick="abrirModalAvaliacao('Trilha da Barra da Lagoa até a Prainha')">Avaliar</button>
+      </div>
+
+      <div class="card">
+        <h3>Trilha da Costa da Lagoa</h3>
+        <p><strong>Dificuldade:</strong> Média</p>
+        <p><strong>Duração:</strong> 2h</p>
+        <div class="participantes"><strong>Participantes:</strong><ul id="lista_Trilha da Costa da Lagoa"></ul></div>
+        <button class="btn" onclick="abrirModalEvento('Trilha da Costa da Lagoa')">Criar Evento</button>
+        <button class="btn" onclick="abrirModalAvaliacao('Trilha da Costa da Lagoa')">Avaliar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal de Evento -->
+  <div class="modal" id="modalEvento">
+    <div class="modal-content">
+      <h3>Criar Evento</h3>
+      <input type="text" id="nomePessoa" placeholder="Seu nome">
+      <input type="date" id="dataEvento">
+      <input type="time" id="horaEvento">
+      <button class="btn" onclick="salvarEvento()">Salvar</button>
+      <button class="btn" style="background: gray;" onclick="fecharModal('modalEvento')">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- Modal de Avaliação -->
+  <div class="modal" id="modalAvaliacao">
+    <div class="modal-content">
+      <h3>Avaliação da Trilha</h3>
+      <textarea id="comentario" placeholder="Comentário..."></textarea>
+      <div id="estrelas">
+        <span data-n="1">★</span>
+        <span data-n="2">★</span>
+        <span data-n="3">★</span>
+        <span data-n="4">★</span>
+        <span data-n="5">★</span>
+      </div>
+      <button class="btn" onclick="enviarAvaliacao()">Enviar</button>
+      <button class="btn" style="background: gray;" onclick="fecharModal('modalAvaliacao')">Cancelar</button>
+    </div>
+  </div>
+
+  <script>
+    let trilhaSelecionada = "";
+    let estrelaSelecionada = 0;
+
+    function abrirModalEvento(trilha) {
+      trilhaSelecionada = trilha;
+      document.getElementById("modalEvento").style.display = "flex";
+    }
+
+    function abrirModalAvaliacao(trilha) {
+      trilhaSelecionada = trilha;
+      estrelaSelecionada = 0;
+      atualizarEstrelas();
+      document.getElementById("comentario").value = "";
+      document.getElementById("modalAvaliacao").style.display = "flex";
+    }
+
+    function fecharModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    function salvarEvento() {
+      const nome = document.getElementById("nomePessoa").value.trim();
+      const data = document.getElementById("dataEvento").value;
+      const hora = document.getElementById("horaEvento").value;
+      if (!nome || !data || !hora) return alert("Preencha todos os campos!");
+
+      const lista = document.getElementById("lista_" + trilhaSelecionada);
+      const item = document.createElement("li");
+      item.textContent = `${nome} - ${data} às ${hora}`;
+      lista.appendChild(item);
+      fecharModal("modalEvento");
+    }
+
+    document.querySelectorAll("#estrelas span").forEach(estrela => {
+      estrela.addEventListener("click", () => {
+        estrelaSelecionada = parseInt(estrela.dataset.n);
+        atualizarEstrelas();
+      });
+    });
+
+    function atualizarEstrelas() {
+      document.querySelectorAll("#estrelas span").forEach(star => {
+        star.classList.remove("selecionada");
+        if (parseInt(star.dataset.n) <= estrelaSelecionada) {
+          star.classList.add("selecionada");
+        }
+      });
+    }
+
+    function enviarAvaliacao() {
+      const comentario = document.getElementById("comentario").value.trim();
+      if (!estrelaSelecionada || !comentario) {
+        alert("Preencha nota e comentário!");
+        return;
+      }
+      alert(`Avaliação enviada para "${trilhaSelecionada}":\n${estrelaSelecionada} estrela(s)\nComentário: ${comentario}`);
+      fecharModal("modalAvaliacao");
+    }
+  </script>
+
+</body>
+</html>
+

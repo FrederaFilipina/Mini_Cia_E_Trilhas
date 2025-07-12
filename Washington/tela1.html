@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilhas Naturais</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e8f5e9;
+      color: #2f4f4f;
+    }
+
+    header {
+      background-color: #4caf50;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background-color: white;
+      width: 90%;
+      max-width: 800px;
+      margin: 40px auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h2 {
+      margin-bottom: 10px;
+      color: #388e3c;
+    }
+
+    .card-content p {
+      margin-bottom: 20px;
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .info div {
+      margin: 5px 0;
+      flex: 1;
+    }
+
+    .btn-avaliar {
+      background-color: #388e3c;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 25px;
+    }
+
+    .btn-avaliar:hover {
+      background-color: #2e7d32;
+    }
+
+    @media (max-width: 600px) {
+      .info {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Trilhas Naturais</h1>
+    <p>Descubra paisagens incríveis pelo Brasil</p>
+  </header>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1559589689-577aabd1f814" alt="Trilha da Natureza">
+    <div class="card-content">
+      <h2>Trilha do Vale Encantado</h2>
+      <p>
+        Uma trilha leve, perfeita para iniciantes e famílias. Caminhe entre árvores centenárias,
+        riachos e pontos de observação de aves.
+      </p>
+      <div class="info">
+        <div><strong>📍 Local:</strong> São Bento do Sapucaí - SP</div>
+        <div><strong>⛰️ Nível:</strong> Fácil</div>
+        <div><strong>🕒 Duração:</strong> 2 horas</div>
+      </div>
+      <button class="btn-avaliar">Avaliar Trilha</button>
+    </div>
+  </div>
+
+</body>
+</html>
