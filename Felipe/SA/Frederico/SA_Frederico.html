@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mine_Cia_E_Trilhas</title>
+    <link rel="stylesheet" href="SA_Frederico.css">
+</head>
+
+<body>
+    <div class="fundo">
+
+        <section class="cont-principal" id="conPrincipal">
+
+            <nav>
+                <ol>
+                    <li onclick="abrirTela('Login,conteiner-cadastro')" id="Login">Login</li>
+                    <li id="MinhasTrilhas">Minhas Trilhas</li>
+                    <li onclick="abrirTela('Trilhas,cont-fred')" id="Trilhas">Trilhas</li>
+                    <li id="Eventos">Eventos</li>
+                </ol>
+            </nav>
+
+            <!-- Frederico -->
+            <section class="cont-fred">
+                <div class="cont-nomeGrupo-autoExpl-map">
+
+                    <div class="cont-nomeGrupo-autoExpl">
+
+                        <div class="cont-autoExpl">
+                            <img src="info.svg" alt="">
+                        </div>
+
+                        <div class="cont-nomeGrupo">
+                            <p>Mini Cia && Trilhas</p>
+                        </div>
+
+                    </div>
+
+                    <div class="cont-map">
+                        <img src="FloripaGeral.png" alt="">
+                    </div>
+
+                </div>
+
+                <!-- -=- -->
+
+                <div class="cont-buttons-infos">
+
+                    <div class="cont-buttons">
+
+                        <div class="cont-button-nort">
+                            <button class="button-reg" onclick="mostrarListTrilhasReg('Norte')">
+                                <h3>NORTE</h3>
+                            </button>
+                        </div>
+
+                        <div class="cont-button-center">
+                            <button class="button-reg" onclick="mostrarListTrilhasReg('Central')">
+                                <h3>CENTRAL</h3>
+                            </button>
+                        </div>
+
+                        <div class="cont-button-lest">
+                            <button class="button-reg" onclick="mostrarListTrilhasReg('Leste')">
+                                <h3>LESTE</h3>
+                            </button>
+                        </div>
+
+                        <div class="cont-button-sul">
+                            <button class="button-reg" onclick="mostrarListTrilhasReg('Sul')">
+                                <h3>SUL</h3>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="cont-info">
+
+                        <div class="cont-info-Reg">
+                        </div>
+
+                        <div class="cont-list-dados-trilhas">
+                        </div>
+
+                        <div class="cont-infoDdsTrilha">
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- -=- -->
+
+
+            <section class="conteiner-cadastro" id="contCadast">
+
+
+                <h1 class="h1-cadastro">Cadastro</h1>
+                <form class="formulario-cadastro" id="formCadastro">
+
+                    <div class="parte1">
+                        <div class="label-input">
+                            <label for="nomeDigtado">Nome: </label>
+                            <input type="text" name="nomeDigtado" id="nomeDigtado" required>
+                        </div>
+
+
+                        <div class="label-input">
+                            <label for="cpfDig">CPF: </label>
+                            <input type="text" name="cpfDigitado" id="cpfDig" maxlength="11" inputmode="numeric"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+                        </div>
+
+
+                        <div class="label-input">
+                            <label for="dataNacimento">Data Nascimento: </label>
+                            <input type="date" name="dataNacimento" id="dataNacimento" required>
+                        </div>
+
+
+                        <div>
+                            <label for="Sexo">Sexo:</label>
+                            <input type="radio" name="sexo" id="sexoMasc">
+                            <label for="sexoMasc">Masculino</label>
+
+                            <input type="radio" name="sexo" id="sexoFem">
+                            <label for="sexoFem">Feminino</label>
+
+                            <!-- <input type="radio" name="sexo" id="sexoOutro">
+                        <label for="sexoOutro">Outro</label> -->
+                        </div>
+
+
+
+
+                        <div class="label-input">
+                            <label for="telefDigi">Celular: </label>
+                            <input type="tel" name="telefone" id="telefDigi" inputmode="numeric" maxlength="11"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+                        </div>
+
+
+
+                        <div class="label-input">
+                            <label for="emailDigit">Email: </label>
+                            <input type="email" name="emailDigitado" id="emailDigit" required autocomplete="username">
+                        </div>
+                    </div>
+                    <div class="parte2">
+                        <div class="conteiner-recidencia" id="contRecidenc:">
+                            <p>Você reside em Florianópolis?</p>
+
+                            <div>
+                                <input type="radio" name="opcaoCep" id="sim" onclick="mostrarCep()">
+                                <label for="sim">Sim</label>
+                                <input type="radio" name="opcaoCep" id="nao" onclick="esconderCep()">
+                                <label for="nao">Não</label>
+                            </div>
+
+                            <div class="conteiner-cep" id="contCep" >
+                                <label for="cep">CEP: </label>
+                                <input type="text" name="CEP" id="cep"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, (''))">
+                            </div>
+                        </div>
+
+                        <div class="label-input">
+                            <label for="userDigit">Usuário: </label>
+                            <input type="text" name="usuarioDigitado" id="userDigit" required  autocomplete="username">
+                        </div>
+
+
+
+                        <div class="label-input">
+                            <label for="senhaDigit">Senha: </label>
+                            <input type="password" name="senhaDigitado" id="senhaDigit" required autocomplete="current-password">
+                        </div>
+
+
+                        <div id="infoUser">
+
+                        </div>
+
+                        <input class="buttonCadastro" type="submit" value="Salvar" onclick="entraCadastro(event)">
+                        <p>Você ja possui cadastro ? <a href="#" onclick="abrirLoginCadastro('contLogin')" class="linkLoCa" id="LinkLogin">Logar</a></p>
+                    </div>
+
+
+                </form>
+
+
+
+            </section>
+
+
+            <section class="conteiner-login" id="contLogin">
+
+                <div class="conteiner-formulario-login" id="contFormLogin">
+                    <form class="formulario-login" id="formLogin">
+
+                        <div class="conteiner-usuario-login" id="contUserLogin">
+                            <label for="usuarioLogin">Usuário: </label>
+                            <input type="text" name="usuarioLogin" id="usuarioLogin"  autocomplete="username">
+                        </div>
+                        <div class="conteiner-senha-login" id="contSenhaLogin">
+                            <label for="senhaLogin">Senha: </label>
+                            <input type="password" name="senhaLogin" id="senhaLogin" autocomplete="current-password">
+                        </div>
+                        <div id="infoUserLogin">
+
+                        </div>
+                        <div class="botaoLogar" id="buttLogar">
+                            <input type="submit" value="Entrar" onclick="logar(event)">
+                            <p>Você não possui cadastro ? <a href="#" onclick="abrirLoginCadastro('contCadast')" class="linkLoCa" id="LinkCadastro">Cadastrar</a></p>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+
+
+
+
+
+
+
+
+
+            <div class="conts-inf-cadas-info-pro">
+
+                <div class="cont-login-cadastro-edicao">
+                    <p>Login / Cadastro / Edição</p>
+                </div>
+
+                <div class="cont-eventos">
+                    <p>Área desatinada aos eventos</p>
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+    </div>
+
+    <script src="SA_Frederico.js"></script>
+</body>
+
+</html>
