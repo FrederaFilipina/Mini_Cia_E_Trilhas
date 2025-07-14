@@ -34,59 +34,30 @@
     transform: translate(-50%, -50%);
     padding: 0.75%;
 
-    /* background-color: #638164; */
-    /* background-color: rgb(89, 102, 67); */
-    /* verde militar - https://encycolorpedia.pt/596643 */
-    /* background-color: rgb(71, 81, 54); */
-    /* verde militar saturado e 25% mais escuro 
-    - https://encycolorpedia.pt/475136*/
-
     gap: 1%;
 }
 
 /*--------------------------------------------*/
 
-.cont-nomeGrupo-autoExpl-map {
+.cont-menu {
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 5px;
+    border: 2px solid;
+
+    height: 100%;
+    width: 10%;
+}
+
+/*--------------------------------------------*/
+
+.cont-areamap {
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 25%;
-    gap: 5px;
     /* border: solid 1px; */
-}
-.cont-nomeGrupo-autoExpl {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    height: 10%;
-    width: 100%;
-
-    border-radius: 5px;
-    /* border: 1px solid; */
-
-}
-.cont-autoExpl{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 20%;
-}
-.cont-autoExpl > img{
-    height: 100%;
-    width: 100%;
-
-}
-.cont-nomeGrupo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.6vw;
-
-    min-height: 100%;
-    min-width: 80%;
 }
 .cont-map {
     display: flex;
@@ -94,7 +65,7 @@
     justify-content: center;
     align-items: center;
     
-    height: 90%;
+    height: 100%;
     width: 100%;
 
     border: 3px solid black;
@@ -104,27 +75,27 @@
 .cont-map > img {
     min-height: 355px;
     min-width: 236px;
-    transform: rotate(12deg);
-    padding-right: 10%;
+    transform: rotate(7deg);
+    padding-right: 12%;
 }
 
 /*--------------------------------------------*/
 
-.cont-buttons-infos {
+.conts-BttnRegs-RegListDados {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    width: 40%;
+    width: 65%;
     height: 100%;
 }
-.cont-buttons {
+.cont-BttnRegs {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     height: 10%;
     width: 100%;
 }
-.button-reg{
+.button-regs{
     display: flex;
 
     font-size: 1vw;
@@ -183,17 +154,14 @@
     border-radius: 5px;
     background-color: rgb(21, 187, 73, 1);
 }
-.cont-info {
+.conts-Reg-ListDados {
     display: flex;
     flex-direction: column;
 
     height: 90%;
     width: 100%;
-
-    gap:1%;
-    
 }
-.cont-info-Reg{
+.cont-Reg{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -203,60 +171,55 @@
     width: 100%;
     border: 2.5px solid black;
     font-size: 1.5vw;
-
 }
-.cont-list-dados-trilhas{
+.conts-Lista-Dados{
+    display: flex;
+    flex-direction: row;
+
+    height: 90%;
+    width: 100%;
+    padding-top: 0.5%;
+    gap:0.25%
+}
+.cont-ListasTrilhas{
     display: flex;
     flex-direction: column;
     
-    height: 90%;
-    width: 100%;
+    height: 100%;
+    width: 40%;
+
     padding: 0.5%;
     gap: 1.5%;
     overflow-y: auto;
     border: 2.5px solid black;
+    overflow-wrap: break-word;
 }
-.bttnNomeTrilhas{
+.divsBttnTrilha{
     display: flex;
     justify-content: left;
     align-items: center;
-    padding: 0.5%;
+    padding: 1%;
 
-    max-height: 25%;
+    min-height: 13%;
     width: 100%;
     
     border: 1px solid rgb(0, 0, 0, 1);
-    background-color: rgba(0, 0, 0, 0);
     cursor: pointer;
 }
-/* .cont-infoDdsTrilha {
-    height: 30%;
-    width: 100%;
-    border: 2.5px solid black;
-} */
 
-/*--------------------------------------------*/
-
-.conts-inf-cadas-info-pro {
+.contExt-DadosTrilha {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items:end;
 
     height: 100%;
-    width: 35%;
-    
-    gap: 2%;
+    width: 60%;
+    border: 2.5px solid black;
 }
-.cont-login-cadastro-edicao {
-    display: flex;
-    flex-direction: row;
-    height: 10%;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid;
-}
-.cont-eventos {
-    border: 1px solid black;
-    width: 100%;
-    height: 90%;
-    border-radius: 10px;
+.cont-DadosTrilha {
+    height: 100%;
+    width: 95%;
+    padding: 1%;
+    /* border: 2.5px solid black; */
 }

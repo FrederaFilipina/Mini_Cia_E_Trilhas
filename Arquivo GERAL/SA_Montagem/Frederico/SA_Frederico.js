@@ -2,47 +2,71 @@
 
 const infsListaTrilhas = [
     {
-        nome: 'TrilhaN1', pPartida: `Ponto A`, pChegada: `Ponto B`,
+        nome: 'Caminho dos Naufragados', pPartida: `Ponto A`, pChegada: `Ponto B`,
         regiao: 'Norte', cep: ``,
-        distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
-        nvlTSite: ``, nvlTUsuario: [],
+        distancia: '10Km', tempo: '1h00', relevo: `Irregular`, elevacao: `15m`,
+        nvlTSite: `5`, nvlTUsuario: [4],
         obs: ``
     },
 
     {
-        nome: 'TrilhaN2', pPartida: ``, pChegada: ``,
+        nome: 'Lagoinha do Leste (Praia)', pPartida: ``, pChegada: ``,
         regiao: 'Norte', cep: ``,
-        distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
         obs: ``
     },
         {
-        nome: 'TrilhaN1', pPartida: `Ponto A`, pChegada: `Ponto B`,
+        nome: 'Lagoinha do Leste (Morro da Coroa)', pPartida: `Ponto A`, pChegada: `Ponto B`,
         regiao: 'Norte', cep: ``,
-        distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
         obs: ``
     },
 
     {
-        nome: 'TrilhaN2', pPartida: ``, pChegada: ``,
+        nome: 'Piscinas Naturais da Barra da Lagoa', pPartida: ``, pChegada: ``,
         regiao: 'Norte', cep: ``,
-        distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
         obs: ``
     },
         {
-        nome: 'TrilhaN1', pPartida: `Ponto A`, pChegada: `Ponto B`,
+        nome: 'TrilhaN5', pPartida: `Ponto A`, pChegada: `Ponto B`,
         regiao: 'Norte', cep: ``,
-        distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
         obs: ``
     },
 
     {
-        nome: 'TrilhaN2', pPartida: ``, pChegada: ``,
+        nome: 'TrilhaN6', pPartida: ``, pChegada: ``,
         regiao: 'Norte', cep: ``,
-        distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
+        nvlTSite: ``, nvlTUsuario: [],
+        obs: ``
+    },
+
+    {
+        nome: 'TrilhaN7', pPartida: ``, pChegada: ``,
+        regiao: 'Norte', cep: ``,
+        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
+        nvlTSite: ``, nvlTUsuario: [],
+        obs: ``
+    },
+
+    {
+        nome: 'TrilhaN8', pPartida: ``, pChegada: ``,
+        regiao: 'Norte', cep: ``,
+        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
+        nvlTSite: ``, nvlTUsuario: [],
+        obs: ``
+    },
+
+    {
+        nome: 'TrilhaN', pPartida: ``, pChegada: ``,
+        regiao: 'Norte', cep: ``,
+        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
         obs: ``
     },
@@ -52,7 +76,7 @@ const infsListaTrilhas = [
     {
         nome: 'TrilhaC1', pPartida: ``, pChegada: ``,
         regiao: 'Central', cep: ``,
-        distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
         obs: ``
     },
@@ -60,7 +84,7 @@ const infsListaTrilhas = [
     {
         nome: 'TrilhaC2', pPartida: ``, pChegada: ``,
         regiao: 'Central', cep: ``,
-        distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
         obs: ``
     },
@@ -70,7 +94,7 @@ const infsListaTrilhas = [
     {
         nome: 'TrilhaL1', pPartida: ``, pChegada: ``,
         regiao: 'Leste', cep: ``,
-        distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
         obs: ``
     },
@@ -78,7 +102,7 @@ const infsListaTrilhas = [
     {
         nome: 'TrilhaL2', pPartida: ``, pChegada: ``,
         regiao: 'Leste', cep: ``,
-        distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
         obs: ``
     },
@@ -88,7 +112,7 @@ const infsListaTrilhas = [
     {
         nome: 'TrilhaS1', pPartida: ``, pChegada: ``,
         regiao: 'Sul', cep: ``,
-        distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
         obs: ``
     },
@@ -96,7 +120,7 @@ const infsListaTrilhas = [
     {
         nome: 'TrilhaS2', pPartida: ``, pChegada: ``,
         regiao: 'Sul', cep: ``,
-        distancia: '10km', tempo: '1h00', relevo: ``, elevacao: ``,
+        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
         obs: ``
     },
@@ -120,43 +144,36 @@ function logInOut() {
     return true
 }
 function limparTrilhas() {
-    let limparListTrilhas = document.querySelector('.cont-list-dados-trilhas')
+    let limparListTrilhas = document.querySelector('.cont-ListasTrilhas')
     limparListTrilhas.innerHTML = ``
 }
-
 function mostrarListTrilhasReg(RegTrilha) {
     limparTrilhas()
 
     let trilhasReg = RegTrilha
     let nomeRegiao
     nomeRegiao = infsListaTrilhas.filter(filtroRegTrilha => filtroRegTrilha.regiao === trilhasReg)
-    document.querySelector('.cont-info-Reg').innerHTML =
+    document.querySelector('.cont-Reg').innerHTML =
     `<p>Essas são as trilhas da região: ${trilhasReg}</p>`
     
     let nomesTrilhas
-    nomesTrilhas = document.querySelector('.cont-list-dados-trilhas')
+    nomesTrilhas =  document.querySelector('.cont-ListasTrilhas')
     
     if(logInOut()){
         for (const trilha of nomeRegiao) {
             nomesTrilhas.innerHTML +=
-            `<div onclick="mostrarInfTrilha('${trilha.nome}')" class="bttnNomeTrilhas">
+            `<div onclick="mostrarInfTrilha('${trilha.nome}')" class="divsBttnTrilha">
                 <p>
-                    ${trilha.nome}, LOG IN
-                    <br>Km: ${trilha.distancia}
-                    <br>Inicio: ${trilha.pPartida}
-                    <br>Chegada: ${trilha.pChegada}
+                    ${trilha.nome}
                 </p>
             </div>`
         }
     } else {
         for (const trilha of nomeRegiao) {
             nomesTrilhas.innerHTML +=
-            `<div onclick="mostrarInfTrilha('${trilha.nome}')" class="bttnNomeTrilhas">
+            `<div onclick="mostrarInfTrilha('${trilha.nome}')" class="divsBttnTrilha">
                 <p>
-                    ${trilha.nome}, LOG OUT
-                    <br>Km: ${trilha.distancia}
-                    <br>Inicio: ${trilha.pPartida}
-                    <br>Chegada: ${trilha.pChegada}
+                    LOG OUT ${trilha.nome},
                 </p>
             </div>`
         }
@@ -165,24 +182,56 @@ function mostrarListTrilhasReg(RegTrilha) {
     
 }
 function mostrarInfTrilha(nomeTrilha) {
-    limparDadosTrilha()
     let trilhaNome = nomeTrilha
     let dadosTrilha
 
-    if (logInOut()) {
-        dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.trilha === trilhaNome)
-        document.querySelector('.cont-infoDdsTrilha').innerHTML =
-            `<p> Trilha: ${dadosTrilha.trilha}</p>
-            <br>
-            <p>Infs Completas</p>`
-    } else {
-        dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.trilha === trilhaNome)
-        document.querySelector('.cont-infoDdsTrilha').innerHTML =
-            `<p> Trilha: ${dadosTrilha.trilha}</p>
-            <br>
-            <p>Infs Básicas</p>
-            <button onclick="LOGIN">Login</button>`
+    if(logInOut()){
+        dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
+        document.querySelector('.cont-DadosTrilha').innerHTML =
+        `<p>Trilha: ${dadosTrilha.nome}</p>
+        <p>Ínicio: ${dadosTrilha.pPartida}</p>
+        <p>Fim: ${dadosTrilha.pChegada}</p>
+        <p>Dificuldade:</p>
+        <p>Def. pelo site: ${dadosTrilha.nvlTSite}</p>
+        <p>Def. pelos usuarios: ${dadosTrilha.nvlTUsuario}</p>
+        <p>Infomações: </p>
+        <p>${dadosTrilha.distancia} / ${dadosTrilha.tempo}</p> 
+        <p>Relevo: ${dadosTrilha.relevo}</p> 
+        <p>Elevação: ${dadosTrilha.elevacao}</p> 
+        <p>Obs.: ${dadosTrilha.obs}</p>        
+        `
+
+    } else{
+        dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
+        document.querySelector('.cont-DadosTrilha').innerHTML =
+        `<p>Trilha: ${dadosTrilha.nome}</p>
+        <p>Ínicio: ${dadosTrilha.pPartida}</p>
+        <p>Fim: ${dadosTrilha.pChegada}</p>
+        <p>Dificuldade:</p>
+        <p>Def. pelo site: ${dadosTrilha.nvlTSite}</p>
+        <p>Def. pelos usuarios: ${dadosTrilha.nvlTUsuario}</p>
+        <p>Infomações: </p>
+        <p>${dadosTrilha.distancia} / ${dadosTrilha.tempo}</p>        
+        `
+
     }
+
+
+    // if (logInOut()) {
+        
+    //     dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.trilha === trilhaNome)
+    //     document.querySelector('.cont-DadosTrilha').innerHTML =
+    //         `<p> Trilha: ${dadosTrilha.trilha}</p>
+    //         <br>
+    //         <p>Infs Completas</p>`
+    // } else {
+    //     dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.trilha === trilhaNome)
+    //     document.querySelector('.cont-DadosTrilha').innerHTML =
+    //         `<p> Trilha: ${dadosTrilha.trilha}</p>
+    //         <br>
+    //         <p>Infs Básicas</p>
+    //         <button onclick="LOGIN">Login</button>`
+    // }
 }
 
 //Área reservada para receber as instruções do funcionamento das Trilhas
