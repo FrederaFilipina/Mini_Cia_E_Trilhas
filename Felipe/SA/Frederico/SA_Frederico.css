@@ -23,6 +23,7 @@
 .cont-principal {
     display: flex;
     flex-direction: row;
+
     width: 69vw;
     height: 64.5vh;
     position: fixed;
@@ -283,7 +284,7 @@ li:hover {
     align-items: center;
     padding: 0.5%;
 
-    max-height: 25%;
+    max-height: 40%;
     width: 26%;
 
     border: 1px solid rgb(0, 0, 0, 1);
@@ -331,31 +332,99 @@ li:hover {
 
 .conteiner-login {
     display: none;
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
+}
+
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    box-shadow:  0 0 5px #ccc;
+    border-radius: 4px;
+    padding: 1rem;
+    gap: 30px;
+    h1{
+        filter: drop-shadow(0 0 10px #ccc);
+    }
+}
+
+.formulario-login input[type="text"],
+.formulario-login input[type="password"] {
+    
+    height: 25px;
+    border-radius: 5px;
+    padding: 3px 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 150px;
+    background-color: rgba(237, 241, 241, 0);
+}
+
+.conteiner-usuario-login {
+    display: flex;
+    flex-direction: column;
+}
+
+.conteiner-senha-login {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.botaoLogar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.button-logar {
+
+    width: 80px;
+    padding: 8px;
+    background: #8B5E3C;
+    color: #FFFFFF;
+    border: none;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s
 }
 
 .conteiner-cadastro {
     display: none;
     flex-direction: column;
     align-items: center;
-    width: 90%;
-    
+    width: 80%;
+
 
 }
-.linkLoCa{
+
+.linkLoCa {
     text-decoration: none;
     color: #5C3D2E;
 }
-.linkLoCa:hover{
+
+.linkLoCa:hover {
     color: #8B5E3C;
 }
-.h1-cadastro{
+
+.h1-cadastro {
     font-size: 25px;
+
 }
 
 
 .formulario-cadastro {
-    max-width: 100%;
+    width: 100%;
     padding: 15px;
     /* background: #f4f4f4; */
     border-radius: 8px;
@@ -363,30 +432,36 @@ li:hover {
     font-size: 14px;
     display: flex;
     flex-direction: row;
-    gap: 100px;
+    justify-content: flex-end;
+    /* gap: 50px; */
     /* border: 1px solid; */
     height: 100%;
-    
+
     color: rgb(24, 24, 23);
-    
+
 }
-.parte1{
+
+.parte1 {
     display: flex;
     flex-direction: column;
     /* border: 1px solid red; */
     justify-content: space-around;
-    
+    width: 300px;
+    height: 100%;
+
 
 }
-.parte2{
+
+.parte2 {
     display: flex;
     flex-direction: column;
     gap: 20px;
     width: 300px;
-    ;height: 100%;
+    height: 100%;
     /* border: 1px solid wheat; */
 }
-.label-input{
+
+.label-input {
     display: flex;
     flex-direction: column;
 }
@@ -406,30 +481,33 @@ li:hover {
     width: 150px;
     background-color: rgba(237, 241, 241, 0);
 }
-.formulario-cadastro input[type="email"]{
+
+.formulario-cadastro input[type="email"] {
     width: 200px;
 }
 
 .formulario-cadastro input[type="radio"] {
     margin-right: 4px;
     accent-color: #8B5E3C;
-    
+
 }
 
 .conteiner-recidencia,
 .conteiner-cep {
     margin-top: 5px;
 }
-.conteiner-cep{
+
+.conteiner-cep {
     display: none;
     flex-direction: column;
 
 }
-.conteiner-recidencia{
-    display: flex; 
+
+.conteiner-recidencia {
+    display: flex;
     flex-direction: column;
     gap: 5px;
-    
+
 }
 
 .buttonCadastro {
@@ -442,9 +520,10 @@ li:hover {
     border-radius: 6px;
     cursor: pointer;
     transition: background 0.2s;
-    
+
 }
 
-.buttonCadastro:hover {
+.buttonCadastro:hover,
+.button-logar:hover {
     background: #5C3D2E;
 }

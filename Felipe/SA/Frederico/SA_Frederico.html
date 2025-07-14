@@ -15,7 +15,7 @@
 
             <nav>
                 <ol>
-                    <li onclick="abrirTela('Login,conteiner-cadastro')" id="Login">Login</li>
+                    <li onclick="abrirTela('Login,conteiner-login')" id="Login">Login</li>
                     <li id="MinhasTrilhas">Minhas Trilhas</li>
                     <li onclick="abrirTela('Trilhas,cont-fred')" id="Trilhas">Trilhas</li>
                     <li id="Eventos">Eventos</li>
@@ -85,6 +85,7 @@
                         </div>
 
                         <div class="cont-infoDdsTrilha">
+                            
                         </div>
 
                     </div>
@@ -184,7 +185,7 @@
 
                         </div>
 
-                        <input class="buttonCadastro" type="submit" value="Salvar" onclick="entraCadastro(event)">
+                        <input class="buttonCadastro" type="submit" value="Cadastrar" onclick="entraCadastro(event)">
                         <p>Você ja possui cadastro ? <a href="#" onclick="abrirLoginCadastro('contLogin')" class="linkLoCa" id="LinkLogin">Logar</a></p>
                     </div>
 
@@ -200,7 +201,7 @@
 
                 <div class="conteiner-formulario-login" id="contFormLogin">
                     <form class="formulario-login" id="formLogin">
-
+                        <h1>Login</h1>
                         <div class="conteiner-usuario-login" id="contUserLogin">
                             <label for="usuarioLogin">Usuário: </label>
                             <input type="text" name="usuarioLogin" id="usuarioLogin"  autocomplete="username">
@@ -213,7 +214,7 @@
 
                         </div>
                         <div class="botaoLogar" id="buttLogar">
-                            <input type="submit" value="Entrar" onclick="logar(event)">
+                            <input class="button-logar" type="submit" value="Entrar" onclick="logar(event)">
                             <p>Você não possui cadastro ? <a href="#" onclick="abrirLoginCadastro('contCadast')" class="linkLoCa" id="LinkCadastro">Cadastrar</a></p>
                         </div>
 

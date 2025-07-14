@@ -1,9 +1,5 @@
 
 
-
-
-
-
 let cadastroUsuarios = JSON.parse(localStorage.getItem('CadastroUser')) || []
 
 limitarDataCadastroData()
@@ -18,12 +14,9 @@ function esconderCep() {
     document.getElementById("contCep").style.display = "none"
 }
 function abrirPaginaUsuário() {
-
+    alert("logado")
 }
-function abrirLogin() {
 
-
-}
 //-----------------------------------//
 
 
@@ -117,8 +110,8 @@ function descobrirSexo(sexo) {
     } else if (sexo[1].checked) {
 
         return "Feminino"
-    }else return false
-    
+    } else return false
+
 
 
 }
@@ -212,10 +205,10 @@ function entraCadastro(event) {
 
         infoUser.innerHTML = `<p>*Você nao tem idade miníma para cadastrar</p>`
 
-    } else if (sexoUser===false) {
-        
-        infoUser.innerHTML ="<p>Selecione um Sexo</p>"
-        
+    } else if (sexoUser === false) {
+
+        infoUser.innerHTML = "<p>Selecione um Sexo</p>"
+
     } else if (telefoneValidado !== undefined) {
 
         infoUser.innerHTML = "<p>*Telefone ja esta cadastrado</p>"
@@ -228,7 +221,7 @@ function entraCadastro(event) {
 
         infoUser.innerHTML = "<p>*Nome de usuário ja esta sendo utilizado</p>"
 
-    } else  {
+    } else {
 
         cadastroUsuarios.push({
             nomeCompleto: nomeCompleto.value,
@@ -247,7 +240,8 @@ function entraCadastro(event) {
         })
         limparInput()
         salvarBancoDados()
-        abrirLogin()
+        esconderSection()
+        abrirLoginCadastro("contLogin")
         console.log(cadastroUsuarios)
     }
 }
@@ -282,6 +276,8 @@ function logar(event) {
 }
 
 
+
+//funcionamento da pagina
 function esconderSection() {
     document.getElementById("Login").style.color = "#0c0c0ca9"
     document.getElementById("Trilhas").style.color = "#0c0c0ca9"
@@ -290,8 +286,9 @@ function esconderSection() {
 
     document.querySelector(`.cont-fred`).style.display = "none"
     document.querySelector(`.conteiner-cadastro`).style.display = "none"
-    
-    
+    document.querySelector(`.conteiner-login`).style.display = "none"
+
+
 
 
 
@@ -428,14 +425,14 @@ localStorage.setItem('ListagemTrilhas', JSON.stringify(infsListaTrilhas))
 //Área reservada para receber as instruções do funcionamento das Trilhas
 
 function logInOut() {
-    /*let usuario = localStorage.getItem("LogIN")
+    let usuario = localStorage.getItem("logado")
     if(usuario != undefined){
         return true
     }
     else {
         return false
-    }*/
-    return true
+    }
+    
 }
 function limparTrilhas() {
     let limparListTrilhas = document.querySelector('.cont-list-dados-trilhas')
