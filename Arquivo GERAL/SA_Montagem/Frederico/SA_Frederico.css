@@ -97,11 +97,17 @@
 }
 .button-regs{
     display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
 
     font-size: 1vw;
     color: rgb(255, 255, 255);
-    background-color: rgb(0, 0, 0, 0);
+    background-color: rgb(255, 0, 255, 0);
     border: 0;
+
 
     cursor: pointer;
     
@@ -160,6 +166,7 @@
 
     height: 90%;
     width: 100%;
+
 }
 .cont-Reg{
     display: flex;
@@ -179,7 +186,9 @@
     height: 90%;
     width: 100%;
     padding-top: 0.5%;
-    gap:0.25%
+    gap:0.25%;
+
+    font-size: 1.25vw;
 }
 .cont-ListasTrilhas{
     display: flex;
@@ -221,5 +230,10 @@
     height: 100%;
     width: 95%;
     padding: 1%;
+    font-size: 1.25vw;
     /* border: 2.5px solid black; */
+}
+.iconsDadosTrilha{
+    height: 7%;
+    width: 7%;
 }

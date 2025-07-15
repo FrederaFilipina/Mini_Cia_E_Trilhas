@@ -6,7 +6,7 @@ const infsListaTrilhas = [
         regiao: 'Norte', cep: ``,
         distancia: '10Km', tempo: '1h00', relevo: `Irregular`, elevacao: `15m`,
         nvlTSite: `5`, nvlTUsuario: [4],
-        obs: ``
+        obs: ``,
     },
 
     {
@@ -147,8 +147,13 @@ function limparTrilhas() {
     let limparListTrilhas = document.querySelector('.cont-ListasTrilhas')
     limparListTrilhas.innerHTML = ``
 }
+function limparDadosTrilhas() {
+    let limparDadosTrilhas = document.querySelector('.cont-DadosTrilha')
+    limparDadosTrilhas.innerHTML = ``
+}
 function mostrarListTrilhasReg(RegTrilha) {
     limparTrilhas()
+    limparDadosTrilhas()
 
     let trilhasReg = RegTrilha
     let nomeRegiao
@@ -188,17 +193,24 @@ function mostrarInfTrilha(nomeTrilha) {
     if(logInOut()){
         dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
         document.querySelector('.cont-DadosTrilha').innerHTML =
-        `<p>Trilha: ${dadosTrilha.nome}</p>
-        <p>Ínicio: ${dadosTrilha.pPartida}</p>
-        <p>Fim: ${dadosTrilha.pChegada}</p>
-        <p>Dificuldade:</p>
-        <p>Def. pelo site: ${dadosTrilha.nvlTSite}</p>
-        <p>Def. pelos usuarios: ${dadosTrilha.nvlTUsuario}</p>
-        <p>Infomações: </p>
-        <p>${dadosTrilha.distancia} / ${dadosTrilha.tempo}</p> 
-        <p>Relevo: ${dadosTrilha.relevo}</p> 
-        <p>Elevação: ${dadosTrilha.elevacao}</p> 
-        <p>Obs.: ${dadosTrilha.obs}</p>        
+        `<span>Trilha: ${dadosTrilha.nome}</span>
+        <Br>
+        <img src="map-pin.svg" class='iconsDadosTrilha'>
+        <span>${dadosTrilha.pPartida}</span>
+        <Br>
+        <img src="map-pin-line.svg" class='iconsDadosTrilha'>
+        <span>${dadosTrilha.pChegada}</span>
+        <Br>
+        <span>Informações:</span>
+        <br>
+        <span>Dificuldade: 
+        Def. pelo site: ${dadosTrilha.nvlTSite}</span>
+        Def. pelos usuarios: ${dadosTrilha.nvlTUsuario}</span>
+        <span>Infomações: </span>
+        <span>${dadosTrilha.distancia} / ${dadosTrilha.tempo}</span> 
+        <span>Relevo: ${dadosTrilha.relevo}</span> 
+        <span>Elevação: ${dadosTrilha.elevacao}</span> 
+        <span>Obs.: ${dadosTrilha.obs}</span>        
         `
 
     } else{
