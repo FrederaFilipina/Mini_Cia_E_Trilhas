@@ -279,10 +279,10 @@ function logar(event) {
 
 //funcionamento da pagina
 function esconderSection() {
-    document.getElementById("Login").style.color = "#0c0c0ca9"
-    document.getElementById("Trilhas").style.color = "#0c0c0ca9"
-    document.getElementById("Eventos").style.color = "#0c0c0ca9"
-    document.getElementById("MinhasTrilhas").style.color = "#0c0c0ca9"
+    document.getElementById("Login").classList.remove("liNav")
+    document.getElementById("Trilhas").classList.remove("liNav")
+    document.getElementById("Eventos").classList.remove("liNav")
+    document.getElementById("MinhasTrilhas").classList.remove("liNav")
 
     document.querySelector(`.cont-fred`).style.display = "none"
     document.querySelector(`.conteiner-cadastro`).style.display = "none"
@@ -305,7 +305,7 @@ function abrirLoginCadastro(cont) {
 function abrirTela(nome) {
     esconderSection()
     let cont = nome.split(',', 2)
-    document.getElementById(cont[0]).style.color = "rgb(255, 255, 255)"
+    document.getElementById(cont[0]).classList.add("liNav")
     console.log(cont[1]);
 
     document.querySelector(`.${cont[1]}`).style.display = "flex"

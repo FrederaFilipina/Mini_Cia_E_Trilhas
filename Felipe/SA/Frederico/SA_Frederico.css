@@ -75,6 +75,11 @@ nav {
     }
 }
 
+.liNav{
+    color: rgb(255, 255, 255);
+
+}
+
 li:hover {
 
     color: rgb(255, 255, 255);
@@ -526,4 +531,8 @@ li:hover {
 .buttonCadastro:hover,
 .button-logar:hover {
     background: #5C3D2E;
+}
+
+.cont-infosLoginCadas{
+    color: #a80101;
 }
