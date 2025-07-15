@@ -532,10 +532,27 @@ li:hover {
 
 .container-Evento{
     display: none;
+    
 
 
     
 }
 #criarEventos{
     display: none;
+}
+
+.form-group{
+   
+}
+
+.form-group .button-EventosCadastrar{
+    width: 80px;
+    padding: 8px;
+    background: #8B5E3C;
+    color: #FFFFFF;
+    border: none;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    
 }
