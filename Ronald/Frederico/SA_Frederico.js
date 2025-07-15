@@ -316,6 +316,8 @@ function abrirTela(nome) {
 
 }
 
+
+
 // Frederico
 //Área reservada para receber as varáveis que vão agir como um "Banco de Dados", tanto aqui no JS quando no LocalStorage
 
@@ -506,29 +508,31 @@ function mostrarInfTrilha(nomeTrilha) {
 
 //Área reservada para receber as instruções do funcionamento das Trilhas
 
+function usuarioLogado() {
+    return JSON.parse(localStorage.getItem("logado"))
+}
 
-
-let usuarioLogado = JSON.parse(localStorage.getItem("logado"))
+ 
 function mostrarCriarTrilha() {
     document.getElementById("criarEventos").style.display = "flex"
 }
-if (usuarioLogado) {
+if (usuarioLogado()) {
     mostrarCriarTrilha()
 }
 
 document.getElementById('eventoForm').addEventListener('submit', function(event) {
     event.preventDefault();
-
+    let usuarioLog = usuarioLogado()
     const trilha = document.getElementById('trilha').value;
     const data = document.getElementById('data').value;
     const hora = document.getElementById('hora').value;
     const ponto = document.getElementById('ponto').value;
     const vagas = parseInt(document.getElementById('vagas').value);
 
-    const nome = usuarioLogado.nomeCompleto.trim();
-    const idade = calcularIdade(usuarioLogado.dataNacimento);
-    const sexo = usuarioLogado.sexo;
-    const cpf = usuarioLogado.cpf;
+    const nome = usuarioLog.nomeCompleto.trim();
+    const idade = calcularIdade(usuarioLog.dataNacimento);
+    const sexo = usuarioLog.sexo;
+    const cpf = usuarioLog.cpf;
 
     let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
 
@@ -568,6 +572,7 @@ document.getElementById('eventoForm').addEventListener('submit', function(event)
 });
 
 function listarEventos() {
+    const usuarioLog = usuarioLogado()
     const lista = document.getElementById('listaEventos');
     lista.innerHTML = '';
     const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
@@ -578,7 +583,7 @@ function listarEventos() {
     }
 
     const jaParticipa = eventos.some(e =>
-        e.participantes.some(p => p.cpf === usuarioLogado.cpf)
+        e.participantes.some(p => p.cpf === usuarioLog.cpf)
     );
 
     eventos.forEach((e, i) => {
@@ -602,14 +607,14 @@ function listarEventos() {
         
         const botao = document.createElement('button');
         botao.innerText = 'Participar';
-        botao.disabled = jaParticipa || e.participantes.length >= e.vagas || (e.soMulheres && usuarioLogado.sexo !== "Feminino");
+        botao.disabled = jaParticipa || e.participantes.length >= e.vagas || (e.soMulheres && usuarioLog.sexo !== "Feminino");
 
         botao.addEventListener('click', () => {
             e.participantes.push({
-                nome: usuarioLogado.nomeCompleto,
-                idade: calcularIdade(usuarioLogado.dataNacimento),
-                sexo: usuarioLogado.sexo,
-                cpf: usuarioLogado.cpf
+                nome: usuarioLog.nomeCompleto,
+                idade: calcularIdade(usuarioLog.dataNacimento),
+                sexo: usuarioLog.sexo,
+                cpf: usuarioLog.cpf
             });
             localStorage.setItem('eventos', JSON.stringify(eventos));
             listarEventos();
@@ -621,9 +626,10 @@ function listarEventos() {
 }
 
 function preencherCamposUsuario() {
-    document.getElementById('nome').value = usuarioLogado.nomeCompleto;
-    document.getElementById('idade').value = calcularIdade(usuarioLogado.dataNacimento);
-    document.getElementById('sexo').value = usuarioLogado.sexo;
+    let usuarioLog = usuarioLogado()
+    document.getElementById('nome').value = usuarioLog.nomeCompleto;
+    document.getElementById('idade').value = calcularIdade(usuarioLog.dataNacimento);
+    document.getElementById('sexo').value = usuarioLog.sexo;
 
     document.getElementById('nome').readOnly = true;
     document.getElementById('idade').readOnly = true;
