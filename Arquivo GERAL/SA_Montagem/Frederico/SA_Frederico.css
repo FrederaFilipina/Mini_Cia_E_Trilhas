@@ -87,6 +87,7 @@
     gap: 5px;
     width: 65%;
     height: 100%;
+    
 }
 .cont-BttnRegs {
     display: flex;
@@ -166,9 +167,8 @@
 
     height: 90%;
     width: 100%;
-
 }
-.cont-Reg{
+/* .cont-Reg{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -178,12 +178,12 @@
     width: 100%;
     border: 2.5px solid black;
     font-size: 1.5vw;
-}
+} */
 .conts-Lista-Dados{
     display: flex;
     flex-direction: row;
 
-    height: 90%;
+    height: 100%;
     width: 100%;
     padding-top: 0.5%;
     gap:0.25%;
@@ -202,38 +202,84 @@
     overflow-y: auto;
     border: 2.5px solid black;
     overflow-wrap: break-word;
+    font-size: auto;
 }
 .divsBttnTrilha{
     display: flex;
     justify-content: left;
     align-items: center;
-    padding: 1%;
+    padding: 0.5%;
 
-    min-height: 13%;
+    min-height: 15%;
     width: 100%;
     
     border: 1px solid rgb(0, 0, 0, 1);
     cursor: pointer;
 }
-
 .contExt-DadosTrilha {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items:end;
+    
 
     height: 100%;
     width: 60%;
     border: 2.5px solid black;
 }
-.cont-DadosTrilha {
-    height: 100%;
-    width: 95%;
+.cont-DadosTrilha-Inf {
+    height: 45%;
+    width: 100%;
     padding: 1%;
-    font-size: 1.25vw;
     /* border: 2.5px solid black; */
 }
+.dadosTrilha{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+
+    padding: 0.5%;
+    gap: 1%;
+
+    font-size: 2.5vh;
+    
+}
 .iconsDadosTrilha{
-    height: 7%;
-    width: 7%;
+    height: 3.25vh;
+    width: 3.25vh;
+}
+.conts-DadosTrilha-coment-fotos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    height: 45%;
+    width: 100%;
+    /* border: 2.5px solid black; */
+}
+.DadosTrilha-coment{
+    height: 100%;
+    width: 50%;
+    border: 2.5px solid black;
+}
+.DadosTrilha-fotos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    /* border: 2.5px solid black; */
+    
+}
+.DadosTrilha-fotos > img{
+    height: 100%;
+    width: 100%;
+    border: 2.5px solid black;    
+}
+
+.cont-bttnCriarEvent{
+    height: 10%;
+    width: 100%;
+    border: 2.5px solid black;
 }

@@ -6,7 +6,7 @@ const infsListaTrilhas = [
         regiao: 'Norte', cep: ``,
         distancia: '10Km', tempo: '1h00', relevo: `Irregular`, elevacao: `15m`,
         nvlTSite: `5`, nvlTUsuario: [4],
-        obs: ``,
+        img: `<img src="image.svg">`,
     },
 
     {
@@ -14,7 +14,7 @@ const infsListaTrilhas = [
         regiao: 'Norte', cep: ``,
         distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
-        obs: ``
+        img: `<img src="IMG-20180523-WA0012.jpg">`
     },
         {
         nome: 'Lagoinha do Leste (Morro da Coroa)', pPartida: `Ponto A`, pChegada: `Ponto B`,
@@ -148,7 +148,7 @@ function limparTrilhas() {
     limparListTrilhas.innerHTML = ``
 }
 function limparDadosTrilhas() {
-    let limparDadosTrilhas = document.querySelector('.cont-DadosTrilha')
+    let limparDadosTrilhas = document.querySelector('.cont-DadosTrilha-Inf')
     limparDadosTrilhas.innerHTML = ``
 }
 function mostrarListTrilhasReg(RegTrilha) {
@@ -158,14 +158,12 @@ function mostrarListTrilhasReg(RegTrilha) {
     let trilhasReg = RegTrilha
     let nomeRegiao
     nomeRegiao = infsListaTrilhas.filter(filtroRegTrilha => filtroRegTrilha.regiao === trilhasReg)
-    document.querySelector('.cont-Reg').innerHTML =
-    `<p>Essas são as trilhas da região: ${trilhasReg}</p>`
+    // document.querySelector('.cont-Reg').innerHTML =
+    // `<p>Essas são as trilhas da região: ${trilhasReg}</p>`
     
     let nomesTrilhas
     nomesTrilhas =  document.querySelector('.cont-ListasTrilhas')
-    
-    if(logInOut()){
-        for (const trilha of nomeRegiao) {
+    for (const trilha of nomeRegiao) {
             nomesTrilhas.innerHTML +=
             `<div onclick="mostrarInfTrilha('${trilha.nome}')" class="divsBttnTrilha">
                 <p>
@@ -173,17 +171,6 @@ function mostrarListTrilhasReg(RegTrilha) {
                 </p>
             </div>`
         }
-    } else {
-        for (const trilha of nomeRegiao) {
-            nomesTrilhas.innerHTML +=
-            `<div onclick="mostrarInfTrilha('${trilha.nome}')" class="divsBttnTrilha">
-                <p>
-                    LOG OUT ${trilha.nome},
-                </p>
-            </div>`
-        }
-    }
-
     
 }
 function mostrarInfTrilha(nomeTrilha) {
@@ -192,58 +179,72 @@ function mostrarInfTrilha(nomeTrilha) {
 
     if(logInOut()){
         dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
-        document.querySelector('.cont-DadosTrilha').innerHTML =
-        `<span>Trilha: ${dadosTrilha.nome}</span>
-        <Br>
-        <img src="map-pin.svg" class='iconsDadosTrilha'>
-        <span>${dadosTrilha.pPartida}</span>
-        <Br>
-        <img src="map-pin-line.svg" class='iconsDadosTrilha'>
-        <span>${dadosTrilha.pChegada}</span>
-        <Br>
-        <span>Informações:</span>
-        <br>
-        <span>Dificuldade: 
-        Def. pelo site: ${dadosTrilha.nvlTSite}</span>
-        Def. pelos usuarios: ${dadosTrilha.nvlTUsuario}</span>
-        <span>Infomações: </span>
-        <span>${dadosTrilha.distancia} / ${dadosTrilha.tempo}</span> 
-        <span>Relevo: ${dadosTrilha.relevo}</span> 
-        <span>Elevação: ${dadosTrilha.elevacao}</span> 
-        <span>Obs.: ${dadosTrilha.obs}</span>        
+        document.querySelector('.cont-DadosTrilha-Inf').innerHTML =
+        `   <div class='dadosTrilha'>
+                <img src="map-trifold.svg" class='iconsDadosTrilha'>
+                <span>Trilha: ${dadosTrilha.nome}</span>
+            </div>
+            <div class='dadosTrilha'>
+                <img src="map-pin.svg" class='iconsDadosTrilha'>
+                <span>De: ${dadosTrilha.pPartida}</span>
+            </div>
+            <div class='dadosTrilha'>
+
+                <span>Para: ${dadosTrilha.pChegada}</span>
+                <img src="map-pin-line.svg" class='iconsDadosTrilha'>
+            </div>
+            <div class='dadosTrilha'>
+                <span>Dificuldade:</span>
+                <span>Indicada: ${dadosTrilha.nvlTSite} / Relatada: ${dadosTrilha.nvlTUsuario}</span>
+            </div>
+            <div class='dadosTrilha'>
+                <img src="path.svg" class='iconsDadosTrilha'>
+                <span>${dadosTrilha.distancia} / </span>
+                <img src="timer.svg" class='iconsDadosTrilha'>
+                <span> ${dadosTrilha.tempo}</span>
+            </div>
+            <div class='dadosTrilha'>
+                <img src="person-simple-hike.svg" class='iconsDadosTrilha'>
+                <span>Relevo: ${dadosTrilha.relevo}</span> 
+                <span> / Elevação: ${dadosTrilha.elevacao}</span>
+            </div>                    
         `
+        dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
+        document.querySelector('.DadosTrilha-fotos').innerHTML =
+        `${dadosTrilha.img}`
 
     } else{
         dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
-        document.querySelector('.cont-DadosTrilha').innerHTML =
-        `<p>Trilha: ${dadosTrilha.nome}</p>
-        <p>Ínicio: ${dadosTrilha.pPartida}</p>
-        <p>Fim: ${dadosTrilha.pChegada}</p>
-        <p>Dificuldade:</p>
-        <p>Def. pelo site: ${dadosTrilha.nvlTSite}</p>
-        <p>Def. pelos usuarios: ${dadosTrilha.nvlTUsuario}</p>
-        <p>Infomações: </p>
-        <p>${dadosTrilha.distancia} / ${dadosTrilha.tempo}</p>        
+        document.querySelector('.cont-DadosTrilha-Inf').innerHTML =
+        `
+            <img src="person-simple-hike.svg" class='iconsDadosTrilha'>
+            <span>Trilha: ${dadosTrilha.nome}</span>
+            <br>
+            <img src="map-pin.svg" class='iconsDadosTrilha'>
+            <span>De: ${dadosTrilha.pPartida}</span>
+            <br>
+            <span>Para: ${dadosTrilha.pChegada}</span>
+            <img src="map-pin-line.svg" class='iconsDadosTrilha'>
+            <br>
+            <span>Dificuldade:</span>
+            <br>
+            <span>Indicada: ${dadosTrilha.nvlTSite}</span>
+            <br>
+            <span>Relatada: ${dadosTrilha.nvlTUsuario}</span>
+            <br>
+            <img src="path.svg" class='iconsDadosTrilha'>
+            <span>${dadosTrilha.distancia}</span>
+            <img src="timer.svg" class='iconsDadosTrilha'>
+            <span>${dadosTrilha.tempo}</span>
+            <br>
+            <img src="map-trifold.svg" class='iconsDadosTrilha'>
+            <span>Relevo: ${dadosTrilha.relevo}</span> 
+            <span> / Elevação: ${dadosTrilha.elevacao}</span>         
         `
 
     }
 
 
-    // if (logInOut()) {
-        
-    //     dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.trilha === trilhaNome)
-    //     document.querySelector('.cont-DadosTrilha').innerHTML =
-    //         `<p> Trilha: ${dadosTrilha.trilha}</p>
-    //         <br>
-    //         <p>Infs Completas</p>`
-    // } else {
-    //     dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.trilha === trilhaNome)
-    //     document.querySelector('.cont-DadosTrilha').innerHTML =
-    //         `<p> Trilha: ${dadosTrilha.trilha}</p>
-    //         <br>
-    //         <p>Infs Básicas</p>
-    //         <button onclick="LOGIN">Login</button>`
-    // }
 }
 
 //Área reservada para receber as instruções do funcionamento das Trilhas
