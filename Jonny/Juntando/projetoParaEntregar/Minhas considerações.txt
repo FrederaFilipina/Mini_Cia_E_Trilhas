@@ -1,0 +1,34 @@
+1) Geral:
+> Arrumar a formatação para deixar os nomes dos campos com a primeira letra maiuscula
+e com dois pontos no final e um espaço separando o campo de preenchimento;
+
+> Não deixar cadastrar se tiver algum campo em branco;
+(No primeiro cadastro, eu deixei o campo do telefone em branco e salvou,
+no segundo cadastro ele me bloqueou pois disse que o telefone já estava cadastrado,
+mesmo estando em branco também)
+
+> As mensagens de alerta sobre erro de cadastramento não estão na mesma ordem que aparecem para preencher;
+
+> Se tentar salvar sem preenher nada, ele informa que o cpf já está sendo utilizado, é bom ter uma msg gera
+para informar que os campos estão vazios ou qual campo falto preenchimento
+
+
+2) No campo do CPF:
+> ver se consegue remover as setinhas que aparecem no canto direito;
+> limitar a apenas 11 dígitos(000.000.000 - 00) o preenchimento.
+
+3) No campo da Data de Nascimento:
+> ver se consegue bloquear os anos seguintes 2027,2028....
+> a principio não conversamos sobre limite de idade, mas acho válido e nesse caso se
+limitarmos em 18 anos, o calendário tem de que iniciar com a data correspondente a 18
+anos no dia da realização do cadastro.
+
+
+4) No campo do Sexo:
+> fazer aparecer o campo de preenchimento da opção Outro, apenas após marcar a opção.
+
+5) No campo Telefone:
+> Alterar para Celular;
+> Ver se consegue colocar a formatação (__) _____-____
+> Fazer com que ele aceite apenas número;
+

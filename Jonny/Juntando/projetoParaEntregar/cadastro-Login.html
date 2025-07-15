@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Cia EE Trilhas</title>
+    <link rel="stylesheet" href="cadastro-Style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <section class="conteiner-cadastro" id="contCadast">
+
+        <div class="conteiner-formulario-cadastro" id="contFormCadastro">
+
+            <form class="formulario-cadastro" id="formCadastro">
+
+
+                <label for="nomeDigtado">Nome: </label>
+                <input type="text" name="nomeDigtado" id="nomeDigtado" required>
+
+
+
+                <label for="cpfDig">CPF: </label>
+                <input type="text" name="cpfDigitado" id="cpfDig" maxlength="11" inputmode="numeric"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+
+
+
+                <label for="dataNacimento">Data Nascimento: </label>
+                <input type="date" name="dataNacimento" id="dataNacimento" required>
+
+
+                <div>
+                    <label for="Sexo">Sexo:</label>
+                    <input type="radio" name="sexo" id="sexoMasc">
+                    <label for="sexoMasc">Masculino</label>
+
+                    <input type="radio" name="sexo" id="sexoFem">
+                    <label for="sexoFem">Feminino</label>
+
+                    <input type="radio" name="sexo" id="sexoOutro">
+                    <label for="sexoOutro">Prefiro não identificar</label>
+                </div>
+
+
+
+
+
+                <label for="telefDigi">Celular: </label>
+                <input type="tel" name="telefone" id="telefDigi" inputmode="numeric" maxlength="11"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+
+
+
+
+
+                <label for="emailDigit">Email: </label>
+                <input type="email" name="emailDigitado" id="emailDigit" required>
+
+                <div class="conteiner-recidencia" id="contRecidenc:">
+                    <label>Você reside em Florianópolis?</label>
+                    <input type="radio" name="opcaoCep" id="sim" onclick="mostrarCep()">
+                    <label for="sim">Sim</label>
+                    <input type="radio" name="opcaoCep" id="nao" onclick="esconderCep()">
+                    <label for="nao">Não</label>
+                    <div class="conteiner-cep" id="contCep">
+                        <label for="cep">CEP: </label>
+                        <input type="text" name="CEP" id="cep"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, (''))">
+                    </div>
+                </div>
+
+
+                <label for="userDigit">Usuário: </label>
+                <input type="text" name="usuarioDigitado" id="userDigit" required>
+
+
+
+
+                <label for="senhaDigit">Senha: </label>
+                <input type="password" name="senhaDigitado" id="senhaDigit" required>
+
+
+                <div id="infoUser">
+
+                </div>
+
+                <input class="buttonCadastro" type="submit" value="Salvar" onclick="entraCadastro(event)">
+
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <section class="conteiner-login" id="contLogin">
+
+        <div class="conteiner-formulario-login" id="contFormLogin">
+            <form class="formulario-login" id="formLogin">
+
+                <div class="conteiner-usuario-login" id="contUserLogin">
+                    <label for="usuarioLogin">Usuário: </label>
+                    <input type="text" name="usuarioLogin" id="usuarioLogin">
+                </div>
+                <div class="conteiner-senha-login" id="contSenhaLogin">
+                    <label for="SenhaLogin">Senha: </label>
+                    <input type="password" name="senhaLogin" id="senhaLogin">
+                </div>
+                <div id="infoUserLogin">
+
+                </div>
+                <div class="botaoLogar" id="buttLogar">
+                    <input type="submit" value="Entrar" onclick="logar(event)">
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+
+
+
+    <button class="abrir-modalPerfil" data-modalPerfil="modal-abrirmeuPerfil" type="button">
+        <i class="fa-solid fa-user"></i>
+    </button>
+
+    <dialog id="modal-abrirmeuPerfil">
+        <form method="dialog">
+            <div class="modal-cabecarioMeuPerfil">
+                <h1 class="titulo-modalMeuperfil">Meu Perfil</h1>
+
+                <button class="fechar-modalMeuPerfil" data-modalPerfil="modal-abrirmeuPerfil" type="button">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+                <div class="corpo-modalMeuperfil">
+                    <div id="perfil" class="perfil"></div>
+                </div>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="modal-editarPerfil">
+        <form method="dialog">
+            <h2>Editar meus dados</h2>
+
+            <label for="edit-nome">Nome:
+                <input type="text" id="edit-nome" required />
+            </label>
+            <label for="edit-cpf">CPF:
+                <input type="text" id="edit-cpf" required />
+            </label>
+            <label for="edit-nascimento">Data de Nascimento:
+                <input type="date" id="edit-nascimento" required />
+            </label>
+            <label for="edit-celular">Celular:
+                <input type="text" id="edit-celular" required />
+            </label>
+            <label for="edit-email">Email:
+                <input type="email" id="edit-email" min="0" required />
+            </label>
+            
+            <button type="submit">Salvar</button>
+            <button type="button" id="fecharEditarPerfil">Cancelar</button>
+        </form>
+    </dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="cadastro.js"></script>
+</body>
+
+</html>
