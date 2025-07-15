@@ -314,6 +314,10 @@ function abrirTela(nome) {
 
 }
 
+function usuarioLogado(){
+    return JSON.parse(localStorage.getItem("logado"))
+}
+
 // Frederico
 //Área reservada para receber as varáveis que vão agir como um "Banco de Dados", tanto aqui no JS quando no LocalStorage
 
@@ -502,8 +506,6 @@ function mostrarInfTrilha(nomeTrilha) {
     }
 }
 
-//Área reservada para receber as instruções do funcionamento das Trilhas
-
 
 // jonny
 
@@ -514,9 +516,11 @@ const botaoMinhasTrilhas = document.getElementById("btn-minhas-trilhas");
 let indexEditando = null;
 
 function renderizarTrilhas() {
+    const atualizarClicando = JSON.parse(localStorage.getItem("eventos")) || [];
   lista.innerHTML = "";
+  atualizarClicando.filter(evento => evento.participantes.cpf)
 
-  trilhasCadastradas.forEach((trilha, index) => {
+  atualizarClicando.forEach((trilha, index) => {
     const divTrilha = document.createElement("div");
     divTrilha.classList.add("trilha-item");
 
@@ -584,5 +588,14 @@ lista.addEventListener("submit", (event) => {
   renderizarTrilhas();
 });
 
-// render inicial
+
+function abrirMinhasTrilhas(){
+    abrirTela('btn-minhas-trilhas,conteiner-MinhasTrilhas')
+    renderizarTrilhas()
+}
+
+
 renderizarTrilhas();
+
+
+//Área reservada para receber as instruções do funcionamento das Trilhas

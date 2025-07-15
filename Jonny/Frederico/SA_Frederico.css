@@ -577,7 +577,7 @@ li:hover {
 .form-edicao input {
   display: block;
   width: 100%;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
   padding: 6px;
   border: 1px solid #ccc;
   border-radius: 4px;
