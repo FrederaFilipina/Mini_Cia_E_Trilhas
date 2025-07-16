@@ -89,6 +89,7 @@ li:hover {
 /*---Frederico---*/
 .cont-fred {
     display: none;
+    width: 90%;
     flex-direction: row;
     gap: 5px;
 }
@@ -96,7 +97,7 @@ li:hover {
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 25%;
+    width: 33%;
     /* border: solid 1px; */
 }
 .cont-map {
