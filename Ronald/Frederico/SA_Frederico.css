@@ -529,7 +529,7 @@ li:hover {
 }
 
 
-
+/* ronald */
 .container-Evento{
     display: none;
     
@@ -540,6 +540,10 @@ li:hover {
 #criarEventos{
     display: none;
 }
+
+
+
+
 
 .form-group{
    
@@ -555,4 +559,7 @@ li:hover {
     border-radius: 6px;
     cursor: pointer;
     
+}
+.cont-eventos{
+    display: none;
 }
