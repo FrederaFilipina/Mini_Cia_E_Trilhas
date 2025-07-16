@@ -11,7 +11,7 @@
 .fundo {
     height: 100vh;
     width: 100%;
-    background-image: url(fundorealista_2Ajustado.JPG);
+    background-image: url(fundorealista_6Ajustado.JPG);
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -23,54 +23,51 @@
 .cont-principal {
     display: flex;
     flex-direction: row;
-
-    width: 69vw;
-    height: 64.5vh;
     position: fixed;
-    top: 61.5%;
-    left: 50%;
+
+    top: 57.5%;
+    left: 50.25%;
     transform: translate(-50%, -50%);
-    padding: 0.75%;
 
-    /* background-color: #638164; */
-    /* background-color: rgb(89, 102, 67); */
-    /* verde militar - https://encycolorpedia.pt/596643 */
-    /* background-color: rgb(71, 81, 54); */
-    /* verde militar saturado e 25% mais escuro 
-    - https://encycolorpedia.pt/475136*/
-
-    gap: 1%;
+    height: 69.5vh;
+    width: 81.1vw;
+    
+    padding: 0.25%;
+    gap: 0.5%;
 }
 
 /* Menu Nave */
 nav {
-
-    font-size: 20px;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 10%;
 
+    height: 100%;
+    width: 7%;
+
+    font-size: 1.5vw;
+    
     ol {
-        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        align-items: center;
         list-style: none;
+        height: 100%;
 
         li {
             display: flex;
             flex-direction: column;
-            /* border: 1px solid; */
-
-            cursor: pointer;
-            width: 70%;
-            height: 50px;
             justify-content: center;
-            border-radius: 5px;
+            align-items: center;
 
-            color: #0c0c0ca9;
+            width: 70%;
+            height: 10%;
 
+            /* border: 1px solid; */           
+            /* border-radius: 5px; */
+
+            color: rgb(0,0,0,1);
+            cursor: pointer;                   
         }
 
     }
@@ -89,15 +86,15 @@ li:hover {
 /*---Frederico---*/
 .cont-fred {
     display: none;
-    width: 90%;
+    width: 93%;
     flex-direction: row;
-    gap: 5px;
+    gap: 0.5%;
 }
 .cont-areamap {
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 33%;
+    width: 25%;
     /* border: solid 1px; */
 }
 .cont-map {
@@ -122,18 +119,21 @@ li:hover {
 
 /*--------------------------------------------*/
 
-.conts-BttnRegs-RegListDados {
+.conts-BttnRegs-ListDados {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    width: 65%;
+
     height: 100%;
+    width: 75%;
     
+    gap: 1%;
 }
+/*--------------------------------------------*/
 .cont-BttnRegs {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
     height: 10%;
     width: 100%;
 }
@@ -150,9 +150,7 @@ li:hover {
     background-color: rgb(255, 0, 255, 0);
     border: 0;
 
-
     cursor: pointer;
-    
 }
 .cont-button-nort {
     display: flex;
@@ -202,32 +200,22 @@ li:hover {
     border-radius: 5px;
     background-color: rgb(21, 187, 73, 1);
 }
-.conts-Reg-ListDados {
+/*--------------------------------------------*/
+.conts-ListDados {
     display: flex;
     flex-direction: column;
 
     height: 90%;
     width: 100%;
+    
 }
-/* .cont-Reg{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    height: 10%;
-    width: 100%;
-    border: 2.5px solid black;
-    font-size: 1.5vw;
-} */
 .conts-Lista-Dados{
     display: flex;
     flex-direction: row;
 
     height: 100%;
     width: 100%;
-    padding-top: 0.5%;
-    gap:0.25%;
+    gap:0.5%;
 
     font-size: 1.25vw;
 }
@@ -239,11 +227,12 @@ li:hover {
     width: 40%;
 
     padding: 0.5%;
-    gap: 1.5%;
+    gap: 1.5%;   
+    
     overflow-y: auto;
-    border: 2.5px solid black;
     overflow-wrap: break-word;
-    font-size: auto;
+    border: 2.5px solid black;
+
 }
 .divsBttnTrilha{
     display: flex;
@@ -262,16 +251,18 @@ li:hover {
     flex-direction: column;
     justify-content: center;
     
-
     height: 100%;
     width: 60%;
+
     border: 2.5px solid black;
+
+    padding: 0.25%;
 }
 .cont-DadosTrilha-Inf {
     height: 45%;
     width: 100%;
+
     padding: 1%;
-    /* border: 2.5px solid black; */
 }
 .dadosTrilha{
     display: flex;
@@ -297,6 +288,7 @@ li:hover {
 
     height: 45%;
     width: 100%;
+    padding: 0.25%;
     /* border: 2.5px solid black; */
 }
 .DadosTrilha-coment{
