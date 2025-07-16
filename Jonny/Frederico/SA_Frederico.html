@@ -16,8 +16,8 @@
             <nav>
                 <ol>
                     <li onclick="abrirTela('Login,conteiner-login')" id="Login">Login</li>
-                    <li onclick="abrirMinhasTrilhas()"
-                     id="btn-minhas-trilhas">Minhas Trilhas
+                    <li onclick="abrirTela('perfil,conteiner-perfil')" id="perfil">Perfil</li>
+                    <li onclick="abrirMinhasTrilhas()" id="btn-minhas-trilhas">Minhas Trilhas
                     </li>
                     <li onclick="abrirTela('Trilhas,cont-fred')" id="Trilhas">Trilhas</li>
                     <li id="Eventos">Eventos</li>
@@ -229,6 +229,27 @@
 
             </section>
 
+
+            <section class="conteiner-perfil" id="contPerfil">
+                <div id="meuPerfil" style="display: none;">
+                    <div class="titulo-meuPerfil">
+                        <h2>Meu perfil</h2>
+                    </div>
+                    <div class="conteudoPerfil" id="conteudoPerfil"></div>
+                </div>
+
+                <div id="perfil-container" class="perfil-container" style="display: none;">
+                    <button class="fechar-perfil">Fechar</button>
+                    <div id="perfil"></div>
+                </div>
+
+            </section>
+
+
+
+
+
+
             <section class="conteiner-MinhasTrilhas" id="Trilhas">
                 <div id="minhas-trilhas-view" style="display: none;">
                     <div class="titulo-minhasTrihas">
@@ -237,7 +258,7 @@
                     <div class="trilhas" id="trilhas"></div>
                 </div>
 
-                
+
             </section>
 
 
@@ -262,7 +283,10 @@
 
         </section>
 
-
+        <div id="meu-alerta" class="alerta" style="display: none;">
+            <p id="alerta-texto">Mensagem de alerta!</p>
+            <button onclick="fecharAlerta()">Fechar</button>
+        </div>
 
     </div>
 

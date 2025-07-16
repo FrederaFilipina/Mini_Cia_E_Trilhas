@@ -15,7 +15,13 @@ function esconderCep() {
     document.getElementById("contCep").style.display = "none"
 }
 function abrirPaginaUsuário() {
-    alert("logado")
+
+
+    esconderLogin()
+}
+
+function esconderLogin() {
+    document.getElementById("Login").style.display = "none"
 }
 
 //-----------------------------------//
@@ -36,7 +42,7 @@ function limitarDataCadastroData() {
     const idadeMesLimite = mesAtual >= 10 ? mesAtual : `0${mesAtual}`
 
     const diaAtual = dataAtual.getDate()
-    console.log("aqui é o dia atual " + diaAtual);
+
 
 
     const idadeDiaLimite = diaAtual >= 10 ? diaAtual : `0${diaAtual}`
@@ -44,11 +50,11 @@ function limitarDataCadastroData() {
 
     let dataLimiteCadastro = `${idadeAnoLimite}-${idadeMesLimite}-${idadeDiaLimite}`
 
-    console.log(dataLimiteCadastro);
+
 
     inuputData.setAttribute("max", dataLimiteCadastro)
 
-    console.log(inuputData);
+
 
 }
 function verificandoIdade(dataN) {
@@ -243,7 +249,7 @@ function entraCadastro(event) {
         salvarBancoDados()
         esconderSection()
         abrirLoginCadastro("contLogin")
-        console.log(cadastroUsuarios)
+
     }
 }
 function logar(event) {
@@ -270,7 +276,7 @@ function logar(event) {
         salvarBancoDados()
         abrirPaginaUsuário()
         limparInput()
-
+        mostrarAlerta("Logado");
 
     } else infoUserLogin.innerHTML = "*Senha incorreta"
 
@@ -308,14 +314,18 @@ function abrirTela(nome) {
     esconderSection()
     let cont = nome.split(',', 2)
     document.getElementById(cont[0]).style.color = "rgb(255, 255, 255)"
-    console.log(cont[1]);
+
 
     document.querySelector(`.${cont[1]}`).style.display = "flex"
 
 }
 
-function usuarioLogado(){
+function usuarioLogado() {
     return JSON.parse(localStorage.getItem("logado"))
+}
+
+if (usuarioLogado()) {
+    abrirPaginaUsuário()
 }
 
 // Frederico
@@ -432,13 +442,13 @@ localStorage.setItem('ListagemTrilhas', JSON.stringify(infsListaTrilhas))
 
 function logInOut() {
     let usuario = localStorage.getItem("logado")
-    if(usuario != undefined){
+    if (usuario != undefined) {
         return true
     }
     else {
         return false
     }
-    
+
 }
 function limparTrilhas() {
     let limparListTrilhas = document.querySelector('.cont-list-dados-trilhas')
@@ -517,15 +527,20 @@ let indexEditando = null;
 
 function renderizarTrilhas() {
     const atualizarClicando = JSON.parse(localStorage.getItem("eventos")) || [];
-  lista.innerHTML = "";
-  atualizarClicando.filter(evento => evento.participantes.cpf)
 
-  atualizarClicando.forEach((trilha, index) => {
-    const divTrilha = document.createElement("div");
-    divTrilha.classList.add("trilha-item");
 
-    if (indexEditando === index) {
-      divTrilha.innerHTML = `
+    const usuario = usuarioLogado()
+
+
+    lista.innerHTML = "";
+    const filtrarPorCPF = atualizarClicando.filter(evento => evento.participantes.find(usuarioTrilha => usuarioTrilha.cpf === usuario.cpf))
+
+    filtrarPorCPF.forEach((trilha, index) => {
+        const divTrilha = document.createElement("div");
+        divTrilha.classList.add("trilha-item");
+
+        if (indexEditando === index) {
+            divTrilha.innerHTML = `
         <form class="form-edicao">
           <label>Trilha: <input type="text" name="trilha" value="${trilha.trilha}" /></label><br>
           <label>Data: <input type="date" name="data" value="${trilha.data}" /></label><br>
@@ -536,8 +551,8 @@ function renderizarTrilhas() {
           <button type="button" class="cancelar-edicao">Cancelar</button>
         </form>
       `;
-    } else {
-      divTrilha.innerHTML = `
+        } else {
+            divTrilha.innerHTML = `
         <p><strong>Trilha:</strong> ${trilha.trilha}</p>
         <p><strong>Data:</strong> ${trilha.data}</p>
         <p><strong>Horário:</strong> ${trilha.hora}</p>
@@ -545,57 +560,112 @@ function renderizarTrilhas() {
         <p><strong>Vagas disponíveis:</strong> ${trilha.vagas}</p>
         <button class="editar-btn" data-index="${index}">Editar</button>
       `;
-    }
+        }
 
-    lista.appendChild(divTrilha);
-  });
+        lista.appendChild(divTrilha);
+    });
 }
 
 botaoMinhasTrilhas.addEventListener("click", () => {
-  trilhasView.style.display = "block";
-  indexEditando = null;
-  renderizarTrilhas();
+    trilhasView.style.display = "block";
+    indexEditando = null;
+    renderizarTrilhas();
 });
 
 lista.addEventListener("click", (event) => {
-  if (event.target.classList.contains("editar-btn")) {
-    indexEditando = parseInt(event.target.getAttribute("data-index"));
-    renderizarTrilhas();
-  }
+    if (event.target.classList.contains("editar-btn")) {
+        indexEditando = parseInt(event.target.getAttribute("data-index"));
+        renderizarTrilhas();
+    }
 
-  if (event.target.classList.contains("cancelar-edicao")) {
-    indexEditando = null;
-    renderizarTrilhas();
-  }
+    if (event.target.classList.contains("cancelar-edicao")) {
+        indexEditando = null;
+        renderizarTrilhas();
+    }
 });
 
 lista.addEventListener("submit", (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const form = event.target;
-  const index = indexEditando;
+    const form = event.target;
+    const index = indexEditando;
 
-  trilhasCadastradas[index] = {
-    trilha: form.trilha.value,
-    data: form.data.value,
-    hora: form.hora.value,
-    ponto: form.ponto.value,
-    vagas: form.vagas.value,
-  };
+    trilhasCadastradas[index] = {
+        trilha: form.trilha.value,
+        data: form.data.value,
+        hora: form.hora.value,
+        ponto: form.ponto.value,
+        vagas: form.vagas.value,
+    };
 
-  localStorage.setItem("eventos", JSON.stringify(trilhasCadastradas));
-  indexEditando = null;
-  renderizarTrilhas();
+    localStorage.setItem("eventos", JSON.stringify(trilhasCadastradas));
+    indexEditando = null;
+    renderizarTrilhas();
 });
 
 
-function abrirMinhasTrilhas(){
+function abrirMinhasTrilhas() {
     abrirTela('btn-minhas-trilhas,conteiner-MinhasTrilhas')
     renderizarTrilhas()
 }
 
+function abrirBotaoPerfil() {
+    const abrirBotaoPerfil = document.querySelectorAll("#perfil")
+    abrirBotaoPerfil.forEach((button) => {
+        button.addEventListener("click", () => {
+            document.getElementById("container-perfil").style.display = "block"
+            mostrarDadosUsuario()
+        });
+    });
+}
+abrirBotaoPerfil();
 
-renderizarTrilhas();
+function fecharBotaoPerfil() {
+    const fecharBtn = document.querySelector(".fechar-perfil");
+    fecharBtn.addEventListener("click", () => {
+        document.getElementById("perfil-container").style.display = "none";
+    });
+}
+fecharBotaoPerfil();
 
+function mostrarDadosUsuario() {
+    const informacoesPerfil = document.getElementById("perfil");
+    const cadastroUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    const usuario = cadastroUsuarios.find(usuario => usuario.logado === true);
+
+    if (!usuario) {
+        alert("Você precisa estar logado!");
+        document.getElementById("perfil-container").style.display = "none";
+        abrirLogin(); // ou qualquer função que exibe login
+        return;
+    }
+
+    informacoesPerfil.innerHTML = `
+    <p><strong>Nome:</strong> ${usuario.nomeUsuario}</p>
+    <p><strong>Email:</strong> ${usuario.email}</p>
+    <p><strong>Sexo:</strong> ${usuario.sexo}</p>
+    <p><strong>Telefone:</strong> ${usuario.telefone}</p>
+    <p><strong>CPF:</strong> ${usuario.cpf}</p>
+    <p><strong>Avaliação:</strong> ${usuario.avaliaçãoUser}</p>
+    <button class="editar-btn">Editar</button>
+  `;
+}
+
+
+function mostrarAlerta(mensagem) {
+    const alerta = document.getElementById('meu-alerta');
+    const texto = document.getElementById('alerta-texto');
+    texto.textContent = mensagem;
+    alerta.style.display = 'block';
+
+    setTimeout(() => {
+        alerta.style.display = 'none';
+    }, 4000); // esconde após 4 segundos
+}
+
+function fecharAlerta() {
+    document.getElementById('meu-alerta').style.display = 'none';
+}
 
 //Área reservada para receber as instruções do funcionamento das Trilhas
