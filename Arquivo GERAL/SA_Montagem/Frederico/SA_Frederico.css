@@ -269,17 +269,33 @@
     align-items: center;
     height: 100%;
     width: 50%;
+    padding: 0.25%;
     /* border: 2.5px solid black; */
     
 }
 .DadosTrilha-fotos > img{
     height: 100%;
     width: 100%;
-    border: 2.5px solid black;    
+    /* border: 2.5px solid black;     */
 }
-
-.cont-bttnCriarEvent{
+.cont-bttn-CriarEvent-LogIn{
     height: 10%;
     width: 100%;
-    border: 2.5px solid black;
+    /* border: 2.5px solid black; */
+    padding: 1%;
+}
+.bttn-CriarEvent-LogIn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+
+    font-size: 1.5vw;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 0, 255, 0);
+    border: 2px solid black;
+
+    cursor: pointer;
 }

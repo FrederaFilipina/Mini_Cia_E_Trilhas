@@ -1,4 +1,4 @@
-
+    
 
 let cadastroUsuarios = JSON.parse(localStorage.getItem('CadastroUser')) || []
 

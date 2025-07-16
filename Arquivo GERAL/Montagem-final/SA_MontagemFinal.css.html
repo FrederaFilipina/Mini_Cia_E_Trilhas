@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mine_Cia_E_Trilhas</title>
-    <link rel="stylesheet" href="SA_Frederico.css">
+    <link rel="stylesheet" href="SA_MontagemFinal.css">
 </head>
 
 <body>
     <div class="fundo">
 
         <section class="cont-principal" id="conPrincipal">
-
+            <!-- Navegador -->
             <nav>
                 <ol>
                     <li onclick="abrirTela('Login,conteiner-login')" id="Login">Login</li>
@@ -24,80 +24,80 @@
                     <li onclick="abrirTela('criarEventos,container-Evento')" id="criarEventos">Criar Eventos</li>
                 </ol>
             </nav>
+            <!-- Navegador -->
 
             <!-- Frederico -->
             <section class="cont-fred">
-                <div class="cont-nomeGrupo-autoExpl-map">
 
-                    <div class="cont-nomeGrupo-autoExpl">
-
-                        <div class="cont-autoExpl">
-                            <img src="info.svg" alt="">
-                        </div>
-
-                        <div class="cont-nomeGrupo">
-                            <p>Mini Cia && Trilhas</p>
-                        </div>
-
-                    </div>
+                <div class="cont-areamap">
 
                     <div class="cont-map">
-                        <img src="FloripaGeral.png" alt="">
-                    </div>
+                        <img src="FloripaGeral.png">
+                    </div>  
 
                 </div>
-
+    
                 <!-- -=- -->
-
-                <div class="cont-buttons-infos">
-
-                    <div class="cont-buttons">
-
+    
+                <div class="conts-BttnRegs-RegListDados">
+    
+                    <div class="cont-BttnRegs">
+    
                         <div class="cont-button-nort">
-                            <button class="button-reg" onclick="mostrarListTrilhasReg('Norte')">
-                                <h3>NORTE</h3>
-                            </button>
+                            <button class="button-regs" onclick="mostrarListTrilhasReg('Norte')"><h3>NORTE</h3></button>
                         </div>
-
+    
                         <div class="cont-button-center">
-                            <button class="button-reg" onclick="mostrarListTrilhasReg('Central')">
-                                <h3>CENTRAL</h3>
-                            </button>
+                            <button class="button-regs" onclick="mostrarListTrilhasReg('Central')"><h3>CENTRAL</h3></button>
                         </div>
-
+    
                         <div class="cont-button-lest">
-                            <button class="button-reg" onclick="mostrarListTrilhasReg('Leste')">
-                                <h3>LESTE</h3>
-                            </button>
+                            <button class="button-regs" onclick="mostrarListTrilhasReg('Leste')"><h3>LESTE</h3></button>
                         </div>
-
+    
                         <div class="cont-button-sul">
-                            <button class="button-reg" onclick="mostrarListTrilhasReg('Sul')">
-                                <h3>SUL</h3>
-                            </button>
+                            <button class="button-regs" onclick="mostrarListTrilhasReg('Sul')"><h3>SUL</h3></button>
                         </div>
-
+    
                     </div>
-
-                    <div class="cont-info">
-
-                        <div class="cont-info-Reg">
+    
+                    <div class="conts-Reg-ListDados">
+                           
+                        <div class="conts-Lista-Dados">
+    
+                            <div class="cont-ListasTrilhas">
+                            </div>
+    
+                            <div class="contExt-DadosTrilha">
+    
+                                <div class="cont-DadosTrilha-Inf">
+                                </div>
+    
+                                <div class="conts-DadosTrilha-coment-fotos">
+    
+                                    <div class="DadosTrilha-coment">
+                                    </div>
+    
+                                    <div class="DadosTrilha-fotos">
+                                    </div>
+    
+                                </div>
+                                
+                                <div class="cont-bttn-CriarEvent-LogIn">
+                                </div>
+                                
+                            </div>
+                            
+                            
+    
                         </div>
-
-                        <div class="cont-list-dados-trilhas">
-                        </div>
-
-                        <div class="cont-infoDdsTrilha">
-
-                        </div>
-
+    
+    
                     </div>
 
                 </div>
             </section>
-
-            <!-- -=- -->
-
+            <!-- Frederico -->
 
             <section class="conteiner-cadastro" id="contCadast">
 
@@ -126,7 +126,7 @@
 
 
                         <div>
-                            <label for="Sexo">Sexo:</label>
+                            <p>Sexo:</p>
                             <input type="radio" name="sexo" id="sexoMasc">
                             <label for="sexoMasc">Masculino</label>
 
@@ -309,7 +309,7 @@
 
     </div>
 
-    <script src="SA_Frederico.js"></script>
+    <script src="SA_MontagemFinal.css.js"></script>
 </body>
 
 </html>

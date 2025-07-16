@@ -42,6 +42,7 @@
     gap: 1%;
 }
 
+/* Menu Nave */
 nav {
 
     font-size: 20px;
@@ -83,116 +84,75 @@ li:hover {
 
     color: rgb(255, 255, 255);
 }
+/* Menu Nave */
 
-/*--------------------------------------------*/
+/*---Frederico---*/
 .cont-fred {
     display: none;
     flex-direction: row;
     gap: 5px;
 }
-
-.cont-nomeGrupo-autoExpl-map {
+.cont-areamap {
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 25%;
-    gap: 5px;
     /* border: solid 1px; */
 }
-
-.cont-nomeGrupo-autoExpl {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    height: 10%;
-    width: 100%;
-
-
-    /* border: 1px solid; */
-
-}
-
-.cont-autoExpl {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 20%;
-}
-
-.cont-autoExpl>img {
-    height: 100%;
-    width: 100%;
-
-}
-
-.cont-nomeGrupo {
-    display: flex;
-
-    align-items: center;
-    font-size: 1.6vw;
-    min-height: 100%;
-    min-width: 80%;
-}
-
 .cont-map {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    height: 90%;
+    
+    height: 100%;
     width: 100%;
 
     border: 3px solid black;
     border-radius: 7px;
     background-color: rgb(135, 205, 225, 1);
-    overflow: hidden;
 }
-
-.cont-map>img {
+.cont-map > img {
     min-height: 355px;
     min-width: 236px;
-    transform: rotate(12deg);
-    padding-right: 10%;
-
+    transform: rotate(7deg);
+    padding-right: 12%;
 }
 
 /*--------------------------------------------*/
 
-.cont-buttons-infos {
+.conts-BttnRegs-RegListDados {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    width: 40%;
+    width: 65%;
     height: 100%;
+    
 }
-
-.cont-buttons {
+.cont-BttnRegs {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     height: 10%;
     width: 100%;
 }
-
-.button-reg {
+.button-regs{
     display: flex;
     justify-content: center;
     align-items: center;
+
+    height: 100%;
+    width: 100%;
+
     font-size: 1vw;
     color: rgb(255, 255, 255);
-    background-color: rgb(0, 0, 0, 0);
+    background-color: rgb(255, 0, 255, 0);
     border: 0;
-    width: 100%;
-    height: 100%;
+
+
     cursor: pointer;
-
-
+    
 }
-
 .cont-button-nort {
     display: flex;
     flex-direction: column;
@@ -205,7 +165,6 @@ li:hover {
     border-radius: 5px;
     background-color: rgb(255, 203, 0, 1);
 }
-
 .cont-button-center {
     display: flex;
     flex-direction: column;
@@ -218,7 +177,6 @@ li:hover {
     border-radius: 5px;
     background-color: rgb(37, 39, 40, 1);
 }
-
 .cont-button-lest {
     display: flex;
     flex-direction: column;
@@ -231,7 +189,6 @@ li:hover {
     border-radius: 5px;
     background-color: rgb(0, 168, 238, 1);
 }
-
 .cont-button-sul {
     display: flex;
     flex-direction: column;
@@ -244,19 +201,14 @@ li:hover {
     border-radius: 5px;
     background-color: rgb(21, 187, 73, 1);
 }
-
-.cont-info {
+.conts-Reg-ListDados {
     display: flex;
     flex-direction: column;
 
     height: 90%;
     width: 100%;
-
-    gap: 1%;
-
 }
-
-.cont-info-Reg {
+/* .cont-Reg{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -266,73 +218,131 @@ li:hover {
     width: 100%;
     border: 2.5px solid black;
     font-size: 1.5vw;
-
-}
-
-.cont-list-dados-trilhas {
+} */
+.conts-Lista-Dados{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
 
-    height: 90%;
+    height: 100%;
     width: 100%;
+    padding-top: 0.5%;
+    gap:0.25%;
+
+    font-size: 1.25vw;
+}
+.cont-ListasTrilhas{
+    display: flex;
+    flex-direction: column;
+    
+    height: 100%;
+    width: 40%;
+
     padding: 0.5%;
-    gap: 1%;
+    gap: 1.5%;
     overflow-y: auto;
     border: 2.5px solid black;
+    overflow-wrap: break-word;
+    font-size: auto;
 }
-
-.bttnNomeTrilhas {
+.divsBttnTrilha{
     display: flex;
     justify-content: left;
     align-items: center;
     padding: 0.5%;
 
-    max-height: 40%;
-    width: 26%;
-
+    min-height: 15%;
+    width: 100%;
+    
     border: 1px solid rgb(0, 0, 0, 1);
-    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+}
+.contExt-DadosTrilha {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
+    height: 100%;
+    width: 60%;
+    border: 2.5px solid black;
+}
+.cont-DadosTrilha-Inf {
+    height: 45%;
+    width: 100%;
+    padding: 1%;
+    /* border: 2.5px solid black; */
+}
+.dadosTrilha{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+
+    padding: 0.5%;
+    gap: 1%;
+
+    font-size: 2.5vh;
+    
+}
+.iconsDadosTrilha{
+    height: 3.25vh;
+    width: 3.25vh;
+}
+.conts-DadosTrilha-coment-fotos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    height: 45%;
+    width: 100%;
+    /* border: 2.5px solid black; */
+}
+.DadosTrilha-coment{
+    height: 100%;
+    width: 50%;
+    border: 2.5px solid black;
+}
+.DadosTrilha-fotos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    padding: 0.25%;
+    /* border: 2.5px solid black; */
+    
+}
+.DadosTrilha-fotos > img{
+    height: 100%;
+    width: 100%;
+    /* border: 2.5px solid black;     */
+}
+.cont-bttn-CriarEvent-LogIn{
+    height: 10%;
+    width: 100%;
+    /* border: 2.5px solid black; */
+    padding: 1%;
+}
+.bttn-CriarEvent-LogIn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+
+    font-size: 1.5vw;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 0, 255, 0);
+    border: 2px solid black;
+
     cursor: pointer;
 }
 
-/* .cont-infoDdsTrilha {
-    height: 30%;
-    width: 100%;
-    border: 2.5px solid black;
-} */
+/*---Frederico---*/
 
-/*--------------------------------------------*/
-
-.conts-inf-cadas-info-pro {
-    display: none;
-    flex-direction: column;
-
-    height: 100%;
-    width: 35%;
-
-    gap: 2%;
-}
-
-.cont-login-cadastro-edicao {
-    display: flex;
-    flex-direction: row;
-    height: 10%;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid;
-}
-
-.cont-eventos {
-    border: 1px solid black;
-    width: 100%;
-    height: 90%;
-    border-radius: 10px;
-}
-
-
-
-/* Felipe */
+/*---Felipe---*/
 
 .conteiner-login {
     display: none;

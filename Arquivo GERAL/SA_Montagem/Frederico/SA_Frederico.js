@@ -21,7 +21,7 @@ const infsListaTrilhas = [
         regiao: 'Norte', cep: ``,
         distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
-        obs: ``
+        img: `<img src="image.svg">`
     },
 
     {
@@ -29,14 +29,14 @@ const infsListaTrilhas = [
         regiao: 'Norte', cep: ``,
         distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
-        obs: ``
+        img: `<img src="image.svg">`
     },
         {
         nome: 'TrilhaN5', pPartida: `Ponto A`, pChegada: `Ponto B`,
         regiao: 'Norte', cep: ``,
         distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
-        obs: ``
+        img: `<img src="image.svg">`
     },
 
     {
@@ -44,7 +44,7 @@ const infsListaTrilhas = [
         regiao: 'Norte', cep: ``,
         distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
-        obs: ``
+        img: `<img src="image.svg">`
     },
 
     {
@@ -52,7 +52,7 @@ const infsListaTrilhas = [
         regiao: 'Norte', cep: ``,
         distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
-        obs: ``
+        img: `<img src="image.svg">`
     },
 
     {
@@ -60,7 +60,7 @@ const infsListaTrilhas = [
         regiao: 'Norte', cep: ``,
         distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
-        obs: ``
+        img: `<img src="image.svg">`
     },
 
     {
@@ -68,7 +68,7 @@ const infsListaTrilhas = [
         regiao: 'Norte', cep: ``,
         distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
-        obs: ``
+        img: `<img src="image.svg">`
     },
 
     //-----------------------------------------------------------------------------
@@ -78,7 +78,7 @@ const infsListaTrilhas = [
         regiao: 'Central', cep: ``,
         distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
-        obs: ``
+        img: `<img src="image.svg">`
     },
 
     {
@@ -86,7 +86,7 @@ const infsListaTrilhas = [
         regiao: 'Central', cep: ``,
         distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
-        obs: ``
+        img: `<img src="image.svg">`
     },
 
     //-----------------------------------------------------------------------------
@@ -96,7 +96,7 @@ const infsListaTrilhas = [
         regiao: 'Leste', cep: ``,
         distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
-        obs: ``
+        img: `<img src="image.svg">`
     },
 
     {
@@ -104,7 +104,7 @@ const infsListaTrilhas = [
         regiao: 'Leste', cep: ``,
         distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
-        obs: ``
+        img: `<img src="image.svg">`
     },
 
     //-----------------------------------------------------------------------------
@@ -114,7 +114,7 @@ const infsListaTrilhas = [
         regiao: 'Sul', cep: ``,
         distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
-        obs: ``
+        img: `<img src="image.svg">`
     },
 
     {
@@ -122,7 +122,7 @@ const infsListaTrilhas = [
         regiao: 'Sul', cep: ``,
         distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
         nvlTSite: ``, nvlTUsuario: [],
-        obs: ``
+        img: `<img src="image.svg">`
     },
 ]
 localStorage.setItem('ListagemTrilhas', JSON.stringify(infsListaTrilhas))
@@ -133,7 +133,7 @@ localStorage.setItem('ListagemTrilhas', JSON.stringify(infsListaTrilhas))
 
 //Área reservada para receber as instruções do funcionamento das Trilhas
 
-function logInOut() {
+function logInOut() {   
     /*let usuario = localStorage.getItem("LogIN")
     if(usuario != undefined){
         return true
@@ -158,8 +158,6 @@ function mostrarListTrilhasReg(RegTrilha) {
     let trilhasReg = RegTrilha
     let nomeRegiao
     nomeRegiao = infsListaTrilhas.filter(filtroRegTrilha => filtroRegTrilha.regiao === trilhasReg)
-    // document.querySelector('.cont-Reg').innerHTML =
-    // `<p>Essas são as trilhas da região: ${trilhasReg}</p>`
     
     let nomesTrilhas
     nomesTrilhas =  document.querySelector('.cont-ListasTrilhas')
@@ -173,6 +171,7 @@ function mostrarListTrilhasReg(RegTrilha) {
         }
     
 }
+
 function mostrarInfTrilha(nomeTrilha) {
     let trilhaNome = nomeTrilha
     let dadosTrilha
@@ -210,41 +209,53 @@ function mostrarInfTrilha(nomeTrilha) {
             </div>                    
         `
         dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
+        document.querySelector('.DadosTrilha-coment').innerHTML =
+        `Área destinada aos comentários sobre a trilha`
+        
+        dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
         document.querySelector('.DadosTrilha-fotos').innerHTML =
         `${dadosTrilha.img}`
+        
+        document.querySelector('.cont-bttn-CriarEvent-LogIn').innerHTML =
+        `<button class='bttn-CriarEvent-LogIn' onclick="CRIAREVENTO('${dadosTrilha.nome}')">Criar Evento</button>`
 
     } else{
         dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
         document.querySelector('.cont-DadosTrilha-Inf').innerHTML =
-        `
-            <img src="person-simple-hike.svg" class='iconsDadosTrilha'>
-            <span>Trilha: ${dadosTrilha.nome}</span>
-            <br>
-            <img src="map-pin.svg" class='iconsDadosTrilha'>
-            <span>De: ${dadosTrilha.pPartida}</span>
-            <br>
-            <span>Para: ${dadosTrilha.pChegada}</span>
-            <img src="map-pin-line.svg" class='iconsDadosTrilha'>
-            <br>
-            <span>Dificuldade:</span>
-            <br>
-            <span>Indicada: ${dadosTrilha.nvlTSite}</span>
-            <br>
-            <span>Relatada: ${dadosTrilha.nvlTUsuario}</span>
-            <br>
-            <img src="path.svg" class='iconsDadosTrilha'>
-            <span>${dadosTrilha.distancia}</span>
-            <img src="timer.svg" class='iconsDadosTrilha'>
-            <span>${dadosTrilha.tempo}</span>
-            <br>
-            <img src="map-trifold.svg" class='iconsDadosTrilha'>
-            <span>Relevo: ${dadosTrilha.relevo}</span> 
-            <span> / Elevação: ${dadosTrilha.elevacao}</span>         
-        `
+        `   <div class='dadosTrilha'>
+                <img src="map-trifold.svg" class='iconsDadosTrilha'>
+                <span>Trilha: ${dadosTrilha.nome}</span>
+            </div>
+            <div class='dadosTrilha'>
+                <img src="map-pin.svg" class='iconsDadosTrilha'>
+                <span>De: ${dadosTrilha.pPartida}</span>
+            </div>
+            <div class='dadosTrilha'>
 
+                <span>Para: ${dadosTrilha.pChegada}</span>
+                <img src="map-pin-line.svg" class='iconsDadosTrilha'>
+            </div>
+            <div class='dadosTrilha'>
+                <span>Dificuldade:</span>
+                <span>Indicada: ${dadosTrilha.nvlTSite} / Relatada: ${dadosTrilha.nvlTUsuario}</span>
+            </div>
+            <div class='dadosTrilha'>
+            <span>Para mais informações: <a href="URL_do_link">login</a>
+            </div>                   
+        `
+        dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
+        document.querySelector('.DadosTrilha-coment').innerHTML =
+        `Área destinada aos comentários sobre a trilha`
+        
+        dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
+        document.querySelector('.DadosTrilha-fotos').innerHTML =
+        `${dadosTrilha.img}`
     }
 
-
+}
+function CRIAREVENTO(nomeTrilhaEvento){
+let eventoTrilhaNome = nomeTrilhaEvento
+console.log(eventoTrilhaNome)
 }
 
 //Área reservada para receber as instruções do funcionamento das Trilhas
