@@ -290,6 +290,8 @@ function esconderSection() {
     document.querySelector(`.conteiner-cadastro`).style.display = "none"
     document.querySelector(`.conteiner-login`).style.display = "none"
     document.querySelector(`.container-Evento`).style.display = "none"
+    document.querySelector(`.cont-eventos`).style.display = "none"
+
 
 
 
@@ -569,6 +571,7 @@ document.getElementById('eventoForm').addEventListener('submit', function(event)
     this.reset();
     listarEventos();
     preencherCamposUsuario();
+    abrirTela('Eventos,container-Evento');
 });
 
 function listarEventos() {
@@ -645,4 +648,15 @@ function calcularIdade(dataNasc) {
         idade--;
     }
     return idade;
+}
+
+function abrirTela(nome) {
+    esconderSection()
+    let cont = nome.split(',', 2)
+    document.getElementById(cont[0]).style.color = "rgb(255, 255, 255)"
+    document.querySelector(`.${cont[1]}`).style.display = "flex"
+
+    if (cont[0] === 'Eventos') {
+        listarEventos()
+    }
 }
