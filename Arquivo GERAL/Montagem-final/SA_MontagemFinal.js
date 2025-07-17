@@ -14,7 +14,9 @@ function esconderCep() {
 }
 function abrirPaginaUsuário() {
     alert("logado")
+
     mostrarLiCompleto()
+    esconderSection()
 }
 //display flex/none
 
