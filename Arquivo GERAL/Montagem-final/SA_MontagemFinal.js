@@ -310,7 +310,7 @@ function abrirTela(nome) {
 
     //Fred
     document.querySelector(`.cont-map`).innerHTML =
-    `<img src="Mapas/FloripaGeral.png">`
+        `<img src="Mapas/FloripaGeral.png">`
     //Fred
 
 }
@@ -323,13 +323,13 @@ function usuarioLogado() {
 
 const infsListaTrilhas = [
     {
-        nome: ``, pPartida: ``, pChegada: ``,
+        nome: `Trilha Norte 1`, pPartida: `Ponta A`, pChegada: `Ponto B`,
         regiao: `Norte`, cep: ``,
-        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
-        nvlTSite: ``, nvlTUsuario: [],
+        distancia: `45Km`, tempo: '03hm30', relevo: `Irregular`, elevacao: `50m`,
+        nvlTSite: `5`, nvlTUsuario: [5],
         img: `<img src="Icones/image.svg">`,
     },
-
+    
     {
         nome: ``, pPartida: ``, pChegada: ``,
         regiao: `Norte`, cep: ``,
@@ -408,11 +408,13 @@ function limparTrilhas() {
 }
 function limparDadosTrilhas() {
     document.querySelector('.cont-DadosTrilha-Inf').innerHTML = ``
+    document.querySelector('.cont-DadosTrilha-Inf').innerHTML = ``
+    document.querySelector('.DadosTrilha-coment').innerHTML = ``
+    document.querySelector('.cont-bttn-CriarEvent-LogIn').innerHTML = ``
 }
-function limparMapa(){
+function limparMapa() {
     document.querySelector(`.cont-map`).innerHTML = ``
 }
-
 function mostrarListTrilhasReg(RegTrilha) {
     limparTrilhas()
     limparDadosTrilhas()
@@ -420,25 +422,38 @@ function mostrarListTrilhasReg(RegTrilha) {
 
     let trilhasReg = RegTrilha
     let nomeRegiao
-    
-    if(trilhasReg === 'Norte'){
-        document.querySelector(`.cont-map`).innerHTML = 
-        `<img src="Mapas/FloripaNorte.png">`
+
+    if (trilhasReg === 'Floripa') {
+        document.querySelector(`.cont-map`).innerHTML =
+            `<img src="Mapas/FloripaGeral.png">`
+    } else if (trilhasReg === 'Norte') {
+        document.querySelector(`.cont-map`).innerHTML =
+            `<img src="Mapas/FloripaNorte.png">`
+    } else if (trilhasReg === 'Central') {
+        document.querySelector(`.cont-map`).innerHTML =
+            `<img src="Mapas/FloripaCentral.png">`
+    } else if (trilhasReg === 'Leste') {
+        document.querySelector(`.cont-map`).innerHTML =
+            `<img src="Mapas/FloripaLeste.png">`
+    } else if (trilhasReg === 'Sul') {
+        document.querySelector(`.cont-map`).innerHTML =
+            `<img src="Mapas/FloripaSul.png">`
     }
 
     nomeRegiao = infsListaTrilhas.filter(filtroRegTrilha => filtroRegTrilha.regiao === trilhasReg)
-
     let nomesTrilhas
     nomesTrilhas = document.querySelector('.cont-ListasTrilhas')
     for (const trilha of nomeRegiao) {
         nomesTrilhas.innerHTML +=
             `<div onclick="mostrarInfTrilha('${trilha.nome}')" class="divsBttnTrilha">
-                <p>
-                    ${trilha.nome}
-                </p>
+                <div class='divsBttnTrilha-nome'>
+                    <span>${trilha.nome}</span>
+                </div>
+                <div class='divsBttnTrilha-foto'>
+                    <span>${trilha.img}</span>
+                </div>
             </div>`
     }
-
 }
 function mostrarInfTrilha(nomeTrilha) {
     let trilhaNome = nomeTrilha
@@ -476,13 +491,8 @@ function mostrarInfTrilha(nomeTrilha) {
                 <span> / Elevação: ${dadosTrilha.elevacao}</span>
             </div>                    
         `
-        dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
         document.querySelector('.DadosTrilha-coment').innerHTML =
             `Área destinada aos comentários sobre a trilha`
-
-        dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
-        document.querySelector('.DadosTrilha-fotos').innerHTML =
-            `${dadosTrilha.img}`
 
         document.querySelector('.cont-bttn-CriarEvent-LogIn').innerHTML =
             `<button class='bttn-CriarEvent-LogIn' onclick="CRIAREVENTO('${dadosTrilha.nome}')">Criar Evento</button>`
@@ -511,13 +521,8 @@ function mostrarInfTrilha(nomeTrilha) {
             <span>Para mais informações: <a href="URL_do_link">login</a>
             </div>                   
         `
-        dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
         document.querySelector('.DadosTrilha-coment').innerHTML =
             `Área destinada aos comentários sobre a trilha`
-
-        dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
-        document.querySelector('.DadosTrilha-fotos').innerHTML =
-            `${dadosTrilha.img}`
     }
 
 }
@@ -525,6 +530,7 @@ function CRIAREVENTO(nomeTrilhaEvento) {
     let eventoTrilhaNome = nomeTrilhaEvento
     console.log(eventoTrilhaNome)
 }
+
 // Frederico
 
 //Ronald
