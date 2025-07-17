@@ -587,7 +587,10 @@ li:hover {
 .conteiner-perfil{
     display: none;
 }
+#btn-minhas-trilhas{
+    display: none;
 
+}
 
 #perfil{
     display: none;

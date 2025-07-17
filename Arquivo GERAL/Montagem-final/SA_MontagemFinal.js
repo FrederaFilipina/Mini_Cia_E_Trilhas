@@ -286,6 +286,7 @@ function mostrarLiCompleto() {
     document.getElementById("fazerAvaliacao").style.display = "flex"
     document.getElementById("perfil").style.display = "flex"
     document.getElementById("Login").style.display = "flex"
+    document.getElementById("btn-minhas-trilhas").style.display = "flex"
 
     //login sai 
 
