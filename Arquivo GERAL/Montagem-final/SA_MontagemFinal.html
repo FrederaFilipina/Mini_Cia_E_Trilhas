@@ -22,6 +22,7 @@
                     <li onclick="abrirTela('Trilhas,cont-fred')" id="Trilhas">Trilhas</li>
                     <li id="Eventos">Eventos</li>
                     <li onclick="abrirTela('criarEventos,container-Evento')" id="criarEventos">Criar Eventos</li>
+                    <li onclick="abrirTela('fazerAvalicao,container-Avalicao')" id="fazerAvalicao">Avaliação</li>
                 </ol>
             </nav>
             <!-- Navegador -->
@@ -35,61 +36,69 @@
                     </div>
 
                 </div>
-    
+
                 <!-- -=- -->
-    
+
                 <div class="conts-BttnRegs-ListDados">
-    
+
                     <div class="cont-BttnRegs">
-    
+
                         <div class="cont-button-nort">
-                            <button class="button-regs" onclick="mostrarListTrilhasReg('Norte')"><h3>NORTE</h3></button>
+                            <button class="button-regs" onclick="mostrarListTrilhasReg('Norte')">
+                                <h3>NORTE</h3>
+                            </button>
                         </div>
-    
+
                         <div class="cont-button-center">
-                            <button class="button-regs" onclick="mostrarListTrilhasReg('Central')"><h3>CENTRAL</h3></button>
+                            <button class="button-regs" onclick="mostrarListTrilhasReg('Central')">
+                                <h3>CENTRAL</h3>
+                            </button>
                         </div>
-    
+
                         <div class="cont-button-lest">
-                            <button class="button-regs" onclick="mostrarListTrilhasReg('Leste')"><h3>LESTE</h3></button>
+                            <button class="button-regs" onclick="mostrarListTrilhasReg('Leste')">
+                                <h3>LESTE</h3>
+                            </button>
                         </div>
-    
+
                         <div class="cont-button-sul">
-                            <button class="button-regs" onclick="mostrarListTrilhasReg('Sul')"><h3>SUL</h3></button>
+                            <button class="button-regs" onclick="mostrarListTrilhasReg('Sul')">
+                                <h3>SUL</h3>
+                            </button>
                         </div>
-    
+
                     </div>
-    
+
                     <div class="conts-ListDados">
-                           
+
                         <div class="conts-Lista-Dados">
-    
+
                             <div class="cont-ListasTrilhas">
                             </div>
-    
+
                             <div class="contExt-DadosTrilha">
-    
+
                                 <div class="cont-DadosTrilha-Inf">
                                 </div>
-    
+
                                 <div class="conts-DadosTrilha-coment-fotos">
-    
+
                                     <div class="DadosTrilha-coment">
                                     </div>
-    
+
                                     <div class="DadosTrilha-fotos">
                                     </div>
-    
+
                                 </div>
-                                
+
                                 <div class="cont-bttn-CriarEvent-LogIn">
                                 </div>
-                                
+
                             </div>
-                            
+
                         </div>
-    
-    
+
+
                     </div>
 
                 </div>
@@ -236,14 +245,12 @@
                 </div>
             </section>
 
-
-
             <section class="container-Evento" id="contEvento">
                 <div class="container">
                     <h2>Criar Novo Evento</h2>
-        
+
                     <form id="eventoForm">
-        
+
                         <div class="form-group">
                             <label for="trilha">Trilha:</label>
                             <select id="trilha" required>
@@ -252,37 +259,95 @@
                                 <option value="Trilha do Campeche">Trilha do Campeche</option>
                             </select>
                         </div>
-        
+
                         <div class="form-group">
                             <label for="data">Data:</label>
                             <input type="date" id="data" required>
                         </div>
-        
+
                         <div class="form-group">
                             <label for="hora">Horário:</label>
                             <input type="time" id="hora" required>
                         </div>
-        
+
                         <div class="form-group">
                             <label for="ponto">Ponto de Encontro:</label>
                             <input type="text" id="ponto" required>
                         </div>
-        
+
                         <div class="form-group">
                             <label for="vagas">Vagas (2 a 5):</label>
                             <input type="number" id="vagas" min="2" max="5" required>
                         </div>
-        
+
                         <div class="form-group">
                             <button class="button-EventosCadastrar" type="submit">Cadastrar Evento</button>
+
                         </div>
                     </form>
-        
+
                     <div id="mensagem"></div>
                 </div>
-        
-                
+
+
             </section>
+
+            <!-- washingotn -->
+            <section class="container-Avalicao">
+                <div id="containerAvaPai">
+    <h2 id="h2-trilha">Avaliação da trilha ${buscar no evento}</h2>
+    <label id="label-trilha">Tempo estimado</label>
+    <select id="tempoEstimado">
+        <option value="" selected>Selecione Tempo estimado</option>
+        <option value="00:15">00:15</option>
+        <option value="00:30">00:30</option>
+        <option value="00:45">00:45</option>
+        <option value="01:00">01:00</option>
+        <option value="01:15">01:15</option>
+        <option value="01:30">01:30</option>
+        <option value="01:45">01:45</option>
+        <option value="02:00">02:00</option>
+        <option value="02:15">02:15</option>
+        <option value="02:30">02:30</option>
+        <option value="02:45">02:45</option>
+        <option value="03:00">03:00</option>
+        <option value="03:15">03:15</option>
+        <option value="03:30">03:30</option>
+        <option value="03:45">03:45</option>
+        <option value="04:00">04:00</option>
+        <option value="04:15">04:15</option>
+        <option value="04:30">04:30</option>
+        <option value="04:45">04:45</option>
+        <option value="04500">05:00</option>
+    </select>
+    <!-- <input type="number" class="escTexAva" id="tempoEstimado" placeholder="Tempo estimado"> -->
+
+
+    <label id="label-grauDeDificuldade">Grau de dificuldade </label>
+    <!-- <input type="text" class="escTexAva" id="grauDeDificuldade" placeholder="Grau de dificuldade"> -->
+    <select id="grauDeDificuldade">
+        <option value="" selected></option>
+        <option value="Facil">1-Facil</option>
+        <option value="Facil Medio">2-Facil Medio</option>
+        <option value="Medio">3-Medio</option>
+        <option value="Medio Dificil">4-Medio Dificil</option>
+        <option value="Dificil">5-Dificil</option>
+    </select>
+
+    <button onclick="avaTrilha()" id="buton-avatrilha">Confirmar</button>
+    <ul id="mostraTrilha"></ul>
+</div>
+<div id="containerAva">
+    <h3>Avaliação do amigo de 1 a 5</h3>
+    <label id="nomeAmigo">Nome ${buscar no evento}</label>
+    <input type="number" class="notaAva" id="notaAmigo" min="1" max="5" placeholder="nota">
+    <label id="label-cometarioAmigo">Comentário</ç>
+    <input type="text" class="escTexAva" id="cometarioAmigo" placeholder="comentário">
+    <button onclick="avalicaoAmigo()" id="buton-avaAmigo">Próximo</button>
+    <ul id="mostraAmigo"></ul>
+</div>
+            </section>
+            <!-- washingotn -->
 
         </section>
 
@@ -294,3 +359,4 @@
 </body>
 
 </html>
+

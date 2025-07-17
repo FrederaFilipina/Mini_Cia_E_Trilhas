@@ -31,7 +31,7 @@
 
     height: 69.5vh;
     width: 81.1vw;
-    
+
     padding: 0.25%;
     gap: 0.5%;
 }
@@ -45,7 +45,7 @@ nav {
     width: 7%;
 
     font-size: 1.5vw;
-    
+
     ol {
         display: flex;
         flex-direction: column;
@@ -63,16 +63,17 @@ nav {
             width: 70%;
             height: 10%;
 
-            /* border: 1px solid; */           
+            /* border: 1px solid; */
             /* border-radius: 5px; */
 
-            color: rgb(0,0,0,1);
-            cursor: pointer;                   
+            color: rgb(0, 0, 0, 1);
+            cursor: pointer;
         }
 
     }
 }
-.liNav{
+
+.liNav {
     color: rgb(255, 255, 255);
 
 }
@@ -81,6 +82,7 @@ li:hover {
 
     color: rgb(255, 255, 255);
 }
+
 /* Menu Nave */
 
 /*---Frederico---*/
@@ -90,6 +92,7 @@ li:hover {
     flex-direction: row;
     gap: 0.5%;
 }
+
 .cont-areamap {
     display: flex;
     flex-direction: column;
@@ -97,12 +100,13 @@ li:hover {
     width: 25%;
     /* border: solid 1px; */
 }
+
 .cont-map {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
     height: 100%;
     width: 100%;
 
@@ -110,7 +114,8 @@ li:hover {
     border-radius: 7px;
     background-color: rgb(135, 205, 225, 1);
 }
-.cont-map > img {
+
+.cont-map>img {
     min-height: 355px;
     min-width: 236px;
     transform: rotate(7deg);
@@ -125,9 +130,10 @@ li:hover {
 
     height: 100%;
     width: 75%;
-    
+
     gap: 1%;
 }
+
 /*--------------------------------------------*/
 .cont-BttnRegs {
     display: flex;
@@ -137,7 +143,8 @@ li:hover {
     height: 10%;
     width: 100%;
 }
-.button-regs{
+
+.button-regs {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,6 +159,7 @@ li:hover {
 
     cursor: pointer;
 }
+
 .cont-button-nort {
     display: flex;
     flex-direction: column;
@@ -164,6 +172,7 @@ li:hover {
     border-radius: 5px;
     background-color: rgb(255, 203, 0, 1);
 }
+
 .cont-button-center {
     display: flex;
     flex-direction: column;
@@ -176,6 +185,7 @@ li:hover {
     border-radius: 5px;
     background-color: rgb(37, 39, 40, 1);
 }
+
 .cont-button-lest {
     display: flex;
     flex-direction: column;
@@ -188,6 +198,7 @@ li:hover {
     border-radius: 5px;
     background-color: rgb(0, 168, 238, 1);
 }
+
 .cont-button-sul {
     display: flex;
     flex-direction: column;
@@ -200,6 +211,7 @@ li:hover {
     border-radius: 5px;
     background-color: rgb(21, 187, 73, 1);
 }
+
 /*--------------------------------------------*/
 .conts-ListDados {
     display: flex;
@@ -207,34 +219,37 @@ li:hover {
 
     height: 90%;
     width: 100%;
-    
+
 }
-.conts-Lista-Dados{
+
+.conts-Lista-Dados {
     display: flex;
     flex-direction: row;
 
     height: 100%;
     width: 100%;
-    gap:0.5%;
+    gap: 0.5%;
 
     font-size: 1.25vw;
 }
-.cont-ListasTrilhas{
+
+.cont-ListasTrilhas {
     display: flex;
     flex-direction: column;
-    
+
     height: 100%;
     width: 40%;
 
     padding: 0.5%;
-    gap: 1.5%;   
-    
+    gap: 1.5%;
+
     overflow-y: auto;
     overflow-wrap: break-word;
     border: 2.5px solid black;
 
 }
-.divsBttnTrilha{
+
+.divsBttnTrilha {
     display: flex;
     justify-content: left;
     align-items: center;
@@ -242,15 +257,16 @@ li:hover {
 
     min-height: 15%;
     width: 100%;
-    
+
     border: 1px solid rgb(0, 0, 0, 1);
     cursor: pointer;
 }
+
 .contExt-DadosTrilha {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+
     height: 100%;
     width: 60%;
 
@@ -258,13 +274,15 @@ li:hover {
 
     padding: 0.25%;
 }
+
 .cont-DadosTrilha-Inf {
     height: 45%;
     width: 100%;
 
     padding: 1%;
 }
-.dadosTrilha{
+
+.dadosTrilha {
     display: flex;
     flex-direction: row;
     justify-content: left;
@@ -274,13 +292,15 @@ li:hover {
     gap: 1%;
 
     font-size: 2.5vh;
-    
+
 }
-.iconsDadosTrilha{
+
+.iconsDadosTrilha {
     height: 3.25vh;
     width: 3.25vh;
 }
-.conts-DadosTrilha-coment-fotos{
+
+.conts-DadosTrilha-coment-fotos {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -291,12 +311,14 @@ li:hover {
     padding: 0.25%;
     /* border: 2.5px solid black; */
 }
-.DadosTrilha-coment{
+
+.DadosTrilha-coment {
     height: 100%;
     width: 50%;
     border: 2.5px solid black;
 }
-.DadosTrilha-fotos{
+
+.DadosTrilha-fotos {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -304,20 +326,23 @@ li:hover {
     width: 50%;
     padding: 0.25%;
     /* border: 2.5px solid black; */
-    
+
 }
-.DadosTrilha-fotos > img{
+
+.DadosTrilha-fotos>img {
     height: 100%;
     width: 100%;
     /* border: 2.5px solid black;     */
 }
-.cont-bttn-CriarEvent-LogIn{
+
+.cont-bttn-CriarEvent-LogIn {
     height: 10%;
     width: 100%;
     /* border: 2.5px solid black; */
     padding: 1%;
 }
-.bttn-CriarEvent-LogIn{
+
+.bttn-CriarEvent-LogIn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -352,18 +377,19 @@ li:hover {
     justify-content: center;
     align-items: center;
     border: none;
-    box-shadow:  0 0 5px #ccc;
+    box-shadow: 0 0 5px #ccc;
     border-radius: 4px;
     padding: 1rem;
     gap: 30px;
-    h1{
+
+    h1 {
         filter: drop-shadow(0 0 10px #ccc);
     }
 }
 
 .formulario-login input[type="text"],
 .formulario-login input[type="password"] {
-    
+
     height: 25px;
     border-radius: 5px;
     padding: 3px 4px;
@@ -535,7 +561,7 @@ li:hover {
     background: #5C3D2E;
 }
 
-.cont-infosLoginCadas{
+.cont-infosLoginCadas {
     color: #a80101;
 }
 
@@ -544,83 +570,84 @@ li:hover {
 
 
 #minhas-trilhas-view {
-  padding: 20px;
-  color: #1e1e1e;
-  width: 100%;
+    padding: 20px;
+    color: #1e1e1e;
+    width: 100%;
 }
 
 #minhas-trilhas-view h2 {
- text-align: center;
-  font-size: 26px;
-  font-weight: bold;
-  color: #222;
-  margin-bottom: 20px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 20px;
 }
 
 .trilha-item {
-  border: 1px solid #888;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px;
-  box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-  font-size: 16px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
 
 }
 
 .trilha-item p {
-  margin: 5px 0;
+    margin: 5px 0;
 }
 
 .trilha-item button {
-  margin-top: 10px;
-  padding: 6px 12px;
-  border: none;
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
+    margin-top: 10px;
+    padding: 6px 12px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .trilha-item button:hover {
-  background-color: #45a049;
+    background-color: #45a049;
 }
 
 .form-edicao input {
-  display: block;
-  width: 100%;
-  margin-bottom: 8px;
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .form-edicao button {
-  margin-right: 10px;
-  background-color: #2196F3;
+    margin-right: 10px;
+    background-color: #2196F3;
 }
 
 .form-edicao .cancelar-edicao {
-  background-color: #f44336;
+    background-color: #f44336;
 }
 
 .form-edicao button:hover {
-  opacity: 0.9;
+    opacity: 0.9;
 }
-.trilhas{
+
+.trilhas {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.titulo-minhasTrihas{
- text-align: center;
-  font-size: 26px;
-  font-weight: bold;
-  color: #222;
-  margin-bottom: 20px;
+.titulo-minhasTrihas {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 20px;
 }
 
-.conteiner-MinhasTrilhas{
+.conteiner-MinhasTrilhas {
     width: 90%;
     height: 100%;
 }
@@ -628,14 +655,15 @@ li:hover {
 
 /* Ronald */
 
-.container-Evento{
+.container-Evento {
     display: none;
-    
 
 
-    
+
+
 }
-#criarEventos{
+
+#criarEventos {
     display: none;
 }
 
@@ -643,7 +671,7 @@ li:hover {
    
 } */
 
-.form-group .button-EventosCadastrar{
+.form-group .button-EventosCadastrar {
     width: 80px;
     padding: 8px;
     background: #8B5E3C;
@@ -652,5 +680,53 @@ li:hover {
     font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
-    
+
+}
+
+/*Washington*/
+
+.container-Avalicao {
+    display: flex;
+    width: 80%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    margin: auto;
+    padding-left: 100px;/* Espaço interno à esquerda */
+    padding-right: 280px;/* Espaço interno à direita */
+
+
+}
+
+#containerAvaPai {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    width: 100%;
+    padding-left: 10px;/* Espaço interno à esquerda */
+    padding-right: 150px;/* Espaço interno à direita */
+    align-items: center;
+    gap: 30px;
+    /* background-color: #45a049; */
+    border: 1px solid gray;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px black;
+}
+
+#containerAva {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    align-items: center;
+    padding-left: 100px;/* Espaço interno à esquerda */
+    padding-right: 100px; /* Espaço interno à direita */
+    gap: 30px;
+    /* background-color: #a80101; */
+     border: 1px solid gray;
+     border-radius: 8px;
+     box-shadow: 2px 2px 2px black;
+
 }

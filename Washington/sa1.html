@@ -83,11 +83,11 @@
         </select>
         <!-- <input type="number" class="escTexAva" id="tempoEstimado" placeholder="Tempo estimado"> -->
 
-      
+
         <label>Grau de dificuldade </label>
         <!-- <input type="text" class="escTexAva" id="grauDeDificuldade" placeholder="Grau de dificuldade"> -->
         <select id="grauDeDificuldade">
-            <option value="" selected ></option>
+            <option value="" selected></option>
             <option value="Facil">1-Facil</option>
             <option value="Facil Medio">2-Facil Medio</option>
             <option value="Medio">3-Medio</option>
@@ -95,7 +95,7 @@
             <option value="Dificil">5-Dificil</option>
         </select>
 
-        <button onclick="avaTrilha()">Confirmar</button>
+        <button onclick="avaTrilha()">Confirmar</button>               
         <ul id="mostraTrilha"></ul>
     </div>
     <div id="containerAva">
@@ -120,7 +120,7 @@
             console.log(avaliacaoTempo)
 
             const avaDificuldade = document.getElementById("grauDeDificuldade").value
-            if (avaDificuldade  === "")
+            if (avaDificuldade === "")
                 avaliacaoGrauDeDificuldade.push(avaDificuldade)
 
             console.log(avaDificuldade)
