@@ -340,7 +340,7 @@
     <label id="label-grauDeDificuldade">Grau de dificuldade </label>
     <!-- <input type="text" class="escTexAva" id="grauDeDificuldade" placeholder="Grau de dificuldade"> -->
     <select id="grauDeDificuldade">
-        <option value="" selected></option>
+        <option value="" selected> Clique aqui</option>
         <option value="Facil">1-Facil</option>
         <option value="Facil Medio">2-Facil Medio</option>
         <option value="Medio">3-Medio</option>
@@ -352,11 +352,19 @@
     <ul id="mostraTrilha"></ul>
 </div>
 <div id="containerAva">
-    <h3>Avaliação do amigo de 1 a 5</h3>
+    <h2 id="h2-trilha">Avaliação do amigo de 1 a 5</h2>
     <label id="nomeAmigo">Nome ${buscar no evento}</label>
-    <input type="number" class="notaAva" id="notaAmigo" min="1" max="5" placeholder="nota">
-    <label id="label-cometarioAmigo">Comentário</ç>
-    <input type="text" class="escTexAva" id="cometarioAmigo" placeholder="comentário">
+    <select id="notaAmigo">
+        <option value="" selected>Clique aqui</option>
+        <option value="Pessimo">     1- Pessimo</option>
+        <option value="Bom">            2-  Bom</option>
+        <option value="Muito bom"> 3- Muito bom</option>
+        <option value="Otimo">        4-  Otimo</option>
+        <option value="Execelente">5- Execelente</option>
+    </select>
+    <!-- <input type="number" class="notaAva" id="notaAmigo" min="1" max="5" placeholder="nota"> -->
+    <!-- <label id="label-cometarioAmigo">Comentário</ç>
+    <input type="text" class="escTexAva" id="cometarioAmigo" placeholder="comentário"> -->
     <button onclick="avalicaoAmigo()" id="buton-avaAmigo">Próximo</button>
     <ul id="mostraAmigo"></ul>
 </div>

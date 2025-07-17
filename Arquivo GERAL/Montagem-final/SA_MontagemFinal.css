@@ -482,7 +482,7 @@ li:hover {
     font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
-    transition: background 0.2s
+    transition: background 0.2s;
 }
 
 .conteiner-cadastro {
@@ -740,28 +740,23 @@ li:hover {
 
 .container-Avalicao {
     display: flex;
-    width: 80%;
+    width: 90%;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
-
+    align-items: center;
+    /* background-color: #f44336; */
     margin: auto;
-    padding-left: 100px;/* Espaço interno à esquerda */
-    padding-right: 280px;/* Espaço interno à direita */
-
-
+    padding: 0 250px; 
 }
 
 #containerAvaPai {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10px;
-    width: 100%;
-    padding-left: 10px;/* Espaço interno à esquerda */
-    padding-right: 150px;/* Espaço interno à direita */
-    align-items: center;
-    gap: 30px;
+    margin: 20px;
+    width: 90%;
+    padding: 1% 100px;
+    gap: 20px;
     /* background-color: #45a049; */
     border: 1px solid gray;
     border-radius: 8px;
@@ -773,13 +768,18 @@ li:hover {
     flex-direction: column;
     align-items: center;
     width: 90%;
-    align-items: center;
-    padding-left: 100px;/* Espaço interno à esquerda */
-    padding-right: 100px; /* Espaço interno à direita */
+    padding: 10% 100px;
     gap: 30px;
     /* background-color: #a80101; */
-     border: 1px solid gray;
-     border-radius: 8px;
-     box-shadow: 2px 2px 2px black;
-
+    border: 1px solid gray;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px black;
+} 
+#h2-trilha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    text-align: center; 
 }
+/*Washington*/
