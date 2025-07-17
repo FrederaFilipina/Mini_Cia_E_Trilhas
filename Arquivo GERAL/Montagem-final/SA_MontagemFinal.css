@@ -584,7 +584,14 @@ li:hover {
 
 
 /* --------------Jonny------------------ */
+.conteiner-perfil{
+    display: none;
+}
 
+
+#perfil{
+    display: none;
+}
 
 #minhas-trilhas-view {
     padding: 20px;

@@ -14,7 +14,7 @@ function esconderCep() {
 }
 function abrirPaginaUsuário() {
     alert("logado")
-    mostrarCriarTrilha()
+    mostrarLiCompleto()
 }
 //display flex/none
 
@@ -277,6 +277,21 @@ function logar(event) {
 // -----------------------------------
 // funcionamento da pagina
 
+if (usuarioLogado()) {
+    mostrarLiCompleto()
+}
+
+function mostrarLiCompleto() {
+    document.getElementById("criarEventos").style.display = "flex"
+    document.getElementById("fazerAvaliacao").style.display = "flex"
+    document.getElementById("perfil").style.display = "flex"
+    document.getElementById("Login").style.display = "flex"
+
+    //login sai 
+
+    document.getElementById("Login").style.display = "none"
+
+}
 function esconderSection() {
     document.getElementById("Login").classList.remove("liNav")
     document.getElementById("Trilhas").classList.remove("liNav")
@@ -284,6 +299,7 @@ function esconderSection() {
     document.getElementById("btn-minhas-trilhas").classList.remove("liNav")
     document.getElementById("criarEventos").classList.remove("liNav")
     document.getElementById("fazerAvaliacao").classList.remove("liNav")
+    document.getElementById("perfil").classList.remove("liNav")
 
     document.querySelector(`.cont-fred`).style.display = "none"
     document.querySelector(`.conteiner-cadastro`).style.display = "none"
@@ -291,6 +307,7 @@ function esconderSection() {
     document.querySelector(`.container-Evento`).style.display = "none"
     document.querySelector(`.conteiner-MinhasTrilhas`).style.display = "none"
     document.querySelector(`.conteiner-Avaliacao`).style.display = "none"
+    document.querySelector(`.conteiner-perfil`).style.display = "none"
 
 
 }
@@ -541,12 +558,6 @@ function CRIAREVENTO(nomeTrilhaEvento) {
 
 //Ronald
 
-function mostrarCriarTrilha() {
-    document.getElementById("criarEventos").style.display = "flex"
-}
-if (usuarioLogado()) {
-    mostrarCriarTrilha()
-}
 
 document.getElementById('eventoForm').addEventListener('submit', function (event) {
     event.preventDefault();
@@ -681,6 +692,7 @@ function calcularIdade(dataNasc) {
 // jonny
 
 
+
 const lista = document.getElementById("trilhas");
 const trilhasView = document.getElementById("minhas-trilhas-view");
 const botaoMinhasTrilhas = document.getElementById("btn-minhas-trilhas");
@@ -760,6 +772,9 @@ lista.addEventListener("submit", (event) => {
 });
 
 //Washington o bonito
+
+
+
 
 //  const avaliacaoGrauDeDificuldade = []
 //         const avalicaoTempoEstimado = []
