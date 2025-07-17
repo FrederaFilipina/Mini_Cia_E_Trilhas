@@ -527,8 +527,6 @@ let indexEditando = null;
 
 function renderizarTrilhas() {
     const atualizarClicando = JSON.parse(localStorage.getItem("eventos")) || [];
-
-
     const usuario = usuarioLogado()
 
 
@@ -609,14 +607,19 @@ function abrirMinhasTrilhas() {
     renderizarTrilhas()
 }
 
+function abrirMeuPerfil(){
+    
+}
+
 function abrirBotaoPerfil() {
-    const abrirBotaoPerfil = document.querySelectorAll("#perfil")
-    abrirBotaoPerfil.forEach((button) => {
-        button.addEventListener("click", () => {
-            document.getElementById("container-perfil").style.display = "block"
-            mostrarDadosUsuario()
-        });
+  const abrirBotaoPerfil = document.querySelectorAll("#perfil");
+  abrirBotaoPerfil.forEach((button) => {
+    button.addEventListener("click", () => {
+      document.getElementById("contPerfil").style.display = "block";
+      document.getElementById("perfil-container").style.display = "block";
+      mostrarDadosUsuario();
     });
+  });
 }
 abrirBotaoPerfil();
 
@@ -629,29 +632,83 @@ function fecharBotaoPerfil() {
 fecharBotaoPerfil();
 
 function mostrarDadosUsuario() {
-    const informacoesPerfil = document.getElementById("perfil");
-    const cadastroUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-    const usuario = cadastroUsuarios.find(usuario => usuario.logado === true);
+    const visual = document.getElementById("perfil-visualizacao");
+    const usuario = JSON.parse(localStorage.getItem("logado"));
 
     if (!usuario) {
         alert("Você precisa estar logado!");
         document.getElementById("perfil-container").style.display = "none";
-        abrirLogin(); // ou qualquer função que exibe login
+        abrirLoginCadastro("contLogin");
         return;
     }
 
-    informacoesPerfil.innerHTML = `
-    <p><strong>Nome:</strong> ${usuario.nomeUsuario}</p>
-    <p><strong>Email:</strong> ${usuario.email}</p>
-    <p><strong>Sexo:</strong> ${usuario.sexo}</p>
-    <p><strong>Telefone:</strong> ${usuario.telefone}</p>
-    <p><strong>CPF:</strong> ${usuario.cpf}</p>
-    <p><strong>Avaliação:</strong> ${usuario.avaliaçãoUser}</p>
-    <button class="editar-btn">Editar</button>
-  `;
+    visual.innerHTML = `
+        <p><strong>Nome:</strong> ${usuario.nomeUsuario}</p>
+        <p><strong>Email:</strong> ${usuario.email}</p>
+        <p><strong>Sexo:</strong> ${usuario.sexo}</p>
+        <p><strong>Telefone:</strong> ${usuario.telefone}</p>
+        <p><strong>CPF:</strong> ${usuario.cpf}</p>
+        <p><strong>Avaliação:</strong> ${usuario.avaliaçãoUser}</p>
+    `;
 }
 
+document.getElementById("editar-perfil").addEventListener("click", () => {
+    const usuario = JSON.parse(localStorage.getItem("logado"));
+    if (!usuario) return;
+
+    const form = document.forms["form-edicao"];
+    form.nomeUsuario.value = usuario.nomeUsuario;
+    form.email.value = usuario.email;
+    form.telefone.value = usuario.telefone;
+    form.sexo.value = usuario.sexo;
+
+    document.getElementById("perfil-visualizacao").style.display = "none";
+    document.getElementById("perfil-edicao").style.display = "block";
+});
+
+document.getElementById("cancelar-edicao").addEventListener("click", () => {
+  document.getElementById("perfil-edicao").style.display = "none";
+  document.getElementById("perfil-visualizacao").style.display = "block";
+});
+
+document.getElementById("form-edicao").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    const usuarios = JSON.parse(localStorage.getItem("CadastroUser")) || [];
+    let logado = JSON.parse(localStorage.getItem("logado"));
+    const index = usuarios.findIndex(u => u.cpf === logado.cpf);
+
+    if (index !== -1) {
+        usuarios[index].nomeUsuario = form.nomeUsuario.value;
+        usuarios[index].email = form.email.value;
+        usuarios[index].telefone = form.telefone.value;
+        usuarios[index].sexo = form.sexo.value;
+
+        // atualiza o logado também
+        localStorage.setItem("logado", JSON.stringify(usuarios[index]));
+        localStorage.setItem("CadastroUser", JSON.stringify(usuarios));
+
+        mostrarDadosUsuario();
+        document.getElementById("perfil-edicao").style.display = "none";
+        document.getElementById("perfil-visualizacao").style.display = "block";
+    }
+});
+
+document.getElementById("excluir-perfil").addEventListener("click", () => {
+    if (!confirm("Tem certeza que deseja excluir sua conta?")) return;
+
+    let usuarios = JSON.parse(localStorage.getItem("CadastroUser")) || [];
+    const usuarioLogado = JSON.parse(localStorage.getItem("logado"));
+
+    usuarios = usuarios.filter(u => u.cpf !== usuarioLogado.cpf);
+
+    localStorage.setItem("CadastroUser", JSON.stringify(usuarios));
+    localStorage.removeItem("logado");
+
+    alert("Conta excluída com sucesso.");
+    location.reload(); // ou abrirLoginCadastro("contLogin")
+});
 
 function mostrarAlerta(mensagem) {
     const alerta = document.getElementById('meu-alerta');
