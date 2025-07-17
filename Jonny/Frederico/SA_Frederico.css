@@ -619,7 +619,11 @@ li:hover {
 }
 
 
-.tituloPerfil {
+
+.conteiner-perfil{
+    border: 1px solid black;
+}
+/* .tituloPerfil {
     text-align: center;
     font-size: 26px;
     font-weight: bold;
@@ -628,6 +632,7 @@ li:hover {
 }
 
 .conteiner-perfil {
+    border:1px #1e1e1e;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -645,7 +650,7 @@ li:hover {
     font-weight: bold;
     color: #222;
     margin-bottom: 20px;
-}
+} */
 
 
 

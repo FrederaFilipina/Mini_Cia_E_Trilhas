@@ -560,6 +560,7 @@ function renderizarTrilhas() {
         <p><strong>Ponto de encontro:</strong> ${trilha.ponto}</p>
         <p><strong>Vagas disponíveis:</strong> ${trilha.vagas}</p>
         <button class="editar-btn" data-index="${index}">Editar</button>
+        <button type="button" class="excluir-trilha">Excluir</button>
       `;
         }
 
