@@ -274,9 +274,8 @@ function logar(event) {
     } else infoUserLogin.innerHTML = "*Senha incorreta"
 
 }
-//-----------------------------------//
-
-//funcionamento da pagina
+// -----------------------------------
+// funcionamento da pagina
 
 function esconderSection() {
     document.getElementById("Login").classList.remove("liNav")
@@ -290,12 +289,6 @@ function esconderSection() {
     document.querySelector(`.conteiner-login`).style.display = "none"
     document.querySelector(`.container-Evento`).style.display = "none"
     document.querySelector(`.conteiner-MinhasTrilhas`).style.display = "none"
-
-
-
-
-
-
 
 }
 function abrirLoginCadastro(cont) {
@@ -313,142 +306,92 @@ function abrirTela(nome) {
 
     document.querySelector(`.${cont[1]}`).style.display = "flex"
 
+    //Fred
+    document.querySelector(`.cont-map`).innerHTML =
+    `<img src="Mapas/FloripaGeral.png">`
+    //Fred
+
 }
 function usuarioLogado() {
     return JSON.parse(localStorage.getItem("logado"))
 }
 
 //funcionamento da pagina
-
 // Frederico
 
 const infsListaTrilhas = [
     {
-        nome: 'Caminho dos Naufragados', pPartida: `Ponto A`, pChegada: `Ponto B`,
-        regiao: 'Norte', cep: ``,
-        distancia: '10Km', tempo: '1h00', relevo: `Irregular`, elevacao: `15m`,
-        nvlTSite: `5`, nvlTUsuario: [4],
-        img: `<img src="image.svg">`,
+        nome: ``, pPartida: ``, pChegada: ``,
+        regiao: `Norte`, cep: ``,
+        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
+        nvlTSite: ``, nvlTUsuario: [],
+        img: `<img src="Icones/image.svg">`,
     },
 
     {
-        nome: 'Lagoinha do Leste (Praia)', pPartida: ``, pChegada: ``,
-        regiao: 'Norte', cep: ``,
-        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
+        nome: ``, pPartida: ``, pChegada: ``,
+        regiao: `Norte`, cep: ``,
+        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="IMG-20180523-WA0012.jpg">`
-    },
-        {
-        nome: 'Lagoinha do Leste (Morro da Coroa)', pPartida: `Ponto A`, pChegada: `Ponto B`,
-        regiao: 'Norte', cep: ``,
-        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="image.svg">`
-    },
-
-    {
-        nome: 'Piscinas Naturais da Barra da Lagoa', pPartida: ``, pChegada: ``,
-        regiao: 'Norte', cep: ``,
-        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="image.svg">`
-    },
-        {
-        nome: 'TrilhaN5', pPartida: `Ponto A`, pChegada: `Ponto B`,
-        regiao: 'Norte', cep: ``,
-        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="image.svg">`
-    },
-
-    {
-        nome: 'TrilhaN6', pPartida: ``, pChegada: ``,
-        regiao: 'Norte', cep: ``,
-        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="image.svg">`
-    },
-
-    {
-        nome: 'TrilhaN7', pPartida: ``, pChegada: ``,
-        regiao: 'Norte', cep: ``,
-        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="image.svg">`
-    },
-
-    {
-        nome: 'TrilhaN8', pPartida: ``, pChegada: ``,
-        regiao: 'Norte', cep: ``,
-        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="image.svg">`
-    },
-
-    {
-        nome: 'TrilhaN', pPartida: ``, pChegada: ``,
-        regiao: 'Norte', cep: ``,
-        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="image.svg">`
+        img: `<img src="Icones/image.svg">`,
     },
 
     //-----------------------------------------------------------------------------
 
     {
-        nome: 'TrilhaC1', pPartida: ``, pChegada: ``,
-        regiao: 'Central', cep: ``,
-        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
+        nome: ``, pPartida: ``, pChegada: ``,
+        regiao: `Central`, cep: ``,
+        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="image.svg">`
+        img: `<img src="Icones/image.svg">`,
     },
 
     {
-        nome: 'TrilhaC2', pPartida: ``, pChegada: ``,
-        regiao: 'Central', cep: ``,
-        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
+        nome: ``, pPartida: ``, pChegada: ``,
+        regiao: `Central`, cep: ``,
+        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="image.svg">`
-    },
-
-    //-----------------------------------------------------------------------------
-
-    {
-        nome: 'TrilhaL1', pPartida: ``, pChegada: ``,
-        regiao: 'Leste', cep: ``,
-        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="image.svg">`
-    },
-
-    {
-        nome: 'TrilhaL2', pPartida: ``, pChegada: ``,
-        regiao: 'Leste', cep: ``,
-        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="image.svg">`
+        img: `<img src="Icones/image.svg">`,
     },
 
     //-----------------------------------------------------------------------------
 
     {
-        nome: 'TrilhaS1', pPartida: ``, pChegada: ``,
-        regiao: 'Sul', cep: ``,
-        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
+        nome: ``, pPartida: ``, pChegada: ``,
+        regiao: `Leste`, cep: ``,
+        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="image.svg">`
+        img: `<img src="Icones/image.svg">`,
     },
 
     {
-        nome: 'TrilhaS2', pPartida: ``, pChegada: ``,
-        regiao: 'Sul', cep: ``,
-        distancia: '10Km', tempo: '1h00', relevo: ``, elevacao: ``,
+        nome: ``, pPartida: ``, pChegada: ``,
+        regiao: `Leste`, cep: ``,
+        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="image.svg">`
+        img: `<img src="Icones/image.svg">`,
+    },
+
+    //-----------------------------------------------------------------------------
+
+    {
+        nome: ``, pPartida: ``, pChegada: ``,
+        regiao: `Sul`, cep: ``,
+        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
+        nvlTSite: ``, nvlTUsuario: [],
+        img: `<img src="Icones/image.svg">`,
+    },
+
+    {
+        nome: ``, pPartida: ``, pChegada: ``,
+        regiao: `Sul`, cep: ``,
+        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
+        nvlTSite: ``, nvlTUsuario: [],
+        img: `<img src="Icones/image.svg">`,
     },
 ]
 localStorage.setItem('ListagemTrilhas', JSON.stringify(infsListaTrilhas))
-function logInOut() {   
+function logInOut() {
     /*let usuario = localStorage.getItem("LogIN")
     if(usuario != undefined){
         return true
@@ -459,96 +402,104 @@ function logInOut() {
     return true
 }
 function limparTrilhas() {
-    let limparListTrilhas = document.querySelector('.cont-ListasTrilhas')
-    limparListTrilhas.innerHTML = ``
+    document.querySelector('.cont-ListasTrilhas').innerHTML = ``
 }
 function limparDadosTrilhas() {
-    let limparDadosTrilhas = document.querySelector('.cont-DadosTrilha-Inf')
-    limparDadosTrilhas.innerHTML = ``
+    document.querySelector('.cont-DadosTrilha-Inf').innerHTML = ``
 }
+function limparMapa(){
+    document.querySelector(`.cont-map`).innerHTML = ``
+}
+
 function mostrarListTrilhasReg(RegTrilha) {
     limparTrilhas()
     limparDadosTrilhas()
+    limparMapa()
 
     let trilhasReg = RegTrilha
     let nomeRegiao
-    nomeRegiao = infsListaTrilhas.filter(filtroRegTrilha => filtroRegTrilha.regiao === trilhasReg)
     
+    if(trilhasReg === 'Norte'){
+        document.querySelector(`.cont-map`).innerHTML = 
+        `<img src="Mapas/FloripaNorte.png">`
+    }
+
+    nomeRegiao = infsListaTrilhas.filter(filtroRegTrilha => filtroRegTrilha.regiao === trilhasReg)
+
     let nomesTrilhas
-    nomesTrilhas =  document.querySelector('.cont-ListasTrilhas')
+    nomesTrilhas = document.querySelector('.cont-ListasTrilhas')
     for (const trilha of nomeRegiao) {
-            nomesTrilhas.innerHTML +=
+        nomesTrilhas.innerHTML +=
             `<div onclick="mostrarInfTrilha('${trilha.nome}')" class="divsBttnTrilha">
                 <p>
                     ${trilha.nome}
                 </p>
             </div>`
-        }
-    
-}
+    }
 
+}
 function mostrarInfTrilha(nomeTrilha) {
     let trilhaNome = nomeTrilha
     let dadosTrilha
 
-    if(logInOut()){
+    if (logInOut()) {
         dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
         document.querySelector('.cont-DadosTrilha-Inf').innerHTML =
-        `   <div class='dadosTrilha'>
-                <img src="map-trifold.svg" class='iconsDadosTrilha'>
+            `   <div class='dadosTrilha'>
+                <img src="Icones/map-trifold.svg" class='iconsDadosTrilha'>
                 <span>Trilha: ${dadosTrilha.nome}</span>
             </div>
             <div class='dadosTrilha'>
-                <img src="map-pin.svg" class='iconsDadosTrilha'>
+                <img src="Icones/map-pin.svg" class='iconsDadosTrilha'>
                 <span>De: ${dadosTrilha.pPartida}</span>
             </div>
             <div class='dadosTrilha'>
 
                 <span>Para: ${dadosTrilha.pChegada}</span>
-                <img src="map-pin-line.svg" class='iconsDadosTrilha'>
+                <img src="Icones/map-pin-line.svg" class='iconsDadosTrilha'>
             </div>
             <div class='dadosTrilha'>
                 <span>Dificuldade:</span>
                 <span>Indicada: ${dadosTrilha.nvlTSite} / Relatada: ${dadosTrilha.nvlTUsuario}</span>
             </div>
             <div class='dadosTrilha'>
-                <img src="path.svg" class='iconsDadosTrilha'>
+                <img src="Icones/path.svg" class='iconsDadosTrilha'>
                 <span>${dadosTrilha.distancia} / </span>
-                <img src="timer.svg" class='iconsDadosTrilha'>
+                <img src="Icones/timer.svg" class='iconsDadosTrilha'>
                 <span> ${dadosTrilha.tempo}</span>
             </div>
             <div class='dadosTrilha'>
-                <img src="person-simple-hike.svg" class='iconsDadosTrilha'>
+                <img src="Icones/person-simple-hike.svg" class='iconsDadosTrilha'>
                 <span>Relevo: ${dadosTrilha.relevo}</span> 
                 <span> / Elevação: ${dadosTrilha.elevacao}</span>
             </div>                    
         `
         dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
         document.querySelector('.DadosTrilha-coment').innerHTML =
-        `Área destinada aos comentários sobre a trilha`
-        
+            `Área destinada aos comentários sobre a trilha`
+
         dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
         document.querySelector('.DadosTrilha-fotos').innerHTML =
-        `${dadosTrilha.img}`
-        
-        document.querySelector('.cont-bttn-CriarEvent-LogIn').innerHTML =
-        `<button class='bttn-CriarEvent-LogIn' onclick="CRIAREVENTO('${dadosTrilha.nome}')">Criar Evento</button>`
+            `${dadosTrilha.img}`
 
-    } else{
+        document.querySelector('.cont-bttn-CriarEvent-LogIn').innerHTML =
+            `<button class='bttn-CriarEvent-LogIn' onclick="CRIAREVENTO('${dadosTrilha.nome}')">Criar Evento</button>`
+
+    } else {
         dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
         document.querySelector('.cont-DadosTrilha-Inf').innerHTML =
-        `   <div class='dadosTrilha'>
-                <img src="map-trifold.svg" class='iconsDadosTrilha'>
+            `   <div class='dadosTrilha'>
+                <img src="Icones/map-trifold.svg" class='iconsDadosTrilha'>
                 <span>Trilha: ${dadosTrilha.nome}</span>
             </div>
             <div class='dadosTrilha'>
-                <img src="map-pin.svg" class='iconsDadosTrilha'>
+                <img src="Icones/map-pin.svg" class='iconsDadosTrilha'>
                 <span>De: ${dadosTrilha.pPartida}</span>
             </div>
             <div class='dadosTrilha'>
 
                 <span>Para: ${dadosTrilha.pChegada}</span>
-                <img src="map-pin-line.svg" class='iconsDadosTrilha'>
+                <img src="Icones/map-pin-line.svg" class='iconsDadosTrilha'>
             </div>
             <div class='dadosTrilha'>
                 <span>Dificuldade:</span>
@@ -560,22 +511,22 @@ function mostrarInfTrilha(nomeTrilha) {
         `
         dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
         document.querySelector('.DadosTrilha-coment').innerHTML =
-        `Área destinada aos comentários sobre a trilha`
-        
+            `Área destinada aos comentários sobre a trilha`
+
         dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
         document.querySelector('.DadosTrilha-fotos').innerHTML =
-        `${dadosTrilha.img}`
+            `${dadosTrilha.img}`
     }
 
 }
-function CRIAREVENTO(nomeTrilhaEvento){
+function CRIAREVENTO(nomeTrilhaEvento) {
     let eventoTrilhaNome = nomeTrilhaEvento
     console.log(eventoTrilhaNome)
 }
 // Frederico
 
 //Ronald
- 
+
 function mostrarCriarTrilha() {
     document.getElementById("criarEventos").style.display = "flex"
 }
@@ -583,7 +534,7 @@ if (usuarioLogado()) {
     mostrarCriarTrilha()
 }
 
-document.getElementById('eventoForm').addEventListener('submit', function(event) {
+document.getElementById('eventoForm').addEventListener('submit', function (event) {
     event.preventDefault();
     let usuarioLog = usuarioLogado()
     const trilha = document.getElementById('trilha').value;
@@ -667,7 +618,7 @@ function listarEventos() {
             ${e.soMulheres ? '<strong>Evento exclusivo para mulheres</strong><br>' : ''}
         `;
 
-        
+
         const botao = document.createElement('button');
         botao.innerText = 'Participar';
         botao.disabled = jaParticipa || e.participantes.length >= e.vagas || (e.soMulheres && usuarioLog.sexo !== "Feminino");
@@ -727,14 +678,14 @@ let indexEditando = null;
 
 function renderizarTrilhas() {
     const atualizarClicando = JSON.parse(localStorage.getItem("eventos")) || [];
-  lista.innerHTML = "";
+    lista.innerHTML = "";
 
-  atualizarClicando.forEach((trilha, index) => {
-    const divTrilha = document.createElement("div");
-    divTrilha.classList.add("trilha-item");
+    atualizarClicando.forEach((trilha, index) => {
+        const divTrilha = document.createElement("div");
+        divTrilha.classList.add("trilha-item");
 
-    if (indexEditando === index) {
-      divTrilha.innerHTML = `
+        if (indexEditando === index) {
+            divTrilha.innerHTML = `
         <form class="form-edicao">
           <label>Trilha: <input type="text" name="trilha" value="${trilha.trilha}" /></label><br>
           <label>Data: <input type="date" name="data" value="${trilha.data}" /></label><br>
@@ -745,8 +696,8 @@ function renderizarTrilhas() {
           <button type="button" class="cancelar-edicao">Cancelar</button>
         </form>
       `;
-    } else {
-      divTrilha.innerHTML = `
+        } else {
+            divTrilha.innerHTML = `
         <p><strong>Trilha:</strong> ${trilha.trilha}</p>
         <p><strong>Data:</strong> ${trilha.data}</p>
         <p><strong>Horário:</strong> ${trilha.hora}</p>
@@ -754,47 +705,47 @@ function renderizarTrilhas() {
         <p><strong>Vagas disponíveis:</strong> ${trilha.vagas}</p>
         <button class="editar-btn" data-index="${index}">Editar</button>
       `;
-    }
+        }
 
-    lista.appendChild(divTrilha);
-  });
+        lista.appendChild(divTrilha);
+    });
 }
 
 botaoMinhasTrilhas.addEventListener("click", () => {
-  trilhasView.style.display = "block";
-  indexEditando = null;
-  renderizarTrilhas();
+    trilhasView.style.display = "block";
+    indexEditando = null;
+    renderizarTrilhas();
 });
 
 lista.addEventListener("click", (event) => {
-  if (event.target.classList.contains("editar-btn")) {
-    indexEditando = parseInt(event.target.getAttribute("data-index"));
-    renderizarTrilhas();
-  }
+    if (event.target.classList.contains("editar-btn")) {
+        indexEditando = parseInt(event.target.getAttribute("data-index"));
+        renderizarTrilhas();
+    }
 
-  if (event.target.classList.contains("cancelar-edicao")) {
-    indexEditando = null;
-    renderizarTrilhas();
-  }
+    if (event.target.classList.contains("cancelar-edicao")) {
+        indexEditando = null;
+        renderizarTrilhas();
+    }
 });
 
 lista.addEventListener("submit", (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const form = event.target;
-  const index = indexEditando;
+    const form = event.target;
+    const index = indexEditando;
 
-  trilhasCadastradas[index] = {
-    trilha: form.trilha.value,
-    data: form.data.value,
-    hora: form.hora.value,
-    ponto: form.ponto.value,
-    vagas: form.vagas.value,
-  };
+    trilhasCadastradas[index] = {
+        trilha: form.trilha.value,
+        data: form.data.value,
+        hora: form.hora.value,
+        ponto: form.ponto.value,
+        vagas: form.vagas.value,
+    };
 
-  localStorage.setItem("eventos", JSON.stringify(trilhasCadastradas));
-  indexEditando = null;
-  renderizarTrilhas();
+    localStorage.setItem("eventos", JSON.stringify(trilhasCadastradas));
+    indexEditando = null;
+    renderizarTrilhas();
 });
 
 // render inicial
