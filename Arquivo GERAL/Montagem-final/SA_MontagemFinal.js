@@ -331,7 +331,7 @@ const infsListaTrilhas = [
     },
     
     {
-        nome: ``, pPartida: ``, pChegada: ``,
+        nome: `Trilha Norte 2`, pPartida: ``, pChegada: ``,
         regiao: `Norte`, cep: ``,
         distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
@@ -341,7 +341,7 @@ const infsListaTrilhas = [
     //-----------------------------------------------------------------------------
 
     {
-        nome: ``, pPartida: ``, pChegada: ``,
+        nome: `Trilha Central 1`, pPartida: ``, pChegada: ``,
         regiao: `Central`, cep: ``,
         distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
@@ -349,7 +349,7 @@ const infsListaTrilhas = [
     },
 
     {
-        nome: ``, pPartida: ``, pChegada: ``,
+        nome: `Trilha Central 2`, pPartida: ``, pChegada: ``,
         regiao: `Central`, cep: ``,
         distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
@@ -359,7 +359,7 @@ const infsListaTrilhas = [
     //-----------------------------------------------------------------------------
 
     {
-        nome: ``, pPartida: ``, pChegada: ``,
+        nome: `Trilha Leste 1`, pPartida: ``, pChegada: ``,
         regiao: `Leste`, cep: ``,
         distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
@@ -367,7 +367,7 @@ const infsListaTrilhas = [
     },
 
     {
-        nome: ``, pPartida: ``, pChegada: ``,
+        nome: `Trilha Leste 2`, pPartida: ``, pChegada: ``,
         regiao: `Leste`, cep: ``,
         distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
@@ -377,7 +377,7 @@ const infsListaTrilhas = [
     //-----------------------------------------------------------------------------
 
     {
-        nome: ``, pPartida: ``, pChegada: ``,
+        nome: `Trilha Sul 1`, pPartida: ``, pChegada: ``,
         regiao: `Sul`, cep: ``,
         distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
@@ -385,7 +385,7 @@ const infsListaTrilhas = [
     },
 
     {
-        nome: ``, pPartida: ``, pChegada: ``,
+        nome: `Trilha Sul 2`, pPartida: ``, pChegada: ``,
         regiao: `Sul`, cep: ``,
         distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
@@ -504,20 +504,25 @@ function mostrarInfTrilha(nomeTrilha) {
                 <img src="Icones/map-trifold.svg" class='iconsDadosTrilha'>
                 <span>Trilha: ${dadosTrilha.nome}</span>
             </div>
+
             <div class='dadosTrilha'>
                 <img src="Icones/map-pin.svg" class='iconsDadosTrilha'>
                 <span>De: ${dadosTrilha.pPartida}</span>
             </div>
+
             <div class='dadosTrilha'>
 
                 <span>Para: ${dadosTrilha.pChegada}</span>
                 <img src="Icones/map-pin-line.svg" class='iconsDadosTrilha'>
             </div>
+
             <div class='dadosTrilha'>
                 <span>Dificuldade:</span>
                 <span>Indicada: ${dadosTrilha.nvlTSite} / Relatada: ${dadosTrilha.nvlTUsuario}</span>
             </div>
+
             <div class='dadosTrilha'>
+
             <span>Para mais informações: <a href="URL_do_link">login</a>
             </div>                   
         `

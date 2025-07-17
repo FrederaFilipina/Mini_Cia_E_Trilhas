@@ -159,9 +159,7 @@ li:hover {
 
     cursor: pointer;
 }
-<<<<<<< HEAD
 
-=======
 .cont-button-floripa {
     display: flex;
     flex-direction: column;
@@ -174,7 +172,6 @@ li:hover {
     border-radius: 5px;
     background-color: rgb(0, 0, 0,0);
 }
->>>>>>> 4df2b2530591b0b88d4071cecf7ed2df9f327618
 .cont-button-nort {
     display: flex;
     flex-direction: column;
@@ -276,8 +273,6 @@ li:hover {
     border: 1px solid rgb(0, 0, 0, 1);
     cursor: pointer;
 }
-<<<<<<< HEAD
-=======
 .divsBttnTrilha-nome{
     display: flex;
     justify-content: left;
@@ -300,7 +295,6 @@ li:hover {
     border: 1px solid rgb(0, 0, 0, 1);
 }
 
->>>>>>> 4df2b2530591b0b88d4071cecf7ed2df9f327618
 
 .contExt-DadosTrilha {
     display: flex;
@@ -357,25 +351,6 @@ li:hover {
     width: 100%;
     border: 2.5px solid black;
 }
-<<<<<<< HEAD
-
-.DadosTrilha-fotos {
-=======
-/* .DadosTrilha-fotos{
->>>>>>> 4df2b2530591b0b88d4071cecf7ed2df9f327618
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 50%;
-<<<<<<< HEAD
-    padding: 0.25%;
-    /* border: 2.5px solid black; */
-
-=======
-    padding: 0.25%;   
->>>>>>> 4df2b2530591b0b88d4071cecf7ed2df9f327618
-}
 
 .DadosTrilha-fotos>img {
     height: 100%;
@@ -384,9 +359,6 @@ li:hover {
     /* border: 2.5px solid black;     */
 }
 
-.cont-bttn-CriarEvent-LogIn {
-=======
-} */
 .cont-bttn-CriarEvent-LogIn{
 >>>>>>> 4df2b2530591b0b88d4071cecf7ed2df9f327618
     height: 10%;
