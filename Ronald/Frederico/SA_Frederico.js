@@ -660,3 +660,4 @@ function abrirTela(nome) {
         listarEventos()
     }
 }
+listarEventos()

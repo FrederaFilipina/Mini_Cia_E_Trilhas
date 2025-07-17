@@ -520,7 +520,7 @@ function mostrarInfTrilha(nomeTrilha) {
 
 // jonny
 
-const lista = document.getElementById("trilhas");
+
 const trilhasView = document.getElementById("minhas-trilhas-view");
 const botaoMinhasTrilhas = document.getElementById("btn-minhas-trilhas");
 
@@ -528,7 +528,7 @@ let indexEditando = null;
 
 function renderizarTrilhas() {
     const atualizarClicando = JSON.parse(localStorage.getItem("eventos")) || [];
-
+    const lista = document.getElementById("trilhas");
 
     const usuario = usuarioLogado()
 
