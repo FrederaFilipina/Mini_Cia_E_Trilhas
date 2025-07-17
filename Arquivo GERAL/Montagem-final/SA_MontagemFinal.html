@@ -16,13 +16,12 @@
             <nav>
                 <ol>
                     <li onclick="abrirTela('Login,conteiner-login')" id="Login">Login</li>
-                    <li onclick="abrirTela('btn-minhas-trilhas,conteiner-MinhasTrilhas')" id="btn-minhas-trilhas">Minhas
-                        Trilhas
-                    </li>
+                    <li onclick="abrirTela('perfil,conteiner-perfil')" id="perfil">Perfil</li>
+                    <li onclick="abrirTela('btn-minhas-trilhas,conteiner-MinhasTrilhas')" id="btn-minhas-trilhas">Minhas Trilhas</li>
                     <li onclick="abrirTela('Trilhas,cont-fred')" id="Trilhas">Trilhas</li>
                     <li id="Eventos">Eventos</li>
                     <li onclick="abrirTela('criarEventos,container-Evento')" id="criarEventos">Criar Eventos</li>
-                    <li onclick="abrirTela('fazerAvalicao,container-Avalicao')" id="fazerAvalicao">Avaliação</li>
+                    <li onclick="abrirTela('fazerAvaliacao,conteiner-Avaliacao')" id="fazerAvaliacao">Avaliação</li>
                 </ol>
             </nav>
             <!-- Navegador -->
@@ -43,13 +42,10 @@
 
                     <div class="cont-BttnRegs">
 
-<<<<<<< HEAD
-=======
                         <div class="cont-button-floripa">
                             <button class="button-regs" onclick="mostrarListTrilhasReg('Floripa')"><h3>Mapa</h3></button>
                         </div>
 
->>>>>>> 4df2b2530591b0b88d4071cecf7ed2df9f327618
                         <div class="cont-button-nort">
                             <button class="button-regs" onclick="mostrarListTrilhasReg('Norte')">
                                 <h3>NORTE</h3>
@@ -92,17 +88,7 @@
 
                                     <div class="DadosTrilha-coment">
                                     </div>
-<<<<<<< HEAD
-
-                                    <div class="DadosTrilha-fotos">
-                                    </div>
-
-=======
     
-                                    <!-- <div class="DadosTrilha-fotos">
-                                    </div> -->
-    
->>>>>>> 4df2b2530591b0b88d4071cecf7ed2df9f327618
                                 </div>
 
                                 <div class="cont-bttn-CriarEvent-LogIn">
@@ -116,6 +102,7 @@
                     </div>
 
                 </div>
+
             </section>
             <!-- Frederico -->
 
@@ -250,6 +237,57 @@
 
             </section>
 
+
+            <section class="conteiner-perfil" id="contPerfil">
+
+                
+                <div id="perfil-container" class="perfil-container" >
+                    
+                    <div class="tituloPerfil">
+                        <h2>Meu perfil</h2>
+                    </div>
+                    
+                    <div id="perfil-visualizacao">
+                    
+                    </div>
+
+                
+                    <div id="perfil-edicao" style="display: none;">
+                        <form id="form-edicao" name="form-edicao">
+                            <label>Nome de Usuário:
+                                <input type="text" name="nomeUsuario" required />
+                            </label><br />
+
+                            <label>Email:
+                                <input type="email" name="email" required />
+                            </label><br />
+
+                            <label>Telefone:
+                                <input type="text" name="telefone" required />
+                            </label><br />
+
+                            <label>Sexo:
+                                <select name="sexo" required>
+                                    <option value="Mascolino">Masculino</option>
+                                    <option value="Feminino">Feminino</option>
+                                </select>
+                            </label><br />
+
+                            <button type="submit">Salvar</button>
+                            <button type="button" id="cancelar-edicao">Cancelar</button>
+                        </form>
+                    </div>
+
+               
+                    <div style="margin-top: 10px;">
+                        <button id="editar-perfil">Editar</button>
+                        <button id="excluir-perfil" style="background-color: crimson; color: white;">Excluir
+                            Conta</button>
+                        <button class="fechar-perfil">Fechar</button>
+                    </div>
+                </div>
+            </section>
+
             <section class="conteiner-MinhasTrilhas" id="Trilhas">
                 <div id="minhas-trilhas-view" style="display: none;">
                     <div class="titulo-minhasTrihas">
@@ -307,6 +345,7 @@
             </section>
 
             <!-- washingotn -->
+<<<<<<< HEAD
             <section class="container-Avalicao">
                 <div id="containerAvaPai">
     <h2 id="h2-trilha">Avaliação da trilha ${buscar no evento}</h2>
@@ -368,6 +407,10 @@
     <button onclick="avalicaoAmigo()" id="buton-avaAmigo">Próximo</button>
     <ul id="mostraAmigo"></ul>
 </div>
+=======
+            <section class="conteiner-Avaliacao" id="contAvaliacao">
+                <p>TESTE</p>
+>>>>>>> 7b57bda2607458e9aeadbbec1fd5eb36ca739155
             </section>
             <!-- washingotn -->
 
@@ -381,4 +424,3 @@
 </body>
 
 </html>
-

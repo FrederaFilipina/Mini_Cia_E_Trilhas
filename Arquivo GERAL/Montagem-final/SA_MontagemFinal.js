@@ -14,7 +14,9 @@ function esconderCep() {
 }
 function abrirPaginaUsuário() {
     alert("logado")
-    mostrarCriarTrilha()
+
+    mostrarLiCompleto()
+    esconderSection()
 }
 //display flex/none
 
@@ -277,20 +279,39 @@ function logar(event) {
 // -----------------------------------
 // funcionamento da pagina
 
+if (usuarioLogado()) {
+    mostrarLiCompleto()
+}
+
+function mostrarLiCompleto() {
+    document.getElementById("criarEventos").style.display = "flex"
+    document.getElementById("fazerAvaliacao").style.display = "flex"
+    document.getElementById("perfil").style.display = "flex"
+    document.getElementById("Login").style.display = "flex"
+    document.getElementById("btn-minhas-trilhas").style.display = "flex"
+
+    //login sai 
+
+    document.getElementById("Login").style.display = "none"
+
+}
 function esconderSection() {
     document.getElementById("Login").classList.remove("liNav")
     document.getElementById("Trilhas").classList.remove("liNav")
     document.getElementById("Eventos").classList.remove("liNav")
     document.getElementById("btn-minhas-trilhas").classList.remove("liNav")
     document.getElementById("criarEventos").classList.remove("liNav")
-     document.getElementById("fazerAvalicao").classList.remove("liNav")
+    document.getElementById("fazerAvaliacao").classList.remove("liNav")
+    document.getElementById("perfil").classList.remove("liNav")
 
     document.querySelector(`.cont-fred`).style.display = "none"
     document.querySelector(`.conteiner-cadastro`).style.display = "none"
     document.querySelector(`.conteiner-login`).style.display = "none"
     document.querySelector(`.container-Evento`).style.display = "none"
     document.querySelector(`.conteiner-MinhasTrilhas`).style.display = "none"
-    document.querySelector(`.container-Avalicao`).style.display = "none"
+    document.querySelector(`.conteiner-Avaliacao`).style.display = "none"
+    document.querySelector(`.conteiner-perfil`).style.display = "none"
+
 
 }
 function abrirLoginCadastro(cont) {
@@ -331,7 +352,7 @@ const infsListaTrilhas = [
     },
     
     {
-        nome: ``, pPartida: ``, pChegada: ``,
+        nome: `Trilha Norte 2`, pPartida: ``, pChegada: ``,
         regiao: `Norte`, cep: ``,
         distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
@@ -341,7 +362,7 @@ const infsListaTrilhas = [
     //-----------------------------------------------------------------------------
 
     {
-        nome: ``, pPartida: ``, pChegada: ``,
+        nome: `Trilha Central 1`, pPartida: ``, pChegada: ``,
         regiao: `Central`, cep: ``,
         distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
@@ -349,7 +370,7 @@ const infsListaTrilhas = [
     },
 
     {
-        nome: ``, pPartida: ``, pChegada: ``,
+        nome: `Trilha Central 2`, pPartida: ``, pChegada: ``,
         regiao: `Central`, cep: ``,
         distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
@@ -359,7 +380,7 @@ const infsListaTrilhas = [
     //-----------------------------------------------------------------------------
 
     {
-        nome: ``, pPartida: ``, pChegada: ``,
+        nome: `Trilha Leste 1`, pPartida: ``, pChegada: ``,
         regiao: `Leste`, cep: ``,
         distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
@@ -367,7 +388,7 @@ const infsListaTrilhas = [
     },
 
     {
-        nome: ``, pPartida: ``, pChegada: ``,
+        nome: `Trilha Leste 2`, pPartida: ``, pChegada: ``,
         regiao: `Leste`, cep: ``,
         distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
@@ -377,7 +398,7 @@ const infsListaTrilhas = [
     //-----------------------------------------------------------------------------
 
     {
-        nome: ``, pPartida: ``, pChegada: ``,
+        nome: `Trilha Sul 1`, pPartida: ``, pChegada: ``,
         regiao: `Sul`, cep: ``,
         distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
@@ -385,7 +406,7 @@ const infsListaTrilhas = [
     },
 
     {
-        nome: ``, pPartida: ``, pChegada: ``,
+        nome: `Trilha Sul 2`, pPartida: ``, pChegada: ``,
         regiao: `Sul`, cep: ``,
         distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
         nvlTSite: ``, nvlTUsuario: [],
@@ -504,20 +525,25 @@ function mostrarInfTrilha(nomeTrilha) {
                 <img src="Icones/map-trifold.svg" class='iconsDadosTrilha'>
                 <span>Trilha: ${dadosTrilha.nome}</span>
             </div>
+
             <div class='dadosTrilha'>
                 <img src="Icones/map-pin.svg" class='iconsDadosTrilha'>
                 <span>De: ${dadosTrilha.pPartida}</span>
             </div>
+
             <div class='dadosTrilha'>
 
                 <span>Para: ${dadosTrilha.pChegada}</span>
                 <img src="Icones/map-pin-line.svg" class='iconsDadosTrilha'>
             </div>
+
             <div class='dadosTrilha'>
                 <span>Dificuldade:</span>
                 <span>Indicada: ${dadosTrilha.nvlTSite} / Relatada: ${dadosTrilha.nvlTUsuario}</span>
             </div>
+
             <div class='dadosTrilha'>
+
             <span>Para mais informações: <a href="URL_do_link">login</a>
             </div>                   
         `
@@ -535,12 +561,6 @@ function CRIAREVENTO(nomeTrilhaEvento) {
 
 //Ronald
 
-function mostrarCriarTrilha() {
-    document.getElementById("criarEventos").style.display = "flex"
-}
-if (usuarioLogado()) {
-    mostrarCriarTrilha()
-}
 
 document.getElementById('eventoForm').addEventListener('submit', function (event) {
     event.preventDefault();
@@ -675,6 +695,7 @@ function calcularIdade(dataNasc) {
 // jonny
 
 
+
 const lista = document.getElementById("trilhas");
 const trilhasView = document.getElementById("minhas-trilhas-view");
 const botaoMinhasTrilhas = document.getElementById("btn-minhas-trilhas");
@@ -755,9 +776,18 @@ lista.addEventListener("submit", (event) => {
 
 //Washington o bonito
 
+<<<<<<< HEAD
  const avaliacaoGrauDeDificuldade = []
         const avalicaoTempoEstimado = []
         // const avalicaoTipoDeRelevo = []
+=======
+
+
+
+//  const avaliacaoGrauDeDificuldade = []
+//         const avalicaoTempoEstimado = []
+//         // const avalicaoTipoDeRelevo = []
+>>>>>>> 7b57bda2607458e9aeadbbec1fd5eb36ca739155
 
         function avaTrilha() {
             const avaliacaoTempo = document.getElementById("tempoEstimado").value

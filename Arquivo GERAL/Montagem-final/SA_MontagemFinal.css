@@ -75,11 +75,9 @@ nav {
 
 .liNav {
     color: rgb(255, 255, 255);
-
 }
 
 li:hover {
-
     color: rgb(255, 255, 255);
 }
 
@@ -159,9 +157,7 @@ li:hover {
 
     cursor: pointer;
 }
-<<<<<<< HEAD
 
-=======
 .cont-button-floripa {
     display: flex;
     flex-direction: column;
@@ -172,9 +168,9 @@ li:hover {
     height: 100%;
     width: 10%;
     border-radius: 5px;
-    background-color: rgb(0, 0, 0,0);
+    background-color: rgb(0, 0, 0, 0);
 }
->>>>>>> 4df2b2530591b0b88d4071cecf7ed2df9f327618
+
 .cont-button-nort {
     display: flex;
     flex-direction: column;
@@ -276,9 +272,8 @@ li:hover {
     border: 1px solid rgb(0, 0, 0, 1);
     cursor: pointer;
 }
-<<<<<<< HEAD
-=======
-.divsBttnTrilha-nome{
+
+.divsBttnTrilha-nome {
     display: flex;
     justify-content: left;
     align-items: center;
@@ -286,9 +281,10 @@ li:hover {
 
     height: 100%;
     width: 50%;
-    
+
 }
-.divsBttnTrilha-foto{
+
+.divsBttnTrilha-foto {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -296,11 +292,9 @@ li:hover {
 
     height: 100%;
     width: 50%;
-    
+
     border: 1px solid rgb(0, 0, 0, 1);
 }
-
->>>>>>> 4df2b2530591b0b88d4071cecf7ed2df9f327618
 
 .contExt-DadosTrilha {
     display: flex;
@@ -357,38 +351,8 @@ li:hover {
     width: 100%;
     border: 2.5px solid black;
 }
-<<<<<<< HEAD
-
-.DadosTrilha-fotos {
-=======
-/* .DadosTrilha-fotos{
->>>>>>> 4df2b2530591b0b88d4071cecf7ed2df9f327618
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 50%;
-<<<<<<< HEAD
-    padding: 0.25%;
-    /* border: 2.5px solid black; */
-
-=======
-    padding: 0.25%;   
->>>>>>> 4df2b2530591b0b88d4071cecf7ed2df9f327618
-}
-
-.DadosTrilha-fotos>img {
-    height: 100%;
-    width: 100%;
-<<<<<<< HEAD
-    /* border: 2.5px solid black;     */
-}
 
 .cont-bttn-CriarEvent-LogIn {
-=======
-} */
-.cont-bttn-CriarEvent-LogIn{
->>>>>>> 4df2b2530591b0b88d4071cecf7ed2df9f327618
     height: 10%;
     width: 100%;
     /* border: 2.5px solid black; */
@@ -620,7 +584,17 @@ li:hover {
 
 
 /* --------------Jonny------------------ */
+.conteiner-perfil{
+    display: none;
+}
+#btn-minhas-trilhas{
+    display: none;
 
+}
+
+#perfil{
+    display: none;
+}
 
 #minhas-trilhas-view {
     padding: 20px;
@@ -710,10 +684,6 @@ li:hover {
 
 .container-Evento {
     display: none;
-
-
-
-
 }
 
 #criarEventos {
@@ -737,6 +707,7 @@ li:hover {
 }
 
 /*Washington*/
+<<<<<<< HEAD
 
 .container-Avalicao {
     display: flex;
@@ -783,3 +754,14 @@ li:hover {
     text-align: center; 
 }
 /*Washington*/
+=======
+.conteiner-Avaliacao {
+    display: none;
+}
+#fazerAvaliacao{
+    display: none;
+}
+
+
+/*Washington*/
+>>>>>>> 7b57bda2607458e9aeadbbec1fd5eb36ca739155
