@@ -290,12 +290,13 @@ function esconderSection() {
     document.getElementById("Trilhas").style.color = "#0c0c0ca9"
     document.getElementById("Eventos").style.color = "#0c0c0ca9"
     document.getElementById("btn-minhas-trilhas").style.color = "#0c0c0ca9"
+    document.getElementById("perfil").style.color = "#0c0c0ca9"
 
     document.querySelector(`.cont-fred`).style.display = "none"
     document.querySelector(`.conteiner-cadastro`).style.display = "none"
     document.querySelector(`.conteiner-login`).style.display = "none"
     document.querySelector(`.conteiner-MinhasTrilhas`).style.display = "none"
-
+    document.querySelector(`.conteiner-perfil`).style.display = "none"
 
 
 
@@ -527,6 +528,8 @@ let indexEditando = null;
 
 function renderizarTrilhas() {
     const atualizarClicando = JSON.parse(localStorage.getItem("eventos")) || [];
+
+
     const usuario = usuarioLogado()
 
 
@@ -607,19 +610,19 @@ function abrirMinhasTrilhas() {
     renderizarTrilhas()
 }
 
-function abrirMeuPerfil(){
-    
+function abrirMeuPerfil() {
+    abrirTela('perfil,conteiner-perfil');
 }
 
 function abrirBotaoPerfil() {
-  const abrirBotaoPerfil = document.querySelectorAll("#perfil");
-  abrirBotaoPerfil.forEach((button) => {
-    button.addEventListener("click", () => {
-      document.getElementById("contPerfil").style.display = "block";
-      document.getElementById("perfil-container").style.display = "block";
-      mostrarDadosUsuario();
+    const abrirBotaoPerfil = document.querySelectorAll("#perfil");
+    abrirBotaoPerfil.forEach((button) => {
+        button.addEventListener("click", () => {
+            document.getElementById("contPerfil").style.display = "block";
+            document.getElementById("perfil-container").style.display = "block";
+            mostrarDadosUsuario();
+        });
     });
-  });
 }
 abrirBotaoPerfil();
 
@@ -667,8 +670,8 @@ document.getElementById("editar-perfil").addEventListener("click", () => {
 });
 
 document.getElementById("cancelar-edicao").addEventListener("click", () => {
-  document.getElementById("perfil-edicao").style.display = "none";
-  document.getElementById("perfil-visualizacao").style.display = "block";
+    document.getElementById("perfil-edicao").style.display = "none";
+    document.getElementById("perfil-visualizacao").style.display = "block";
 });
 
 document.getElementById("form-edicao").addEventListener("submit", (e) => {

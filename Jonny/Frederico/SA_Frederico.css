@@ -619,30 +619,34 @@ li:hover {
 }
 
 
+.tituloPerfil {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 20px;
+}
 
+.conteiner-perfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-.perfil-container {
-    position: fixed;
-    top: 80px;
-    right: 20px;
-    background: #fff;
-    border: 2px solid #ccc;
+.meuPerfil-view {
     padding: 20px;
-    width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    color: #1e1e1e;
+    width: 100%;
 }
 
-.perfil-container button.fechar-perfil {
-    float: right;
-    background-color: crimson;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 4px;
+.meuPerfil-view h2 {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 20px;
 }
+
 
 
 .alerta {

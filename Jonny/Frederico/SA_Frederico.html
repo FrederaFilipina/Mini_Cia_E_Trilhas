@@ -16,7 +16,7 @@
             <nav>
                 <ol>
                     <li onclick="abrirTela('Login,conteiner-login')" id="Login">Login</li>
-                    <li onclick="abrirTela('perfil,conteiner-perfil')" id="perfil">Perfil</li>
+                    <li onclick="abrirMeuPerfil()" id="perfil">Perfil</li>
                     <li onclick="abrirMinhasTrilhas()" id="btn-minhas-trilhas">Minhas Trilhas
                     </li>
                     <li onclick="abrirTela('Trilhas,cont-fred')" id="Trilhas">Trilhas</li>
@@ -231,19 +231,56 @@
 
 
             <section class="conteiner-perfil" id="contPerfil">
-                <div id="meuPerfil" style="display: none;">
-                    <div class="titulo-meuPerfil">
+
+                
+                <div id="perfil-container" class="perfil-container" style="display: none;">
+                    
+                    <div class="tituloPerfil">
                         <h2>Meu perfil</h2>
                     </div>
-                    <div class="conteudoPerfil" id="conteudoPerfil"></div>
-                </div>
+                    
+                    <div id="perfil-visualizacao">
+                    
+                    </div>
 
-                <div id="perfil-container" class="perfil-container" style="display: none;">
-                    <button class="fechar-perfil">Fechar</button>
-                    <div id="perfil"></div>
-                </div>
+                
+                    <div id="perfil-edicao" style="display: none;">
+                        <form id="form-edicao" name="form-edicao">
+                            <label>Nome de Usuário:
+                                <input type="text" name="nomeUsuario" required />
+                            </label><br />
 
+                            <label>Email:
+                                <input type="email" name="email" required />
+                            </label><br />
+
+                            <label>Telefone:
+                                <input type="text" name="telefone" required />
+                            </label><br />
+
+                            <label>Sexo:
+                                <select name="sexo" required>
+                                    <option value="Mascolino">Masculino</option>
+                                    <option value="Feminino">Feminino</option>
+                                </select>
+                            </label><br />
+
+                            <button type="submit">Salvar</button>
+                            <button type="button" id="cancelar-edicao">Cancelar</button>
+                        </form>
+                    </div>
+
+               
+                    <div style="margin-top: 10px;">
+                        <button id="editar-perfil">Editar</button>
+                        <button id="excluir-perfil" style="background-color: crimson; color: white;">Excluir
+                            Conta</button>
+                        <button class="fechar-perfil">Fechar</button>
+                    </div>
+                </div>
             </section>
+
+
 
 
 
@@ -293,4 +330,4 @@
     <script src="SA_Frederico.js"></script>
 </body>
 
-</html>
+</html> 
