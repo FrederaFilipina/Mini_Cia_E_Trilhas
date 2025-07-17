@@ -301,7 +301,7 @@ function esconderSection() {
     document.getElementById("Eventos").classList.remove("liNav")
     document.getElementById("btn-minhas-trilhas").classList.remove("liNav")
     document.getElementById("criarEventos").classList.remove("liNav")
-    document.getElementById("fazerAvaliacao").classList.remove("liNav")
+    // document.getElementById("fazerAvaliacao").classList.remove("liNav")
     document.getElementById("perfil").classList.remove("liNav")
 
     document.querySelector(`.cont-fred`).style.display = "none"
@@ -309,7 +309,7 @@ function esconderSection() {
     document.querySelector(`.conteiner-login`).style.display = "none"
     document.querySelector(`.container-Evento`).style.display = "none"
     document.querySelector(`.conteiner-MinhasTrilhas`).style.display = "none"
-    document.querySelector(`.conteiner-Avaliacao`).style.display = "none"
+    // document.querySelector(`.conteiner-Avaliacao`).style.display = "none"
     document.querySelector(`.conteiner-perfil`).style.display = "none"
     document.querySelector(`.cont-eventos`).style.display = "none"
 
@@ -415,16 +415,7 @@ const infsListaTrilhas = [
     },
 ]
 localStorage.setItem('ListagemTrilhas', JSON.stringify(infsListaTrilhas))
-function logInOut() {
-    /*let usuario = localStorage.getItem("LogIN")
-    if(usuario != undefined){
-        return true
-    }
-    else {
-        return false
-    }*/
-    return true
-}
+
 function limparTrilhas() {
     document.querySelector('.cont-ListasTrilhas').innerHTML = ``
 }
@@ -481,7 +472,7 @@ function mostrarInfTrilha(nomeTrilha) {
     let trilhaNome = nomeTrilha
     let dadosTrilha
 
-    if (logInOut()) {
+    if (usuarioLogado()) {
         dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
         document.querySelector('.cont-DadosTrilha-Inf').innerHTML =
             `   <div class='dadosTrilha'>
@@ -908,84 +899,6 @@ function fecharAlerta() {
 }
 
 //Washington o bonito
-
-
-
-
-//  const avaliacaoGrauDeDificuldade = []
-//         const avalicaoTempoEstimado = []
-//         // const avalicaoTipoDeRelevo = []
-
-//         function avaTrilha() {
-//             const avaliacaoTempo = document.getElementById("tempoEstimado").value
-//             if (avaliacaoTempo.trim() === "") // Pega o primeiro elemento que satisfa a condição
-//                 avalicaoTempoEstimado.push(avaliacaoTempo)
-
-//             console.log(avaliacaoTempo)
-
-//             const avaDificuldade = document.getElementById("grauDeDificuldade").value
-//             if (avaDificuldade === "")
-//                 avaliacaoGrauDeDificuldade.push(avaDificuldade)
-
-//             console.log(avaDificuldade)
-//             mostraTrilha()
-
-//         }
-//         function mostraTrilha() {
-//             const ul = document.getElementById("mostraTrilha")
-//             ul.innerHTML = ""
-
-
-//             for (let mostra = 0; mostra < avalicaoTempoEstimado.length; mostra++) {
-//                 const tempo = avalicaoTempoEstimado[mostra]
-//                 const dificuldade = avaliacaoGrauDeDificuldade[mostra] || "N/A"
-
-//                 const li = document.createElement("li")
-//                 li.textContent = `${tempo} 
-//                           ${dificuldade}`
-//                 ul.appendChild(li)
-//             }
-//         }
-//         const notaAmigo = []
-//         const cometarioAmigo = []
-//         const containerAva = []
-
-//         function avalicaoAmigo() {
-
-//             document.getElementById("containerAva").value
-//             if (containerAva.length > 1) {
-//                 containerAva.shift()
-//             } else {
-//                 alert("obrigado")
-//             }
-//             const avaAmigo = document.getElementById("notaAmigo").value
-//             if (avaAmigo.trim() !== 0)
-//                 notaAmigo.push(avaAmigo)
-//             console.log(avaAmigo)
-
-//             const cometAmigo = document.getElementById("cometarioAmigo").value
-//             if (cometAmigo.trim() !== 0)
-//                 cometarioAmigo.push(cometAmigo)
-//             console.log(cometAmigo)
-
-//             mostraAmigo()
-//         }
-//         function mostraAmigo() {
-//             const ul = document.getElementById("mostraAmigo")
-//             ul.innerHTML = ""
-
-
-//             for (let mostra = 0; mostra < avalicaoTempoEstimado.length; mostra++) {
-//                 const nota = notaAmigo[mostra]
-//                 const comentario = cometarioAmigo[mostra] || "N/A"
-
-
-//                 const li = document.createElement("li")
-//                 li.textContent = `${nota}
-//                           ${comentario} `
-//                 ul.appendChild(li)
-//             }
-//         }
 
 //Washington o bonito
 
