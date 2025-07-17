@@ -16,13 +16,11 @@
             <nav>
                 <ol>
                     <li onclick="abrirTela('Login,conteiner-login')" id="Login">Login</li>
-                    <li onclick="abrirTela('btn-minhas-trilhas,conteiner-MinhasTrilhas')" id="btn-minhas-trilhas">Minhas
-                        Trilhas
-                    </li>
+                    <li onclick="abrirTela('btn-minhas-trilhas,conteiner-MinhasTrilhas')" id="btn-minhas-trilhas">Minhas Trilhas</li>
                     <li onclick="abrirTela('Trilhas,cont-fred')" id="Trilhas">Trilhas</li>
                     <li id="Eventos">Eventos</li>
                     <li onclick="abrirTela('criarEventos,container-Evento')" id="criarEventos">Criar Eventos</li>
-                    <li onclick="abrirTela('fazerAvalicao,container-Avalicao')" id="fazerAvalicao">Avaliação</li>
+                    <li onclick="abrirTela('fazerAvaliacao,conteiner-Avaliacao')" id="fazerAvaliacao">Avaliação</li>
                 </ol>
             </nav>
             <!-- Navegador -->
@@ -90,9 +88,6 @@
                                     <div class="DadosTrilha-coment">
                                     </div>
     
-                                    <!-- <div class="DadosTrilha-fotos">
-                                    </div> -->
-    
                                 </div>
 
                                 <div class="cont-bttn-CriarEvent-LogIn">
@@ -106,6 +101,7 @@
                     </div>
 
                 </div>
+
             </section>
             <!-- Frederico -->
 
@@ -297,59 +293,8 @@
             </section>
 
             <!-- washingotn -->
-            <section class="container-Avalicao">
-                <div id="containerAvaPai">
-    <h2 id="h2-trilha">Avaliação da trilha ${buscar no evento}</h2>
-    <label id="label-trilha">Tempo estimado</label>
-    <select id="tempoEstimado">
-        <option value="" selected>Selecione Tempo estimado</option>
-        <option value="00:15">00:15</option>
-        <option value="00:30">00:30</option>
-        <option value="00:45">00:45</option>
-        <option value="01:00">01:00</option>
-        <option value="01:15">01:15</option>
-        <option value="01:30">01:30</option>
-        <option value="01:45">01:45</option>
-        <option value="02:00">02:00</option>
-        <option value="02:15">02:15</option>
-        <option value="02:30">02:30</option>
-        <option value="02:45">02:45</option>
-        <option value="03:00">03:00</option>
-        <option value="03:15">03:15</option>
-        <option value="03:30">03:30</option>
-        <option value="03:45">03:45</option>
-        <option value="04:00">04:00</option>
-        <option value="04:15">04:15</option>
-        <option value="04:30">04:30</option>
-        <option value="04:45">04:45</option>
-        <option value="04500">05:00</option>
-    </select>
-    <!-- <input type="number" class="escTexAva" id="tempoEstimado" placeholder="Tempo estimado"> -->
-
-
-    <label id="label-grauDeDificuldade">Grau de dificuldade </label>
-    <!-- <input type="text" class="escTexAva" id="grauDeDificuldade" placeholder="Grau de dificuldade"> -->
-    <select id="grauDeDificuldade">
-        <option value="" selected></option>
-        <option value="Facil">1-Facil</option>
-        <option value="Facil Medio">2-Facil Medio</option>
-        <option value="Medio">3-Medio</option>
-        <option value="Medio Dificil">4-Medio Dificil</option>
-        <option value="Dificil">5-Dificil</option>
-    </select>
-
-    <button onclick="avaTrilha()" id="buton-avatrilha">Confirmar</button>
-    <ul id="mostraTrilha"></ul>
-</div>
-<div id="containerAva">
-    <h3>Avaliação do amigo de 1 a 5</h3>
-    <label id="nomeAmigo">Nome ${buscar no evento}</label>
-    <input type="number" class="notaAva" id="notaAmigo" min="1" max="5" placeholder="nota">
-    <label id="label-cometarioAmigo">Comentário</ç>
-    <input type="text" class="escTexAva" id="cometarioAmigo" placeholder="comentário">
-    <button onclick="avalicaoAmigo()" id="buton-avaAmigo">Próximo</button>
-    <ul id="mostraAmigo"></ul>
-</div>
+            <section class="conteiner-Avaliacao" id="contAvaliacao">
+                <p>TESTE</p>
             </section>
             <!-- washingotn -->
 
@@ -363,4 +308,3 @@
 </body>
 
 </html>
-
