@@ -907,16 +907,18 @@ function avaTrilha() {
     const avaliacaoTempo = document.getElementById("tempoEstimado").value
     if (avaliacaoTempo.trim() === "") // Pega o primeiro elemento que satisfa a condição
         avalicaoTempoEstimado.push(avaliacaoTempo)
+        localStorage.setItem("ava-tempoEstimado", JSON.stringify(avaliacaoTempo))
 
     console.log(avaliacaoTempo)
 
     const avaDificuldade = document.getElementById("grauDeDificuldade").value
     if (avaDificuldade === "")
         avaliacaoGrauDeDificuldade.push(avaDificuldade)
+     localStorage.setItem("ava-dificuldade", JSON.stringify(avaDificuldade))
 
     console.log(avaDificuldade)
     mostraTrilha()
-
+    
 }
 function mostraTrilha() {
     const ul = document.getElementById("mostraTrilha")
@@ -932,6 +934,7 @@ function mostraTrilha() {
                   ${dificuldade}`
         ul.appendChild(li)
     }
+
 }
 const notaAmigo = []
 const cometarioAmigo = []
@@ -948,6 +951,7 @@ function avalicaoAmigo() {
     if (avaAmigo.trim() === 0)
         notaAmigo.push(avaAmigo)
     console.log(avaAmigo)
+    localStorage.setItem("ava-notaAmigo", JSON.stringify(avaAmigo))
 
     const cometAmigo = document.getElementById("cometarioAmigo").value
     if (cometAmigo.trim() !== 0)
