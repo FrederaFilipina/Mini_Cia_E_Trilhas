@@ -106,7 +106,7 @@ function descobrirSexo(sexo) {
 
     if (sexo[0].checked) {
 
-        return "Mascolino"
+        return "Masculino"
 
     } else if (sexo[1].checked) {
 
