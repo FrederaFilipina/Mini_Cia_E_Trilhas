@@ -17,9 +17,10 @@
                 <ol>
                     <li onclick="abrirTela('Login,conteiner-login')" id="Login">Login</li>
                     <li onclick="abrirTela('perfil,conteiner-perfil')" id="perfil">Perfil</li>
-                    <li onclick="abrirTela('btn-minhas-trilhas,conteiner-MinhasTrilhas') ,renderizarTrilhas()" id="btn-minhas-trilhas">Minhas Trilhas</li>
+                    <li onclick="abrirTela('btn-minhas-trilhas,conteiner-MinhasTrilhas') ,renderizarTrilhas()"
+                        id="btn-minhas-trilhas">Minhas Trilhas</li>
                     <li onclick="abrirTela('Trilhas,cont-fred')" id="Trilhas">Trilhas</li>
-                    <li onclick="abrirTela('Eventos,cont-eventos'),listarEventos()" id="Eventos">Eventos</li> 
+                    <li onclick="abrirTela('Eventos,cont-eventos'),listarEventos()" id="Eventos">Eventos</li>
                     <li onclick="abrirTela('criarEventos,container-Evento')" id="criarEventos">Criar Eventos</li>
                     <li onclick="abrirTela('fazerAvaliacao,conteiner-Avaliacao')" id="fazerAvaliacao">Avaliação</li>
                 </ol>
@@ -43,7 +44,9 @@
                     <div class="cont-BttnRegs">
 
                         <div class="cont-button-floripa">
-                            <button class="button-regs" onclick="mostrarListTrilhasReg('Floripa')"><h3>Mapa</h3></button>
+                            <button class="button-regs" onclick="mostrarListTrilhasReg('Floripa')">
+                                <h3>Mapa</h3>
+                            </button>
                         </div>
 
                         <div class="cont-button-nort">
@@ -72,34 +75,26 @@
 
                     </div>
 
-                    <div class="conts-ListDados">
-
-                        <div class="conts-Lista-Dados">
-
-                            <div class="cont-ListasTrilhas">
-                            </div>
-
-                            <div class="contExt-DadosTrilha">
-
-                                <div class="cont-DadosTrilha-Inf">
-                                </div>
-
-                                <div class="conts-DadosTrilha-coment-fotos">
-
-                                    <div class="DadosTrilha-coment">
-                                    </div>
-    
-                                </div>
-
-                                <div class="cont-bttn-CriarEvent-LogIn">
-                                </div>
-
-                            </div>
-
+                    <div class="conts-Lista-Dados">
+                        <div class="cont-ListasTrilhas">
                         </div>
+                        
+                        <div class="contExt-DadosTrilha">
 
+                            <div class="cont-DadosTrilha-Inf">
+                            </div>
 
+                            <div class="conts-DadosTrilha-comentarios">
+                            </div>
+
+                            <div class="cont-bttn-CriarEvent-LogIn">
+
+                            </div>
+                        </div>
                     </div>
+
+
+
 
                 </div>
 
@@ -240,18 +235,18 @@
 
             <section class="conteiner-perfil" id="contPerfil">
 
-                
-                <div id="perfil-container" class="perfil-container" >
-                    
+
+                <div id="perfil-container" class="perfil-container">
+
                     <div class="tituloPerfil">
                         <h2>Meu perfil</h2>
                     </div>
-                    
+
                     <div id="perfil-visualizacao">
-                    
+
                     </div>
 
-                
+
                     <div id="perfil-edicao" style="display: none;">
                         <form id="form-edicao" name="form-edicao">
                             <label>Nome de Usuário:
@@ -278,7 +273,7 @@
                         </form>
                     </div>
 
-               
+
                     <div style="margin-top: 10px;">
                         <button id="editar-perfil">Editar</button>
                         <button id="excluir-perfil" style="background-color: crimson; color: white;">Excluir
@@ -350,10 +345,10 @@
             <section class="cont-eventos">
 
                 <div id="listaEventos">
-                 
+
                 </div>
-     
-                </section>
+
+            </section>
 
             <!-- washingotn -->
             <section class="conteiner-Avaliacao">
@@ -417,7 +412,7 @@
                     <button onclick="avalicaoAmigo()" id="buton-avaAmigo">Próximo</button>
                     <ul id="mostraAmigo"></ul>
                 </div>
-                
+
             </section>
             <!-- washingotn -->
 

@@ -422,7 +422,7 @@ function limparTrilhas() {
 function limparDadosTrilhas() {
     document.querySelector('.cont-DadosTrilha-Inf').innerHTML = ``
     document.querySelector('.cont-DadosTrilha-Inf').innerHTML = ``
-    document.querySelector('.DadosTrilha-coment').innerHTML = ``
+    document.querySelector('.conts-DadosTrilha-comentarios').innerHTML = ``
     document.querySelector('.cont-bttn-CriarEvent-LogIn').innerHTML = ``
 }
 function limparMapa() {
@@ -504,11 +504,13 @@ function mostrarInfTrilha(nomeTrilha) {
                 <span> / Elevação: ${dadosTrilha.elevacao}</span>
             </div>                    
         `
-        document.querySelector('.DadosTrilha-coment').innerHTML =
-            `Área destinada aos comentários sobre a trilha`
+        document.querySelector('.conts-DadosTrilha-comentarios').innerHTML =
+        `<div class="DadosTrilha-comentarios">
+        <span> Área destinada aos comentários</span>
+        </div>`
 
         document.querySelector('.cont-bttn-CriarEvent-LogIn').innerHTML =
-            `<button class='bttn-CriarEvent-LogIn' onclick="CRIAREVENTO('${dadosTrilha.nome}')">Criar Evento</button>`
+        `<button class='bttn-CriarEvent-LogIn' onclick="CRIAREVENTO('${dadosTrilha.nome}')">Criar Evento</button>`
 
     } else {
         dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
@@ -536,11 +538,13 @@ function mostrarInfTrilha(nomeTrilha) {
 
             <div class='dadosTrilha'>
 
-            <span>Para mais informações: <a href="URL_do_link">login</a>
+            <span>Para mais informações, clique <a href="#" onclick="abrirTela('Login,conteiner-login')" id="Login" class="linkLoCa" id="LinkCadastro">aqui</a>!
             </div>                   
         `
-        document.querySelector('.DadosTrilha-coment').innerHTML =
-            `Área destinada aos comentários sobre a trilha`
+        document.querySelector('.conts-DadosTrilha-comentarios').innerHTML =
+        `<div class="DadosTrilha-comentarios">
+        <span> Área destinada aos comentários</span>
+        </div>`
     }
 
 }
