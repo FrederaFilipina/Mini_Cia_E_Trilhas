@@ -357,6 +357,66 @@
 
             <!-- washingotn -->
             <section class="conteiner-Avaliacao">
+                <div id="containerAvaPai">
+                    <h2 id="h2-trilha">Avaliação da trilha ${buscar no evento}</h2>
+                    <label id="label-trilha">Tempo estimado</label>
+                    <select id="tempoEstimado">
+                        <option value="" selected>Selecione Tempo estimado</option>
+                        <option value="00:15">00:15</option>
+                        <option value="00:30">00:30</option>
+                        <option value="00:45">00:45</option>
+                        <option value="01:00">01:00</option>
+                        <option value="01:15">01:15</option>
+                        <option value="01:30">01:30</option>
+                        <option value="01:45">01:45</option>
+                        <option value="02:00">02:00</option>
+                        <option value="02:15">02:15</option>
+                        <option value="02:30">02:30</option>
+                        <option value="02:45">02:45</option>
+                        <option value="03:00">03:00</option>
+                        <option value="03:15">03:15</option>
+                        <option value="03:30">03:30</option>
+                        <option value="03:45">03:45</option>
+                        <option value="04:00">04:00</option>
+                        <option value="04:15">04:15</option>
+                        <option value="04:30">04:30</option>
+                        <option value="04:45">04:45</option>
+                        <option value="04500">05:00</option>
+                    </select>
+                    <!-- <input type="number" class="escTexAva" id="tempoEstimado" placeholder="Tempo estimado"> -->
+
+
+                    <label id="label-grauDeDificuldade">Grau de dificuldade </label>
+                    <!-- <input type="text" class="escTexAva" id="grauDeDificuldade" placeholder="Grau de dificuldade"> -->
+                    <select id="grauDeDificuldade">
+                        <option value="" selected> Clique aqui</option>
+                        <option value="Facil">1-Facil</option>
+                        <option value="Facil Medio">2-Facil Medio</option>
+                        <option value="Medio">3-Medio</option>
+                        <option value="Medio Dificil">4-Medio Dificil</option>
+                        <option value="Dificil">5-Dificil</option>
+                    </select>
+
+                    <button onclick="avaTrilha()" id="buton-avatrilha">Confirmar</button>
+                    <ul id="mostraTrilha"></ul>
+                </div>
+                <div id="containerAva">
+                    <h2 id="h2-trilha">Avaliação do amigo de 1 a 5</h2>
+                    <label id="nomeAmigo">Nome ${buscar no evento}</label>
+                    <select id="notaAmigo">
+                        <option value="" selected>Clique aqui</option>
+                        <option value="Pessimo"> 1- Pessimo</option>
+                        <option value="Bom"> 2- Bom</option>
+                        <option value="Muito bom"> 3- Muito bom</option>
+                        <option value="Otimo"> 4- Otimo</option>
+                        <option value="Execelente">5- Execelente</option>
+                    </select>
+                    <!-- <input type="number" class="notaAva" id="notaAmigo" min="1" max="5" placeholder="nota"> -->
+                    <!-- <label id="label-cometarioAmigo">Comentário</ç>
+                    <input type="text" class="escTexAva" id="cometarioAmigo" placeholder="comentário"> -->
+                    <button onclick="avalicaoAmigo()" id="buton-avaAmigo">Próximo</button>
+                    <ul id="mostraAmigo"></ul>
+                </div>
                 
             </section>
             <!-- washingotn -->
