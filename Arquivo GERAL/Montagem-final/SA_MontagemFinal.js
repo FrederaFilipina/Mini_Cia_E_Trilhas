@@ -301,7 +301,7 @@ function esconderSection() {
     document.getElementById("Eventos").classList.remove("liNav")
     document.getElementById("btn-minhas-trilhas").classList.remove("liNav")
     document.getElementById("criarEventos").classList.remove("liNav")
-    // document.getElementById("fazerAvaliacao").classList.remove("liNav")
+    document.getElementById("fazerAvaliacao").classList.remove("liNav")
     document.getElementById("perfil").classList.remove("liNav")
 
     document.querySelector(`.cont-fred`).style.display = "none"
@@ -309,7 +309,7 @@ function esconderSection() {
     document.querySelector(`.conteiner-login`).style.display = "none"
     document.querySelector(`.container-Evento`).style.display = "none"
     document.querySelector(`.conteiner-MinhasTrilhas`).style.display = "none"
-    // document.querySelector(`.conteiner-Avaliacao`).style.display = "none"
+    document.querySelector(`.conteiner-Avaliacao`).style.display = "none"
     document.querySelector(`.conteiner-perfil`).style.display = "none"
     document.querySelector(`.cont-eventos`).style.display = "none"
 
@@ -616,9 +616,9 @@ function listarEventos() {
         return;
     }
 
-    const jaParticipa = eventos.some(e =>
-        e.participantes.some(p => p.cpf === usuarioLog.cpf)
-    );
+    // const jaParticipa = eventos.some(e =>
+    //     e.participantes.some(p => p.cpf === usuarioLog.cpf)
+    // );
 
     eventos.forEach((e, i) => {
         const div = document.createElement('div');
@@ -641,7 +641,7 @@ function listarEventos() {
 
         const botao = document.createElement('button');
         botao.innerText = 'Participar';
-        botao.disabled = jaParticipa || e.participantes.length >= e.vagas || (e.soMulheres && usuarioLog.sexo !== "Feminino");
+        
 
         botao.addEventListener('click', () => {
             e.participantes.push({
@@ -680,7 +680,7 @@ function calcularIdade(dataNasc) {
     }
     return idade;
 }
-listarEventos()
+
 
 //Área reservada para receber as instruções do funcionamento das Trilhas
 
@@ -701,7 +701,11 @@ function renderizarTrilhas() {
 
     const usuario = usuarioLogado()
 
-
+    if (usuario === undefined) {
+        esconderSection()
+        abrirLoginCadastro("contLogin")
+        return
+    }
     lista.innerHTML = "";
     const filtrarPorCPF = atualizarClicando.filter(evento => evento.participantes.find(usuarioTrilha => usuarioTrilha.cpf === usuario.cpf))
 
@@ -907,7 +911,7 @@ function fecharAlerta() {
 
 
 // render inicial
-renderizarTrilhas();
+
 
 
 
