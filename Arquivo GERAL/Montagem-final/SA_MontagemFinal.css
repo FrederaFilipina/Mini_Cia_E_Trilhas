@@ -50,15 +50,17 @@ nav {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        align-items: center;
+        align-items: start;
         list-style: none;
         height: 100%;
+        padding-left: 5%;
 
         li {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: start;
+            padding-left: 5%;
 
             width: 70%;
             height: 10%;
