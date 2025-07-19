@@ -560,12 +560,27 @@ function CRIAREVENTO(nomeTrilhaEvento) {
 
 document.getElementById('eventoForm').addEventListener('submit', function (event) {
     event.preventDefault();
-    let usuarioLog = usuarioLogado()
-    const trilha = document.getElementById('trilha').value;
-    const data = document.getElementById('data').value;
-    const hora = document.getElementById('hora').value;
-    const ponto = document.getElementById('ponto').value;
-    const vagas = parseInt(document.getElementById('vagas').value);
+
+    let usuarioLog = usuarioLogado();
+
+
+    if (!usuarioLog || !usuarioLog.nomeCompleto) {
+        document.getElementById('mensagem').innerText = "Usuário não está logado.";
+        return;
+    }
+
+    const trilha = document.getElementById('select-trilha').value.trim();
+    const data = document.getElementById('data').value.trim();
+    const hora = document.getElementById('hora').value.trim();
+    const ponto = document.getElementById('ponto').value.trim();
+    const vagasStr = document.getElementById('vagas').value.trim();
+    const vagas = parseInt(vagasStr, 10);
+
+
+    if (!trilha || !data || !hora || !ponto || !vagasStr || isNaN(vagas) || vagas <= 0) {
+        document.getElementById('mensagem').innerText = "Preencha todos os campos corretamente.";
+        return;
+    }
 
     const nome = usuarioLog.nomeCompleto.trim();
     const idade = calcularIdade(usuarioLog.dataNacimento);
@@ -574,6 +589,7 @@ document.getElementById('eventoForm').addEventListener('submit', function (event
 
     let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
 
+
     const jaCriou = eventos.some(e => e.organizador.cpf === cpf);
     if (jaCriou) {
         document.getElementById('mensagem').innerText = "Você já criou um evento.";
@@ -581,8 +597,8 @@ document.getElementById('eventoForm').addEventListener('submit', function (event
     }
 
     const hoje = new Date();
-    const dataSelecionada = new Date(data + 'T00:00');
     hoje.setHours(0, 0, 0, 0);
+    const dataSelecionada = new Date(data + 'T00:00');
 
     if (dataSelecionada < hoje) {
         document.getElementById('mensagem').innerText = "Data não pode ser retroativa.";
@@ -597,7 +613,7 @@ document.getElementById('eventoForm').addEventListener('submit', function (event
         vagas,
         organizador: { nome, idade, sexo, cpf },
         participantes: [{ nome, idade, sexo, cpf }],
-        soMulheres: sexo === "Feminino"
+
     };
 
     eventos.push(eventoCriado);
@@ -606,54 +622,103 @@ document.getElementById('eventoForm').addEventListener('submit', function (event
     document.getElementById('mensagem').innerText = "Evento cadastrado com sucesso!";
     this.reset();
     listarEventos();
-    preencherCamposUsuario();
+
 });
 
-function listarEventos() {
-    const usuarioLog = usuarioLogado()
+
+function ListarEventosSemLogin() {
     const lista = document.getElementById('listaEventos');
     lista.innerHTML = '';
-    const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+    let eventos = JSON.parse(localStorage.getItem('eventos')) || []
 
     if (eventos.length === 0) {
-        lista.innerHTML = '<p>Nenhum evento cadastrado.</p>';
+        lista.innerHTML = '<h3>Nenhum evento disponivel</h3>';
         return;
     }
 
-    // const jaParticipa = eventos.some(e =>
-    //     e.participantes.some(p => p.cpf === usuarioLog.cpf)
-    // );
 
     eventos.forEach((e, i) => {
         const div = document.createElement('div');
-        div.style.border = '1px solid #ccc';
-        div.style.margin = '10px 0';
-        div.style.padding = '10px';
+        div.classList.add("cardEventosOnline")
 
         div.innerHTML = `
-            <strong>Evento ${i + 1}</strong><br>
-            Trilha: ${e.trilha}<br>
-            Data: ${e.data} às ${e.hora}<br>
-            Ponto de Encontro: ${e.ponto}<br>
-            Vagas: ${e.vagas}<br>
-            Organizador: ${e.organizador.nome} (${e.organizador.idade} anos, ${e.organizador.sexo})<br>
-            CPF: ${e.organizador.cpf}<br>
-            Participantes: ${e.participantes.length}<br>
-            ${e.soMulheres ? '<strong>Evento exclusivo para mulheres</strong><br>' : ''}
+            <h3>Evento ${i + 1}</h3>
+            <p>Trilha: ${e.trilha}</p>
+            <p>Data: ${e.data} às ${e.hora}</p>
+            <p>Ponto de Encontro: ${e.ponto}</p>
+            <p>Vagas: ${e.vagas}</p>
+            <p>Organizador: ${e.organizador.nome} (${e.organizador.idade} anos, ${e.organizador.sexo})</p>
+            <p>CPF: ${e.organizador.cpf}</p>
+            <p>Participantes: ${e.participantes.length}</p>
+            
         `;
+        lista.appendChild(div);
+    })
 
+
+
+}
+
+function listarEventos() {
+    const usuarioLog = usuarioLogado();
+    const lista = document.getElementById('listaEventos');
+    lista.innerHTML = '';
+    let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+    
+    if (usuarioLog ===null) {
+        ListarEventosSemLogin()
+        return
+    }
+
+    eventos = eventos.filter(evento =>
+        !evento.participantes.some(p => p.cpf === usuarioLog.cpf)
+    );
+
+
+    if (eventos.length === 0) {
+        lista.innerHTML = '<h3>Nenhum evento disponivel</h3>';
+        return;
+    }
+
+    eventos.forEach((e, i) => {
+        const div = document.createElement('div');
+        div.classList.add("cardEventosOnline")
+
+        div.innerHTML = `
+            <h3>Evento ${i + 1}</h3>
+            <p>Trilha: ${e.trilha}</p>
+            <p>Data: ${e.data} às ${e.hora}</p>
+            <p>Ponto de Encontro: ${e.ponto}</p>
+            <p>Vagas: ${e.vagas}</p>
+            <p>Organizador: ${e.organizador.nome} (${e.organizador.idade} anos, ${e.organizador.sexo})</p>
+            <p>CPF: ${e.organizador.cpf}</p>
+            <p>Participantes: ${e.participantes.length}</p>
+            
+        `;
 
         const botao = document.createElement('button');
         botao.innerText = 'Participar';
-        
 
         botao.addEventListener('click', () => {
+
+            if (e.participantes.some(p => p.cpf === usuarioLog.cpf)) {
+                alert('Você já está participando deste evento.');
+                return;
+            }
+
+
+            if (e.participantes.length >= e.vagas) {
+                alert('Não há vagas disponíveis.');
+                return;
+            }
+
             e.participantes.push({
                 nome: usuarioLog.nomeCompleto,
                 idade: calcularIdade(usuarioLog.dataNacimento),
                 sexo: usuarioLog.sexo,
                 cpf: usuarioLog.cpf
             });
+
             localStorage.setItem('eventos', JSON.stringify(eventos));
             listarEventos();
         });
@@ -663,16 +728,6 @@ function listarEventos() {
     });
 }
 
-function preencherCamposUsuario() {
-    let usuarioLog = usuarioLogado()
-    document.getElementById('nome').value = usuarioLog.nomeCompleto;
-    document.getElementById('idade').value = calcularIdade(usuarioLog.dataNacimento);
-    document.getElementById('sexo').value = usuarioLog.sexo;
-
-    document.getElementById('nome').readOnly = true;
-    document.getElementById('idade').readOnly = true;
-    document.getElementById('sexo').disabled = true;
-}
 
 function calcularIdade(dataNasc) {
     const hoje = new Date();
@@ -685,6 +740,30 @@ function calcularIdade(dataNasc) {
     return idade;
 }
 
+function preencherSelectTrilhas() {
+    const selectTrilha = document.getElementById('select-trilha');
+    console.log(selectTrilha);
+
+    if (!selectTrilha) return;
+
+    selectTrilha.innerHTML = '';
+
+    const optionDefault = document.createElement('option');
+    optionDefault.value = '';
+    optionDefault.text = '-- Selecione a Trilha --';
+    selectTrilha.appendChild(optionDefault);
+
+    const trilhas = JSON.parse(localStorage.getItem('ListagemTrilhas')) || [];
+
+
+
+    trilhas.forEach(trilha => {
+        const option = document.createElement('option');
+        option.value = trilha.nome;
+        option.text = trilha.nome;
+        selectTrilha.appendChild(option);
+    });
+}
 
 //Área reservada para receber as instruções do funcionamento das Trilhas
 

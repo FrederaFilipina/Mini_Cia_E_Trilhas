@@ -21,7 +21,7 @@
                         id="btn-minhas-trilhas">Minhas Trilhas</li>
                     <li onclick="abrirTela('Trilhas,cont-fred')" id="Trilhas">Trilhas</li>
                     <li onclick="abrirTela('Eventos,cont-eventos'),listarEventos()" id="Eventos">Eventos</li>
-                    <li onclick="abrirTela('criarEventos,container-Evento')" id="criarEventos">Criar Eventos</li>
+                    <li onclick="abrirTela('criarEventos,container-Evento'),preencherSelectTrilhas()" id="criarEventos">Criar Eventos</li>
                     <li onclick="abrirTela('fazerAvaliacao,conteiner-Avaliacao')" id="fazerAvaliacao">Avaliação</li>
                 </ol>
             </nav>
@@ -303,8 +303,8 @@
                     <form id="eventoForm">
 
                         <div class="form-group">
-                            <label for="trilha">Trilha:</label>
-                            <select id="trilha" required>
+                            <label for="select-trilha">Trilha:</label>
+                            <select id="select-trilha" required>
                                 <option value="">Selecione</option>
                                 <option value="Trilha da Lagoa">Trilha da Lagoa</option>
                                 <option value="Trilha do Campeche">Trilha do Campeche</option>
@@ -343,7 +343,7 @@
 
             </section>
             <section class="cont-eventos">
-
+                <h1>Eventos</h1>
                 <div id="listaEventos">
 
                 </div>
