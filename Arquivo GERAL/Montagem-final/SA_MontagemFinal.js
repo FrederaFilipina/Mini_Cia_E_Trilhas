@@ -549,8 +549,16 @@ function mostrarInfTrilha(nomeTrilha) {
 
 }
 function CRIAREVENTO(nomeTrilhaEvento) {
-    let eventoTrilhaNome = nomeTrilhaEvento
-    console.log(eventoTrilhaNome)
+   abrirTela('criarEventos,container-Evento')
+    preencherSelectTrilhas()
+
+    setTimeout(() => {
+        let seletor = document.getElementById("select-trilha")
+
+        seletor.value = nomeTrilhaEvento
+
+    },100)
+
 }
 
 // Frederico
