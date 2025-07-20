@@ -391,12 +391,18 @@ li:hover {
     width: 100%;
 
     font-size: 1.5vw;
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 0, 255, 0);
-    border: 2px solid black;
-    border-radius: 3px;
-
     cursor: pointer;
+
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    background: #8B5E3C;
+    color: #FFFFFF;
+    transition: background 0.2s;
+}
+
+.bttn-CriarEvent-LogIn:hover {
+    background: #5C3D2E;
 }
 
 /*---Frederico---*/
