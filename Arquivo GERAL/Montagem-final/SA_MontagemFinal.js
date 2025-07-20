@@ -298,6 +298,16 @@ function mostrarLiCompleto() {
     document.getElementById("Login").style.display = "none"
 
 }
+
+function esconderLi() {
+    document.getElementById("criarEventos").style.display = "none"
+
+    document.getElementById("perfil").style.display = "none"
+    document.getElementById("btn-minhas-trilhas").style.display = "none"
+    document.getElementById("fazerAvaliacao").style.display = "none"
+
+}
+
 function esconderSection() {
     document.getElementById("Login").classList.remove("liNav")
     document.getElementById("Trilhas").classList.remove("liNav")
@@ -822,6 +832,7 @@ function renderizarTrilhas() {
           <div class="form-group"<label>Ponto: <input type="text" name="ponto" value="${trilha.ponto}" /></label><br></div>
           <div class="form-group"<label>Vagas: <input type="number" name="vagas" value="${trilha.vagas}" /></label><br></div>
           <button type="submit" class="salvar-edicao">Salvar</button>
+          <button class="excluir-trilha" data-index="${index}">Excluir</button>
           <button type="button" class="cancelar-edicao">Cancelar</button>
         </form>
       `;
@@ -834,7 +845,6 @@ function renderizarTrilhas() {
         <p><strong>Vagas disponíveis:</strong> ${trilha.vagas}</p>
         <div class="Botoes-editarExcluir">
         <button class="editar-btn" data-index="${index}">Editar</button>
-        <button class="excluir-trilha" data-index="${index}">Excluir</button>
         </div>
 
       `;
@@ -902,6 +912,8 @@ function abrirMinhasTrilhas() {
     renderizarTrilhas()
 }
 
+// ---------PERFIL----------
+
 function abrirMeuPerfil() {
     abrirTela('perfil,conteiner-perfil');
 }
@@ -917,6 +929,37 @@ function abrirBotaoPerfil() {
     });
 }
 abrirBotaoPerfil();
+
+function deslogarUsuario() {
+    localStorage.removeItem("logado");
+    alert('Você foi deslogado com sucesso!');
+    esconderSection();
+    limparInput();
+    esconderLi()
+    location.reload()
+
+}
+
+
+function ativarBotaoDeslogar() {
+    const btnDeslogar = document.getElementById("deslogar-perfil");
+    if (btnDeslogar) {
+        btnDeslogar.addEventListener("click", deslogarUsuario);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    ativarBotaoDeslogar();
+
+    if (usuarioLogado()) {
+        mostrarLiCompleto();
+    } else {
+        esconderSection();
+        abrirLoginCadastro("contLogin");
+        mostrarLiCompleto();
+    }
+});
+
 
 function mostrarDadosUsuario() {
     const visual = document.getElementById("perfil-visualizacao");
@@ -951,11 +994,13 @@ document.getElementById("editar-perfil").addEventListener("click", () => {
 
     document.getElementById("perfil-visualizacao").style.display = "none";
     document.getElementById("perfil-edicao").style.display = "flex";
+    document.getElementById("editar-perfil").style.display = "none";
 });
 
 document.getElementById("cancelar-edicao").addEventListener("click", () => {
     document.getElementById("perfil-edicao").style.display = "none";
     document.getElementById("perfil-visualizacao").style.display = "flex";
+    document.getElementById("editar-perfil").style.display = "block";
 });
 
 document.getElementById("form-edicao").addEventListener("submit", (e) => {
@@ -979,6 +1024,7 @@ document.getElementById("form-edicao").addEventListener("submit", (e) => {
         mostrarDadosUsuario();
         document.getElementById("perfil-edicao").style.display = "none";
         document.getElementById("perfil-visualizacao").style.display = "flex";
+        document.getElementById("editar-perfil").style.display = "flex";
     }
 });
 
@@ -1061,8 +1107,8 @@ function avalicaoAmigo() {
     let usuarioLogado = JSON.parse(localStorage.getItem("logado"))
     let eventos = JSON.parse(localStorage.getItem("eventos"))
     let nomeAvaliando = document.getElementById("nomeAmigo")
-    
-    
+
+
     let eventoUsuario = eventos.filter(evento => evento.participantes.some(usuario => usuario.cpf === usuarioLogado.cpf))
 
     let usuarioAvaliador = eventoUsuario[0].participantes.find(usuario => {
@@ -1099,7 +1145,7 @@ function avalicaoAmigo() {
     } else {
 
 
-        
+
 
 
     }
