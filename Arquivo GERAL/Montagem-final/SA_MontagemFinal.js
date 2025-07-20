@@ -1037,7 +1037,7 @@ const cometarioAmigo = []
 const containerAva = []
 
 function AvaliaçaoDisponivel() {
-    let eventos = JSON.parse(localStorage.getItem("eventos"))
+    let eventos = JSON.parse(localStorage.getItem("eventos"))||[]
     let usuarioLoga = usuarioLogado()
 
     eventos.forEach(evento => {
