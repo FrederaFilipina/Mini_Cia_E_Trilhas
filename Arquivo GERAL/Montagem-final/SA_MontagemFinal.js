@@ -808,12 +808,12 @@ function renderizarTrilhas() {
         if (indexEditando === index) {
             divTrilha.innerHTML = `
         <form class="form-edicao">
-          <label>Trilha: <input type="text" name="trilha" value="${trilha.trilha}" required disabled/></label><br>
-          <label>Data: <input type="date" name="data" value="${trilha.data}" /></label><br>
-          <label>Hora: <input type="time" name="hora" value="${trilha.hora}" /></label><br>
-          <label>Ponto: <input type="text" name="ponto" value="${trilha.ponto}" /></label><br>
-          <label>Vagas: <input type="number" name="vagas" value="${trilha.vagas}" /></label><br>
-          <button type="submit">Salvar</button>
+          <div class="form-group"<label>Trilha: <input type="text" name="trilha" value="${trilha.trilha}" required disabled/></label><br></div>
+          <div class="form-group"<label>Data: <input type="date" name="data" value="${trilha.data}" /></label><br></div>
+          <div class="form-group"<label>Hora: <input type="time" name="hora" value="${trilha.hora}" /></label><br></div>
+          <div class="form-group"<label>Ponto: <input type="text" name="ponto" value="${trilha.ponto}" /></label><br></div>
+          <div class="form-group"<label>Vagas: <input type="number" name="vagas" value="${trilha.vagas}" /></label><br></div>
+          <button type="submit" class="salvar-edicao">Salvar</button>
           <button type="button" class="cancelar-edicao">Cancelar</button>
         </form>
       `;
@@ -824,8 +824,10 @@ function renderizarTrilhas() {
         <p><strong>Horário:</strong> ${trilha.hora}</p>
         <p><strong>Ponto de encontro:</strong> ${trilha.ponto}</p>
         <p><strong>Vagas disponíveis:</strong> ${trilha.vagas}</p>
+        <div class="Botoes-editarExcluir">
         <button class="editar-btn" data-index="${index}">Editar</button>
         <button class="excluir-trilha" data-index="${index}">Excluir</button>
+        </div>
 
       `;
         }
@@ -835,7 +837,7 @@ function renderizarTrilhas() {
 }
 
 botaoMinhasTrilhas.addEventListener("click", () => {
-    trilhasView.style.display = "block";
+    trilhasView.style.display = "flex";
     indexEditando = null;
     renderizarTrilhas();
 });
@@ -900,8 +902,8 @@ function abrirBotaoPerfil() {
     const abrirBotaoPerfil = document.querySelectorAll("#perfil");
     abrirBotaoPerfil.forEach((button) => {
         button.addEventListener("click", () => {
-            document.getElementById("contPerfil").style.display = "block";
-            document.getElementById("perfil-container").style.display = "block";
+            document.getElementById("contPerfil").style.display = "flex";
+            document.getElementById("perfil-container").style.display = "flex";
             mostrarDadosUsuario();
         });
     });
@@ -940,12 +942,12 @@ document.getElementById("editar-perfil").addEventListener("click", () => {
     form.sexo.value = usuario.sexo;
 
     document.getElementById("perfil-visualizacao").style.display = "none";
-    document.getElementById("perfil-edicao").style.display = "block";
+    document.getElementById("perfil-edicao").style.display = "flex";
 });
 
 document.getElementById("cancelar-edicao").addEventListener("click", () => {
     document.getElementById("perfil-edicao").style.display = "none";
-    document.getElementById("perfil-visualizacao").style.display = "block";
+    document.getElementById("perfil-visualizacao").style.display = "flex";
 });
 
 document.getElementById("form-edicao").addEventListener("submit", (e) => {
@@ -968,7 +970,7 @@ document.getElementById("form-edicao").addEventListener("submit", (e) => {
 
         mostrarDadosUsuario();
         document.getElementById("perfil-edicao").style.display = "none";
-        document.getElementById("perfil-visualizacao").style.display = "block";
+        document.getElementById("perfil-visualizacao").style.display = "flex";
     }
 });
 
@@ -984,23 +986,9 @@ document.getElementById("excluir-perfil").addEventListener("click", () => {
     localStorage.removeItem("logado");
 
     alert("Conta excluída com sucesso.");
-    location.reload(); // ou abrirLoginCadastro("contLogin")
+    location.reload();
 });
 
-function mostrarAlerta(mensagem) {
-    const alerta = document.getElementById('meu-alerta');
-    const texto = document.getElementById('alerta-texto');
-    texto.textContent = mensagem;
-    alerta.style.display = 'block';
-
-    setTimeout(() => {
-        alerta.style.display = 'none';
-    }, 4000); // esconde após 4 segundos
-}
-
-function fecharAlerta() {
-    document.getElementById('meu-alerta').style.display = 'none';
-}
 
 //Área reservada para receber as instruções do funcionamento das Trilhas
 
