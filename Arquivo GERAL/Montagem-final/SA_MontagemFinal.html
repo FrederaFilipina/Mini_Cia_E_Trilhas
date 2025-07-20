@@ -106,100 +106,103 @@
             <section class="conteiner-cadastro" id="contCadast">
 
                 <div class="conteiner-h1-cadastro">
-                <h1 class="h1-cadastro">Cadastro</h1>
-                <form class="formulario-cadastro" id="formCadastro">
+                    <h1 class="h1-cadastro">Cadastro</h1>
+                    <form class="formulario-cadastro" id="formCadastro">
 
-                    <div class="parte1">
-                        <div class="label-input">
-                            <label for="nomeDigtado">Nome: </label>
-                            <input type="text" name="nomeDigtado" id="nomeDigtado" required>
-                        </div>
-
-
-                        <div class="label-input">
-                            <label for="cpfDig">CPF: </label>
-                            <input type="text" name="cpfDigitado" id="cpfDig" maxlength="11" inputmode="numeric"
-                                oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
-                        </div>
+                        <div class="parte1">
+                            <div class="label-input">
+                                <label for="nomeDigtado">Nome: </label>
+                                <input type="text" name="nomeDigtado" id="nomeDigtado" required>
+                            </div>
 
 
-                        <div class="label-input">
-                            <label for="dataNacimento">Data Nascimento: </label>
-                            <input type="date" name="dataNacimento" id="dataNacimento" required>
-                        </div>
+                            <div class="label-input">
+                                <label for="cpfDig">CPF: </label>
+                                <input type="text" name="cpfDigitado" id="cpfDig" maxlength="11" inputmode="numeric"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+                            </div>
 
 
-                        <div>
-                            <p>Sexo:</p>
-                            <input type="radio" name="sexo" id="sexoMasc">
-                            <label for="sexoMasc">Masculino</label>
+                            <div class="label-input">
+                                <label for="dataNacimento">Data Nascimento: </label>
+                                <input type="date" name="dataNacimento" id="dataNacimento" required>
+                            </div>
 
-                            <input type="radio" name="sexo" id="sexoFem">
-                            <label for="sexoFem">Feminino</label>
-
-                            <!-- <input type="radio" name="sexo" id="sexoOutro">
-                        <label for="sexoOutro">Outro</label> -->
-                        </div>
-
-
-
-
-                        <div class="label-input">
-                            <label for="telefDigi">Celular: </label>
-                            <input type="tel" name="telefone" id="telefDigi" inputmode="numeric" maxlength="11"
-                                oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
-                        </div>
-
-
-
-                        <div class="label-input">
-                            <label for="emailDigit">Email: </label>
-                            <input type="email" name="emailDigitado" id="emailDigit" required autocomplete="username">
-                        </div>
-                    </div>
-                    <div class="parte2">
-                        <div class="conteiner-recidencia" id="contRecidenc:">
-                            <p>Você reside em Florianópolis?</p>
 
                             <div>
-                                <input type="radio" name="opcaoCep" id="sim" onclick="mostrarCep()">
-                                <label for="sim">Sim</label>
-                                <input type="radio" name="opcaoCep" id="nao" onclick="esconderCep()">
-                                <label for="nao">Não</label>
+                                <p>Sexo:</p>
+                                <input type="radio" name="sexo" id="sexoMasc">
+                                <label for="sexoMasc">Masculino</label>
+
+                                <input type="radio" name="sexo" id="sexoFem">
+                                <label for="sexoFem">Feminino</label>
+
+                                <!-- <input type="radio" name="sexo" id="sexoOutro">
+                        <label for="sexoOutro">Outro</label> -->
                             </div>
 
-                            <div class="conteiner-cep" id="contCep">
-                                <label for="cep">CEP: </label>
-                                <input type="text" name="CEP" id="cep"
-                                    oninput="this.value = this.value.replace(/[^0-9]/g, (''))">
+
+
+
+                            <div class="label-input">
+                                <label for="telefDigi">Celular: </label>
+                                <input type="tel" name="telefone" id="telefDigi" inputmode="numeric" maxlength="11"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+                            </div>
+
+
+
+                            <div class="label-input">
+                                <label for="emailDigit">Email: </label>
+                                <input type="email" name="emailDigitado" id="emailDigit" required
+                                    autocomplete="username">
                             </div>
                         </div>
+                        <div class="parte2">
+                            <div class="conteiner-recidencia" id="contRecidenc:">
+                                <p>Você reside em Florianópolis?</p>
 
-                        <div class="label-input">
-                            <label for="userDigit">Usuário: </label>
-                            <input type="text" name="usuarioDigitado" id="userDigit" required autocomplete="username">
+                                <div>
+                                    <input type="radio" name="opcaoCep" id="sim" onclick="mostrarCep()">
+                                    <label for="sim">Sim</label>
+                                    <input type="radio" name="opcaoCep" id="nao" onclick="esconderCep()">
+                                    <label for="nao">Não</label>
+                                </div>
+
+                                <div class="conteiner-cep" id="contCep">
+                                    <label for="cep">CEP: </label>
+                                    <input type="text" name="CEP" id="cep"
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, (''))">
+                                </div>
+                            </div>
+
+                            <div class="label-input">
+                                <label for="userDigit">Usuário: </label>
+                                <input type="text" name="usuarioDigitado" id="userDigit" required
+                                    autocomplete="username">
+                            </div>
+
+
+
+                            <div class="label-input">
+                                <label for="senhaDigit">Senha: </label>
+                                <input type="password" name="senhaDigitado" id="senhaDigit" required
+                                    autocomplete="current-password">
+                            </div>
+
+
+                            <div class="cont-infosLoginCadas" id="infoUser">
+
+                            </div>
+
+                            <input class="buttonCadastro" type="submit" value="Cadastrar"
+                                onclick="entraCadastro(event)">
+                            <p>Você ja possui cadastro ? <a href="#" onclick="abrirLoginCadastro('contLogin')"
+                                    class="linkLoCa" id="LinkLogin">Logar</a></p>
                         </div>
 
 
-
-                        <div class="label-input">
-                            <label for="senhaDigit">Senha: </label>
-                            <input type="password" name="senhaDigitado" id="senhaDigit" required
-                                autocomplete="current-password">
-                        </div>
-
-
-                        <div class="cont-infosLoginCadas" id="infoUser">
-
-                        </div>
-
-                        <input class="buttonCadastro" type="submit" value="Cadastrar" onclick="entraCadastro(event)">
-                        <p>Você ja possui cadastro ? <a href="#" onclick="abrirLoginCadastro('contLogin')"
-                                class="linkLoCa" id="LinkLogin">Logar</a></p>
-                    </div>
-
-
-                </form>
+                    </form>
                 </div>
 
 
@@ -261,16 +264,28 @@
                                 </label><br />
                             </div>
 
+                            <div id="infoNomeUsuarioEdicao">
+
+                            </div>
+
                             <div class="form-group">
                                 <label>Email:
                                     <input type="email" name="email" required />
                                 </label><br />
                             </div>
 
+                            <div id="infoEmailUsuarioEdicao">
+
+                            </div>
+
                             <div class="form-group">
                                 <label>Telefone:
                                     <input type="text" name="telefone" required />
                                 </label><br />
+                            </div>
+
+                            <div id="infoTelefoneUsuarioEdicao">
+
                             </div>
 
                             <div class="form-group">
@@ -296,7 +311,7 @@
                         <button id="deslogar-perfil" class="button-logout">Deslogar</button>
 
                     </div>
-                    
+
                 </div>
 
 

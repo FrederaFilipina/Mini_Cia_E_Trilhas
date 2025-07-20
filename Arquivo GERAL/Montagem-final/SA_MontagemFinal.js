@@ -809,13 +809,13 @@ function renderizarTrilhas() {
         return;
     }
 
+
     const trilhasDoUsuarioLogado = atualizarClicando.filter(evento => {
         return evento.organizador && evento.organizador.cpf === usuario.cpf;
     });
 
     if (trilhasDoUsuarioLogado.length === 0) {
         lista.innerHTML = "<p>Você não criou nenhuma trilha ainda.</p>";
-        return;
     }
 
     trilhasDoUsuarioLogado.forEach((trilha, index) => {
@@ -832,7 +832,7 @@ function renderizarTrilhas() {
           <div class="form-group"<label>Ponto: <input type="text" name="ponto" value="${trilha.ponto}" /></label><br></div>
           <div class="form-group"<label>Vagas: <input type="number" name="vagas" value="${trilha.vagas}" /></label><br></div>
           <button type="submit" class="salvar-edicao">Salvar</button>
-          <button class="excluir-trilha" data-index="${index}">Excluir</button>
+          <button class="excluir-trilha" onclick="excluirEvento()">Excluir</button>
           <button type="button" class="cancelar-edicao">Cancelar</button>
         </form>
       `;
@@ -851,7 +851,42 @@ function renderizarTrilhas() {
         }
 
         lista.appendChild(divTrilha);
+
+
     });
+
+    // const trilhasDoUsuarioParticipando = atualizarClicando.filter(evento => {
+    //     if (evento.organizador.cpf !== usuario.cpf) {
+    //         return evento.participantes.some(usuarioo => usuarioo.cpf === usuario.cpf)
+    //     }
+
+    // });
+
+
+    // trilhasDoUsuarioParticipando.forEach((trilha) => {
+    //     const divTrilha = document.createElement("div");
+    //     divTrilha.classList.add("trilha-item");
+    //     divTrilha.innerHTML = `
+    //     <p><strong>Trilha:</strong> ${trilha.trilha}</p>
+    //     <p><strong>Data:</strong> ${trilha.data}</p>
+    //     <p><strong>Horário:</strong> ${trilha.hora}</p>
+    //     <p><strong>Ponto de encontro:</strong> ${trilha.ponto}</p>
+    //     <p><strong>Vagas disponíveis:</strong> ${trilha.vagas}</p>
+    //     </div>`
+
+    //     lista.appendChild(divTrilha);
+
+    // })
+
+}
+
+function excluirEvento(){
+    let excluirEvento = usuarioLogado()
+    let todasTrilhas = JSON.parse(localStorage.getItem("eventos"))
+
+    let index = todasTrilhas.findIndex(evento => evento.organizador.cpf === excluirEvento.cpf)
+    console.log(index);
+    
 }
 
 botaoMinhasTrilhas.addEventListener("click", () => {
@@ -872,14 +907,19 @@ lista.addEventListener("click", (event) => {
     }
 
     if (event.target.classList.contains("excluir-trilha")) {
+        const index = parseInt(event.target.getAttribute("data-index"));
+        console.log(index);
         
         if (confirm("Tem certeza que deseja excluir essa trilha?")) {
-            const usuario = usuarioLogado()
-            const atualizarClicando = JSON.parse(localStorage.getItem("eventos")) || [];
+            trilhasCadastradas.splice(index, 1);
+            localStorage.setItem("eventos", JSON.stringify(trilhasCadastradas));
+            renderizarTrilhas();
 
-            let index = atualizarClicando.findIndex(evento=> evento.organizador.cpf ===usuario.cpf)
-
-            console.log(index)
+            if (index !== -1) {
+                trilhasCadastradas.splice(index, 1);
+                localStorage.setItem("eventos", JSON.stringify(trilhasCadastradas));
+                renderizarTrilhas();
+            }
         }
     }
 
@@ -980,7 +1020,7 @@ function mostrarDadosUsuario() {
         <p><strong>Telefone:</strong> ${usuario.telefone}</p>
         <p><strong>CPF:</strong> ${usuario.cpf}</p>
         <p><strong>Avaliação:</strong> ${usuario.avaliaçãoUser}</p>
-    `;
+        `;
 }
 
 document.getElementById("editar-perfil").addEventListener("click", () => {
@@ -1002,6 +1042,10 @@ document.getElementById("cancelar-edicao").addEventListener("click", () => {
     document.getElementById("perfil-edicao").style.display = "none";
     document.getElementById("perfil-visualizacao").style.display = "flex";
     document.getElementById("editar-perfil").style.display = "block";
+
+    document.getElementById("infoNomeUsuarioEdicao").innerText = ""
+    document.getElementById("infoEmailUsuarioEdicao").innerText = ""
+    document.getElementById("infoTelefoneUsuarioEdicao").innerText = ""
 });
 
 document.getElementById("form-edicao").addEventListener("submit", (e) => {
@@ -1014,12 +1058,42 @@ document.getElementById("form-edicao").addEventListener("submit", (e) => {
 
 
     if (index !== -1) {
-        usuarios[index].nomeUsuario = form.nomeUsuario.value;
-        usuarios[index].email = form.email.value;
-        usuarios[index].telefone = form.telefone.value;
-        usuarios[index].sexo = form.sexo.value;
+        let comparandoUsuario = usuarios[index].nomeUsuario === form.nomeUsuario.value ? false : true;
+        let comparandoEmail = usuarios[index].email === form.email.value ? false : true;
+        let comparandotelefone = usuarios[index].telefone === form.telefone.value ? false : true;
 
-        // atualiza o logado também
+        let nomeUsuario = form.nomeUsuario.value
+        let emailUsuario = form.email.value
+        let telefoneUsuario = form.telefone.value
+
+        if (comparandoUsuario) {
+            if (verificarUsuario(nomeUsuario)) {
+                document.getElementById("infoNomeUsuarioEdicao").innerText = "Este usuario já esta sendo utilizado"
+                return
+            }
+        }
+        if (comparandoEmail) {
+            if (verificarEmail(emailUsuario)) {
+                document.getElementById("infoEmailUsuarioEdicao").innerText = "Este Email já esta sendo utilizado"
+                return
+            }
+        }
+        if (comparandotelefone) {
+            if (verificarTelefone(telefoneUsuario)) {
+                document.getElementById("infoTelefoneUsuarioEdicao").innerText = "Este telefone já esta sendo utilizado"
+                return
+            }
+        }
+
+        usuarios[index].nomeUsuario = nomeUsuario
+        usuarios[index].email = emailUsuario
+        usuarios[index].telefone = telefoneUsuario
+
+        document.getElementById("infoNomeUsuarioEdicao").innerText = ""
+        document.getElementById("infoEmailUsuarioEdicao").innerText = ""
+        document.getElementById("infoTelefoneUsuarioEdicao").innerText = ""
+
+
         localStorage.setItem("logado", JSON.stringify(usuarios[index]));
         localStorage.setItem("CadastroUser", JSON.stringify(usuarios));
 
@@ -1077,7 +1151,7 @@ function mostraTrilha() {
 
         const li = document.createElement("li")
         li.textContent = `${tempo} 
-                  ${dificuldade}`
+                  ${dificuldade} `
         ul.appendChild(li)
     }
 
@@ -1089,6 +1163,7 @@ const containerAva = []
 function AvaliaçaoDisponivel() {
     let eventos = JSON.parse(localStorage.getItem("eventos")) || []
     let usuarioLoga = usuarioLogado()
+
 
     eventos.forEach(evento => {
         evento.participantes.forEach(usuario => {
@@ -1128,7 +1203,7 @@ function avalicaoAmigo() {
 
             if (eventoUsuario[0].participantes[usuarioAvaliador.avaliando].cpf !== usuarioAvaliador.cpf) {
 
-                nomeAvaliando.innerText = `${eventoUsuario[0].participantes[usuarioAvaliador.avaliando].nome}`
+                nomeAvaliando.innerText = `${eventoUsuario[0].participantes[usuarioAvaliador.avaliando].nome} `
                 console.log(eventoUsuario[0].participantes[usuarioAvaliador.avaliando]);
 
             } else {
