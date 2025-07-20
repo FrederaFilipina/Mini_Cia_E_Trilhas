@@ -351,7 +351,7 @@ const infsListaTrilhas = [
         nvlTSite: `5`, nvlTUsuario: [5],
         img: `<img src="Icones/image.svg">`,
     },
-    
+
     {
         nome: `Trilha Norte 2`, pPartida: ``, pChegada: ``,
         regiao: `Norte`, cep: ``,
@@ -505,12 +505,12 @@ function mostrarInfTrilha(nomeTrilha) {
             </div>                    
         `
         document.querySelector('.conts-DadosTrilha-comentarios').innerHTML =
-        `<div class="DadosTrilha-comentarios">
+            `<div class="DadosTrilha-comentarios">
         <span> Área destinada aos comentários</span>
         </div>`
 
         document.querySelector('.cont-bttn-CriarEvent-LogIn').innerHTML =
-        `<button class='bttn-CriarEvent-LogIn' onclick="CRIAREVENTO('${dadosTrilha.nome}')">Criar Evento</button>`
+            `<button class='bttn-CriarEvent-LogIn' onclick="CRIAREVENTO('${dadosTrilha.nome}')">Criar Evento</button>`
 
     } else {
         dadosTrilha = infsListaTrilhas.find(filtroNomeTrilha => filtroNomeTrilha.nome === trilhaNome)
@@ -542,14 +542,14 @@ function mostrarInfTrilha(nomeTrilha) {
             </div>                   
         `
         document.querySelector('.conts-DadosTrilha-comentarios').innerHTML =
-        `<div class="DadosTrilha-comentarios">
+            `<div class="DadosTrilha-comentarios">
         <span> Área destinada aos comentários</span>
         </div>`
     }
 
 }
 function CRIAREVENTO(nomeTrilhaEvento) {
-   abrirTela('criarEventos,container-Evento')
+    abrirTela('criarEventos,container-Evento')
     preencherSelectTrilhas()
 
     setTimeout(() => {
@@ -557,7 +557,7 @@ function CRIAREVENTO(nomeTrilhaEvento) {
 
         seletor.value = nomeTrilhaEvento
 
-    },100)
+    }, 100)
 
 }
 
@@ -672,8 +672,8 @@ function listarEventos() {
     const lista = document.getElementById('listaEventos');
     lista.innerHTML = '';
     let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
-    
-    if (usuarioLog ===null) {
+
+    if (usuarioLog === null) {
         ListarEventosSemLogin()
         return
     }
@@ -998,18 +998,18 @@ function avaTrilha() {
     const avaliacaoTempo = document.getElementById("tempoEstimado").value
     if (avaliacaoTempo.trim() === "") // Pega o primeiro elemento que satisfa a condição
         avalicaoTempoEstimado.push(avaliacaoTempo)
-        localStorage.setItem("ava-tempoEstimado", JSON.stringify(avaliacaoTempo))
+    localStorage.setItem("ava-tempoEstimado", JSON.stringify(avaliacaoTempo))
 
     console.log(avaliacaoTempo)
 
     const avaDificuldade = document.getElementById("grauDeDificuldade").value
     if (avaDificuldade === "")
         avaliacaoGrauDeDificuldade.push(avaDificuldade)
-     localStorage.setItem("ava-dificuldade", JSON.stringify(avaDificuldade))
+    localStorage.setItem("ava-dificuldade", JSON.stringify(avaDificuldade))
 
     console.log(avaDificuldade)
     mostraTrilha()
-    
+
 }
 function mostraTrilha() {
     const ul = document.getElementById("mostraTrilha")
@@ -1030,27 +1030,87 @@ function mostraTrilha() {
 const notaAmigo = []
 const cometarioAmigo = []
 const containerAva = []
+
 function avalicaoAmigo() {
+    let usuarioLogado = JSON.parse(localStorage.getItem("logado"))
+    let eventos = JSON.parse(localStorage.getItem("eventos"))
+    let nomeAvaliando = document.getElementById("nomeAmigo")
 
-    document.getElementById("containerAva").value
-    if (containerAva.length > 1) {
-        containerAva.shift()
-    } else {
-        alert("obrigado")
+    let eventoUsuario = eventos.filter(evento => evento.participantes.some(usuario => usuario.cpf === usuarioLogado.cpf))
+
+    let usuarioAvaliador = eventoUsuario[0].participantes.map(usuario => {
+
+        if (usuario.cpf === usuarioLogado.cpf)
+            return usuario
+    })
+
+
+    if (!usuarioAvaliador.avaliando) {
+
+    
+        usuarioAvaliador.avaliando = 0
+
+
+
+        alert("entrou!!!")
+        console.log(eventoUsuario);
+
+        if (eventoUsuario[0].participantes[usuarioAvaliador.avaliando].cpf !== usuarioAvaliador.cpf) {
+            alert("true")
+            nomeAvaliando.innerText = `${eventoUsuario[0].participantes[usuarioAvaliador.avaliando].nome}`
+
+        }
+
     }
-    const avaAmigo = document.getElementById("notaAmigo").value
-    if (avaAmigo.trim() === 0)
-        notaAmigo.push(avaAmigo)
-    console.log(avaAmigo)
-    localStorage.setItem("ava-notaAmigo", JSON.stringify(avaAmigo))
 
-    const cometAmigo = document.getElementById("cometarioAmigo").value
-    if (cometAmigo.trim() !== 0)
-        cometarioAmigo.push(cometAmigo)
-    console.log(cometAmigo)
-
-    mostraAmigo()
 }
+function AvaliandoAmigo(){
+    
+    let usuarioLogado = JSON.parse(localStorage.getItem("logado"))
+    let eventos = JSON.parse(localStorage.getItem("eventos"))
+    
+
+    let eventoUsuario = eventos.filter(evento => evento.participantes.some(usuario => usuario.cpf === usuarioLogado.cpf))
+    let usuarioAvaliador = eventoUsuario[0].participantes.find(usuario => {
+
+        if (usuario.cpf === usuarioLogado.cpf)
+            return usuario
+    })
+
+    let valor = document.getElementById("notaAmigo").value
+    console.log(usuarioAvaliador);
+    
+
+    let usuarioParaAvaliar = usuarioAvaliador.cpf
+
+    cadastroUsuarios.forEach(usuario=>{ 
+      if (usuario.cpf = usuarioParaAvaliar) {
+        usuario.avaliações.push(valor)
+
+        eventoUsuario[0].participantes.forEach(usuario=>{ 
+            
+           if (usuario.cpf ===usuarioAvaliador) {
+            usuario.avalliando ++
+           } 
+        
+        
+        })
+
+
+
+      }  
+        
+    })
+
+    
+
+    console.log(cadastroUsuarios);
+    console.log(eventoUsuario);
+    
+    
+    
+}
+
 function mostraAmigo() {
     const ul = document.getElementById("mostraAmigo")
     ul.innerHTML = ""
