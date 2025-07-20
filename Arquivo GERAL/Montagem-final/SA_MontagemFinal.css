@@ -865,7 +865,7 @@ li:hover {
     display: none;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 90%;
 
     h1 {
         font-size: 3dvw;
@@ -928,7 +928,7 @@ li:hover {
     display: none;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 90%;
     height: 100%;
 }
 
