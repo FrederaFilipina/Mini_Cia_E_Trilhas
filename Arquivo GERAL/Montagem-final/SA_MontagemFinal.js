@@ -348,73 +348,65 @@ function usuarioLogado() {
 
 const infsListaTrilhas = [
     {
-        nome: `Trilha Norte 1`, pPartida: `Ponta A`, pChegada: `Ponto B`,
+        nome: `Trilha do Morro do Rapa`, pPartida: `Lagoinha do Norte`, pChegada: `Praia Brava`,
         regiao: `Norte`, cep: ``,
-        distancia: `45Km`, tempo: '03hm30', relevo: `Irregular`, elevacao: `50m`,
+        distancia: `2.8Km`, tempo: '01h30m', relevo: `Irregular`, elevacao: `167m`,
+        nvlTSite: `2`, nvlTUsuario: [2],
+        img: `<img src="ImgTrilhas/morroDoRapa.jpg">`,
+    },
+    
+    {
+        nome: `Trilha das Feiticeiras (Caminho de Santiago de Floripa)`, pPartida: `Praia dos Ingleses`, pChegada: `Praia Brava`,
+        regiao: `Norte`, cep: ``,
+        distancia: `2.62Km`, tempo: '1h30m', relevo: `Irregular`, elevacao: `100m`,
+        nvlTSite: `3`, nvlTUsuario: [3],
+        img: `<img src="ImgTrilhas/trilhaDasFeiticeiras.jpg">`,
+    },
+
+    //-----------------------------------------------------------------------------
+
+    {
+        nome: `Trilha do Poção`, pPartida: `final da Rua Sebastião Laurentino da Silva`, pChegada: `Cachoeira do Poção`,
+        regiao: `Central`, cep: ``,
+        distancia: `1.4Km`, tempo: '00h30m', relevo: `Plana`, elevacao: `47m`,
+        nvlTSite: `1`, nvlTUsuario: [1],
+        img: `<img src="ImgTrilhas/trilhaDoPocao.jpg">`,
+    },
+
+    //-----------------------------------------------------------------------------
+
+    {
+        nome: `Trilha Piscinas Naturais Barra da Lagoa`, pPartida: `Ponte Pênsil da Barra da Lagoa`, pChegada: `Piscinas Naturais`,
+        regiao: `Leste`, cep: ``,
+        distancia: `1.24Km`, tempo: '00h30m', relevo: `Irregular`, elevacao: `32m`,
+        nvlTSite: `1`, nvlTUsuario: [1],
+        img: `<img src="ImgTrilhas/piscinasNaturais.jpg">`,
+    },
+
+    {
+        nome: `Trilha do Farol da Barra da Lagoa`, pPartida: `Ponte Pênsil da Barra da Lagoa`, pChegada: `Farol da Barra`,
+        regiao: `Leste`, cep: ``,
+        distancia: `930m`, tempo: '00h30m', relevo: ``, elevacao: `109m`,
+        nvlTSite: `3`, nvlTUsuario: [3],
+        img: `<img src="ImgTrilhas/farolBarra.jpg">`,
+    },
+
+    //-----------------------------------------------------------------------------
+
+    {
+        nome: `Trilha da Lagoinha do Leste (via Matadeiro)`, pPartida: `final da praia do Matadeiro`, pChegada: `Praia da Lagoinha do Leste`,
+        regiao: `Sul`, cep: ``,
+        distancia: `5Km`, tempo: '03h00m', relevo: `Irregular`, elevacao: `m`,
+        nvlTSite: `4`, nvlTUsuario: [4],
+        img: `<img src="ImgTrilhas/lagoinhaDoLesteMatadeiro.jpg">`,
+    },
+
+    {
+        nome: `Trilha da Lagoinha do Leste (via Pantano do Sul)`, pPartida: ``, pChegada: `Praia da Lagoinha do Leste`,
+        regiao: `Sul`, cep: ``,
+        distancia: `3Km`, tempo: '01h45m', relevo: `Irregular`, elevacao: `216m`,
         nvlTSite: `5`, nvlTUsuario: [5],
-        img: `<img src="Icones/image.svg">`,
-    },
-
-    {
-        nome: `Trilha Norte 2`, pPartida: ``, pChegada: ``,
-        regiao: `Norte`, cep: ``,
-        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="Icones/image.svg">`,
-    },
-
-    //-----------------------------------------------------------------------------
-
-    {
-        nome: `Trilha Central 1`, pPartida: ``, pChegada: ``,
-        regiao: `Central`, cep: ``,
-        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="Icones/image.svg">`,
-    },
-
-    {
-        nome: `Trilha Central 2`, pPartida: ``, pChegada: ``,
-        regiao: `Central`, cep: ``,
-        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="Icones/image.svg">`,
-    },
-
-    //-----------------------------------------------------------------------------
-
-    {
-        nome: `Trilha Leste 1`, pPartida: ``, pChegada: ``,
-        regiao: `Leste`, cep: ``,
-        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="Icones/image.svg">`,
-    },
-
-    {
-        nome: `Trilha Leste 2`, pPartida: ``, pChegada: ``,
-        regiao: `Leste`, cep: ``,
-        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="Icones/image.svg">`,
-    },
-
-    //-----------------------------------------------------------------------------
-
-    {
-        nome: `Trilha Sul 1`, pPartida: ``, pChegada: ``,
-        regiao: `Sul`, cep: ``,
-        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="Icones/image.svg">`,
-    },
-
-    {
-        nome: `Trilha Sul 2`, pPartida: ``, pChegada: ``,
-        regiao: `Sul`, cep: ``,
-        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="Icones/image.svg">`,
+        img: `<img src="ImgTrilhas/lagoinhaDoLestePantano.jpg">`,
     },
 ]
 localStorage.setItem('ListagemTrilhas', JSON.stringify(infsListaTrilhas))
@@ -466,7 +458,7 @@ function mostrarListTrilhasReg(RegTrilha) {
                     <span>${trilha.nome}</span>
                 </div>
                 <div class='divsBttnTrilha-foto'>
-                    <span>${trilha.img}</span>
+                    ${trilha.img}
                 </div>
             </div>`
     }
