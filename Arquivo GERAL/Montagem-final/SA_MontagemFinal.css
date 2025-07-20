@@ -498,12 +498,12 @@ li:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 75%;
     box-shadow: 0 0 7px #ccc;
     border: none;
     border-radius: 4px;
-    padding: 0.3rem;
-    height: 100%;
+    padding: 0.2rem;
+    height: 95%;
 }
 
 .linkLoCa {
@@ -531,8 +531,7 @@ li:hover {
     font-size: var(--font);
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    gap: 50px;
+    justify-content: space-around;
     /* border: 1px solid; */
     height: 100%;
 
@@ -550,7 +549,7 @@ li:hover {
     flex-direction: column;
     /* border: 1px solid red; */
     justify-content: space-around;
-    width: 60%;
+    width: 30%;
     height: 100%;
 
 
@@ -560,7 +559,7 @@ li:hover {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 40%;
+    width: 30%;
     height: 100%;
     /* border: 1px solid wheat; */
 }
