@@ -956,7 +956,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         esconderSection();
         abrirLoginCadastro("contLogin");
-        mostrarLiCompleto();
     }
 });
 
