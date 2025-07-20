@@ -331,6 +331,8 @@ function esconderSection() {
 function abrirLoginCadastro(cont) {
     document.getElementById("contCadast").style.display = "none"
     document.getElementById("contLogin").style.display = "none"
+    document.getElementById("infoUser").innerHTML = ""
+    document.getElementById("infoUserLogin").innerHTML =""
 
     document.getElementById(cont).style.display = "flex"
 
@@ -1083,7 +1085,7 @@ const cometarioAmigo = []
 const containerAva = []
 
 function AvaliaçaoDisponivel() {
-    let eventos = JSON.parse(localStorage.getItem("eventos"))
+    let eventos = JSON.parse(localStorage.getItem("eventos"))||[]
     let usuarioLoga = usuarioLogado()
 
     eventos.forEach(evento => {
