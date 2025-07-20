@@ -21,7 +21,8 @@
                         id="btn-minhas-trilhas">Minhas Trilhas</li>
                     <li onclick="abrirTela('Trilhas,cont-fred')" id="Trilhas">Trilhas</li>
                     <li onclick="abrirTela('Eventos,cont-eventos'),listarEventos()" id="Eventos">Eventos</li>
-                    <li onclick="abrirTela('criarEventos,container-Evento'),preencherSelectTrilhas()" id="criarEventos">Criar Eventos</li>
+                    <li onclick="abrirTela('criarEventos,container-Evento'),preencherSelectTrilhas()" id="criarEventos">
+                        Criar Eventos</li>
                     <li onclick="abrirTela('fazerAvaliacao,conteiner-Avaliacao')" id="fazerAvaliacao">Avaliação</li>
                 </ol>
             </nav>
@@ -78,7 +79,7 @@
                     <div class="conts-Lista-Dados">
                         <div class="cont-ListasTrilhas">
                         </div>
-                        
+
                         <div class="contExt-DadosTrilha">
 
                             <div class="cont-DadosTrilha-Inf">
@@ -242,45 +243,56 @@
                         <h2>Meu perfil</h2>
                     </div>
 
-                    <div id="perfil-visualizacao">
+                    <div class="perfil-visualizacao" id="perfil-visualizacao">
 
                     </div>
 
 
-                    <div id="perfil-edicao" style="display: none;">
+                    <div class="perfil-edicao" id="perfil-edicao" style="display: none;">
                         <form id="form-edicao" name="form-edicao">
-                            <label>Nome de Usuário:
-                                <input type="text" name="nomeUsuario" required />
-                            </label><br />
 
-                            <label>Email:
-                                <input type="email" name="email" required />
-                            </label><br />
+                            <div class="form-group">
+                                <label>Nome de Usuário:
+                                    <input type="text" name="nomeUsuario" required />
+                                </label><br />
+                            </div>
 
-                            <label>Telefone:
-                                <input type="text" name="telefone" required />
-                            </label><br />
+                            <div class="form-group">
+                                <label>Email:
+                                    <input type="email" name="email" required />
+                                </label><br />
+                            </div>
 
-                            <label>Sexo:
-                                <select name="sexo" required>
-                                    <option value="Mascolino">Masculino</option>
-                                    <option value="Feminino">Feminino</option>
-                                </select>
-                            </label><br />
+                            <div class="form-group">
+                                <label>Telefone:
+                                    <input type="text" name="telefone" required />
+                                </label><br />
+                            </div>
 
-                            <button type="submit">Salvar</button>
-                            <button type="button" id="cancelar-edicao">Cancelar</button>
+                            <div class="form-group">
+                                <label>Sexo:
+                                    <select name="sexo" required disabled>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Feminino">Feminino</option>
+                                    </select>
+                                </label><br />
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit">Salvar</button>
+                                <button type="button" id="cancelar-edicao">Cancelar</button>
+                            </div>
                         </form>
                     </div>
 
 
-                    <div style="margin-top: 10px;">
+                    <div class="botoes-perfil">
+                        <button id="excluir-perfil">Excluir Conta</button>
                         <button id="editar-perfil">Editar</button>
-                        <button id="excluir-perfil" style="background-color: crimson; color: white;">Excluir
-                            Conta</button>
-                        <button class="fechar-perfil">Fechar</button>
                     </div>
                 </div>
+
+
             </section>
             <div id="meu-alerta" class="alerta" style="display: none;">
                 <p id="alerta-texto">Mensagem de alerta!</p>
