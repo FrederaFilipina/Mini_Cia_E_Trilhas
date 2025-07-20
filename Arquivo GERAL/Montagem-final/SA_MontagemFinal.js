@@ -354,7 +354,7 @@ const infsListaTrilhas = [
         nvlTSite: `2`, nvlTUsuario: [2],
         img: `<img src="ImgTrilhas/morroDoRapa.jpg">`,
     },
-    
+
     {
         nome: `Trilha das Feiticeiras (Caminho de Santiago de Floripa)`, pPartida: `Praia dos Ingleses`, pChegada: `Praia Brava`,
         regiao: `Norte`, cep: ``,
@@ -772,9 +772,11 @@ function preencherSelectTrilhas() {
 //Área reservada para receber as instruções do funcionamento das Trilhas
 
 
+
+
+
+
 // jonny
-
-
 
 const lista = document.getElementById("trilhas");
 const trilhasView = document.getElementById("minhas-trilhas-view");
@@ -784,26 +786,33 @@ let indexEditando = null;
 
 function renderizarTrilhas() {
     const atualizarClicando = JSON.parse(localStorage.getItem("eventos")) || [];
-    const lista = document.getElementById("trilhas")
-
+    const lista = document.getElementById("trilhas");
     const usuario = usuarioLogado()
 
-    if (usuario === undefined) {
-        esconderSection()
-        abrirLoginCadastro("contLogin")
-        return
-    }
     lista.innerHTML = "";
-    const filtrarPorCPF = atualizarClicando.filter(evento => evento.participantes.find(usuarioTrilha => usuarioTrilha.cpf === usuario.cpf))
+    if (!usuario) {
+        lista.innerHTML = "<p>Faça login para ver suas trilhas criadas.</p>";
+        return;
+    }
 
-    filtrarPorCPF.forEach((trilha, index) => {
+    const trilhasDoUsuarioLogado = atualizarClicando.filter(evento => {
+        return evento.organizador && evento.organizador.cpf === usuario.cpf;
+    });
+
+    if (trilhasDoUsuarioLogado.length === 0) {
+        lista.innerHTML = "<p>Você não criou nenhuma trilha ainda.</p>";
+        return;
+    }
+
+    trilhasDoUsuarioLogado.forEach((trilha, index) => {
         const divTrilha = document.createElement("div");
         divTrilha.classList.add("trilha-item");
+
 
         if (indexEditando === index) {
             divTrilha.innerHTML = `
         <form class="form-edicao">
-          <label>Trilha: <input type="text" name="trilha" value="${trilha.trilha}" /></label><br>
+          <label>Trilha: <input type="text" name="trilha" value="${trilha.trilha}" required disabled/></label><br>
           <label>Data: <input type="date" name="data" value="${trilha.data}" /></label><br>
           <label>Hora: <input type="time" name="hora" value="${trilha.hora}" /></label><br>
           <label>Ponto: <input type="text" name="ponto" value="${trilha.ponto}" /></label><br>
@@ -820,7 +829,8 @@ function renderizarTrilhas() {
         <p><strong>Ponto de encontro:</strong> ${trilha.ponto}</p>
         <p><strong>Vagas disponíveis:</strong> ${trilha.vagas}</p>
         <button class="editar-btn" data-index="${index}">Editar</button>
-        <button type="button" class="excluir-trilha">Excluir</button>
+        <button class="excluir-trilha" data-index="${index}">Excluir</button>
+
       `;
         }
 
@@ -844,6 +854,17 @@ lista.addEventListener("click", (event) => {
         indexEditando = null;
         renderizarTrilhas();
     }
+
+    if (event.target.classList.contains("excluir-trilha")) {
+        const index = parseInt(event.target.getAttribute("data-index"));
+
+        if (confirm("Tem certeza que deseja excluir essa trilha?")) {
+            trilhasCadastradas.splice(index, 1);
+            localStorage.setItem("eventos", JSON.stringify(trilhasCadastradas));
+            renderizarTrilhas();
+        }
+    }
+
 });
 
 lista.addEventListener("submit", (event) => {
@@ -852,7 +873,10 @@ lista.addEventListener("submit", (event) => {
     const form = event.target;
     const index = indexEditando;
 
+    const trilhaOriginal = trilhasCadastradas[index];
+
     trilhasCadastradas[index] = {
+        ...trilhaOriginal,
         trilha: form.trilha.value,
         data: form.data.value,
         hora: form.hora.value,
@@ -864,6 +888,7 @@ lista.addEventListener("submit", (event) => {
     indexEditando = null;
     renderizarTrilhas();
 });
+
 
 
 function abrirMinhasTrilhas() {
@@ -886,14 +911,6 @@ function abrirBotaoPerfil() {
     });
 }
 abrirBotaoPerfil();
-
-function fecharBotaoPerfil() {
-    const fecharBtn = document.querySelector(".fechar-perfil");
-    fecharBtn.addEventListener("click", () => {
-        document.getElementById("perfil-container").style.display = "none";
-    });
-}
-fecharBotaoPerfil();
 
 function mostrarDadosUsuario() {
     const visual = document.getElementById("perfil-visualizacao");
@@ -988,6 +1005,8 @@ function mostrarAlerta(mensagem) {
 function fecharAlerta() {
     document.getElementById('meu-alerta').style.display = 'none';
 }
+
+//Área reservada para receber as instruções do funcionamento das Trilhas
 
 //Washington o bonito
 function avaTrilha() {
