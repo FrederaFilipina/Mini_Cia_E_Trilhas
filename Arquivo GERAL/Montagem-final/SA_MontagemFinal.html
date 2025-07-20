@@ -21,9 +21,14 @@
                         id="btn-minhas-trilhas">Minhas Trilhas</li>
                     <li onclick="abrirTela('Trilhas,cont-fred')" id="Trilhas">Trilhas</li>
                     <li onclick="abrirTela('Eventos,cont-eventos'),listarEventos()" id="Eventos">Eventos</li>
+<<<<<<< HEAD
                     <li onclick="abrirTela('criarEventos,container-Evento'),preencherSelectTrilhas()" id="criarEventos">
                         Criar Eventos</li>
                     <li onclick="abrirTela('fazerAvaliacao,conteiner-Avaliacao')" id="fazerAvaliacao">Avaliação</li>
+=======
+                    <li onclick="abrirTela('criarEventos,container-Evento'),preencherSelectTrilhas()" id="criarEventos">Criar Eventos</li>
+                    <li onclick="abrirTela('fazerAvaliacao,conteiner-Avaliacao'),avalicaoAmigo()" id="fazerAvaliacao">Avaliação</li>
+>>>>>>> e8a7b39ab28b5dea035ba4ab4cb0e5ace60e25d8
                 </ol>
             </nav>
             <!-- Navegador -->
@@ -412,16 +417,16 @@
                     <label id="nomeAmigo">Nome ${buscar no evento}</label>
                     <select id="notaAmigo">
                         <option value="" selected>Clique aqui</option>
-                        <option value="Pessimo"> 1- Pessimo</option>
-                        <option value="Bom"> 2- Bom</option>
-                        <option value="Muito bom"> 3- Muito bom</option>
-                        <option value="Otimo"> 4- Otimo</option>
-                        <option value="Execelente">5- Execelente</option>
+                        <option value="1"> 1- Pessimo</option>
+                        <option value="2"> 2- Bom</option>
+                        <option value="3"> 3- Muito bom</option>
+                        <option value="4"> 4- Otimo</option>
+                        <option value="5">5- Execelente</option>
                     </select>
                     <!-- <input type="number" class="notaAva" id="notaAmigo" min="1" max="5" placeholder="nota"> -->
                     <!-- <label id="label-cometarioAmigo">Comentário</ç>
                     <input type="text" class="escTexAva" id="cometarioAmigo" placeholder="comentário"> -->
-                    <button onclick="avalicaoAmigo()" id="buton-avaAmigo">Próximo</button>
+                    <button onclick="AvaliandoAmigo()" id="buton-avaAmigo">Próximo</button>
                     <ul id="mostraAmigo"></ul>
                 </div>
 

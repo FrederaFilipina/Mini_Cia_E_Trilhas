@@ -345,73 +345,65 @@ function usuarioLogado() {
 
 const infsListaTrilhas = [
     {
-        nome: `Trilha Norte 1`, pPartida: `Ponta A`, pChegada: `Ponto B`,
+        nome: `Trilha do Morro do Rapa`, pPartida: `Lagoinha do Norte`, pChegada: `Praia Brava`,
         regiao: `Norte`, cep: ``,
-        distancia: `45Km`, tempo: '03hm30', relevo: `Irregular`, elevacao: `50m`,
+        distancia: `2.8Km`, tempo: '01h30m', relevo: `Irregular`, elevacao: `167m`,
+        nvlTSite: `2`, nvlTUsuario: [2],
+        img: `<img src="ImgTrilhas/morroDoRapa.jpg">`,
+    },
+
+    {
+        nome: `Trilha das Feiticeiras (Caminho de Santiago de Floripa)`, pPartida: `Praia dos Ingleses`, pChegada: `Praia Brava`,
+        regiao: `Norte`, cep: ``,
+        distancia: `2.62Km`, tempo: '1h30m', relevo: `Irregular`, elevacao: `100m`,
+        nvlTSite: `3`, nvlTUsuario: [3],
+        img: `<img src="ImgTrilhas/trilhaDasFeiticeiras.jpg">`,
+    },
+
+    //-----------------------------------------------------------------------------
+
+    {
+        nome: `Trilha do Poção`, pPartida: `final da Rua Sebastião Laurentino da Silva`, pChegada: `Cachoeira do Poção`,
+        regiao: `Central`, cep: ``,
+        distancia: `1.4Km`, tempo: '00h30m', relevo: `Plana`, elevacao: `47m`,
+        nvlTSite: `1`, nvlTUsuario: [1],
+        img: `<img src="ImgTrilhas/trilhaDoPocao.jpg">`,
+    },
+
+    //-----------------------------------------------------------------------------
+
+    {
+        nome: `Trilha Piscinas Naturais Barra da Lagoa`, pPartida: `Ponte Pênsil da Barra da Lagoa`, pChegada: `Piscinas Naturais`,
+        regiao: `Leste`, cep: ``,
+        distancia: `1.24Km`, tempo: '00h30m', relevo: `Irregular`, elevacao: `32m`,
+        nvlTSite: `1`, nvlTUsuario: [1],
+        img: `<img src="ImgTrilhas/piscinasNaturais.jpg">`,
+    },
+
+    {
+        nome: `Trilha do Farol da Barra da Lagoa`, pPartida: `Ponte Pênsil da Barra da Lagoa`, pChegada: `Farol da Barra`,
+        regiao: `Leste`, cep: ``,
+        distancia: `930m`, tempo: '00h30m', relevo: ``, elevacao: `109m`,
+        nvlTSite: `3`, nvlTUsuario: [3],
+        img: `<img src="ImgTrilhas/farolBarra.jpg">`,
+    },
+
+    //-----------------------------------------------------------------------------
+
+    {
+        nome: `Trilha da Lagoinha do Leste (via Matadeiro)`, pPartida: `final da praia do Matadeiro`, pChegada: `Praia da Lagoinha do Leste`,
+        regiao: `Sul`, cep: ``,
+        distancia: `5Km`, tempo: '03h00m', relevo: `Irregular`, elevacao: `m`,
+        nvlTSite: `4`, nvlTUsuario: [4],
+        img: `<img src="ImgTrilhas/lagoinhaDoLesteMatadeiro.jpg">`,
+    },
+
+    {
+        nome: `Trilha da Lagoinha do Leste (via Pantano do Sul)`, pPartida: ``, pChegada: `Praia da Lagoinha do Leste`,
+        regiao: `Sul`, cep: ``,
+        distancia: `3Km`, tempo: '01h45m', relevo: `Irregular`, elevacao: `216m`,
         nvlTSite: `5`, nvlTUsuario: [5],
-        img: `<img src="Icones/image.svg">`,
-    },
-
-    {
-        nome: `Trilha Norte 2`, pPartida: ``, pChegada: ``,
-        regiao: `Norte`, cep: ``,
-        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="Icones/image.svg">`,
-    },
-
-    //-----------------------------------------------------------------------------
-
-    {
-        nome: `Trilha Central 1`, pPartida: ``, pChegada: ``,
-        regiao: `Central`, cep: ``,
-        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="Icones/image.svg">`,
-    },
-
-    {
-        nome: `Trilha Central 2`, pPartida: ``, pChegada: ``,
-        regiao: `Central`, cep: ``,
-        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="Icones/image.svg">`,
-    },
-
-    //-----------------------------------------------------------------------------
-
-    {
-        nome: `Trilha Leste 1`, pPartida: ``, pChegada: ``,
-        regiao: `Leste`, cep: ``,
-        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="Icones/image.svg">`,
-    },
-
-    {
-        nome: `Trilha Leste 2`, pPartida: ``, pChegada: ``,
-        regiao: `Leste`, cep: ``,
-        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="Icones/image.svg">`,
-    },
-
-    //-----------------------------------------------------------------------------
-
-    {
-        nome: `Trilha Sul 1`, pPartida: ``, pChegada: ``,
-        regiao: `Sul`, cep: ``,
-        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="Icones/image.svg">`,
-    },
-
-    {
-        nome: `Trilha Sul 2`, pPartida: ``, pChegada: ``,
-        regiao: `Sul`, cep: ``,
-        distancia: `Km`, tempo: 'hm', relevo: ``, elevacao: `m`,
-        nvlTSite: ``, nvlTUsuario: [],
-        img: `<img src="Icones/image.svg">`,
+        img: `<img src="ImgTrilhas/lagoinhaDoLestePantano.jpg">`,
     },
 ]
 localStorage.setItem('ListagemTrilhas', JSON.stringify(infsListaTrilhas))
@@ -463,7 +455,7 @@ function mostrarListTrilhasReg(RegTrilha) {
                     <span>${trilha.nome}</span>
                 </div>
                 <div class='divsBttnTrilha-foto'>
-                    <span>${trilha.img}</span>
+                    ${trilha.img}
                 </div>
             </div>`
     }
@@ -1049,27 +1041,87 @@ function mostraTrilha() {
 const notaAmigo = []
 const cometarioAmigo = []
 const containerAva = []
+
 function avalicaoAmigo() {
+    let usuarioLogado = JSON.parse(localStorage.getItem("logado"))
+    let eventos = JSON.parse(localStorage.getItem("eventos"))
+    let nomeAvaliando = document.getElementById("nomeAmigo")
 
-    document.getElementById("containerAva").value
-    if (containerAva.length > 1) {
-        containerAva.shift()
-    } else {
-        alert("obrigado")
+    let eventoUsuario = eventos.filter(evento => evento.participantes.some(usuario => usuario.cpf === usuarioLogado.cpf))
+
+    let usuarioAvaliador = eventoUsuario[0].participantes.map(usuario => {
+
+        if (usuario.cpf === usuarioLogado.cpf)
+            return usuario
+    })
+
+
+    if (!usuarioAvaliador.avaliando) {
+
+    
+        usuarioAvaliador.avaliando = 0
+
+
+
+        alert("entrou!!!")
+        console.log(eventoUsuario);
+
+        if (eventoUsuario[0].participantes[usuarioAvaliador.avaliando].cpf !== usuarioAvaliador.cpf) {
+            alert("true")
+            nomeAvaliando.innerText = `${eventoUsuario[0].participantes[usuarioAvaliador.avaliando].nome}`
+
+        }
+
     }
-    const avaAmigo = document.getElementById("notaAmigo").value
-    if (avaAmigo.trim() === 0)
-        notaAmigo.push(avaAmigo)
-    console.log(avaAmigo)
-    localStorage.setItem("ava-notaAmigo", JSON.stringify(avaAmigo))
 
-    const cometAmigo = document.getElementById("cometarioAmigo").value
-    if (cometAmigo.trim() !== 0)
-        cometarioAmigo.push(cometAmigo)
-    console.log(cometAmigo)
-
-    mostraAmigo()
 }
+function AvaliandoAmigo(){
+    
+    let usuarioLogado = JSON.parse(localStorage.getItem("logado"))
+    let eventos = JSON.parse(localStorage.getItem("eventos"))
+    
+
+    let eventoUsuario = eventos.filter(evento => evento.participantes.some(usuario => usuario.cpf === usuarioLogado.cpf))
+    let usuarioAvaliador = eventoUsuario[0].participantes.find(usuario => {
+
+        if (usuario.cpf === usuarioLogado.cpf)
+            return usuario
+    })
+
+    let valor = document.getElementById("notaAmigo").value
+    console.log(usuarioAvaliador);
+    
+
+    let usuarioParaAvaliar = usuarioAvaliador.cpf
+
+    cadastroUsuarios.forEach(usuario=>{ 
+      if (usuario.cpf = usuarioParaAvaliar) {
+        usuario.avaliações.push(valor)
+
+        eventoUsuario[0].participantes.forEach(usuario=>{ 
+            
+           if (usuario.cpf ===usuarioAvaliador) {
+            usuario.avalliando ++
+           } 
+        
+        
+        })
+
+
+
+      }  
+        
+    })
+
+    
+
+    console.log(cadastroUsuarios);
+    console.log(eventoUsuario);
+    
+    
+    
+}
+
 function mostraAmigo() {
     const ul = document.getElementById("mostraAmigo")
     ul.innerHTML = ""
