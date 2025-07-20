@@ -14,7 +14,7 @@ function esconderCep() {
 }
 function abrirPaginaUsuário() {
     alert("logado")
-
+    AvaliaçaoDisponivel()
     mostrarLiCompleto()
     esconderSection()
 }
@@ -281,11 +281,14 @@ function logar(event) {
 
 if (usuarioLogado()) {
     mostrarLiCompleto()
+    AvaliaçaoDisponivel()
 }
-
+function mostrarAvaliação(){
+    document.getElementById("fazerAvaliacao").style.display = "flex"
+}
 function mostrarLiCompleto() {
     document.getElementById("criarEventos").style.display = "flex"
-    document.getElementById("fazerAvaliacao").style.display = "flex"
+    
     document.getElementById("perfil").style.display = "flex"
     document.getElementById("Login").style.display = "flex"
     document.getElementById("btn-minhas-trilhas").style.display = "flex"
@@ -594,6 +597,7 @@ document.getElementById('eventoForm').addEventListener('submit', function (event
     const idade = calcularIdade(usuarioLog.dataNacimento);
     const sexo = usuarioLog.sexo;
     const cpf = usuarioLog.cpf;
+    const status = true
 
     let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
 
@@ -619,6 +623,7 @@ document.getElementById('eventoForm').addEventListener('submit', function (event
         hora,
         ponto,
         vagas,
+        status,
         organizador: { nome, idade, sexo, cpf },
         participantes: [{ nome, idade, sexo, cpf }],
 
@@ -735,7 +740,6 @@ function listarEventos() {
         lista.appendChild(div);
     });
 }
-
 
 function calcularIdade(dataNasc) {
     const hoje = new Date();
@@ -1031,6 +1035,25 @@ const notaAmigo = []
 const cometarioAmigo = []
 const containerAva = []
 
+function AvaliaçaoDisponivel() {
+    let eventos = JSON.parse(localStorage.getItem("eventos"))
+    let usuarioLoga = usuarioLogado()
+
+    eventos.forEach(evento=> {
+        evento.participantes.forEach(usuario=> {
+            if (usuario.cpf===usuarioLoga.cpf && evento.status ===false) {
+
+                mostrarAvaliação()
+            }
+
+    })
+
+})
+}
+
+
+
+
 function avalicaoAmigo() {
     let usuarioLogado = JSON.parse(localStorage.getItem("logado"))
     let eventos = JSON.parse(localStorage.getItem("eventos"))
@@ -1038,37 +1061,60 @@ function avalicaoAmigo() {
 
     let eventoUsuario = eventos.filter(evento => evento.participantes.some(usuario => usuario.cpf === usuarioLogado.cpf))
 
-    let usuarioAvaliador = eventoUsuario[0].participantes.map(usuario => {
+    let usuarioAvaliador = eventoUsuario[0].participantes.find(usuario => {
 
         if (usuario.cpf === usuarioLogado.cpf)
             return usuario
     })
 
 
-    if (!usuarioAvaliador.avaliando) {
+    if (usuarioAvaliador.avaliando) {
 
-    
+        if (usuarioAvaliador.avaliando <= eventoUsuario[0].participantes.length-1) {
+            console.log(eventoUsuario[0].participantes);
+            
+
+            if (eventoUsuario[0].participantes[usuarioAvaliador.avaliando].cpf !== usuarioAvaliador.cpf) {
+
+                nomeAvaliando.innerText = `${eventoUsuario[0].participantes[usuarioAvaliador.avaliando].nome}`
+                console.log(eventoUsuario[0].participantes[usuarioAvaliador.avaliando]);
+
+            } else {
+                usuarioAvaliador.avaliando++
+                console.log(eventos);
+                localStorage.setItem("eventos", JSON.stringify(eventos))
+
+                avalicaoAmigo()
+
+            }
+
+
+
+
+        } else document.getElementById("containerAva").style.display = "none"
+
+
+    } else {
+
+
         usuarioAvaliador.avaliando = 0
 
+        localStorage.setItem("eventos", JSON.stringify(eventos))
+        avalicaoAmigo()
 
-
-        alert("entrou!!!")
-        console.log(eventoUsuario);
-
-        if (eventoUsuario[0].participantes[usuarioAvaliador.avaliando].cpf !== usuarioAvaliador.cpf) {
-            alert("true")
-            nomeAvaliando.innerText = `${eventoUsuario[0].participantes[usuarioAvaliador.avaliando].nome}`
-
-        }
 
     }
 
 }
-function AvaliandoAmigo(){
-    
+function AvaliandoAmigo() {
+
     let usuarioLogado = JSON.parse(localStorage.getItem("logado"))
     let eventos = JSON.parse(localStorage.getItem("eventos"))
-    
+    let valor = document.getElementById("notaAmigo").value
+
+    if (valor==0) {
+        return alert("Escolha uma Opção para avaliar")
+    }
 
     let eventoUsuario = eventos.filter(evento => evento.participantes.some(usuario => usuario.cpf === usuarioLogado.cpf))
     let usuarioAvaliador = eventoUsuario[0].participantes.find(usuario => {
@@ -1077,38 +1123,20 @@ function AvaliandoAmigo(){
             return usuario
     })
 
-    let valor = document.getElementById("notaAmigo").value
-    console.log(usuarioAvaliador);
-    
 
-    let usuarioParaAvaliar = usuarioAvaliador.cpf
+    cadastroUsuarios.forEach(usuario => {
 
-    cadastroUsuarios.forEach(usuario=>{ 
-      if (usuario.cpf = usuarioParaAvaliar) {
-        usuario.avaliações.push(valor)
+        if (usuario.cpf === usuarioAvaliador.cpf) {
+            usuario.avaliações.push(valor)
+            usuarioAvaliador.avaliando++
+            salvarBancoDados()
+            localStorage.setItem("eventos", JSON.stringify(eventos))
+        }
 
-        eventoUsuario[0].participantes.forEach(usuario=>{ 
-            
-           if (usuario.cpf ===usuarioAvaliador) {
-            usuario.avalliando ++
-           } 
-        
-        
-        })
-
-
-
-      }  
-        
     })
 
-    
-
     console.log(cadastroUsuarios);
-    console.log(eventoUsuario);
-    
-    
-    
+
 }
 
 function mostraAmigo() {
