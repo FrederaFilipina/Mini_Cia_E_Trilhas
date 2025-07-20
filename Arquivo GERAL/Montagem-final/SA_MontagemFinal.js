@@ -332,7 +332,7 @@ function abrirLoginCadastro(cont) {
     document.getElementById("contCadast").style.display = "none"
     document.getElementById("contLogin").style.display = "none"
     document.getElementById("infoUser").innerHTML = ""
-    document.getElementById("infoUserLogin").innerHTML =""
+    document.getElementById("infoUserLogin").innerHTML = ""
 
     document.getElementById(cont).style.display = "flex"
 
@@ -872,12 +872,14 @@ lista.addEventListener("click", (event) => {
     }
 
     if (event.target.classList.contains("excluir-trilha")) {
-        const index = parseInt(event.target.getAttribute("data-index"));
-
+        
         if (confirm("Tem certeza que deseja excluir essa trilha?")) {
-            trilhasCadastradas.splice(index, 1);
-            localStorage.setItem("eventos", JSON.stringify(trilhasCadastradas));
-            renderizarTrilhas();
+            const usuario = usuarioLogado()
+            const atualizarClicando = JSON.parse(localStorage.getItem("eventos")) || [];
+
+            let index = atualizarClicando.findIndex(evento=> evento.organizador.cpf ===usuario.cpf)
+
+            console.log(index)
         }
     }
 
@@ -1010,6 +1012,7 @@ document.getElementById("form-edicao").addEventListener("submit", (e) => {
     let logado = JSON.parse(localStorage.getItem("logado"));
     const index = usuarios.findIndex(u => u.cpf === logado.cpf);
 
+
     if (index !== -1) {
         usuarios[index].nomeUsuario = form.nomeUsuario.value;
         usuarios[index].email = form.email.value;
@@ -1084,7 +1087,7 @@ const cometarioAmigo = []
 const containerAva = []
 
 function AvaliaçaoDisponivel() {
-    let eventos = JSON.parse(localStorage.getItem("eventos"))||[]
+    let eventos = JSON.parse(localStorage.getItem("eventos")) || []
     let usuarioLoga = usuarioLogado()
 
     eventos.forEach(evento => {
