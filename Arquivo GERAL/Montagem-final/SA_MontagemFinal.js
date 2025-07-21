@@ -629,9 +629,8 @@ document.getElementById('eventoForm').addEventListener('submit', function (event
         ponto,
         vagas,
         status,
-        usuarioAvaliador,
         organizador: { nome, idade, sexo, cpf },
-        participantes: [{ nome, idade, sexo, cpf }],
+        participantes: [{ nome, idade, sexo, cpf,usuarioAvaliador}],
 
     };
 
@@ -689,10 +688,6 @@ function listarEventos() {
         return
     }
 
-    eventos = eventos.filter(evento =>
-        !evento.participantes.some(p => p.cpf === usuarioLog.cpf)
-    );
-
 
     if (eventos.length === 0) {
         lista.innerHTML = '<h3>Nenhum evento disponivel</h3>';
@@ -700,10 +695,14 @@ function listarEventos() {
     }
 
     eventos.forEach((e, i) => {
-        const div = document.createElement('div');
-        div.classList.add("cardEventosOnline")
 
-        div.innerHTML = `
+
+        console.log(!e.participantes.some(p => p.cpf === usuarioLog.cpf));
+        
+        if (!e.participantes.some(p => p.cpf === usuarioLog.cpf)) {
+            const div = document.createElement('div');
+            div.classList.add("cardEventosOnline")
+            div.innerHTML = `
             <h3>Evento ${i + 1}</h3>
             <p>Trilha: ${e.trilha}</p>
             <p>Data: ${e.data} às ${e.hora}</p>
@@ -715,35 +714,39 @@ function listarEventos() {
             
         `;
 
-        const botao = document.createElement('button');
-        botao.innerText = 'Participar';
+            const botao = document.createElement('button');
+            botao.innerText = 'Participar';
 
-        botao.addEventListener('click', () => {
-
-            if (e.participantes.some(p => p.cpf === usuarioLog.cpf)) {
-                alert('Você já está participando deste evento.');
-                return;
-            }
+            botao.addEventListener('click', () => {
 
 
-            if (e.participantes.length >= e.vagas) {
-                alert('Não há vagas disponíveis.');
-                return;
-            }
+                if (e.participantes.some(p => p.cpf === usuarioLog.cpf)) {
+                    alert('Você já está participando deste evento.');
+                    return;
+                }
 
-            e.participantes.push({
-                nome: usuarioLog.nomeCompleto,
-                idade: calcularIdade(usuarioLog.dataNacimento),
-                sexo: usuarioLog.sexo,
-                cpf: usuarioLog.cpf
+
+                if (e.participantes.length >= e.vagas) {
+                    alert('Não há vagas disponíveis.');
+                    return;
+                }
+
+                e.participantes.push({
+                    nome: usuarioLog.nomeCompleto,
+                    idade: calcularIdade(usuarioLog.dataNacimento),
+                    sexo: usuarioLog.sexo,
+                    cpf: usuarioLog.cpf
+                });
+
+                localStorage.setItem('eventos', JSON.stringify(eventos));
+                listarEventos();
             });
 
-            localStorage.setItem('eventos', JSON.stringify(eventos));
-            listarEventos();
-        });
-
-        div.appendChild(botao);
-        lista.appendChild(div);
+            div.appendChild(botao);
+            lista.appendChild(div);
+        } else{
+            lista.innerHTML = '<h3>Nenhum evento disponivel</h3>';
+        }
     });
 }
 
@@ -880,13 +883,13 @@ function renderizarTrilhas() {
 
 }
 
-function excluirEvento(){
+function excluirEvento() {
     let excluirEvento = usuarioLogado()
     let todasTrilhas = JSON.parse(localStorage.getItem("eventos"))
 
     let index = todasTrilhas.findIndex(evento => evento.organizador.cpf === excluirEvento.cpf)
     console.log(index);
-    
+
 }
 
 botaoMinhasTrilhas.addEventListener("click", () => {
@@ -909,7 +912,7 @@ lista.addEventListener("click", (event) => {
     if (event.target.classList.contains("excluir-trilha")) {
         const index = parseInt(event.target.getAttribute("data-index"));
         console.log(index);
-        
+
         if (confirm("Tem certeza que deseja excluir essa trilha?")) {
             trilhasCadastradas.splice(index, 1);
             localStorage.setItem("eventos", JSON.stringify(trilhasCadastradas));
