@@ -932,7 +932,7 @@ lista.addEventListener("submit", (event) => {
     const index = indexEditando;
 
     const trilhaOriginal = trilhasCadastradas[index];
-
+    
     trilhasCadastradas[index] = {
         ...trilhaOriginal,
         trilha: form.trilha.value,
