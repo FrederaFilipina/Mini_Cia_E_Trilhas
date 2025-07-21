@@ -849,11 +849,11 @@ function renderizarTrilhas() {
         if (indexEditando === index) {
             divTrilha.innerHTML = `
         <form class="form-edicao">
-          <div class="form-group"<label>Trilha: <input type="text" name="trilha" value="${trilha.trilha}"  required disabled/></label><br></div>
-          <div class="form-group"<label>Data: <input type="date" name="data" value="${trilha.data}" id="data${index}"/></label><br></div>
-          <div class="form-group"<label>Hora: <input type="time" name="hora" value="${trilha.hora}" id="hora${index}"/></label><br></div>
-          <div class="form-group"<label>Ponto: <input type="text" name="ponto" value="${trilha.ponto}" id="ponto${index}" /></label><br></div>
-          <div class="form-group"<label>Vagas: <input type="number" name="vagas" value="${trilha.vagas}" id="vagas${index}" /></label><br></div>
+          <div class="form-group"<label>Trilha: <input type="text" name="trilha" value="${trilha.trilha}"  required disabled/></label></div>
+          <div class="form-group"<label>Data: <input type="date" name="data" value="${trilha.data}" id="data${index}"/></label></div>
+          <div class="form-group"<label>Hora: <input type="time" name="hora" value="${trilha.hora}" id="hora${index}"/></label></div>
+          <div class="form-group"<label>Ponto: <input type="text" name="ponto" value="${trilha.ponto}" id="ponto${index}" /></label></div>
+          <div class="form-group"<label>Vagas: <input type="number" name="vagas" value="${trilha.vagas}" id="vagas${index}" /></label></div>
           <button type="submit" class="salvar-edicao">Salvar</button>
           <button class="excluir-trilha" onclick="excluirEvento()">Excluir</button>
           <button type="button" class="cancelar-edicao">Cancelar</button>
