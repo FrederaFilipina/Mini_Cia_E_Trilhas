@@ -511,10 +511,10 @@ function mostrarInfTrilha(nomeTrilha) {
                 <span> / Elevação: ${dadosTrilha.elevacao}</span>
             </div>                    
         `
-        document.querySelector('.conts-DadosTrilha-comentarios').innerHTML =
-            `<div class="DadosTrilha-comentarios">
-        <span> Área destinada aos comentários</span>
-        </div>`
+        // document.querySelector('.conts-DadosTrilha-comentarios').innerHTML =
+        //     `<div class="DadosTrilha-comentarios">
+        // <span> Área destinada aos comentários</span>
+        // </div>`
 
         document.querySelector('.cont-bttn-CriarEvent-LogIn').innerHTML =
             `<button class='bttn-CriarEvent-LogIn' onclick="CRIAREVENTO('${dadosTrilha.nome}')">Criar Evento</button>`
@@ -548,10 +548,10 @@ function mostrarInfTrilha(nomeTrilha) {
             <span>Para mais informações, clique <a href="#" onclick="abrirTela('Login,conteiner-login')" id="Login" class="linkLoCa" id="LinkCadastro">aqui</a>!
             </div>                   
         `
-        document.querySelector('.conts-DadosTrilha-comentarios').innerHTML =
-            `<div class="DadosTrilha-comentarios">
-        <span> Área destinada aos comentários</span>
-        </div>`
+        // document.querySelector('.conts-DadosTrilha-comentarios').innerHTML =
+        //     `<div class="DadosTrilha-comentarios">
+        // <span> Área destinada aos comentários</span>
+        // </div>`
     }
 
 }
