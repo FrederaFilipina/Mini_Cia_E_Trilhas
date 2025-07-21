@@ -822,11 +822,11 @@ function renderizarTrilhas() {
     const trilhaOrganizador = document.getElementById("trilhaOrganizador");
     const trilhaParticipante = document.getElementById("trilhaParticipante");
     const atualizarClicando = JSON.parse(localStorage.getItem("eventos")) || [];
-    const lista = document.getElementById("info ");
+    const listas = document.getElementById("info");
     const usuario = usuarioLogado()
     trilhaOrganizador.innerHTML = ""
     trilhaParticipante.innerHTML = ""
-    // lista.innerHTML = "";
+    listas.innerHTML = "";
     if (!usuario) {
         lista.innerHTML = "<p>Faça login para ver suas trilhas criadas.</p>";
         return;
