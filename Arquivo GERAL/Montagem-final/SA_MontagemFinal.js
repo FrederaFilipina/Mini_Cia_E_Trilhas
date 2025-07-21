@@ -242,7 +242,9 @@ function entraCadastro(event) {
         limparInput()
         salvarBancoDados()
         esconderSection()
+        mostrarAlerta(`<a href="#" > <i class="bi bi-check-circle"> </i> </a> <h3>Usuario Cadastrado</h3>`)
         abrirLoginCadastro("contLogin")
+        
         // console.log(cadastroUsuarios)
     }
 }
@@ -353,6 +355,17 @@ function abrirTela(nome) {
 }
 function usuarioLogado() {
     return JSON.parse(localStorage.getItem("logado"))
+}
+
+function mostrarAlerta(mensagem) {
+    const alerta = document.getElementById('meu-alerta');
+    const texto = document.getElementById('alerta-texto');
+    texto.innerHTML = mensagem;
+    alerta.style.display = 'flex';
+
+    setTimeout(() => {
+        alerta.style.display = 'none';
+    }, 4000); // esconde após 4 segundos
 }
 
 //funcionamento da pagina
