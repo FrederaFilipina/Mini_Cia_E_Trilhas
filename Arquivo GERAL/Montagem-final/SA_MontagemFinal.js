@@ -36,7 +36,7 @@ function limitarDataCadastroData() {
     const idadeMesLimite = mesAtual >= 10 ? mesAtual : `0${mesAtual}`
 
     const diaAtual = dataAtual.getDate()
-    console.log("aqui é o dia atual " + diaAtual);
+    // console.log("aqui é o dia atual " + diaAtual);
 
 
     const idadeDiaLimite = diaAtual >= 10 ? diaAtual : `0${diaAtual}`
@@ -44,11 +44,11 @@ function limitarDataCadastroData() {
 
     let dataLimiteCadastro = `${idadeAnoLimite}-${idadeMesLimite}-${idadeDiaLimite}`
 
-    console.log(dataLimiteCadastro);
+    // console.log(dataLimiteCadastro);
 
     inuputData.setAttribute("max", dataLimiteCadastro)
 
-    console.log(inuputData);
+    // console.log(inuputData);
 
 }
 function verificandoIdade(dataN) {
@@ -65,7 +65,7 @@ function verificandoIdade(dataN) {
 
 
     let idadeUser = (anoNacimentoUser - anoAtual) * -1
-    console.log(typeof idadeUser);
+    // console.log(typeof idadeUser);
 
     if (mesNacimentoUser >= mesAtual && diaNacimentoUser >= diaAtual) {
 
@@ -243,7 +243,7 @@ function entraCadastro(event) {
         salvarBancoDados()
         esconderSection()
         abrirLoginCadastro("contLogin")
-        console.log(cadastroUsuarios)
+        // console.log(cadastroUsuarios)
     }
 }
 function logar(event) {
@@ -341,7 +341,7 @@ function abrirTela(nome) {
     esconderSection()
     let cont = nome.split(',', 2)
     document.getElementById(cont[0]).classList.add("liNav")
-    console.log(cont[1]);
+    // console.log(cont[1]);
 
     document.querySelector(`.${cont[1]}`).style.display = "flex"
 
@@ -697,7 +697,7 @@ function listarEventos() {
     eventos.forEach((e, i) => {
 
 
-        console.log(!e.participantes.some(p => p.cpf === usuarioLog.cpf));
+        
 
         if (!e.participantes.some(p => p.cpf === usuarioLog.cpf)) {
             const div = document.createElement('div');
@@ -744,9 +744,15 @@ function listarEventos() {
 
             div.appendChild(botao);
             lista.appendChild(div);
-        } else {
-            lista.innerHTML = '<h3>Nenhum evento disponivel</h3>';
-        }
+        } else if(e.participantes.some(p => p.cpf === usuarioLog.cpf)){
+            
+            if(e.participantes.filter(p => p.cpf != usuarioLog.cpf).length!=0){
+                lista.innerHTML = '<h3>Nenhum evento disponivel</h3>';
+                
+                
+                
+            }  
+        }else lista.innerHTML = '<h3>Nenhum evento disponivel</h3>'
     });
 }
 
@@ -763,7 +769,7 @@ function calcularIdade(dataNasc) {
 
 function preencherSelectTrilhas() {
     const selectTrilha = document.getElementById('select-trilha');
-    console.log(selectTrilha);
+    // console.log(selectTrilha);
 
     if (!selectTrilha) return;
 
@@ -885,7 +891,7 @@ function renderizarTrilhas() {
         <button class="sairTrilha" onclick="sairTrilha(${trilha.organizador.cpf})">Sair</button>
         </div>`
 
-        console.log(trilha.organizador.cpf);
+        // console.log(trilha.organizador.cpf);
         
         trilhaParticipante.appendChild(divTrilha);
     
@@ -916,7 +922,7 @@ function excluirEvento() {
     let todasTrilhas = JSON.parse(localStorage.getItem("eventos"))
 
     let index = todasTrilhas.findIndex(evento => evento.organizador.cpf === excluirEvento.cpf)
-    console.log(index);
+    // console.log(index);
 
 }
 
@@ -941,7 +947,7 @@ lista.addEventListener("click", (event) => {
     if (event.target.classList.contains("excluir-trilha")) {
         event.preventDefault();
         const index = parseInt(event.target.getAttribute("data-index"));
-        console.log(index);
+        // console.log(index);
 
         if (confirm("Tem certeza que deseja excluir essa trilha?")) {
             let excluirEvento = usuarioLogado()
@@ -949,7 +955,7 @@ lista.addEventListener("click", (event) => {
 
             let indexx = todasTrilhas.findIndex(evento => evento.organizador.cpf === excluirEvento.cpf)
 
-            console.log(indexx);
+            // console.log(indexx);
 
             if (indexx !== -1) {
                 todasTrilhas.splice(indexx, 1);
@@ -1196,14 +1202,14 @@ function avaTrilha() {
         avalicaoTempoEstimado.push(avaliacaoTempo)
     localStorage.setItem("ava-tempoEstimado", JSON.stringify(avaliacaoTempo))
 
-    console.log(avaliacaoTempo)
+    // console.log(avaliacaoTempo)
 
     const avaDificuldade = document.getElementById("grauDeDificuldade").value
     if (avaDificuldade === "")
         avaliacaoGrauDeDificuldade.push(avaDificuldade)
     localStorage.setItem("ava-dificuldade", JSON.stringify(avaDificuldade))
 
-    console.log(avaDificuldade)
+    // console.log(avaDificuldade)
     mostraTrilha()
 
 }
@@ -1265,7 +1271,7 @@ function avalicaoAmigo() {
     if (usuarioAvaliador.avaliando !== undefined) {
 
         if (usuarioAvaliador.avaliando <= eventoUsuario[0].participantes.length - 1) {
-            console.log(eventoUsuario[0].participantes);
+            // console.log(eventoUsuario[0].participantes);
 
 
             if (eventoUsuario[0].participantes[usuarioAvaliador.avaliando].cpf !== usuarioAvaliador.cpf) {
@@ -1325,7 +1331,7 @@ function AvaliandoAmigo() {
 
     })
 
-    console.log(cadastroUsuarios);
+    // console.log(cadastroUsuarios);
 
 }
 
