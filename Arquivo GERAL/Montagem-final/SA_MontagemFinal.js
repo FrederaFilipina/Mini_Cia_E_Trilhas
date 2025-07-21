@@ -858,28 +858,28 @@ function renderizarTrilhas() {
 
     });
 
-    // const trilhasDoUsuarioParticipando = atualizarClicando.filter(evento => {
-    //     if (evento.organizador.cpf !== usuario.cpf) {
-    //         return evento.participantes.some(usuarioo => usuarioo.cpf === usuario.cpf)
-    //     }
+    const trilhasDoUsuarioParticipando = atualizarClicando.filter(evento => {
+        if (evento.organizador.cpf !== usuario.cpf) {
+            return evento.participantes.some(usuarioo => usuarioo.cpf === usuario.cpf)
+        }
 
-    // });
+    });
 
 
-    // trilhasDoUsuarioParticipando.forEach((trilha) => {
-    //     const divTrilha = document.createElement("div");
-    //     divTrilha.classList.add("trilha-item");
-    //     divTrilha.innerHTML = `
-    //     <p><strong>Trilha:</strong> ${trilha.trilha}</p>
-    //     <p><strong>Data:</strong> ${trilha.data}</p>
-    //     <p><strong>Horário:</strong> ${trilha.hora}</p>
-    //     <p><strong>Ponto de encontro:</strong> ${trilha.ponto}</p>
-    //     <p><strong>Vagas disponíveis:</strong> ${trilha.vagas}</p>
-    //     </div>`
+    trilhasDoUsuarioParticipando.forEach((trilha) => {
+        const divTrilha = document.createElement("div");
+        divTrilha.classList.add("trilha-item");
+        divTrilha.innerHTML = `
+        <p><strong>Trilha:</strong> ${trilha.trilha}</p>
+        <p><strong>Data:</strong> ${trilha.data}</p>
+        <p><strong>Horário:</strong> ${trilha.hora}</p>
+        <p><strong>Ponto de encontro:</strong> ${trilha.ponto}</p>
+        <p><strong>Vagas disponíveis:</strong> ${trilha.vagas}</p>
+        </div>`
 
-    //     lista.appendChild(divTrilha);
+        lista.appendChild(divTrilha);
 
-    // })
+    })
 
 }
 
@@ -1170,7 +1170,7 @@ function AvaliaçaoDisponivel() {
 
     eventos.forEach(evento => {
         evento.participantes.forEach(usuario => {
-            if (usuario.cpf === usuarioLoga.cpf && evento.status === true) {
+            if (usuario.cpf === usuarioLoga.cpf && evento.status === false) {
 
                 mostrarAvaliação()
             }
