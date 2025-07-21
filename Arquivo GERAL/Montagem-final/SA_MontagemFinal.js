@@ -760,9 +760,7 @@ function listarEventos() {
         } else if(e.participantes.some(p => p.cpf === usuarioLog.cpf)){
             
             if(e.participantes.filter(p => p.cpf != usuarioLog.cpf).length!=0){
-                lista.innerHTML = '<h3>Nenhum evento disponivel</h3>';
-                
-                
+                // lista.innerHTML = '<h3>Nenhum evento disponivel</h3>';
                 
             }  
         }else lista.innerHTML = '<h3>Nenhum evento disponivel</h3>'
