@@ -494,7 +494,8 @@ li:hover {
 
 
 }
-.conteiner-h1-cadastro{
+
+.conteiner-h1-cadastro {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -623,7 +624,7 @@ li:hover {
     border-radius: 6px;
     cursor: pointer;
     transition: background 0.2s;
-    
+
 
 }
 
@@ -688,8 +689,10 @@ li:hover {
 .botoes-perfil {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 15px;
-    margin-top: 20px;
+    padding: 10px;
+   
 }
 
 .conteiner-perfil {
@@ -708,22 +711,21 @@ li:hover {
 }
 
 
-.tituloPerfil h2{
+.tituloPerfil h2 {
     display: flex;
     font-size: 60px
-
 }
 
 .perfil-visualizacao {
     display: flex;
     flex-direction: column;
-    font-size: 20px; 
-    gap: 10px;  
+    font-size: 20px;
+    gap: 10px;
 }
 
 
 
-.salvar-edicaoPerfil{
+.salvar-edicaoPerfil {
     border: none;
     width: 80px;
     height: 30px;
@@ -733,7 +735,17 @@ li:hover {
     cursor: pointer;
 }
 
-.cancelar-edicaoPerfil{
+.cancelar-edicaoPerfil {
+    border: none;
+    width: 80px;
+    height: 30px;
+    background-color: #a94442;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-logout {
     border: none;
     width: 80px;
     height: 30px;
@@ -801,9 +813,22 @@ li:hover {
 .trilha-item {
     display: flex;
     flex-direction: column;
-    width: 20%;
+    width: 100%;
     gap: 20px;
+    box-shadow: 0 0 5px #ccc;
+    border-radius: 5px;
+    padding: 2rem;
 
+}
+
+.sairTrilha {
+    border: none;
+    width: 80px;
+    height: 30px;
+    background-color: #a94442;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .editar-btn {
@@ -850,11 +875,22 @@ li:hover {
     opacity: 0.9;
 }
 
+#trilhasParticipando,
+#trilhasOrganizador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #27ae60;
+
+}
+
 .trilhas {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
+    width: 100%;
+
 }
 
 .conteiner-MinhasTrilhas {

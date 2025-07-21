@@ -802,11 +802,14 @@ const botaoMinhasTrilhas = document.getElementById("btn-minhas-trilhas");
 let indexEditando = null;
 
 function renderizarTrilhas() {
+    const trilhaOrganizador = document.getElementById("trilhaOrganizador");
+    const trilhaParticipante = document.getElementById("trilhaParticipante");
     const atualizarClicando = JSON.parse(localStorage.getItem("eventos")) || [];
-    const lista = document.getElementById("trilhas");
+    const lista = document.getElementById("info ");
     const usuario = usuarioLogado()
-
-    lista.innerHTML = "";
+    trilhaOrganizador.innerHTML = ""
+    trilhaParticipante.innerHTML = ""
+    // lista.innerHTML = "";
     if (!usuario) {
         lista.innerHTML = "<p>Faça login para ver suas trilhas criadas.</p>";
         return;
@@ -818,7 +821,7 @@ function renderizarTrilhas() {
     });
 
     if (trilhasDoUsuarioLogado.length === 0) {
-        lista.innerHTML = "<p>Você não criou nenhuma trilha ainda.</p>";
+        trilhaOrganizador.innerHTML = "<p>Você não criou nenhuma trilha ainda.</p>";
     }
 
     trilhasDoUsuarioLogado.forEach((trilha, index) => {
@@ -841,11 +844,13 @@ function renderizarTrilhas() {
       `;
         } else {
             divTrilha.innerHTML = `
+        <h1>Organizando</h1>
         <p><strong>Trilha:</strong> ${trilha.trilha}</p>
         <p><strong>Data:</strong> ${trilha.data}</p>
         <p><strong>Horário:</strong> ${trilha.hora}</p>
         <p><strong>Ponto de encontro:</strong> ${trilha.ponto}</p>
         <p><strong>Vagas disponíveis:</strong> ${trilha.vagas}</p>
+        <p><strong>Organizador da trilha:</strong> ${trilha.organizador.nome}</p>
         <div class="Botoes-editarExcluir">
         <button class="editar-btn" data-index="${index}">Editar</button>
         </div>
@@ -853,7 +858,7 @@ function renderizarTrilhas() {
       `;
         }
 
-        lista.appendChild(divTrilha);
+        trilhaOrganizador.appendChild(divTrilha);
 
 
     });
@@ -870,16 +875,39 @@ function renderizarTrilhas() {
         const divTrilha = document.createElement("div");
         divTrilha.classList.add("trilha-item");
         divTrilha.innerHTML = `
+        <h1>Participando</h1>
         <p><strong>Trilha:</strong> ${trilha.trilha}</p>
         <p><strong>Data:</strong> ${trilha.data}</p>
         <p><strong>Horário:</strong> ${trilha.hora}</p>
         <p><strong>Ponto de encontro:</strong> ${trilha.ponto}</p>
         <p><strong>Vagas disponíveis:</strong> ${trilha.vagas}</p>
+        <p><strong>Organizador da trilha:</strong> ${trilha.organizador.nome}</p>
+        <button class="sairTrilha" onclick="sairTrilha(${trilha.organizador.cpf})">Sair</button>
         </div>`
 
-        lista.appendChild(divTrilha);
+        console.log(trilha.organizador.cpf);
+        
+        trilhaParticipante.appendChild(divTrilha);
+    
 
     })
+
+}
+
+function sairTrilha(cpfOrganazidor) {
+    let usuarioLog = usuarioLogado()
+    let trilhasDisponiveis = JSON.parse(localStorage.getItem("eventos")) || []
+    let trilhaSair = trilhasDisponiveis.find(evento => {
+        if(evento.organizador.cpf == cpfOrganazidor){
+            return evento
+        }
+    })
+    let indexTrilha = trilhaSair.participantes.findIndex(usuario => usuario.cpf == usuarioLog.cpf)
+    trilhaSair.participantes.splice(indexTrilha, 1)
+    localStorage.setItem("eventos", JSON.stringify(trilhasDisponiveis))
+
+    renderizarTrilhas()
+
 
 }
 
@@ -922,41 +950,41 @@ lista.addEventListener("click", (event) => {
             let indexx = todasTrilhas.findIndex(evento => evento.organizador.cpf === excluirEvento.cpf)
 
             console.log(indexx);
-        
-                if (indexx !== -1) {
-                    todasTrilhas.splice(indexx, 1);
-                    localStorage.setItem("eventos", JSON.stringify(todasTrilhas));
-                    renderizarTrilhas();
-                    indexEditando = null;
-                }
+
+            if (indexx !== -1) {
+                todasTrilhas.splice(indexx, 1);
+                localStorage.setItem("eventos", JSON.stringify(todasTrilhas));
+                renderizarTrilhas();
+                indexEditando = null;
             }
         }
+    }
 
-if (event.target.classList.contains("salvar-edicao")) {
-    event.preventDefault();
-    const index = indexEditando;
-    let usuariolog = usuarioLogado()
-    const trilhaOriginal = JSON.parse(localStorage.getItem("eventos"))
+    if (event.target.classList.contains("salvar-edicao")) {
+        event.preventDefault();
+        const index = indexEditando;
+        let usuariolog = usuarioLogado()
+        const trilhaOriginal = JSON.parse(localStorage.getItem("eventos"))
 
-    trilhaOriginal.forEach(evento => {
-        if (evento.organizador.cpf === usuariolog.cpf) {
-          
-            evento.data = document.getElementById(`data${index}`).value
-            evento.hora = document.getElementById(`hora${index}`).value
-            evento.ponto = document.getElementById(`ponto${index}`).value
-            evento.vagas = document.getElementById(`vagas${index}`).value
-        }
-    })
+        trilhaOriginal.forEach(evento => {
+            if (evento.organizador.cpf === usuariolog.cpf) {
 
-
-    localStorage.setItem("eventos", JSON.stringify(trilhaOriginal));
-    indexEditando = null;
-    renderizarTrilhas();
+                evento.data = document.getElementById(`data${index}`).value
+                evento.hora = document.getElementById(`hora${index}`).value
+                evento.ponto = document.getElementById(`ponto${index}`).value
+                evento.vagas = document.getElementById(`vagas${index}`).value
+            }
+        })
 
 
-}
+        localStorage.setItem("eventos", JSON.stringify(trilhaOriginal));
+        indexEditando = null;
+        renderizarTrilhas();
 
-    });
+
+    }
+
+});
 
 // lista.addEventListener("submit", (event) => {
 //     event.preventDefault();
@@ -1072,12 +1100,15 @@ document.getElementById("editar-perfil").addEventListener("click", () => {
     document.getElementById("perfil-visualizacao").style.display = "none";
     document.getElementById("perfil-edicao").style.display = "flex";
     document.getElementById("editar-perfil").style.display = "none";
+    document.getElementById("deslogar-perfil").style.display = "none";
+    
 });
 
 document.getElementById("cancelar-edicao").addEventListener("click", () => {
     document.getElementById("perfil-edicao").style.display = "none";
     document.getElementById("perfil-visualizacao").style.display = "flex";
-    document.getElementById("editar-perfil").style.display = "block";
+    document.getElementById("editar-perfil").style.display = "flex";
+    document.getElementById("deslogar-perfil").style.display = "block";
 
     document.getElementById("infoNomeUsuarioEdicao").innerText = ""
     document.getElementById("infoEmailUsuarioEdicao").innerText = ""
