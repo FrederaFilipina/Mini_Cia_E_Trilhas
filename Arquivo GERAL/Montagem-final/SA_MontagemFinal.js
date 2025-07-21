@@ -630,7 +630,7 @@ document.getElementById('eventoForm').addEventListener('submit', function (event
         vagas,
         status,
         organizador: { nome, idade, sexo, cpf },
-        participantes: [{ nome, idade, sexo, cpf,usuarioAvaliador}],
+        participantes: [{ nome, idade, sexo, cpf, usuarioAvaliador }],
 
     };
 
@@ -698,7 +698,7 @@ function listarEventos() {
 
 
         console.log(!e.participantes.some(p => p.cpf === usuarioLog.cpf));
-        
+
         if (!e.participantes.some(p => p.cpf === usuarioLog.cpf)) {
             const div = document.createElement('div');
             div.classList.add("cardEventosOnline")
@@ -744,7 +744,7 @@ function listarEventos() {
 
             div.appendChild(botao);
             lista.appendChild(div);
-        } else{
+        } else {
             lista.innerHTML = '<h3>Nenhum evento disponivel</h3>';
         }
     });
@@ -829,11 +829,11 @@ function renderizarTrilhas() {
         if (indexEditando === index) {
             divTrilha.innerHTML = `
         <form class="form-edicao">
-          <div class="form-group"<label>Trilha: <input type="text" name="trilha" value="${trilha.trilha}" required disabled/></label><br></div>
-          <div class="form-group"<label>Data: <input type="date" name="data" value="${trilha.data}" /></label><br></div>
-          <div class="form-group"<label>Hora: <input type="time" name="hora" value="${trilha.hora}" /></label><br></div>
-          <div class="form-group"<label>Ponto: <input type="text" name="ponto" value="${trilha.ponto}" /></label><br></div>
-          <div class="form-group"<label>Vagas: <input type="number" name="vagas" value="${trilha.vagas}" /></label><br></div>
+          <div class="form-group"<label>Trilha: <input type="text" name="trilha" value="${trilha.trilha}"  required disabled/></label><br></div>
+          <div class="form-group"<label>Data: <input type="date" name="data" value="${trilha.data}" id="data${index}"/></label><br></div>
+          <div class="form-group"<label>Hora: <input type="time" name="hora" value="${trilha.hora}" id="hora${index}"/></label><br></div>
+          <div class="form-group"<label>Ponto: <input type="text" name="ponto" value="${trilha.ponto}" id="ponto${index}" /></label><br></div>
+          <div class="form-group"<label>Vagas: <input type="number" name="vagas" value="${trilha.vagas}" id="vagas${index}" /></label><br></div>
           <button type="submit" class="salvar-edicao">Salvar</button>
           <button class="excluir-trilha" onclick="excluirEvento()">Excluir</button>
           <button type="button" class="cancelar-edicao">Cancelar</button>
@@ -901,6 +901,7 @@ botaoMinhasTrilhas.addEventListener("click", () => {
 lista.addEventListener("click", (event) => {
     if (event.target.classList.contains("editar-btn")) {
         indexEditando = parseInt(event.target.getAttribute("data-index"));
+
         renderizarTrilhas();
     }
 
@@ -910,45 +911,77 @@ lista.addEventListener("click", (event) => {
     }
 
     if (event.target.classList.contains("excluir-trilha")) {
+        event.preventDefault();
         const index = parseInt(event.target.getAttribute("data-index"));
         console.log(index);
 
         if (confirm("Tem certeza que deseja excluir essa trilha?")) {
-            trilhasCadastradas.splice(index, 1);
-            localStorage.setItem("eventos", JSON.stringify(trilhasCadastradas));
-            renderizarTrilhas();
+            let excluirEvento = usuarioLogado()
+            let todasTrilhas = JSON.parse(localStorage.getItem("eventos"))
 
-            if (index !== -1) {
-                trilhasCadastradas.splice(index, 1);
-                localStorage.setItem("eventos", JSON.stringify(trilhasCadastradas));
-                renderizarTrilhas();
+            let indexx = todasTrilhas.findIndex(evento => evento.organizador.cpf === excluirEvento.cpf)
+
+            console.log(indexx);
+        
+                if (indexx !== -1) {
+                    todasTrilhas.splice(indexx, 1);
+                    localStorage.setItem("eventos", JSON.stringify(todasTrilhas));
+                    renderizarTrilhas();
+                    indexEditando = null;
+                }
             }
         }
-    }
 
-});
-
-lista.addEventListener("submit", (event) => {
+if (event.target.classList.contains("salvar-edicao")) {
     event.preventDefault();
-
-    const form = event.target;
     const index = indexEditando;
+    let usuariolog = usuarioLogado()
+    const trilhaOriginal = JSON.parse(localStorage.getItem("eventos"))
 
-    const trilhaOriginal = trilhasCadastradas[index];
-    
-    trilhasCadastradas[index] = {
-        ...trilhaOriginal,
-        trilha: form.trilha.value,
-        data: form.data.value,
-        hora: form.hora.value,
-        ponto: form.ponto.value,
-        vagas: form.vagas.value,
-    };
+    trilhaOriginal.forEach(evento => {
+        if (evento.organizador.cpf === usuariolog.cpf) {
+          
+            evento.data = document.getElementById(`data${index}`).value
+            evento.hora = document.getElementById(`hora${index}`).value
+            evento.ponto = document.getElementById(`ponto${index}`).value
+            evento.vagas = document.getElementById(`vagas${index}`).value
+        }
+    })
 
-    localStorage.setItem("eventos", JSON.stringify(trilhasCadastradas));
+
+    localStorage.setItem("eventos", JSON.stringify(trilhaOriginal));
     indexEditando = null;
     renderizarTrilhas();
-});
+
+
+}
+
+    });
+
+// lista.addEventListener("submit", (event) => {
+//     event.preventDefault();
+
+//     const form = event.target;
+//     const index = indexEditando;
+//     let usuariolog = usuarioLogado()
+//     const trilhaOriginal = JSON.parse(localStorage.getItem("eventos"))
+
+//     trilhaOriginal.forEach(evento => {
+//         if (evento.organizador.cpf === usuariolog.cpf) {
+
+//             evento.trilha = form.trilha.value
+//             evento.data = form.data.value
+//             evento.hora = form.hora.value
+//             evento.ponto = form.hora.value
+//             evento.vagas = form.vagas.value
+//         }
+//     })
+
+
+//     localStorage.setItem("eventos", JSON.stringify(trilhasCadastradas));
+//     indexEditando = null;
+//     renderizarTrilhas();
+// })
 
 
 
