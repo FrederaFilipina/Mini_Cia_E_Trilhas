@@ -1145,9 +1145,9 @@ li:hover {
     border-radius: 10px;
     top: 0;
     right: 0;
-    transform: translatex(100%);
-    opacity: 0;
-    animation: direita 4s ease-in-out;
+    transform: translatex(150%);
+    opacity: 100%;
+    transform: transform .6s ease;
 
     #alerta-texto {
         display: flex;
@@ -1163,17 +1163,9 @@ li:hover {
     }
 
 }
-@keyframes direita{
-    0%{
-        transform: translatex(160%);
-        opacity: 0%;
-    }
-    50%{
-        transform: translatex(0%);
-        opacity: 100%;
-    }
-    100%,0%{
-        transform: translatex(200%);
-        opacity: 10%;
-    }
+.alerta-ativo{
+    transform: translatex(0%);
+    opacity: 100%;
+    transition: 10s;
 }
+

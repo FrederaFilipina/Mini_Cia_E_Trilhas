@@ -13,7 +13,7 @@ function esconderCep() {
     document.getElementById("contCep").style.display = "none"
 }
 function abrirPaginaUsuário() {
-    alert("logado")
+    mostrarAlerta(`<a href="#" > <i class="bi bi-check-circle"> </i> </a> <h3>Logado</h3>`)
     AvaliaçaoDisponivel()
     mostrarLiCompleto()
     esconderSection()
@@ -239,10 +239,10 @@ function entraCadastro(event) {
             evento: false,
             historico: [],
         })
+        mostrarAlerta(`<a href="#" > <i class="bi bi-check-circle"> </i> </a> <h3>Usuario Cadastrado</h3>`)
         limparInput()
         salvarBancoDados()
         esconderSection()
-        mostrarAlerta(`<a href="#" > <i class="bi bi-check-circle"> </i> </a> <h3>Usuario Cadastrado</h3>`)
         abrirLoginCadastro("contLogin")
         
         // console.log(cadastroUsuarios)
@@ -360,12 +360,14 @@ function usuarioLogado() {
 function mostrarAlerta(mensagem) {
     const alerta = document.getElementById('meu-alerta');
     const texto = document.getElementById('alerta-texto');
-    texto.innerHTML = mensagem;
+    
+    texto.innerHTML = mensagem
     alerta.style.display = 'flex';
+    alerta.classList.add("alerta-ativo")
 
-    setTimeout(() => {
-        alerta.style.display = 'none';
-    }, 4000); // esconde após 4 segundos
+        setTimeout(() => {
+            alerta.classList.remove("alerta-ativo")
+        }, 4000); // esconde após 4 segundos
 }
 
 //funcionamento da pagina
@@ -650,7 +652,7 @@ document.getElementById('eventoForm').addEventListener('submit', function (event
     eventos.push(eventoCriado);
     localStorage.setItem('eventos', JSON.stringify(eventos));
 
-    document.getElementById('mensagem').innerText = "Evento cadastrado com sucesso!";
+    mostrarAlerta("Evento cadastrado com sucesso!") 
     this.reset();
     listarEventos();
 
