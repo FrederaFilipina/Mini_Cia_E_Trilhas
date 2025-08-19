@@ -1,0 +1,7 @@
+Mini Cia && Trilhas             Git: https://github.com/FrederaFilipina/Mini_Cia_E_Trilhas.git
+    Membros:
+            -Felipe             Git: 
+            -Frederico          Git:
+            -João               Git:
+            -Ronald             Git:
+            -Washington         Git:
