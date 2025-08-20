@@ -1,0 +1,2 @@
+# Mini-Cia-Trilhas
+Expandir a plataforma que possibilita pessoas acharem informações sobre trilhas em Florianópolis e criarem eventos com a finalidade de conhecer novas pessoas enquanto desfrutam da atividades ao ar livre. Para que o usuário tenham acesso dinâmico as informações das trilhas, visualizaram um dashboard pessoal dos eventos realizados e consigam realizar e ou consultar avaliações sobre as tilha.
