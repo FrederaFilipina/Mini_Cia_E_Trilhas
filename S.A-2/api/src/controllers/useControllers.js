@@ -8,14 +8,14 @@ async function todosUsuarios(req, res) {
 
         if (result.length === 0) {
 
-            return res.status(404).json({ mensagem: 'Usuarios não encontrado', ok: false })
+            return res.status(404).json({ mensagem: 'Usuarios não encontrado'})
 
         }
-        res.status(200).json({ mensagem: 'Usuarios encontrados', ok: true, resultado: result })
+        res.status(200).json({ mensagem: 'Usuarios encontrados', resultado: result })
 
     } catch (error) {
         console.log(error);
-        res.status(500).json({ ok: false, mensagem: 'Erro ao pesquisar usuarios', erro: error })
+        res.status(500).json({  mensagem: 'Erro ao pesquisar usuarios', erro: error })
 
 
     }
@@ -28,15 +28,15 @@ async function pesquisarUsuario(req, res) {
 
         if (result.length === 0) {
 
-            return res.status(404).json({ mensagem: 'Usuarios não encontrado', ok: false })
+            return res.status(404).json({ mensagem: 'Usuarios não encontrado'})
         }
 
 
-        res.status(200).json({ mensagem: 'Usuarios encontrados', ok: true, resultado: result[0] })
+        res.status(200).json({ mensagem: 'Usuarios encontrados', resultado: result[0] })
 
     } catch (error) {
         console.log(error)
-        res.status(500).json({ ok: false, mensagem: 'Erro ao pesquisar usuario', erro: error })
+        res.status(500).json({  mensagem: 'Erro ao pesquisar usuario', erro: error })
     }
 }
 
@@ -51,10 +51,10 @@ async function buscarTrilhas(req, res) {
 
         }
 
-        res.status(200).json({ mensagem: 'Usuarios encontrados', ok: true, resultado: result })
+        res.status(200).json({ mensagem: 'Usuarios encontrados', resultado: result })
 
     } catch (error) {
-        res.status(500).json({ ok: false, mensagem: 'Erro ao pesquisar usuario', erro: error })
+        res.status(500).json({  mensagem: 'Erro ao pesquisar usuario', erro: error })
     }
 }
 
