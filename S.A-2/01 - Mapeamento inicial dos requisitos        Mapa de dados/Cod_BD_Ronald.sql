@@ -93,3 +93,23 @@ INSERT INTO participante (classe, usuario_id, trilha_id) VALUES
 ('C', 9, 3), ('P', 10, 3), ('P', 1, 3), ('P', 2, 3),
 ('C', 3, 4), ('P', 4, 4), ('P', 5, 4), ('P', 6, 4),
 ('C', 7, 5), ('P', 8, 5), ('P', 9, 5), ('P', 10, 5);
+
+SELECT
+trilha.id_trilha,
+infTrilha.nome,
+trilha.dia,
+trilha.horario,
+trilha.vagas,
+count(participante.id_participante) AS participantes
+FROM infTrilha
+JOIN trilha
+ON trilha.infTrilha_id = infTrilha.id_infTrilha
+JOIN participante
+ON trilha.id_trilha = participante.trilha_id
+GROUP BY trilha.id_trilha;
+
+
+
+
+
+

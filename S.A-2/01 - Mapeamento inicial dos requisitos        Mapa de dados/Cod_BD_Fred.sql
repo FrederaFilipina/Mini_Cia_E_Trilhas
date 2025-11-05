@@ -93,3 +93,38 @@ INSERT INTO participante (classe, usuario_id, trilha_id) VALUES
 ('C', 9, 3), ('P', 10, 3), ('P', 1, 3), ('P', 2, 3),
 ('C', 3, 4), ('P', 4, 4), ('P', 5, 4), ('P', 6, 4),
 ('C', 7, 5), ('P', 8, 5), ('P', 9, 5), ('P', 10, 5);
+
+-- Comando para CADASTRAR novo Usuário (i)
+INSERT INTO usuario
+(nome, email, cpf, senha, sexo)
+VALUES
+();
+-- Comando para CADASTRAR novo Usuário (f)
+
+-- Comando para VERIFICAR se o LOGIN está correto(i)
+SELECT id_usuario, email, senha FROM usuario
+WHERE email = 'e-mail@email.mail'
+AND senha = 'senha123';
+-- Comando para VERIFICAR se o LOGIN está correto(f)
+
+-- Comando para criar os Cards da página HOME (i)
+SELECT infTrilha.nome AS 'Nome da Trilha', trilha.dia AS 'Data', trilha.horario AS 'Horário', COUNT(participante.id_participante) AS 'Num. Participantes', (trilha.vagas - COUNT(participante.id_participante)) AS 'Vagas Disp.' FROM trilha
+JOIN infTrilha ON trilha.infTrilha_id = infTrilha.id_infTrilha
+JOIN participante ON participante.trilha_id = trilha.id_trilha
+JOIN usuario ON usuario.id_usuario = participante.usuario_id
+GROUP BY inftrilha.nome, trilha.dia, trilha.horario, trilha.vagas;
+-- Comando para criar os Cards da página HOME (f)
+
+-- Comando para criar os Cards da página AGENDA (i)
+SELECT infTrilha.nome AS 'Nome da Trilha', trilha.dia AS 'Data', trilha.horario AS 'Horário', infTrilha.distancia AS 'Distância', infTrilha.dificuldade AS 'Dificuldade', COUNT(participante.id_participante) AS 'Num. Participantes', (trilha.vagas - COUNT(participante.id_participante)) AS 'Vagas Disp.' FROM trilha
+JOIN infTrilha ON trilha.infTrilha_id = infTrilha.id_infTrilha
+JOIN participante ON participante.trilha_id = trilha.id_trilha
+JOIN usuario ON usuario.id_usuario = participante.usuario_id
+GROUP BY inftrilha.nome, trilha.dia, trilha.horario, infTrilha.distancia, infTrilha.dificuldade, trilha.vagas;
+-- Comando para criar os Cards da página AGENDA (f)
+
+-- Comando para criar os Cards da página TRILHAS (i)
+SELECT infTrilha.nome AS 'Nome da Trilha', infTrilha.distancia AS 'Distância', infTrilha.tempo AS'Tempo', infTrilha.dificuldade AS 'Dificuldade' FROM trilha
+JOIN infTrilha ON trilha.infTrilha_id = infTrilha.id_infTrilha
+GROUP BY inftrilha.nome, infTrilha.distancia, infTrilha.tempo, infTrilha.dificuldade;
+-- Comando para criar os Cards da página TRILHAS (f)
