@@ -19,15 +19,19 @@ async function loginUser(req, res) {
         if (result.length === 0) {
             return res.status(404).json({ mensagem: "usuario ou senha incorretos", result })
         }
-
+        
         const payload = {
-            id: result[0].id,
+            id: result[0].id_usuario,
             nome: result[0].nome,
             role: 'user'
         }
 
-
+        
+        
         const token = jwt.sign(payload, process.env.SENHA_TOKEN, { expiresIn: '1h' })
+
+        
+        
 
         res.status(200).json({ mensagem: 'Usuario logado', result: {...result[0],token} })
 
@@ -158,6 +162,8 @@ async function cardsTrilhaOff(req, res) {
 
 async function cardsTrilhaOn(req, res) {
 
+    
+
     try {
 
         const [result] = await pool.query(`SELECT trilha.id_trilha ,trilha.nome AS 'Nome da Trilha', trilha.ponto_partida AS 'Ponto Inicial', trilha.ponto_chegada AS 'Ponto Final', trilha.distancia AS 'Distância', trilha.tempo AS 'Tempo', trilha.relevo AS 'Tipo do Relevo', trilha.elevacao AS 'Grau de Elevação', trilha.dificuldade AS 'Dificuldade' FROM trilha`)
@@ -174,14 +180,6 @@ async function cardsTrilhaOn(req, res) {
     }
 
 }
-
-
-
-
-
-
-
-
 
 
 module.exports = {
