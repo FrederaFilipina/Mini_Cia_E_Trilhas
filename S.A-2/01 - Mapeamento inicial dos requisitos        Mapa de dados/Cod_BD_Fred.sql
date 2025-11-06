@@ -3,19 +3,19 @@ DROP DATABASE mini_cia_e_trilhas;
 CREATE DATABASE mini_cia_e_trilhas;
 USE mini_cia_e_trilhas;
 
-CREATE TABLE infTrilha(
-id_infTrilha INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-nome VARCHAR(200),
-ponto_partida VARCHAR(200),
-ponto_chegada VARCHAR(200),
-distancia DECIMAL(10,2),
-tempo TIME,
-relevo VARCHAR(200),
-elevacao INT,
-dificuldade INT
-);
 
-INSERT INTO infTrilha
+CREATE TABLE trilha(
+    id_trilha INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(200),
+    ponto_partida VARCHAR(200),
+    ponto_chegada VARCHAR(200),
+    distancia DECIMAL(10,2),
+    tempo TIME,
+    relevo VARCHAR(200),
+    elevacao INT,
+    dificuldade INT
+);
+INSERT INTO trilha
 (nome, ponto_partida, ponto_chegada, distancia, tempo, relevo, elevacao, dificuldade)
 VALUES
 ('Trilha da Pedra Azul', 'Domingos Martins', 'Pedra Azul', 8.5, '02:30:00', 'Montanhoso', 450, 3),
@@ -30,17 +30,17 @@ VALUES
 ('Trilha do Pico do Jaraguá', 'São Paulo', 'Pico do Jaraguá', 5.0, '01:40:00', 'Montanhoso', 372, 3);
 
 
-CREATE TABLE usuario(
-id_usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-nome VARCHAR(200) UNIQUE NOT NULL,
-cpf BIGINT(11) UNIQUE NOT NULL,
-dt_nascimento DATE NOT NULL,
-sexo ENUM('Masculino','Feminino') NOT NULL,
-num_celular BIGINT(11) UNIQUE NOT NULL,
-email VARCHAR(200) NOT NULL,
-senha VARCHAR(64) NOT NULL
-);
 
+CREATE TABLE usuario(
+    id_usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(200) UNIQUE NOT NULL,
+    cpf BIGINT(11) UNIQUE NOT NULL,
+    dt_nascimento DATE NOT NULL,
+    sexo ENUM('Masculino','Feminino') NOT NULL,
+    num_celular BIGINT(11) UNIQUE NOT NULL,
+    email VARCHAR(200) NOT NULL,
+    senha VARCHAR(64) NOT NULL
+);
 INSERT INTO usuario (nome, cpf, dt_nascimento, sexo, num_celular, email, senha) VALUES
 ('Ana Souza', 12345678901, '1990-05-12', 'Feminino', 11987654321, 'ana.souza@email.com', 'senha123'),
 ('Bruno Lima', 23456789012, '1988-03-22', 'Masculino', 21998765432, 'bruno.lima@email.com', 'bruno2024'),
@@ -54,52 +54,51 @@ INSERT INTO usuario (nome, cpf, dt_nascimento, sexo, num_celular, email, senha) 
 ('João Pereira', 11223344556, '1987-02-17', 'Masculino', 71998901234, 'joao.pereira@email.com', 'joao@321');
 
 
-CREATE TABLE trilha(
-id_trilha INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-dia DATE,
-horario TIME,
-ponto_de_encontro VARCHAR(200),
-vagas INT,
 
-infTrilha_id INT,
-FOREIGN KEY (infTrilha_id)
-REFERENCES infTrilha (id_infTrilha)
+CREATE TABLE evento(
+    id_evento INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    dia DATE,
+    horario TIME,
+    ponto_de_encontro VARCHAR(200),
+    vagas INT,
+    trilha_id INT,
+    FOREIGN KEY (trilha_id) REFERENCES trilha (id_trilha)
 );
-
-INSERT INTO trilha (dia, horario, ponto_de_encontro, vagas, infTrilha_id) VALUES
-('2025-11-10', '07:00:00', 'Entrada do Parque Pedra Azul', 15, 1),
-('2025-11-12', '08:30:00', 'Portaria do Itatiaia', 20, 2),
+INSERT INTO evento (dia, horario, ponto_de_encontro, vagas, trilha_id) VALUES
+('2025-11-06', '08:30:00', 'Entrada do Parque Pedra Azul', 5, 1),
+('2025-11-06', '07:00:00', 'Portaria do Itatiaia', 20, 2),
 ('2025-11-15', '05:00:00', 'Base do Pico da Bandeira', 10, 3),
 ('2025-11-20', '09:00:00', 'Praia de Ponta Negra', 25, 4),
 ('2025-11-25', '06:00:00', 'Centro de Visitantes Chapada', 12, 5);
 
 
+
 CREATE TABLE participante(
-id_participante INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-classe ENUM ("C", "P"),
-
-usuario_id INT,
-FOREIGN KEY (usuario_id)
-REFERENCES usuario (id_usuario),
-
-trilha_id INT,
-FOREIGN KEY (trilha_id)
-REFERENCES trilha (id_trilha)
+    id_participante INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    classe ENUM('C','P'),
+    usuario_id INT,
+    FOREIGN KEY (usuario_id) REFERENCES usuario (id_usuario),
+    evento_id INT,
+    FOREIGN KEY (evento_id) REFERENCES evento (id_evento)
 );
-
-INSERT INTO participante (classe, usuario_id, trilha_id) VALUES
+INSERT INTO participante (classe, usuario_id, evento_id) VALUES
 ('C', 1, 1), ('P', 2, 1), ('P', 3, 1), ('P', 4, 1),
 ('C', 5, 2), ('P', 6, 2), ('P', 7, 2), ('P', 8, 2),
 ('C', 9, 3), ('P', 10, 3), ('P', 1, 3), ('P', 2, 3),
 ('C', 3, 4), ('P', 4, 4), ('P', 5, 4), ('P', 6, 4),
 ('C', 7, 5), ('P', 8, 5), ('P', 9, 5), ('P', 10, 5);
 
+
+
+
+
+
 -- Comando para CADASTRAR novo Usuário (i)
 INSERT INTO usuario
 (nome, email, cpf, senha, sexo)
 VALUES
 ();
--- Comando para CADASTRAR novo Usuário (f)
+-- Comando para CADASTRAR novo Usuário (i)
 
 -- Comando para VERIFICAR se o LOGIN está correto(i)
 SELECT id_usuario, email, senha FROM usuario
@@ -108,23 +107,33 @@ AND senha = 'senha123';
 -- Comando para VERIFICAR se o LOGIN está correto(f)
 
 -- Comando para criar os Cards da página HOME (i)
-SELECT infTrilha.nome AS 'Nome da Trilha', trilha.dia AS 'Data', trilha.horario AS 'Horário', COUNT(participante.id_participante) AS 'Num. Participantes', (trilha.vagas - COUNT(participante.id_participante)) AS 'Vagas Disp.' FROM trilha
-JOIN infTrilha ON trilha.infTrilha_id = infTrilha.id_infTrilha
-JOIN participante ON participante.trilha_id = trilha.id_trilha
-JOIN usuario ON usuario.id_usuario = participante.usuario_id
-GROUP BY inftrilha.nome, trilha.dia, trilha.horario, trilha.vagas;
--- Comando para criar os Cards da página HOME (f)
+SELECT trilha.nome AS 'Nome da Trilha', evento.dia AS 'Data', evento.horario AS 'Horário', (evento.vagas - COUNT(participante.id_participante)) AS 'Vagas Disp.' FROM evento
+JOIN trilha
+ON evento.trilha_id = trilha.id_trilha
+LEFT JOIN participante
+ON participante.evento_id = evento.id_evento
+GROUP BY trilha.nome, evento.dia, evento.horario, evento.vagas
+
+HAVING (evento.vagas - COUNT(participante.id_participante)) > 0
+AND evento.dia BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 5 DAY);
+-- Comando para criar os Cards da página HOME (i)
 
 -- Comando para criar os Cards da página AGENDA (i)
-SELECT infTrilha.nome AS 'Nome da Trilha', trilha.dia AS 'Data', trilha.horario AS 'Horário', infTrilha.distancia AS 'Distância', infTrilha.dificuldade AS 'Dificuldade', COUNT(participante.id_participante) AS 'Num. Participantes', (trilha.vagas - COUNT(participante.id_participante)) AS 'Vagas Disp.' FROM trilha
-JOIN infTrilha ON trilha.infTrilha_id = infTrilha.id_infTrilha
-JOIN participante ON participante.trilha_id = trilha.id_trilha
-JOIN usuario ON usuario.id_usuario = participante.usuario_id
-GROUP BY inftrilha.nome, trilha.dia, trilha.horario, infTrilha.distancia, infTrilha.dificuldade, trilha.vagas;
--- Comando para criar os Cards da página AGENDA (f)
+SELECT trilha.nome AS 'Nome da Trilha', evento.dia AS 'Data', evento.horario AS 'Horário', (evento.vagas - COUNT(participante.id_participante)) AS 'Vagas Disp.' FROM evento
+JOIN trilha
+ON evento.trilha_id = trilha.id_trilha
+LEFT JOIN participante
+ON participante.evento_id = evento.id_evento
+GROUP BY trilha.nome, evento.dia, evento.horario, evento.vagas
+
+HAVING (evento.vagas - COUNT(participante.id_participante)) > 0
+AND CONCAT(evento.dia, ' ', evento.horario) >= NOW()
+ORDER BY evento.dia, evento.horario;
+-- Comando para criar os Cards da página AGENDA (i)
 
 -- Comando para criar os Cards da página TRILHAS (i)
-SELECT infTrilha.nome AS 'Nome da Trilha', infTrilha.distancia AS 'Distância', infTrilha.tempo AS'Tempo', infTrilha.dificuldade AS 'Dificuldade' FROM trilha
-JOIN infTrilha ON trilha.infTrilha_id = infTrilha.id_infTrilha
-GROUP BY inftrilha.nome, infTrilha.distancia, infTrilha.tempo, infTrilha.dificuldade;
--- Comando para criar os Cards da página TRILHAS (f)
+SELECT trilha.nome AS 'Nome da Trilha', trilha.distancia AS 'Distância', trilha.tempo AS 'Tempo', trilha.dificuldade AS 'Dificuldade' FROM evento
+JOIN trilha
+ON evento.trilha_id = trilha.id_trilha
+GROUP BY trilha.nome, trilha.distancia, trilha.tempo, trilha.dificuldade;
+-- Comando para criar os Cards da página TRILHAS (i)
