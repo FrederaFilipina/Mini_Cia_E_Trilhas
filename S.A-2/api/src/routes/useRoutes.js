@@ -3,17 +3,12 @@ const express = require('express')
 const router = express.Router()
 
 const {
-    pesquisarUsuario,
     buscarTrilhas,
-    todosUsuarios
+    loginUser
 } = require("../controllers/useControllers")
 
-
-
-router.get('/usuario',todosUsuarios)
-
-router.get('/usuario/:id',pesquisarUsuario)
-
+router.get('/logar',loginUser)
+ 
 router.get('/trilha',buscarTrilhas)
 
 module.exports = router
