@@ -9,10 +9,10 @@ export const Mycontext = createContext()
 export const  ContextGlobalUser = ({children})=> {
 
 
-    const [user, setUser] = useState("oie")
+    const [user, setUser] = useState(false)
   return (
 
-    <Mycontext.Provider value={{user}}>
+    <Mycontext.Provider value={{user,setUser}}>
         {children}
     </Mycontext.Provider>
 

@@ -1,7 +1,10 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0;
-  
+@import url('https://fonts.googleapis.com/css2?family=Trade+Winds&display=swap');
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+      font-family: 'Trade Winds', cursive;
+
 }
 
