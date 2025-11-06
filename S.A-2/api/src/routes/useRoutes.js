@@ -2,13 +2,12 @@ const express = require('express')
 
 const router = express.Router()
 
-const {buscarTrilhas,loginUser, cadastroUser,cardsHome,cardsAgendaOff,cardsTrilhaOff,cardsTrilhaOn} = require("../controllers/useControllers")
+const {loginUser, cadastroUser,cardsHome,cardsAgendaOff,cardsTrilhaOff,cardsTrilhaOn} = require("../controllers/useControllers")
 
 const {verificarToken} = require('../middleware/verificarToken')
 
 router.get('/logar',loginUser)
  
-router.get('/buscar/trilha',buscarTrilhas)
 
 router.get('/buscar/cards/home',cardsHome)
 

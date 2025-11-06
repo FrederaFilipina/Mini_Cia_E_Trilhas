@@ -6,23 +6,6 @@ require("dotenv").config()
 
 
 
-async function buscarTrilhas(req, res) {
-
-    try {
-        const [result] = await pool.query('SELECT * FROM trilha')
-        if (result.length === 0) {
-
-            return res.status(404).json({ mensagem: 'Usuarios não encontrado', ok: false })
-
-        }
-
-        res.status(200).json({ mensagem: 'Usuarios encontrados', resultado: result })
-
-    } catch (error) {
-        res.status(500).json({  mensagem: 'Erro ao pesquisar usuario', erro: error })
-    }
-}
-
 async function loginUser(req, res) {
 
    
@@ -202,7 +185,6 @@ async function cardsTrilhaOn(req, res) {
 
 
 module.exports = {
-    buscarTrilhas,
     loginUser,
     cadastroUser,
     cardsHome,
