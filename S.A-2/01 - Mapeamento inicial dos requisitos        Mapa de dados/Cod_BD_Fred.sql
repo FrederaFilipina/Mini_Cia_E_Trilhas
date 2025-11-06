@@ -6,6 +6,7 @@ USE mini_cia_e_trilhas;
 
 CREATE TABLE trilha(
     id_trilha INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    regiao VARCHAR (100),
     nome VARCHAR(200),
     ponto_partida VARCHAR(200),
     ponto_chegada VARCHAR(200),
@@ -16,29 +17,29 @@ CREATE TABLE trilha(
     dificuldade INT
 );
 INSERT INTO trilha
-(nome, ponto_partida, ponto_chegada, distancia, tempo, relevo, elevacao, dificuldade)
+(regiao, nome, ponto_partida, ponto_chegada, distancia, tempo, relevo, elevacao, dificuldade)
 VALUES
-('Trilha da Pedra Azul', 'Domingos Martins', 'Pedra Azul', 8.5, '02:30:00', 'Montanhoso', 450, 3),
-('Trilha da Cachoeira Véu de Noiva', 'Parque do Itatiaia', 'Cachoeira Véu de Noiva', 6.2, '01:45:00', 'Floresta', 180, 2),
-('Trilha do Pico da Bandeira', 'Alto Caparaó', 'Pico da Bandeira', 12.0, '05:00:00', 'Montanhoso', 2890, 5),
-('Trilha do Morro do Careca', 'Natal', 'Topo do Morro', 3.0, '00:50:00', 'Arenoso', 120, 1),
-('Trilha das 7 Quedas', 'Chapada dos Veadeiros', 'Vale das 7 Quedas', 14.8, '06:20:00', 'Cerrado', 520, 4),
-('Trilha do Cambirela', 'Palhoça', 'Cume do Cambirela', 9.0, '04:00:00', 'Montanhoso', 960, 4),
-('Trilha da Lagoa do Peri', 'Florianópolis', 'Lagoa do Peri', 5.5, '01:20:00', 'Floresta', 150, 2),
-('Trilha da Serra do Cipó', 'Santana do Riacho', 'Cachoeira Grande', 7.8, '02:00:00', 'Pedregoso', 340, 3),
-('Trilha da Gruta Azul', 'Bonito', 'Gruta Azul', 4.2, '01:00:00', 'Calcário', 90, 2),
-('Trilha do Pico do Jaraguá', 'São Paulo', 'Pico do Jaraguá', 5.0, '01:40:00', 'Montanhoso', 372, 3);
+('Sul', 'Trilha da Lagoinha do Leste', 'Pântano do Sul', 'Praia da Lagoinha do Leste', 4.20, '01:20:00', 'Costão/Mata Atlântica', 250, 4),
+('Sul', 'Trilha dos Naufragados', 'Caieira da Barra do Sul', 'Praia dos Naufragados', 2.60, '00:50:00', 'Floresta/Costão', 100, 2),
+('Leste', 'Trilha da Costa da Lagoa', 'Canto dos Araçás', 'Comunidade da Costa da Lagoa', 7.50, '02:10:00', 'Mata Atlântica', 150, 3),
+('Leste', 'Trilha do Gravatá', 'Praia Mole (entrada)', 'Praia do Gravatá', 1.00, '00:30:00', 'Costão/Rochoso', 60, 1),
+('Leste', 'Trilha da Galheta', 'Praia Mole', 'Praia da Galheta', 0.80, '00:20:00', 'Areia/Costão', 40, 1),
+('Leste', 'Trilha do Morro da Coroa', 'Mirante da Lagoinha do Leste', 'Topo do Morro da Coroa', 1.20, '00:40:00', 'Montanhoso/Rochoso', 200, 3),
+('Central', 'Trilha do Poção', 'Córrego Grande (Entrada)', 'Cachoeira do Poção', 0.70, '00:20:00', 'Floresta/Mata', 80, 1),
+('Sul', 'Trilha do Morro do Lampião', 'Rua Pau de Canela, Campeche', 'Cume do Morro do Lampião', 2.80, '01:30:00', 'Montanhoso/Rochoso', 180, 2),
+('Leste', 'Trilha da Barra da Lagoa → Piscinas Naturais', 'Barra da Lagoa (início)', 'Piscinas Naturais da Barra da Lagoa', 0.60, '00:15:00', 'Costão/Rochoso', 30, 1),
+('Norte', 'Trilha do Morro do Rapa', 'Praia Brava', 'Praia da Lagoinha do Norte (via Morro do Rapa)', 2.80, '01:30:00', 'Costão/Mata', 150, 2);
 
 
 
 CREATE TABLE usuario(
     id_usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(200) UNIQUE NOT NULL,
+    nome VARCHAR(200) NOT NULL,
     cpf BIGINT(11) UNIQUE NOT NULL,
-    dt_nascimento DATE NOT NULL,
+    dt_nascimento DATE,
     sexo ENUM('Masculino','Feminino') NOT NULL,
-    num_celular BIGINT(11) UNIQUE NOT NULL,
-    email VARCHAR(200) NOT NULL,
+    num_celular BIGINT(11) UNIQUE,
+    email VARCHAR(200) UNIQUE NOT NULL,
     senha VARCHAR(64) NOT NULL
 );
 INSERT INTO usuario (nome, cpf, dt_nascimento, sexo, num_celular, email, senha) VALUES
@@ -106,7 +107,7 @@ WHERE email = 'e-mail@email.mail'
 AND senha = 'senha123';
 -- Comando para VERIFICAR se o LOGIN está correto(f)
 
--- Comando para criar os Cards da página HOME (i)
+-- Comando para criar os Cards da página HOME LogOff (i)
 SELECT trilha.nome AS 'Nome da Trilha', evento.dia AS 'Data', evento.horario AS 'Horário', (evento.vagas - COUNT(participante.id_participante)) AS 'Vagas Disp.' FROM evento
 JOIN trilha
 ON evento.trilha_id = trilha.id_trilha
@@ -116,9 +117,9 @@ GROUP BY trilha.nome, evento.dia, evento.horario, evento.vagas
 
 HAVING (evento.vagas - COUNT(participante.id_participante)) > 0
 AND evento.dia BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 5 DAY);
--- Comando para criar os Cards da página HOME (i)
+-- Comando para criar os Cards da página HOME LogOff (i)
 
--- Comando para criar os Cards da página AGENDA (i)
+-- Comando para criar os Cards da página AGENDA LogOff/LogIn (i)
 SELECT trilha.nome AS 'Nome da Trilha', evento.dia AS 'Data', evento.horario AS 'Horário', (evento.vagas - COUNT(participante.id_participante)) AS 'Vagas Disp.' FROM evento
 JOIN trilha
 ON evento.trilha_id = trilha.id_trilha
@@ -129,11 +130,14 @@ GROUP BY trilha.nome, evento.dia, evento.horario, evento.vagas
 HAVING (evento.vagas - COUNT(participante.id_participante)) > 0
 AND CONCAT(evento.dia, ' ', evento.horario) >= NOW()
 ORDER BY evento.dia, evento.horario;
--- Comando para criar os Cards da página AGENDA (i)
+-- Comando para criar os Cards da página AGENDA LogOff / LogIn (i)
 
--- Comando para criar os Cards da página TRILHAS (i)
-SELECT trilha.nome AS 'Nome da Trilha', trilha.distancia AS 'Distância', trilha.tempo AS 'Tempo', trilha.dificuldade AS 'Dificuldade' FROM evento
-JOIN trilha
-ON evento.trilha_id = trilha.id_trilha
+-- Comando para criar os Cards da página TRILHAS LogOff (i)
+SELECT trilha.nome AS 'Nome da Trilha', trilha.distancia AS 'Distância', trilha.tempo AS 'Tempo', trilha.dificuldade AS 'Dificuldade' FROM trilha
 GROUP BY trilha.nome, trilha.distancia, trilha.tempo, trilha.dificuldade;
--- Comando para criar os Cards da página TRILHAS (i)
+-- Comando para criar os Cards da página TRILHAS LogOff (i)
+
+-- Comando para criar os Cards da página TRILHAS LogIn (i)
+SELECT trilha.nome AS 'Nome da Trilha', trilha.ponto_partida AS 'Ponto Inicial', trilha.ponto_chegada AS 'Ponto Final', trilha.distancia AS 'Distância', trilha.tempo AS 'Tempo', trilha.relevo AS 'Tipo do Relevo', trilha.elevacao AS 'Grau de Elevação', trilha.dificuldade AS 'Dificuldade' FROM trilha
+GROUP BY trilha.nome, trilha.ponto_partida, trilha.ponto_chegada, trilha.distancia, trilha.tempo, trilha.relevo, trilha.elevacao, trilha.dificuldade;
+-- Comando para criar os Cards da página TRILHAS LogIn (i)
