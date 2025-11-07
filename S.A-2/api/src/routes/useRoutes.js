@@ -6,7 +6,7 @@ const {loginUser, cadastroUser,cardsHome,cardsAgendaOff,cardsTrilhaOff,cardsTril
 
 const verificarToken = require('../middleware/verificarToken')
 
-router.get('/logar',loginUser)
+router.post('/logar',loginUser)
  
 
 router.get('/buscar/cards/home',cardsHome)

@@ -1,14 +1,31 @@
 import React, { useContext } from 'react'
 import { Mycontext } from '../../context/ContextGlobalUser'
 import './Login.css'
+import login from '../../server/login'
 
 function Login() {
 
-  const {setUser} = useContext(Mycontext)
+ async function  funcao(){
+
+    const usuario = {
+      email:"ana.souza@email.com",
+      senha:"senha123"
+    }
+
+    const resultado = await login(usuario)
+
+    setUser(resultado)
+  }
+
+  const {user,setUser} = useContext(Mycontext)
+
+ 
+  
+
   return (
     <div className='cont-login'>
-
-      <button onClick={setUser(true)}>logar</button>
+     {user&& user.nome}
+      <button onClick={funcao}>logar</button>
     </div>
   )
 }
