@@ -13,7 +13,7 @@ const login = async (user) => {
 
     } catch (error) {
 
-        return { mensagem: "Erro ao fazer a pesquisa", error }
+        return { mensagem: "Erro ao fazer o login", error }
     }
 
 
