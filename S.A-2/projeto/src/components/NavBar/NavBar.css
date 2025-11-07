@@ -3,8 +3,8 @@
     padding: 1rem;
     background-color: var(--colorNavBarOpacidade);
     border-radius: 20px;
-    width: 98%;
-    height: 90px;
+    width: 95%;
+    height: 80px;
     align-items: center;
     justify-content: space-around;
     font-size: 32px;
@@ -13,4 +13,11 @@
 .link{
     text-decoration: none;
     color: white;
+    transition: ease-in-out 0.2s;
+    
+}
+
+.link:hover{
+    
+    scale: 1.1;
 }

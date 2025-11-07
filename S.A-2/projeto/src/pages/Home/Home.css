@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 .cont-home {
     background-image: url('../../assets/img_home.png');
     background-size: cover;
@@ -5,4 +7,46 @@
     background-repeat: no-repeat;
     width: 100vw; 
     height: 100vh;
+}
+
+.cont-paragraphs {
+    padding: 20px;
+    h1 {
+    font-size: 60px;
+    color: white;
+    padding: 20px;
+        
+    }
+
+    p {
+        font-family: poppins, sans-serif;
+        font-weight: 600;
+        font-size: 25px;
+        color: #fff;
+        padding: 20px;
+        
+    }
+    
+}
+
+.cont-button-explore{
+    display: flex;
+    width: 100%;
+    padding: 30px;
+
+    button {
+        font-family: 'Trade Winds', cursive;
+        padding: 35px 40px;
+        font-size: 60px;
+        background-color: #7B1E1E;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #681919;
+        }
+    }
 }

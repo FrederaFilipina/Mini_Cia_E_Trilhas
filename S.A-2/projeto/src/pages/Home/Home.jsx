@@ -1,19 +1,41 @@
 import React from 'react'
 import './Home.css'
 import Header from '../../components/Header/Header'
+import { useNavigate } from 'react-router-dom'
 
 
 
 function Home() {
-    
-    
-    
+  const navigate = useNavigate()
+
+// function button_explore() {
+//   navigate('/trilhas')
+// }
+
   return (
     <div className='cont-home'>
-      <Header/>
-      
-      
-      
+      <Header />
+
+      <div className='cont-info-home'>
+
+        <div className='cont-paragraphs'>
+          <h1>Aventura te espera: Descruba todas
+            as
+            <br />trilhas de Florianopólis</h1>
+          <p>
+            Mapas, dicas, eventos e a comunidade
+            <br />
+            que te move.
+          </p>
+
+        </div>
+        <div className='cont-button-explore'>
+
+          <button className='button-explore' onClick={() => navigate('/trilhas')}>Explorar agora</button>
+
+        </div>
+      </div>
+
     </div>
   )
 }
