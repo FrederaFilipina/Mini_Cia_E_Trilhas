@@ -4,7 +4,7 @@ const login = async (user) => {
     console.log(user);
 
     try {
-        const result = await axios.post("http://localhost:3000/logar", { email: user.email, senha: user.senha })
+        const result = await axios.post("http://localhost:3000/logar",user)
 
         console.log(result.data);
 
