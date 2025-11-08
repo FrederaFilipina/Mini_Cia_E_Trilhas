@@ -1,6 +1,6 @@
 import axios  from "axios"
 
-async function buscarCardsHome() {
+const buscarCardsHome = async ()=> {
 
         try {
             const result = await axios.get("http://localhost:3000/buscar/cards/home")
