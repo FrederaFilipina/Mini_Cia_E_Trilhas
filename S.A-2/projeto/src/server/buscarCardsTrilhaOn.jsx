@@ -3,6 +3,7 @@ import axios from "axios"
 const buscarCardsTrilhaOn = async (token) => {
 
     if (!token) {
+        
         return {mensagem: "Token nao fornecido"}
     }
 
@@ -14,7 +15,7 @@ const buscarCardsTrilhaOn = async (token) => {
         return result
         
     } catch (error) {
-        
+
         return {mensagem: "Erro ao buscar cards", error}
     }   
   
