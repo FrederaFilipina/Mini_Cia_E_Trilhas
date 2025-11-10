@@ -8,8 +8,8 @@ function Login() {
  async function  funcao(){
 
     const usuario = {
-      email:"bruno.lima@email.com",
-      senha:"bruno2024"
+      email:"ana.souza@email.com",
+      senha:"senha123"
     }
 
     const resultado = await login(usuario)

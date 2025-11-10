@@ -1,0 +1,49 @@
+.Trilhas-container{
+    height: 100vh;
+}
+
+.Container-header{
+    /* height: 100px; */
+    background-color: aqua;
+}
+.Container-pag{
+    height: 100%;
+    background-color: blueviolet;
+}
+
+
+
+.Pag-filtro{
+    display: flex;
+    height: 15%;
+    background-color:cadetblue;
+}
+.Filtro-pesq{
+    height: 100%;
+    width: 50%;
+    background-color: brown;
+}
+.Pesq-barra{
+    height: 50%;
+    width: 100%;
+    background-color: antiquewhite;
+}
+.Pesq-filtro{
+    height: 50%;
+    width: 100%;
+    background-color:dimgray;
+}
+
+.Filtro-reg{
+    height: 100%;
+    width: 50%;
+    background-color:black;
+}
+
+
+
+.Pag-cards{
+    height: 85%;
+    background-color:coral;
+
+}
