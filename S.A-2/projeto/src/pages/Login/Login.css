@@ -35,6 +35,7 @@
 
 
 
+
 .cont-login button {
     background-color: var(--colorButton);
     color: #fff;
@@ -185,3 +186,4 @@ transform: translateX(-200%);
 .cont-login.active .toggle-right {
     transform: translateX(200%);
 }
+
