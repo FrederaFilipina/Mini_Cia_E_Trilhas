@@ -35,9 +35,14 @@
 }
 
 .Filtro-reg{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    
     height: 100%;
     width: 50%;
-    background-color:black;
+    background-color:purple;
 }
 
 

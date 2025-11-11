@@ -1,0 +1,14 @@
+.BttnsRegs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    height: 85px;
+    width: 115px;
+    font-size: 1.5vh;
+}
+.Imgs{
+    height: 80px;
+    width: 53px;
+}
