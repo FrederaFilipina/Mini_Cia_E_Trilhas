@@ -2,14 +2,27 @@ import React, { useContext,useState } from 'react'
 import { Mycontext } from '../../context/ContextGlobalUser'
 import './Login.css'
 import login from '../../server/login'
-import Toggle from '../../components/Toggle/Toggle'
-import Form_login from '../../components/Forms/Form_login'
-import Form_cadastro from '../../components/Forms/Form_cadastro'
+import Toggle from '../Toggle/Toggle'
+import Form_login from '../Forms/Form_login'
+import Form_cadastro from '../Forms/Form_cadastro'
 
 function Login() {
 
   const [isActive, setIsActive] = useState(false);
+  const {setModalLogin} = useContext(Mycontext)
 
+  const stilobotao={ color: '' }
+
+  if (isActive) {
+    stilobotao.color= 'Black'
+    console.log('preto');
+    
+  }else{
+    stilobotao.color= 'white'
+    console.log('branco');
+  }
+  console.log(stilobotao);
+  
   
   return (
 
@@ -24,6 +37,7 @@ function Login() {
 
           <Toggle setStado={setIsActive} />
       </div>
+      <button className="close-button" onClick={()=> setModalLogin(false)} style={stilobotao} >x</button>
     </div>
   )
 

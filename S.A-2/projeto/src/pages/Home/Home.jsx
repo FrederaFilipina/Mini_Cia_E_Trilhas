@@ -2,11 +2,14 @@ import React from 'react'
 import './Home.css'
 import Header from '../../components/Header/Header'
 import { useNavigate } from 'react-router-dom'
+import Login from '../../components/Login/Login'
+import { Mycontext } from '../../context/ContextGlobalUser'
 
 
 
 function Home() {
   const navigate = useNavigate()
+  const {modalLogin, setModalLogin} = React.useContext(Mycontext)
 
 // function button_explore() {
 //   navigate('/trilhas')
@@ -14,7 +17,8 @@ function Home() {
 
   return (
     <div className='cont-home'>
-      <Header />
+      <Header transparent/>
+      {modalLogin && <Login/>}
 
       <div className='cont-info-home'>
 

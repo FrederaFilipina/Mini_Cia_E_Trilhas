@@ -2,10 +2,10 @@ import React from 'react'
 import NavBar from '../NavBar/NavBar'
 import './Header.css'
 
-function Header() {
+function Header({transparent=false}) {
   return (
     <div className='cont-header'>
-      <NavBar/> 
+      <NavBar transparent={transparent}/> 
     </div>
   )
 }
