@@ -10,14 +10,6 @@ function Login() {
 
   const [isActive, setIsActive] = useState(false);
 
-<<<<<<< HEAD
-    const usuario = {
-      email:"ana.souza@email.com",
-      senha:"senha123"
-    }
-=======
->>>>>>> 52c4937c1d3241a61624af01973bc8d800b72ac9
-
   
   return (
 

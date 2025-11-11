@@ -1,5 +1,3 @@
-
-
 .cont-login-body {
     display: flex;
     justify-content: center;
@@ -26,7 +24,7 @@
     margin: 15px 0 10px;
 }
 
-.cont-toggle {
+.cont-login p {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.3px;
@@ -79,32 +77,41 @@
 .cont-forms {
     position: absolute;
     top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
     transition: all 0.6s ease-in-out;
 }
 
-.cont-forms {
+.form-login {
+    position: absolute;
     left: 0;
+    height: 100%;
     width: 50%;
+    transition: all 0.6s ease-in-out;
     z-index: 2;
 }
 
 .cont-login.active .form-login {
-    transform: translateX(100%);
+  transform: translateX(100%);
+  opacity: 0;
+  z-index: 1;
 }
 
 .form-cadastro {
-    left: 0;
-    width: 50%;
-    opacity: 0;
-    z-index: 1;
+  position: absolute;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.6s ease-in-out;
+  z-index: 1;
 }
 
 .cont-login.active .form-cadastro {
-    transform: translateX(100%);
-    opacity: 1;
-    z-index: 5;
-    animation: move 0.6s;
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 2;
 }
 
 @keyframes move {
@@ -146,16 +153,16 @@
     color: #fff;
     position: relative;
     left: -100%;
-    height: 100%;
     width: 200%;
     transform: translateX(0);
     transition: all 0.6s ease-in-out;
 }
+
 .cont-login.active .toggle {
     transform: translateX(50%);
 }
 
-.toggle-panel{
+.toggle-panel {
     position: absolute;
     width: 50%;
     height: 100%;
@@ -171,7 +178,7 @@
 }
 
 .toggle-left {
-transform: translateX(-200%);
+    transform: translateX(-200%);
 }
 
 .cont-login.active .toggle-left {
@@ -187,3 +194,7 @@ transform: translateX(-200%);
     transform: translateX(200%);
 }
 
+.button-toggle {
+    background-color: #fff;
+    border: 2px solid #fff;
+}

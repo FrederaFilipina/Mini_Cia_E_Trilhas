@@ -10,7 +10,7 @@ function Form_cadastro() {
 
     return (
 
-        <form className='form-cadastro'>
+        <form className='form-cadastro cadastro'>
             <h1>Cadastro</h1>
             <input type="text" placeholder='Nome completo' value={nome} onChange={e => setnome(e.target.value)} />
             <input type="text" placeholder='E-mail' value={emailCadastro} onChange={e => setEmailCadastro(e.target.value)} />
