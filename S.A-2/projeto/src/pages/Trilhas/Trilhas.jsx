@@ -3,7 +3,11 @@ import Header from '../../components/Header/Header'
 import BttnsReg from '../../components/BttnsReg/BttnsReg'
 import { useContext } from 'react'
 import { Mycontext } from '../../context/ContextGlobalUser'
+<<<<<<< HEAD
 import Login from '../../components/Login/Login'
+=======
+import BarraPesq from '../../components/BarraPesq/BarraPesq'
+>>>>>>> 1ef5acdb0cac6610cc429f9c719e84665a12362d
 
 
 
@@ -16,6 +20,7 @@ function Trilhas() {
   return (
     <div className='Trilhas-container'>
 
+<<<<<<< HEAD
       <div className='Container-header'>
         {modalLogin && <Login/>}
         <Header />
@@ -24,20 +29,29 @@ function Trilhas() {
       <div className='Container-pag'>
 
         <div className='Pag-filtro'>
+=======
+      <Header />
+      
+      <div className='Pag-filtro'>
+>>>>>>> 1ef5acdb0cac6610cc429f9c719e84665a12362d
 
           <div className='Filtro-pesq'>
 
-            <div className='Pesq-barra'></div>
+            <div className='Pesq-barra'>
+              <div className='Barra-barra'><BarraPesq /></div>
+              <div className='Barra-bttn'></div>
+              
+            </div>
             <div className='Pesq-filtro'></div>
 
           </div>
 
           <div className='Filtro-reg'>
-            <BttnsReg funcao={()=>setRegiao('Regiões')} nomeReg={"Todas as TRILHAS"} img={'Imgs/Geral.png'}/>
-            <BttnsReg funcao={()=>setRegiao('Norte')} nomeReg={"Reg. Norte"} img={'Imgs/Norte.png'}/>
-            <BttnsReg funcao={()=>setRegiao('Leste')} nomeReg={"Reg. Leste"} img={'Imgs/Leste.png'}/>
-            <BttnsReg funcao={()=>setRegiao('Central')} nomeReg={"Reg. Central"} img={'Imgs/Central.png'}/>
-            <BttnsReg funcao={()=>setRegiao('Sul')} nomeReg={"Reg. Sul"} img={'Imgs/Sul.png'}/>
+            <BttnsReg funcao={()=>setRegiao('Regiões')} nomeReg={"Todas"} img={'Imgs/Geral.png'}/>
+            <BttnsReg funcao={()=>setRegiao('Norte')} nomeReg={"Norte"} img={'Imgs/Norte.png'}/>
+            <BttnsReg funcao={()=>setRegiao('Leste')} nomeReg={"Leste"} img={'Imgs/Leste.png'}/>
+            <BttnsReg funcao={()=>setRegiao('Central')} nomeReg={"Central"} img={'Imgs/Central.png'}/>
+            <BttnsReg funcao={()=>setRegiao('Sul')} nomeReg={"Sul"} img={'Imgs/Sul.png'}/>
           </div>
 
         </div>
@@ -46,7 +60,7 @@ function Trilhas() {
           <h1>{regTrilhas}</h1>
         </div>
       
-      </div>
+      
 
       
     </div>
