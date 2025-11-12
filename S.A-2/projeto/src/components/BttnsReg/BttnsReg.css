@@ -1,14 +1,30 @@
 .BttnsRegs{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     background-color: white;
-    height: 85px;
-    width: 115px;
-    font-size: 1.5vh;
+    height: 125px;
+    width: 85px;
+    border: none;
+    border-radius: 12%;
+    cursor: pointer;    
+}
+.RegsImg{
+    height: 90%;
+    padding-right: 10px;
 }
 .Imgs{
-    height: 80px;
-    width: 53px;
+    height: 115px;
+    width: 76px;
+    transform: rotate(12deg);
+    overflow: hidden;
+}
+
+.RegsNome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    font-size: 2vh;
 }

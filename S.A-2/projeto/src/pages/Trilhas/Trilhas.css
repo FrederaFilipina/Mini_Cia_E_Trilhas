@@ -1,33 +1,40 @@
 .Trilhas-container{
+    display: flex;
+    flex-direction: column;
     height: 100vh;
+    width: 100vw;
 }
-
-.Container-header{
-    /* height: 100px; */
-    background-color: aqua;
-}
-.Container-pag{
-    height: 100%;
-    background-color: blueviolet;
-}
-
-
 
 .Pag-filtro{
     display: flex;
-    height: 15%;
-    background-color:cadetblue;
+    height: 20%;
+    width: 100%;
 }
 .Filtro-pesq{
     height: 100%;
     width: 50%;
-    background-color: brown;
 }
 .Pesq-barra{
+    display: flex;
     height: 50%;
     width: 100%;
     background-color: antiquewhite;
 }
+.Barra-barra{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 80%;
+    background-color: pink;
+
+}
+.Barra-bttn{
+    height: 100%;
+    width: 20%;
+    background-color: palevioletred;
+}
+
 .Pesq-filtro{
     height: 50%;
     width: 100%;
@@ -36,10 +43,10 @@
 
 .Filtro-reg{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 25px;
-    
+    padding: 0.1% 5%;
     height: 100%;
     width: 50%;
     background-color:purple;
@@ -48,7 +55,6 @@
 
 
 .Pag-cards{
-    height: 85%;
+    height: 80%;
     background-color:coral;
-
 }
