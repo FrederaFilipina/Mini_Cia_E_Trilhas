@@ -1,6 +1,6 @@
 import {createBrowserRouter} from 'react-router-dom'
 import Home from '../pages/Home/Home'
-import Eventos from '../pages/Eventos/Eventos'
+import Eventos from '../pages/Agenda/Agenda'
 import Dashboard from '../pages/Dashboard/Dashboard'
 import Trilhas from '../pages/Trilhas/Trilhas'
 import Perfil from '../pages/Perfil/Perfil'

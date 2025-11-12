@@ -1,7 +1,10 @@
 import React from 'react'
 import login from '../../server/login'
+import { Mycontext } from '../../context/ContextGlobalUser'
 
 function Form_login() {
+
+    const {user, setUser, modalLogin, setModalLogin} = React.useContext(Mycontext)
 
     async function logar(e) {
         e.preventDefault()
@@ -12,6 +15,17 @@ function Form_login() {
         }
         const resposta = await login(dados)
         console.log(resposta);
+
+        if (resposta.status === 200) {
+            alert("Login realizado com sucesso!")
+            setUser(resposta.data.result)
+            setModalLogin(false)
+            setEmail('')
+            setsenha('')
+            return
+        }
+        alert("Erro ao fazer login, verifique seus dados.")
+        
 
     }
     

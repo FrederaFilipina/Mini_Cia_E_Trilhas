@@ -6,7 +6,7 @@ const login = async (user) => {
     try {
         const result = await axios.post("http://localhost:3000/logar",user)
 
-        return result.data.result
+        return result
 
     } catch (error) {
 

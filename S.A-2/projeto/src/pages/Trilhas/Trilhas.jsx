@@ -3,19 +3,21 @@ import Header from '../../components/Header/Header'
 import BttnsReg from '../../components/BttnsReg/BttnsReg'
 import { useContext } from 'react'
 import { Mycontext } from '../../context/ContextGlobalUser'
+import Login from '../../components/Login/Login'
 
 
 
 
 
 function Trilhas() {
-  const {regTrilhas, setRegiao} = useContext(Mycontext)
+  const {regTrilhas, setRegiao, modalLogin} = useContext(Mycontext)
 
 
   return (
     <div className='Trilhas-container'>
 
       <div className='Container-header'>
+        {modalLogin && <Login/>}
         <Header />
       </div>
 

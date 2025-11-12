@@ -8,8 +8,7 @@ import Form_cadastro from '../Forms/Form_cadastro'
 
 function Login() {
 
-  const [isActive, setIsActive] = useState(false);
-  const {setModalLogin} = useContext(Mycontext)
+  const {setModalLogin, isActive, setIsActive} = useContext(Mycontext)
 
   const stilobotao={ color: '' }
 
@@ -28,7 +27,6 @@ function Login() {
 
     <div className="cont-login-body">
       <div className={`cont-login ${isActive ? 'active' : ''}`}>
-      {/* <div className="cont-login "> */}
 
         <div className="cont-forms">
           <Form_login />
