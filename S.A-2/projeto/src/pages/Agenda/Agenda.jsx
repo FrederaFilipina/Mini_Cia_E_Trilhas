@@ -32,13 +32,13 @@ function Eventos() {
       <div className='Cards-Eventos'>
         {/* {console.log(agenda)} */}
         {agenda.length > 0 &&
-        agenda.map(evento => (<CardsEvento
+        agenda.map(evento => (
+        <CardsEvento
           nomeTrilha={evento["Nome da Trilha"]}
-          data={evento["Data"]}
+          data={new Date(evento["Data"]).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}
           horario={evento["Horário"]}
-          vagas={evento["Vagas Disp."]}
-          
-          />))}
+          vagas={evento["Vagas Disp."]} />
+          ))}
     
       </div>
     </div>

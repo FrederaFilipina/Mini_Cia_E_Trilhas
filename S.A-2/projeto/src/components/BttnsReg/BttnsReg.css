@@ -3,21 +3,24 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
-    height: 125px;
-    width: 85px;
-    border: none;
-    border-radius: 12%;
-    cursor: pointer;    
+    height: 85px;
+    width: 80px;
+    border: solid 2px;
+    border-color: black;
+    border-radius: 30%;
+    cursor: pointer;
+    background-color:white;
 }
 .RegsImg{
-    height: 90%;
-    padding-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 87%;
 }
 .Imgs{
-    height: 115px;
-    width: 76px;
-    transform: rotate(12deg);
+    height: 70px;
+    width: 46px;
+    transform: rotate(-7deg);
     overflow: hidden;
 }
 
@@ -25,6 +28,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10%;
-    font-size: 2vh;
+    padding-bottom: 1px;
+    height: 13%;
+    font-size: 1.5vh;
 }
