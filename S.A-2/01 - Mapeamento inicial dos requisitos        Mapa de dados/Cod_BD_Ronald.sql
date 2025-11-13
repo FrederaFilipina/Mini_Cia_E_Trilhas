@@ -64,32 +64,31 @@ CREATE TABLE evento(
     vagas INT,
     condicao ENUM ("Ativo", "Concluido") DEFAULT("Ativo"),
     trilha_id INT,
-    criador_id INT,
-    FOREIGN KEY (criador_id) REFERENCES usuario (id_usuario),
     FOREIGN KEY (trilha_id) REFERENCES trilha (id_trilha)
 );
-INSERT INTO evento (criador_id, dia, horario, ponto_de_encontro, vagas, trilha_id) VALUES
-('1','2025-11-06', '08:30:00', 'Entrada do Parque Pedra Azul', 5, 1),
-('2','2025-11-06', '07:00:00', 'Portaria do Itatiaia', 20, 2),
-('3','2025-11-15', '05:00:00', 'Base do Pico da Bandeira', 10, 3),
-('4','2025-11-20', '09:00:00', 'Praia de Ponta Negra', 25, 4),
-('5','2025-11-25', '06:00:00', 'Centro de Visitantes Chapada', 12, 5);
+INSERT INTO evento ( dia, horario, ponto_de_encontro, vagas, trilha_id) VALUES
+('2025-11-06', '08:30:00', 'Entrada do Parque Pedra Azul', 5, 1),
+('2025-11-06', '07:00:00', 'Portaria do Itatiaia', 20, 2),
+('2025-11-15', '05:00:00', 'Base do Pico da Bandeira', 10, 3),
+('2025-11-20', '09:00:00', 'Praia de Ponta Negra', 25, 4),
+('2025-11-25', '06:00:00', 'Centro de Visitantes Chapada', 12, 5);
 
 
 
 CREATE TABLE participante(
     id_participante INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT,
+    classe ENUM('C','P'),
     FOREIGN KEY (usuario_id) REFERENCES usuario (id_usuario),
     evento_id INT,
     FOREIGN KEY (evento_id) REFERENCES evento (id_evento)
 );
-INSERT INTO participante (usuario_id, evento_id) VALUES
-(1, 1), (2, 1), (3, 1), (4, 1),
-(5, 2), (6, 2), (7, 2), (8, 2),
-(9, 3), (10, 3), (1, 3), (2, 3),
-(3, 4), (4, 4), (5, 4), (6, 4),
-(7, 5), (8, 5), (9, 5), (10, 5);
+INSERT INTO participante (classe, usuario_id, evento_id) VALUES
+("C", 1, 1), ("C", 2, 1), ("C", 3, 1), ("C", 4, 1),
+("C", 5, 2), ("C", 6, 2), ("C", 7, 2), ("C", 8, 2),
+("C", 9, 3), ("C", 10, 3), ("C", 1, 3), ("C", 2, 3),
+("C", 3, 4), ("C", 4, 4), ("C", 5, 4), ("C", 6, 4),
+("C", 7, 5), ("C", 8, 5), ("C", 9, 5), ("C", 10, 5);
 
 
 
@@ -110,7 +109,7 @@ AND senha = 'senha123';
 -- Comando para VERIFICAR se o LOGIN está correto(f)
 
 -- Comando para criar os Cards da página HOME LogOff (i)
-SELECT trilha.nome AS 'Nome da Trilha', evento.dia AS 'Data', evento.horario AS 'Horário', (evento.vagas - COUNT(participante.id_participante)) AS 'Vagas Disp.'FROM evento
+SELECT trilha.nome AS 'nomeTrilha', evento.dia AS 'data', evento.horario AS 'horário', (evento.vagas - COUNT(participante.id_participante)) AS 'vagasDisp'FROM evento
 JOIN trilha
 ON evento.trilha_id = trilha.id_trilha
 LEFT JOIN participante
@@ -123,7 +122,7 @@ AND evento.dia BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 5 DAY);
 -- Comando para criar os Cards da página HOME LogOff (i)
 
 -- Comando para criar os Cards da página AGENDA LogOff/LogIn (i)
-SELECT trilha.nome AS 'Nome da Trilha', evento.dia AS 'Data', evento.horario AS 'Horário', (evento.vagas - COUNT(participante.id_participante)) AS 'Vagas Disp.' FROM evento
+SELECT trilha.nome AS 'nomeTrilha', evento.dia AS 'data', evento.horario AS 'horário', (evento.vagas - COUNT(participante.id_participante)) AS 'vagasDisp' FROM evento
 JOIN trilha
 ON evento.trilha_id = trilha.id_trilha
 LEFT JOIN participante
@@ -137,12 +136,12 @@ ORDER BY evento.dia, evento.horario;
 -- Comando para criar os Cards da página AGENDA LogOff / LogIn (i)
 
 -- Comando para criar os Cards da página TRILHAS LogOff (i)
-SELECT trilha.nome AS 'Nome da Trilha', trilha.distancia AS 'Distância', trilha.tempo AS 'Tempo', trilha.dificuldade AS 'Dificuldade' FROM trilha
+SELECT trilha.nome AS 'nomeTrilha', trilha.distancia AS 'distância', trilha.tempo AS 'tempo', trilha.dificuldade AS 'dificuldade' FROM trilha
 GROUP BY trilha.nome, trilha.distancia, trilha.tempo, trilha.dificuldade;
 -- Comando para criar os Cards da página TRILHAS LogOff (i)
 
 -- Comando para criar os Cards da página TRILHAS LogIn (i)
-SELECT trilha.nome AS 'Nome da Trilha', trilha.ponto_partida AS 'Ponto Inicial', trilha.ponto_chegada AS 'Ponto Final', trilha.distancia AS 'Distância', trilha.tempo AS 'Tempo', trilha.relevo AS 'Tipo do Relevo', trilha.elevacao AS 'Grau de Elevação', trilha.dificuldade AS 'Dificuldade' FROM trilha
+SELECT trilha.nome AS 'nomeTrilha', trilha.ponto_partida AS 'pontoInicial', trilha.ponto_chegada AS 'pontoFinal', trilha.distancia AS 'distância', trilha.tempo AS 'tempo', trilha.relevo AS 'tipoRelevo', trilha.elevacao AS 'grauElevação', trilha.dificuldade AS 'dificuldade' FROM trilha
 GROUP BY trilha.nome, trilha.ponto_partida, trilha.ponto_chegada, trilha.distancia, trilha.tempo, trilha.relevo, trilha.elevacao, trilha.dificuldade;
 -- Comando para criar os Cards da página TRILHAS LogIn (i)
 
@@ -174,9 +173,13 @@ UPDATE usuario SET senha = "carro" WHERE id_usuario = 1 AND senha = "senha123";
 -- Comando para alterar senha do USUARIO (i)
 
 -- Comando para deletar o USUARIO (i)
-DELETE FROM usuario WHERE id_usuario= 1 AND senha = "carro";
-DELETE FROM criador_id WHERE 
+DELIMITER &&
+DELETE FROM participante WHERE usuario_id = 3;
+DELETE FROM usuario WHERE id_usuario = 3;
+&&
 -- Comando para deletar o USUARIO (i)
 
-SELECT * FROM usuario
+-- Comando para buscar o USUARIO por ID (i)
+SELECT nome, dt_nascimento, cpf, sexo, num_celular, email FROM usuario WHERE id_usuario = 1;
+-- Comando para buscar o USUARIO por ID (i)
 
