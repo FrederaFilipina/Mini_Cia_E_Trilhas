@@ -31,7 +31,7 @@ function Login() {
         <div className="cont-forms">
           <Form_login />
           <Form_cadastro />
-        </div>
+        </div>  
 
           <Toggle setStado={setIsActive} />
       </div>
