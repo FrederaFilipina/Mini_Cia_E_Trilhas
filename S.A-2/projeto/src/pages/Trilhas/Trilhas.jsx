@@ -3,14 +3,11 @@ import Header from '../../components/Header/Header'
 import BttnsReg from '../../components/BttnsReg/BttnsReg'
 import { useContext } from 'react'
 import { Mycontext } from '../../context/ContextGlobalUser'
-<<<<<<< HEAD
-=======
 import BarraPesq from '../../components/BarraPesq/BarraPesq'
 
 
 
 
->>>>>>> cfc68f70b7a994c9c53c9d9ce1ee71538acefc47
 
 function Trilhas() {
   const {regTrilhas, setRegiao, modalLogin} = useContext(Mycontext)
@@ -18,7 +15,6 @@ function Trilhas() {
   return (
     <div className='Trilhas-container'>
 
-<<<<<<< HEAD
       <div className='Container-header'>
         {modalLogin && <Login/>}
         <Header />
@@ -27,11 +23,9 @@ function Trilhas() {
       <div className='Container-pag'>
 
         <div className='Pag-filtro'>
-=======
       <Header />
       
       <div className='Pag-filtro'>
->>>>>>> cfc68f70b7a994c9c53c9d9ce1ee71538acefc47
 
           <div className='Filtro-pesq'>
 
@@ -58,6 +52,7 @@ function Trilhas() {
           <h1>{regTrilhas}</h1>
         </div>
           
+    </div>
     </div>
     </div>
   )
