@@ -187,7 +187,7 @@ async function updateUserEmailTef(req, res) {
         const {email,celular,senha} = req.body
         const {id} = req.user
 
-        console.log(id);
+      
         
     try {
 
@@ -200,9 +200,7 @@ async function updateUserEmailTef(req, res) {
 
         }
         
-
-
-        res.status(200).json({ mensagem: 'Usuario Modificado', result: result})
+       return res.status(200).json({ mensagem: 'Usuario Modificado', result: result})
 
 
     } catch (error) {
@@ -210,6 +208,32 @@ async function updateUserEmailTef(req, res) {
         console.error(error)
 
         return res.status(404).json({ mensagem: "Erro acessar update", error })
+
+    }
+
+}
+
+
+async function buscarInfsUser(req, res) {
+
+        const {id} = req.user
+
+        
+    try {
+
+        const [result] = await pool.query(`SELECT nome, dt_nascimento, cpf, sexo, num_celular, email FROM usuario WHERE id_usuario = ?;`,[id])
+
+        console.log(result);
+        
+        
+       return res.status(200).json({ mensagem: 'Dados do usuario', result: result})
+
+
+    } catch (error) {
+
+        console.error(error)
+
+        return res.status(404).json({ mensagem: "Erro acessar usuario logar novamente", error })
 
     }
 
@@ -225,5 +249,6 @@ module.exports = {
     cardsAgendaOff,
     cardsTrilhaOff,
     cardsTrilhaOn,
-    updateUserEmailTef
+    updateUserEmailTef,
+    buscarInfsUser
 }
