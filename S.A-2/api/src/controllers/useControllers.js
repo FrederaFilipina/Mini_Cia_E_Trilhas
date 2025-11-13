@@ -193,11 +193,14 @@ async function updateUserEmailTef(req, res) {
 
         const [result] = await pool.query(`UPDATE usuario SET num_celular = ?, email = ? WHERE id_usuario = ? AND senha = ?;`,[celular,email,id,senha])
 
-        if (affectedRows=0) {
+        if (result.affectedRows===0) {
             
             res.status(400).json({mensagem:"Erro ao alterar senha ou dados invalidos", result })
+            return
+
         }
         
+
 
         res.status(200).json({ mensagem: 'Usuario Modificado', result: result})
 
