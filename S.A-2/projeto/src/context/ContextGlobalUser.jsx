@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 
 export const Mycontext = createContext()
 
@@ -9,6 +9,14 @@ export const  ContextGlobalUser = ({children})=> {
   const [isActive, setIsActive] = useState(false);
   const [modalLogin, setModalLogin] = useState(false)
   const [modalPerfil, setModalPerfil] = useState(false)
+
+  useEffect(() => {
+      const localStorege = localStorage.getItem('user')
+  
+      if (localStorege) {
+        setUser(JSON.parse(localStorege));
+      }
+    }, []);
 
   return (
 

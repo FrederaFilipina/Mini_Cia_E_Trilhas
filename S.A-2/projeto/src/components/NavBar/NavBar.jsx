@@ -5,13 +5,13 @@ import { Mycontext } from '../../context/ContextGlobalUser'
 
 function NavBar({transparent=false}) {
 
-  useEffect(() => {
-    const localStorege = localStorage.getItem('user')
+  // useEffect(() => {
+  //   const localStorege = localStorage.getItem('user')
 
-    if (localStorege) {
-      setUser(JSON.parse(localStorege));
-    }
-  }, []);
+  //   if (localStorege) {
+  //     setUser(JSON.parse(localStorege));
+  //   }
+  // }, []);
   
 
   const navStyle = {
