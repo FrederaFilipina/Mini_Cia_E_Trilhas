@@ -182,11 +182,45 @@ async function cardsTrilhaOn(req, res) {
 }
 
 
+async function updateUserEmailTef(req, res) {
+
+        const {email,celular,senha} = req.body
+        const {id} = req.user
+
+        console.log(id);
+        
+    try {
+
+        const [result] = await pool.query(`UPDATE usuario SET num_celular = ?, email = ? WHERE id_usuario = ? AND senha = ?;`,[celular,email,id,senha])
+
+        if (affectedRows=0) {
+            
+            res.status(400).json({mensagem:"Erro ao alterar senha ou dados invalidos", result })
+        }
+        
+
+        res.status(200).json({ mensagem: 'Usuario Modificado', result: result})
+
+
+    } catch (error) {
+
+        console.error(error)
+
+        return res.status(404).json({ mensagem: "Erro acessar update", error })
+
+    }
+
+}
+
+
+
+
 module.exports = {
     loginUser,
     cadastroUser,
     cardsHome,
     cardsAgendaOff,
     cardsTrilhaOff,
-    cardsTrilhaOn
+    cardsTrilhaOn,
+    updateUserEmailTef
 }
