@@ -239,6 +239,72 @@ async function buscarInfsUser(req, res) {
 
 }
 
+async function mudarSenha(req, res) {
+
+        const {id} = req.user
+
+        const {senha,Novasenha} = req.body
+
+        
+    try {
+
+        const [result] = await pool.query(`UPDATE usuario SET senha = ? WHERE id_usuario = ? AND senha = ?`,[Novasenha,id,senha])
+
+         if (result.affectedRows===0) {
+            
+            res.status(400).json({mensagem:"Erro ao alterar senha", result })
+            return
+
+        }
+        
+       return res.status(200).json({ mensagem: 'Senha modificada', result: result})
+        
+        
+    } catch (error) {
+
+        console.error(error)
+
+        return res.status(404).json({ mensagem: "Erro acessar ao tentar acessar troca de senha", error })
+
+    }
+
+}
+
+
+async function deletarUser(req, res) {
+
+        const {id} = req.user
+
+        const {senha} = req.body
+
+        
+    try {
+
+        const [result] = await pool.query(`DELETE FROM participante WHERE usuario_id = ?; DELETE FROM usuario WHERE id_usuario = ?;`,[id,id])
+
+            console.log(result);
+            
+         if (result[1].affectedRows===0) {
+            
+            res.status(400).json({mensagem:"Erro ao deletar usuario", result })
+            return
+
+        }
+        
+       return res.status(200).json({ mensagem: 'Usuario deletado', result: result})
+        
+        
+    } catch (error) {
+
+        console.error(error)
+
+        return res.status(404).json({ mensagem: "Erro acessar Deletar usuario", error })
+
+    }
+
+}
+
+
 
 
 
@@ -250,5 +316,7 @@ module.exports = {
     cardsTrilhaOff,
     cardsTrilhaOn,
     updateUserEmailTef,
-    buscarInfsUser
+    buscarInfsUser,
+    mudarSenha,
+    deletarUser
 }
