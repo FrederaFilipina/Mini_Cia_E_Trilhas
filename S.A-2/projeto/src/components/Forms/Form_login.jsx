@@ -13,6 +13,7 @@ function Form_login() {
             email: email,
             senha: senha
         }
+        
         const resposta = await login(dados)
         console.log(resposta);
 
@@ -22,6 +23,7 @@ function Form_login() {
             setModalLogin(false)
             setEmail('')
             setsenha('')
+            localStorage.setItem('user', JSON.stringify(resposta.data.result))
             return
         }
         alert("Erro ao fazer login, verifique seus dados.")

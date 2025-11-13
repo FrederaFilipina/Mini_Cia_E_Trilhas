@@ -2,7 +2,7 @@ const express = require('express')
 
 const router = express.Router()
 
-const {loginUser, cadastroUser,cardsHome,cardsAgendaOff,cardsTrilhaOff,cardsTrilhaOn} = require("../controllers/useControllers")
+const {loginUser, cadastroUser,cardsHome,cardsAgendaOff,cardsTrilhaOff,cardsTrilhaOn,updateUserEmailTef} = require("../controllers/useControllers")
 
 const verificarToken = require('../middleware/verificarToken')
 
@@ -18,6 +18,8 @@ router.get('/buscar/cards/trilha/off',cardsTrilhaOff)
 router.get('/buscar/cards/trilha/on',verificarToken,cardsTrilhaOn)
 
 router.post('/cadastrar/usuario',cadastroUser)
+
+router.put('/modificar/user/dados',verificarToken,updateUserEmailTef)
 
 
 
