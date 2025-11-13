@@ -8,10 +8,11 @@ export const  ContextGlobalUser = ({children})=> {
   const [regTrilhas, setRegiao] = useState('Regiões')
   const [isActive, setIsActive] = useState(false);
   const [modalLogin, setModalLogin] = useState(false)
+  const [modalPerfil, setModalPerfil] = useState(false)
 
   return (
 
-    <Mycontext.Provider value={{user,setUser, regTrilhas, setRegiao, modalLogin, setModalLogin, isActive, setIsActive}}>
+    <Mycontext.Provider value={{user,setUser, regTrilhas, setRegiao, modalLogin, setModalLogin, isActive, setIsActive, modalPerfil, setModalPerfil}}>
         {children}
     </Mycontext.Provider>
 

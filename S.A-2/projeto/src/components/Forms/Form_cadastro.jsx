@@ -33,7 +33,7 @@ function Form_cadastro() {
             setSexo('')
             return
         }
-
+        alert("Erro ao fazer cadastro, verifique seus dados.")
 
     }
 

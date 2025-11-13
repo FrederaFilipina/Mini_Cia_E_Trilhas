@@ -4,7 +4,6 @@
     align-items: center;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
-    /* escurece o fundo */
     backdrop-filter: blur(3px);
     position: fixed;
     top: 0;
