@@ -3,6 +3,7 @@ import './Dropdown.css'
 import { Link } from 'react-router-dom';
 import { Mycontext } from '../../context/ContextGlobalUser';
 import alterarDadosUser from '../../server/alterarDadosUser';
+import buscarDadosUsuario from '../../server/buscarDadosUsuario';
 
 function Dropdown({perfil}) {
 
@@ -17,15 +18,21 @@ function Dropdown({perfil}) {
 
         const dados ={
             email:" test",
-            calular:"123456789",
-            senha:"123456"
+            celular:"12",
+            senha:"12"
         }
 
         const token = user.token
 
-        const resposta = await alterarDadosUser(dados,token)
+        const resposta = await buscarDadosUsuario(token)
 
         console.log(resposta);
+        
+
+
+        // const resposta = await alterarDadosUser(dados,token)
+
+        // console.log(resposta);
         
     }
 

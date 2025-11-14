@@ -195,7 +195,7 @@ async function updateUserEmailTef(req, res) {
 
         if (result.affectedRows===0) {
             
-            res.status(400).json({mensagem:"Erro ao alterar senha ou dados invalidos", result })
+            res.status(400).json({mensagem:"Senha invalida ou dados incorretos", result })
             return
 
         }
@@ -222,18 +222,19 @@ async function buscarInfsUser(req, res) {
     try {
 
         const [result] = await pool.query(`SELECT nome, dt_nascimento, cpf, sexo, num_celular, email FROM usuario WHERE id_usuario = ?;`,[id])
+        
+        if (result.length===0) {
+            return res.status(400).json({ mensagem: 'Dados do usuário não encontrado', result: result[0]})
+        }
 
-        console.log(result);
-        
-        
-       return res.status(200).json({ mensagem: 'Dados do usuario', result: result})
+       return res.status(200).json({ mensagem: 'Dados do usuário', result: result[0]})
 
 
     } catch (error) {
 
         console.error(error)
 
-        return res.status(404).json({ mensagem: "Erro acessar usuario logar novamente", error })
+        return res.status(404).json({ mensagem: "Erro ao acessar usuário,logar novamente", error })
 
     }
 
