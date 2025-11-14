@@ -51,8 +51,16 @@ function Form_cadastro() {
             <input type="text" placeholder='CPF' value={cpf} onChange={e => setCpf(e.target.value)} />
             <input type="password" placeholder='Senha' value={senhaCadastro} onChange={e => setSenhaCadastro(e.target.value)} />
             <span></span>
-            <input type="radio" name='sexo' checked={sexo === "Feminino"} value='Feminino' onClick={(e) => setSexo(e.target.value)} /><label>Feminino</label>
-            <input type="radio" name='sexo' checked={sexo === "Masculino"} value="Masculino" onClick={(e) => setSexo(e.target.value)} /><label>Masculino</label>
+
+            <div className='const-label-sexo'>
+
+            <label className='label-sexo'>
+                <input type="radio" name='sexo' checked={sexo === "Feminino"} value='Feminino' onClick={(e) => setSexo(e.target.value)} />
+                Feminino</label>
+            <label className='label-sexo'>
+                <input type="radio" name='sexo' checked={sexo === "Masculino"} value="Masculino" onClick={(e) => setSexo(e.target.value)} />
+                Masculino</label>
+            </div>
             <button onClick={cadastrar}>Cadastre-se</button>
         </form>
 

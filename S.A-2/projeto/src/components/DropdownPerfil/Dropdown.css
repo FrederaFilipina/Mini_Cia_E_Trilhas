@@ -1,0 +1,57 @@
+.dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Menu escondido */
+.dropdown-menu {
+    position: absolute;
+    top: 65px;
+    background-color: var(--colorNavBarOpacidade);
+    border-radius: 12px;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 180px;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+.dropdown-menu button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 18px;
+    font-family: "MedievalSharp", serif;
+    cursor: pointer;
+}
+
+.dropdown-menu a {
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: "MedievalSharp", serif;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Classe que ativa o menu */
+.dropdown-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}

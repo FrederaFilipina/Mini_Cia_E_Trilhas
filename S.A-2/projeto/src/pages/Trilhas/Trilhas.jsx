@@ -14,6 +14,7 @@ function Trilhas() {
     <div className='Trilhas-areaPg'>
      
       <Header/> {modalLogin && <Login/>}
+
       
       <div className='AreaPg-contFiltros'>
 

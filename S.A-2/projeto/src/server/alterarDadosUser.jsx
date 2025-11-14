@@ -12,7 +12,7 @@ const alterarDadosUser = async (user,token) => {
 
     try {
 
-        const resultado =await axios.put("http://localhost:3000/modificar/senha/user",user,{headers:{authorization: token}})
+        const resultado =await axios.put("http://localhost:3000/modificar/user/dados",user,{headers:{authorization: token}})
         
         return resultado.data.mensagem
 
