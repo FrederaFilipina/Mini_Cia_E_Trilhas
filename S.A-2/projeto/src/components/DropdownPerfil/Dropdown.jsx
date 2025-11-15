@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { Mycontext } from '../../context/ContextGlobalUser';
 import alterarDadosUser from '../../server/alterarDadosUser';
 import buscarDadosUsuario from '../../server/buscarDadosUsuario';
+import alterarSenhaUser from '../../server/alterarSenhaUser';
+import deletarUsuario from '../../server/deletarUsuario';
 
 function Dropdown({perfil}) {
 
@@ -19,12 +21,13 @@ function Dropdown({perfil}) {
         const dados ={
             email:" test",
             celular:"12",
-            senha:"12"
+            senha:"123",
+            novaSenha:'1234'
         }
 
         const token = user.token
 
-        const resposta = await buscarDadosUsuario(token)
+        const resposta = await deletarUsuario(token)
 
         console.log(resposta);
         

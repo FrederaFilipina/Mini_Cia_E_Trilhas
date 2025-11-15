@@ -8,7 +8,7 @@ require("dotenv").config()
 
 async function loginUser(req, res) {
 
-   
+
     const { email, senha } = req.body
 
     try {
@@ -19,21 +19,21 @@ async function loginUser(req, res) {
         if (result.length === 0) {
             return res.status(404).json({ mensagem: "usuario ou senha incorretos", result })
         }
-        
+
         const payload = {
             id: result[0].id_usuario,
             nome: result[0].nome,
             role: 'user'
         }
 
-        
-        
+
+
         const token = jwt.sign(payload, process.env.SENHA_TOKEN, { expiresIn: '1h' })
 
-        
-        
 
-        res.status(200).json({ mensagem: 'Usuario logado', result: {...result[0],token} })
+
+
+        res.status(200).json({ mensagem: 'Usuario logado', result: { ...result[0], token } })
 
 
     } catch (error) {
@@ -48,21 +48,21 @@ async function loginUser(req, res) {
 
 async function cadastroUser(req, res) {
 
-    const { nome,email,cpf,senha,sexo } = req.body
+    const { nome, email, cpf, senha, sexo } = req.body
 
-    if (!nome,!email,!cpf,!senha,!sexo) {
-       res.status(404).json({mensagem: "Todos os campos são obrigatórios"})
-        
+    if (!nome, !email, !cpf, !senha, !sexo) {
+        res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
+
     }
 
     try {
 
 
-        const [result] = await pool.query(`INSERT INTO usuario (nome, email, cpf, senha, sexo) VALUES (?,?,?,?,?)`, [nome,email,cpf,senha,sexo])
+        const [result] = await pool.query(`INSERT INTO usuario (nome, email, cpf, senha, sexo) VALUES (?,?,?,?,?)`, [nome, email, cpf, senha, sexo])
 
-        
 
-        res.status(200).json({ mensagem: 'Usuário Cadastrado', result: result})
+
+        res.status(200).json({ mensagem: 'Usuário Cadastrado', result: result })
 
 
     } catch (error) {
@@ -91,9 +91,9 @@ async function cardsHome(req, res) {
             HAVING (evento.vagas - COUNT(participante.id_participante)) > 0
             AND evento.dia BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 5 DAY)`)
 
-        
 
-        res.status(200).json({ mensagem: 'Cards para home', result: result})
+
+        res.status(200).json({ mensagem: 'Cards para home', result: result })
 
 
     } catch (error) {
@@ -124,9 +124,9 @@ async function cardsAgendaOff(req, res) {
             AND CONCAT(evento.dia, ' ', evento.horario) >= NOW()
             ORDER BY evento.dia, evento.horario`)
 
-        
 
-        return res.status(200).json({ mensagem: 'Cards para agenda off', result: result})
+
+        return res.status(200).json({ mensagem: 'Cards para agenda off', result: result })
 
 
     } catch (error) {
@@ -147,7 +147,7 @@ async function cardsTrilhaOff(req, res) {
 
         const [result] = await pool.query(`SELECT  trilha.id_trilha ,trilha.nome AS 'nomeTrilha', trilha.distancia AS 'distância', trilha.tempo AS 'tempo', trilha.dificuldade AS 'dificuldade' FROM trilha`)
 
-        return res.status(200).json({ mensagem: 'Cards para Trilha off', result: result})
+        return res.status(200).json({ mensagem: 'Cards para Trilha off', result: result })
 
 
     } catch (error) {
@@ -162,13 +162,13 @@ async function cardsTrilhaOff(req, res) {
 
 async function cardsTrilhaOn(req, res) {
 
-    
+
 
     try {
 
         const [result] = await pool.query(`SELECT trilha.id_trilha ,trilha.nome AS 'nomeTrilha', trilha.ponto_partida AS 'pontoInicial', trilha.ponto_chegada AS 'pontoFinal', trilha.distancia AS 'distância', trilha.tempo AS 'tempo', trilha.relevo AS 'tipoRelevo', trilha.elevacao AS 'grauElevação', trilha.dificuldade AS 'dificuldade' FROM trilha`)
 
-       return res.status(200).json({ mensagem: 'Cards para Trilha on', result: result})
+        return res.status(200).json({ mensagem: 'Cards para Trilha on', result: result })
 
 
     } catch (error) {
@@ -184,23 +184,23 @@ async function cardsTrilhaOn(req, res) {
 
 async function updateUserEmailTef(req, res) {
 
-        const {email,celular,senha} = req.body
-        const {id} = req.user
+    const { email, celular, senha } = req.body
+    const { id } = req.user
 
-      
-        
+
+
     try {
 
-        const [result] = await pool.query(`UPDATE usuario SET num_celular = ?, email = ? WHERE id_usuario = ? AND senha = ?;`,[celular,email,id,senha])
+        const [result] = await pool.query(`UPDATE usuario SET num_celular = ?, email = ? WHERE id_usuario = ? AND senha = ?;`, [celular, email, id, senha])
 
-        if (result.affectedRows===0) {
-            
-            res.status(400).json({mensagem:"Senha invalida ou dados incorretos", result })
+        if (result.affectedRows === 0) {
+
+            res.status(400).json({ mensagem: "Senha invalida ou dados incorretos", result })
             return
 
         }
-        
-       return res.status(200).json({ mensagem: 'Usuario Modificado', result: result})
+
+        return res.status(200).json({ mensagem: 'Usuario Modificado', result: result })
 
 
     } catch (error) {
@@ -216,18 +216,18 @@ async function updateUserEmailTef(req, res) {
 
 async function buscarInfsUser(req, res) {
 
-        const {id} = req.user
+    const { id } = req.user
 
-        
+
     try {
 
-        const [result] = await pool.query(`SELECT nome, dt_nascimento, cpf, sexo, num_celular, email FROM usuario WHERE id_usuario = ?;`,[id])
-        
-        if (result.length===0) {
-            return res.status(400).json({ mensagem: 'Dados do usuário não encontrado', result: result[0]})
+        const [result] = await pool.query(`SELECT nome, dt_nascimento, cpf, sexo, num_celular, email FROM usuario WHERE id_usuario = ?;`, [id])
+
+        if (result.length === 0) {
+            return res.status(400).json({ mensagem: 'Dados do usuário não encontrado', result: result[0] })
         }
 
-       return res.status(200).json({ mensagem: 'Dados do usuário', result: result[0]})
+        return res.status(200).json({ mensagem: 'Dados do usuário', result: result[0] })
 
 
     } catch (error) {
@@ -242,25 +242,25 @@ async function buscarInfsUser(req, res) {
 
 async function mudarSenha(req, res) {
 
-        const {id} = req.user
+    const { id } = req.user
 
-        const {senha,Novasenha} = req.body
+    const { senha, novaSenha } = req.body
 
-        
+
     try {
 
-        const [result] = await pool.query(`UPDATE usuario SET senha = ? WHERE id_usuario = ? AND senha = ?`,[Novasenha,id,senha])
+        const [result] = await pool.query(`UPDATE usuario SET senha = ? WHERE id_usuario = ? AND senha = ?`, [novaSenha, id, senha])
 
-         if (result.affectedRows===0) {
-            
-            res.status(400).json({mensagem:"Erro ao alterar senha", result })
+        if (result.affectedRows === 0) {
+
+            res.status(400).json({ mensagem: "Senha atual esta errada", result })
             return
 
         }
-        
-       return res.status(200).json({ mensagem: 'Senha modificada', result: result})
-        
-        
+
+        return res.status(200).json({ mensagem: 'Senha modificada', result: result })
+
+
     } catch (error) {
 
         console.error(error)
@@ -274,32 +274,34 @@ async function mudarSenha(req, res) {
 
 async function deletarUser(req, res) {
 
-        const {id} = req.user
+    const { id } = req.user
 
-        const {senha} = req.body
+    
 
-        
+
     try {
 
-        const [result] = await pool.query(`DELETE FROM participante WHERE usuario_id = ?; DELETE FROM usuario WHERE id_usuario = ?;`,[id,id])
+        const [result] = await pool.query(`DELETE FROM participante WHERE usuario_id = ?`, [id])
 
-            console.log(result);
-            
-         if (result[1].affectedRows===0) {
-            
-            res.status(400).json({mensagem:"Erro ao deletar usuario", result })
-            return
+        const [resultadoUsuario] = await pool.query('DELETE FROM usuario WHERE id_usuario = ?;',[id]) 
 
+        
+
+        if (resultadoUsuario.affectedRows === 0) {
+
+            
+            return res.status(400).json({ mensagem: "Erro ao deletar usuário", result })
         }
         
-       return res.status(200).json({ mensagem: 'Usuario deletado', result: result})
-        
-        
+        return res.status(200).json({ mensagem: 'Usuário deletado', result: result })
+
+
+
     } catch (error) {
 
         console.error(error)
 
-        return res.status(404).json({ mensagem: "Erro acessar Deletar usuario", error })
+        return res.status(404).json({ mensagem: "Erro acessar Deletar usuário", error })
 
     }
 

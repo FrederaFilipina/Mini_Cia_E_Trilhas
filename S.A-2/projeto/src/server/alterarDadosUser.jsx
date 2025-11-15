@@ -6,7 +6,7 @@ const alterarDadosUser = async (user, token) => {
 
     if (!token) {
 
-        return { mensagem: "Erro nessesario token" }
+        return { mensagem: "Erro necessário token" }
 
     }
 

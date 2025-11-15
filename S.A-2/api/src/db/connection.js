@@ -9,8 +9,8 @@ const pool = createPool({
     database: 'mini_cia_e_trilhas',
     waitForConnections: true,
     connectionLimit: 10,
-    queueLimit: 0,
-    multipleStatements:true
+    queueLimit: 0
+    
 })
 
 module.exports = pool
