@@ -75,7 +75,6 @@ async function cadastroUser(req, res) {
 
 }
 
-
 async function cardsHome(req, res) {
 
     try {
@@ -105,8 +104,6 @@ async function cardsHome(req, res) {
     }
 
 }
-
-
 
 async function cardsAgendaOff(req, res) {
 
@@ -138,8 +135,6 @@ async function cardsAgendaOff(req, res) {
     }
 
 }
-
-
 
 async function cardsTrilhaOff(req, res) {
 
@@ -181,7 +176,6 @@ async function cardsTrilhaOn(req, res) {
 
 }
 
-
 async function updateUserEmailTef(req, res) {
 
     const { email, celular, senha } = req.body
@@ -212,7 +206,6 @@ async function updateUserEmailTef(req, res) {
     }
 
 }
-
 
 async function buscarInfsUser(req, res) {
 
@@ -306,9 +299,6 @@ async function deletarUser(req, res) {
     }
 
 }
-
-
-
 
 
 module.exports = {
