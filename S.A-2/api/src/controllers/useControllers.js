@@ -126,7 +126,7 @@ async function cardsAgendaOff(req, res) {
 
         
 
-        res.status(200).json({ mensagem: 'Cards para agenda off', result: result})
+        return res.status(200).json({ mensagem: 'Cards para agenda off', result: result})
 
 
     } catch (error) {
@@ -147,7 +147,7 @@ async function cardsTrilhaOff(req, res) {
 
         const [result] = await pool.query(`SELECT  trilha.id_trilha ,trilha.nome AS 'nomeTrilha', trilha.distancia AS 'distância', trilha.tempo AS 'tempo', trilha.dificuldade AS 'dificuldade' FROM trilha`)
 
-        res.status(200).json({ mensagem: 'Cards para Trilha off', result: result})
+        return res.status(200).json({ mensagem: 'Cards para Trilha off', result: result})
 
 
     } catch (error) {
@@ -168,7 +168,7 @@ async function cardsTrilhaOn(req, res) {
 
         const [result] = await pool.query(`SELECT trilha.id_trilha ,trilha.nome AS 'nomeTrilha', trilha.ponto_partida AS 'pontoInicial', trilha.ponto_chegada AS 'pontoFinal', trilha.distancia AS 'distância', trilha.tempo AS 'tempo', trilha.relevo AS 'tipoRelevo', trilha.elevacao AS 'grauElevação', trilha.dificuldade AS 'dificuldade' FROM trilha`)
 
-        res.status(200).json({ mensagem: 'Cards para Trilha on', result: result})
+       return res.status(200).json({ mensagem: 'Cards para Trilha on', result: result})
 
 
     } catch (error) {
