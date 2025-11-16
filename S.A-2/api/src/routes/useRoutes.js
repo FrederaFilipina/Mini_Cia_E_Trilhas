@@ -2,7 +2,7 @@ const express = require('express')
 
 const router = express.Router()
 
-const {loginUser, cadastroUser,cardsHome,cardsAgendaOff,cardsTrilhaOff,cardsTrilhaOn,updateUserEmailTef,buscarInfsUser,deletarUser, mudarSenha} = require("../controllers/useControllers")
+const {loginUser, cadastroUser,cardsHome,cardsAgendaOff,cardsTrilhaOff,cardsTrilhaOn,updateUserEmailTef,buscarInfsUser,deletarUser, mudarSenha,cadastrarEvento,concluriEvento} = require("../controllers/useControllers")
 
 const verificarToken = require('../middleware/verificarToken')
 
@@ -26,6 +26,10 @@ router.put("/modificar/senha/user",verificarToken,mudarSenha)
 router.get('/buscar/dados/user',verificarToken,buscarInfsUser)
 
 router.delete('/deletar/user',verificarToken,deletarUser)
+
+router.post('/cadastrar/evento',verificarToken,cadastrarEvento)
+
+router.put('/modificar/evento/concluir/id/:idevento',verificarToken,concluriEvento)
 
 
 

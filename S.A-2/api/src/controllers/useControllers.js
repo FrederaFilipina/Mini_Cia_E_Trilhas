@@ -17,7 +17,7 @@ async function loginUser(req, res) {
         const [result] = await pool.query('SELECT id_usuario, nome FROM usuario WHERE email = ? AND senha = ? ', [email, senha])
 
         if (result.length === 0) {
-            return res.status(404).json({ mensagem: "usuario ou senha incorretos", result })
+            return res.status(400).json({ mensagem: "usuario ou senha incorretos", result })
         }
 
         const payload = {
@@ -51,7 +51,7 @@ async function cadastroUser(req, res) {
     const { nome, email, cpf, senha, sexo } = req.body
 
     if (!nome, !email, !cpf, !senha, !sexo) {
-        res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
+        res.status(400).json({ mensagem: "Todos os campos são obrigatórios" })
 
     }
 
@@ -60,9 +60,16 @@ async function cadastroUser(req, res) {
 
         const [result] = await pool.query(`INSERT INTO usuario (nome, email, cpf, senha, sexo) VALUES (?,?,?,?,?)`, [nome, email, cpf, senha, sexo])
 
+        console.log(result);
 
+        if (result.affectedRows !== 0) {
 
-        res.status(200).json({ mensagem: 'Usuário Cadastrado', result: result })
+            return res.status(200).json({ mensagem: 'Usuário Cadastrado', result: result })
+
+        }
+
+        return res.status(404).json({ mensagem: "Erro ao adicionar cliente", result })
+
 
 
     } catch (error) {
@@ -269,23 +276,23 @@ async function deletarUser(req, res) {
 
     const { id } = req.user
 
-    
+
 
 
     try {
 
         const [result] = await pool.query(`DELETE FROM participante WHERE usuario_id = ?`, [id])
 
-        const [resultadoUsuario] = await pool.query('DELETE FROM usuario WHERE id_usuario = ?;',[id]) 
+        const [resultadoUsuario] = await pool.query('DELETE FROM usuario WHERE id_usuario = ?;', [id])
 
-        
+
 
         if (resultadoUsuario.affectedRows === 0) {
 
-            
+
             return res.status(400).json({ mensagem: "Erro ao deletar usuário", result })
         }
-        
+
         return res.status(200).json({ mensagem: 'Usuário deletado', result: result })
 
 
@@ -295,6 +302,91 @@ async function deletarUser(req, res) {
         console.error(error)
 
         return res.status(404).json({ mensagem: "Erro acessar Deletar usuário", error })
+
+    }
+
+}
+
+
+async function cadastrarEvento(req, res) {
+
+    const { dia, horario, ponto_de_encontro, vagas, trilha_id } = req.body
+
+    const { id } = req.user
+
+    if (!dia, !horario, !ponto_de_encontro, !vagas, !trilha_id) {
+        res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
+
+    }
+
+    try {
+
+
+        const [resultEventoCriado] = await pool.query(`INSERT INTO evento (dia, horario, ponto_de_encontro, vagas, trilha_id) VALUES (?,?,?,?,?)`, [dia, horario, ponto_de_encontro, vagas, trilha_id])
+
+        if (resultEventoCriado.affectedRows === 0) {
+
+            return res.status(404).json({ mensagem: "Erro ao criar evento", error: resultEventoCriado })
+        }
+
+
+        const [resultCriador] = await pool.query("INSERT INTO participante (classe, usuario_id, evento_id) VALUES('C',?,?)", [id, resultEventoCriado.insertId])
+
+        if (resultCriador.affectedRows === 0) {
+
+            const [deletarEvento] = await pool.query("DELETE FROM evento WHERE id_evento = ?", [resultEventoCriado.insertId])
+
+            if (deletarEvento.affectedRows === 0) {
+                return res.status(404).json({ mensagem: "Fudeooooo!!!" })
+
+            }
+
+            return res.status(404).json({ mensagem: "Erro ao adicionar criador do evento", error: resultCriador })
+        }
+
+        res.status(200).json({ mensagem: 'Evento agendado com sucesso', result: result })
+
+
+    } catch (error) {
+
+        console.error(error)
+
+        return res.status(404).json({ mensagem: "Erro ao acessar criação de evento", error })
+
+    }
+}
+
+
+async function concluriEvento(req, res) {
+
+    const { id } = req.user
+
+    const { idevento } = req.params
+
+    if (idevento.length === 0) {
+        res.status(400).json({ mensagem: "Evento não informado!" })
+    }
+
+
+    try {
+        const [result] = await pool.query(`UPDATE evento
+                                            JOIN participante ON evento.id_evento = participante.evento_id
+                                            SET evento.condicao = 'Concluido'  WHERE evento.id_evento = ? AND participante.usuario_id = ?  AND  participante.classe = 'C'  ;
+                                            `, [idevento, id])
+
+        if (result.affectedRows === 0) {
+
+            return res.status(403).json({ mensagem: "Usuário nao tem permissão ou evento não encontrado" })
+
+        }
+
+        return res.status(200).json({ mensagem: 'Evento encerrado com sucesso', result })
+    } catch (error) {
+
+        console.error(error);
+
+        return res.status(404).json({ mensagem: "Erro ao tentar acessar a requisição de encerramento", error })
+
 
     }
 
@@ -311,5 +403,8 @@ module.exports = {
     updateUserEmailTef,
     buscarInfsUser,
     mudarSenha,
-    deletarUser
+    deletarUser,
+    cadastrarEvento,
+    concluriEvento
+
 }
