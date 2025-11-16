@@ -11,6 +11,13 @@ async function loginUser(req, res) {
 
     const { email, senha } = req.body
 
+    if (!email|| !senha) {
+       return res.status(400).json({ mensagem: "Todos os campos são obrigatórios" })
+
+    }
+
+
+
     try {
 
 
@@ -50,8 +57,8 @@ async function cadastroUser(req, res) {
 
     const { nome, email, cpf, senha, sexo } = req.body
 
-    if (!nome, !email, !cpf, !senha, !sexo) {
-        res.status(400).json({ mensagem: "Todos os campos são obrigatórios" })
+    if (!nome|| !email|| !cpf|| !senha|| !sexo) {
+       return res.status(400).json({ mensagem: "Todos os campos são obrigatórios" })
 
     }
 
@@ -188,6 +195,10 @@ async function updateUserEmailTef(req, res) {
     const { email, celular, senha } = req.body
     const { id } = req.user
 
+    if (!email|| !celular|| !senha) {
+       return res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
+
+    }
 
 
     try {
@@ -246,6 +257,10 @@ async function mudarSenha(req, res) {
 
     const { senha, novaSenha } = req.body
 
+    if (!senha || !!novaSenha) {
+      return  res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
+        
+    }
 
     try {
 
@@ -275,8 +290,6 @@ async function mudarSenha(req, res) {
 async function deletarUser(req, res) {
 
     const { id } = req.user
-
-
 
 
     try {
@@ -314,8 +327,8 @@ async function cadastrarEvento(req, res) {
 
     const { id } = req.user
 
-    if (!dia, !horario, !ponto_de_encontro, !vagas, !trilha_id) {
-        res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
+    if (!dia|| !horario|| !ponto_de_encontro|| !vagas|| !trilha_id) {
+       return res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
 
     }
 
@@ -364,7 +377,7 @@ async function concluriEvento(req, res) {
     const { idevento } = req.params
 
     if (idevento.length === 0) {
-        res.status(400).json({ mensagem: "Evento não informado!" })
+       return res.status(400).json({ mensagem: "Evento não informado!" })
     }
 
 
@@ -392,6 +405,97 @@ async function concluriEvento(req, res) {
 
 }
 
+async function alterarEvento(req, res) {
+
+    const { id } = req.user
+
+    const {dia,horario,ponto_de_encontro,vagas} = req.body
+
+    const { idevento } = req.params
+
+    if (idevento.length === 0) {
+       return res.status(400).json({ mensagem: "Evento não informado!" })
+    }
+     if (!dia ||!horario|| !ponto_de_encontro|| !vagas) {
+       return res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
+
+    }
+
+
+    try {
+        const [result] = await pool.query(`UPDATE evento
+                                            JOIN participante ON evento.id_evento = participante.evento_id
+                                            SET dia = ?, horario = ?, ponto_de_encontro = ?, vagas = ?  WHERE evento.id_evento = ? AND participante.usuario_id = ?  AND  participante.classe = 'C'  ;
+                                            `, [dia,horario,ponto_de_encontro,vagas,idevento, id])
+
+        if (result.affectedRows === 0) {
+
+            return res.status(403).json({ mensagem: "Usuário nao tem permissão ou evento não encontrado" })
+
+        }
+
+        return res.status(200).json({ mensagem: 'Evento Atualizado com sucesso', result })
+    } catch (error) {
+
+        console.error(error);
+
+        return res.status(404).json({ mensagem: "Erro ao tentar acessar a requisição de alteração", error })
+
+
+    }
+
+}
+
+
+async function deletarEvento(req,res) {
+    
+    const {id} = req.user
+
+    const {idevento} = req.params
+
+    if (!idevento ) {
+
+        return res.status(400).json({mensagem: "Evento não informado!"})
+    }
+
+    try {
+        
+        const [resultDeleteParticipante] = await pool.query(`  
+    DELETE p
+    FROM participante p
+    JOIN participante autorizador
+    ON autorizador.evento_id = p.evento_id
+    WHERE p.evento_id = ?
+    AND autorizador.usuario_id = ?
+    AND autorizador.classe = 'C'`,[idevento,id])
+
+        if (resultDeleteParticipante.affectedRows===0) {
+
+            return res.status(400).json({mensagem:"Nao foi possível deletar o evento", error:resultDeleteParticipante})
+    
+        }
+
+        const [resultDeletarEvento] = await pool.query('DELETE FROM evento WHERE id_evento = ?',[idevento])
+
+
+        if (resultDeletarEvento.affectedRows===0) {
+
+            res.status(404).json({mensagem:"Evento nao foi cancelado, tente mas tarde"})
+            
+        }
+
+
+        return res.status(200).json({mensagem:"Evento foi cancelado com sucesso"})
+
+    } catch (error) {
+
+        console.error(error);
+
+        return res.status(404).json({mensagem:"Erro ao tentar acessar a função de excluir evento", error})
+        
+    }
+}
+
 
 module.exports = {
     loginUser,
@@ -405,6 +509,8 @@ module.exports = {
     mudarSenha,
     deletarUser,
     cadastrarEvento,
-    concluriEvento
+    concluriEvento,
+    alterarEvento,
+    deletarEvento
 
 }
