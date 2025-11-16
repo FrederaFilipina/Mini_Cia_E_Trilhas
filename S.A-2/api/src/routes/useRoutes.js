@@ -6,9 +6,19 @@ const {loginUser, cadastroUser,cardsHome,cardsAgendaOff,cardsTrilhaOff,cardsTril
 
 const verificarToken = require('../middleware/verificarToken')
 
+// cadastrar
+router.post('/cadastrar/usuario',cadastroUser)
+
+router.post('/cadastrar/evento',verificarToken,cadastrarEvento)
+
+
+
+// fazer login
 router.post('/logar',loginUser)
  
 
+
+// buscar Infos
 router.get('/buscar/cards/home',cardsHome)
 
 router.get('/buscar/cards/agenda/off',cardsAgendaOff)
@@ -17,21 +27,22 @@ router.get('/buscar/cards/trilha/off',cardsTrilhaOff)
 
 router.get('/buscar/cards/trilha/on',verificarToken,cardsTrilhaOn)
 
-router.post('/cadastrar/usuario',cadastroUser)
+router.get('/buscar/dados/user',verificarToken,buscarInfsUser)
 
+
+
+// modificar infos
 router.put('/modificar/user/dados',verificarToken,updateUserEmailTef)
 
 router.put("/modificar/senha/user",verificarToken,mudarSenha)
 
-router.get('/buscar/dados/user',verificarToken,buscarInfsUser)
-
-router.delete('/deletar/user',verificarToken,deletarUser)
-
-router.post('/cadastrar/evento',verificarToken,cadastrarEvento)
-
 router.put('/modificar/evento/concluir/id/:idevento',verificarToken,concluriEvento)
 
 router.put('/modificar/evento/atualizar/id/:idevento',verificarToken,alterarEvento)
+
+
+// deletar infos
+router.delete('/deletar/user',verificarToken,deletarUser)
 
 router.delete('/deletar/evento/id/:idevento',verificarToken,deletarEvento)
 
