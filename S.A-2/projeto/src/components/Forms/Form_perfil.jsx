@@ -43,7 +43,7 @@ function Form_perfil() {
 
     return (
         <div>
-            <form className='form-perfil'>
+            <form className='form-perfil' >
 
                 <h2>Editar Perfil</h2>
                 <label>Telefone:</label>

@@ -43,7 +43,7 @@ function Dropdown({perfil}) {
         <div className='dropdown'>
             <Link className='link' onClick={()=> modalPerfil? setModalPerfil(false):setModalPerfil(true) }>Perfil</Link>
             <div className={`dropdown-menu ${perfil ? 'show' : ''}`}>
-                <button onClick={test}>Meus dados</button>
+                <button onClick={(e)=> set}>Meus dados</button>
                 <button onClick={(e)=> setAlterarSenha(e.target.value)}>Alterar senha</button>
                 <button onClick={(e)=> setSair(e.target.value)}>Sair</button>
             </div>
