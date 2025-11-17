@@ -6,6 +6,7 @@ import alterarDadosUser from '../../server/alterarDadosUser';
 import buscarDadosUsuario from '../../server/buscarDadosUsuario';
 import alterarSenhaUser from '../../server/alterarSenhaUser';
 import deletarUsuario from '../../server/deletarUsuario';
+import concluirEvento from '../../server/concluirEvento';
 
 function Dropdown({perfil}) {
 
@@ -24,12 +25,17 @@ function Dropdown({perfil}) {
             senha:"123",
             novaSenha:'1234'
         }
-
+        console.log(user.token);
+        
         const token = user.token
 
-        const resposta = await deletarUsuario(token)
+        const idEvento = 2
+
+        const resposta = await concluirEvento(token,idEvento)
 
         console.log(resposta);
+
+        alert(resposta)
         
 
 

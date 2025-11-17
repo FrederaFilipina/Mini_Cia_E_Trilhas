@@ -22,7 +22,6 @@ function Form_cadastro() {
             sexo: sexo
         }
         const resposta = await cadastro(dados)
-        console.log(resposta);
         if (resposta.status === 200) {
             alert("Cadastro realizado com sucesso!")
             setIsActive(false)
