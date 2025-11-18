@@ -5,6 +5,7 @@ import { Mycontext } from '../../context/ContextGlobalUser'
 import CardsEvento from '../../components/Cards/CardsEvento'
 import buscarCardsAgendaOff from '../../server/buscarCardsAgendaOff'
 import './Agenda.css'
+import MenuPesq from '../../components/MenuPesq/MenuPesq'
 
 function Eventos() {
 
@@ -30,7 +31,7 @@ function Eventos() {
       </div>
 
 
-      <div><p> Área destinada ao Menu de Filtros</p></div>
+      <div className='Cont-MenuPesq'> <MenuPesq /> </div>
 
       <div className='Cards-Eventos'>
         {/* {console.log(agenda)} */}

@@ -1,18 +1,4 @@
-.Trilhas-areaPg{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100vw;
-}
-
-.AreaPg-contFiltros{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 93px;
-    
-}
-.Cont-filtros{
+.MenuPesq{
     display: flex;
     justify-content: center;
     height: 93px;
@@ -22,26 +8,31 @@
 }
 
 
-.Filtros-pesqFiltro{
+
+
+
+
+.Esq{
     height: 100%;
     width: 48.5%;
     background-color: palevioletred;
 }
-.Filtros-regioes{
+
+
+
+.Dir{
     display: flex;
     height: 100%;
     width: 48.5%;
-    
 }
-.Regioes-todas{
+.Dir-TdsReg{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 45%;
-
+    width: 45%;    
 }
-.Regioes-bttns{
+.Dir-CdReg{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
