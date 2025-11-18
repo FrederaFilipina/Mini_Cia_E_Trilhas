@@ -11,7 +11,7 @@ function Perfil() {
         <div className='const-perfil'>
 
             <div className='forms'>
-                {/* <Form_perfil /> */}
+                <Form_perfil />
             </div>
 
         </div>

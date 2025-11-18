@@ -10,7 +10,7 @@ import Perfil from '../../components/Perfil/Perfil'
 
 function Home() {
   const navigate = useNavigate()
-  const {modalLogin, setModalLogin, modalPerfil, setModalPerfi} = React.useContext(Mycontext)
+  const {modalLogin, setModalLogin, modalPerfil, setModalPerfi, meusDados} = React.useContext(Mycontext)
 
 // function button_explore() {
 //   navigate('/trilhas')
@@ -20,7 +20,7 @@ function Home() {
     <div className='cont-home'>
       <Header transparent/>
       {modalLogin && <Login/>}
-      {modalPerfil && <Perfil/>}
+      {meusDados && <Perfil/>}
 
       <div className='cont-info-home'>
 
