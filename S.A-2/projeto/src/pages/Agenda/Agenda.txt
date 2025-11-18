@@ -1,0 +1,13 @@
+  async function pesquisaAPI() {
+  const dados = await buscarCardsAgendaOff()
+  console.log("Resposta da API:", dados)
+
+  // Se deu erro ou result é undefined
+  if (!dados || dados.error || !Array.isArray(dados.result)) {
+    setAgenda([])  // mantém agenda sempre como array → sem crash
+    return
+  }
+
+  // Se deu certo
+  setAgenda(dados.result)
+}
