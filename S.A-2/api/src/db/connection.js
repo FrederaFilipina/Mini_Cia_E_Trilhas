@@ -5,7 +5,7 @@ require("dotenv").config()
 const pool = createPool({
     host: "localhost",
     user: 'root',      
-    password: 'M3uBD',    
+    password: process.env.SENHA_BD,    
     database: 'mini_cia_e_trilhas',
     waitForConnections: true,
     connectionLimit: 10,
