@@ -9,11 +9,14 @@ import './Agenda.css'
 function Eventos() {
 
   const [agenda, setAgenda] = useState ([])
+
   async function pesquisaAPI(params) {
+    
     const dados = await buscarCardsAgendaOff()
     setAgenda (dados.result)
-    console.log(dados)
+    console.log("Aqui", dados)
   }
+
 
   useEffect(()=> {pesquisaAPI()}, [])
   const {modalLogin, setModalLogin} = React.useContext(Mycontext)
@@ -31,13 +34,14 @@ function Eventos() {
 
       <div className='Cards-Eventos'>
         {/* {console.log(agenda)} */}
+        
         {agenda.length > 0 &&
         agenda.map(evento => (
         <CardsEvento
-          nomeTrilha={evento["Nome da Trilha"]}
-          data={new Date(evento["Data"]).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}
-          horario={evento["Horário"]}
-          vagas={evento["Vagas Disp."]} />
+          nomeTrilha={evento["nomeTrilha"]}
+          data={new Date(evento["data"]).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}
+          horario={evento["horário"]}
+          vagas={evento["vagasDisp"]} />
           ))}
     
       </div>
