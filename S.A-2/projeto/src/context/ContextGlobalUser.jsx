@@ -4,8 +4,9 @@ export const Mycontext = createContext()
 
 export const  ContextGlobalUser = ({children})=> {
   
-  const [user, setUser] = useState(false)
   const [regTrilhas, setRegiao] = useState('Regiões')
+  const [barraPesq, setBarraPesq] = useState('')
+  const [user, setUser] = useState(false)
   const [isActive, setIsActive] = useState(false);
   const [modalLogin, setModalLogin] = useState(false)
   const [modalPerfil, setModalPerfil] = useState(false)
@@ -21,7 +22,7 @@ export const  ContextGlobalUser = ({children})=> {
 
   return (
 
-    <Mycontext.Provider value={{user,setUser, regTrilhas, setRegiao, modalLogin, setModalLogin, isActive, setIsActive, modalPerfil,meusDados, setMeusDados, setModalPerfil}}>
+    <Mycontext.Provider value={{regTrilhas, setRegiao, barraPesq, setBarraPesq, user,setUser, modalLogin, setModalLogin, isActive, setIsActive, modalPerfil,meusDados, setMeusDados, setModalPerfil}}>
         {children}
     </Mycontext.Provider>
 

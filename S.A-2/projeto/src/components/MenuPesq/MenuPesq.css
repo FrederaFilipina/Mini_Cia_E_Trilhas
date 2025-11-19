@@ -1,4 +1,4 @@
-.MenuPesq{
+.MenuPesq {
     display: flex;
     justify-content: center;
     height: 93px;
@@ -12,27 +12,60 @@
 
 
 
-.Esq{
+.Esq {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 48.5%;
-    background-color: palevioletred;
+    /* background-color: palevioletred; */
+}
+.Esq-BarraPesq {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 50%;
+    width: 100%;
+    background-color: aquamarine;
+}
+.BarraPesq-Bttn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 20%;
+
+    background-color: aqua;
+}
+.Bttn {
+    height: 75%;
+    width: 90%;
+
+    border: solid 1px;
+    border-color: black;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color: white;
 }
 
 
 
-.Dir{
+.Dir {
     display: flex;
     height: 100%;
     width: 48.5%;
 }
-.Dir-TdsReg{
+.Dir-TdsReg {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 45%;    
+    width: 45%;
+
+    background-color: maroon;
 }
-.Dir-CdReg{
+.Dir-CdReg {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -40,4 +73,6 @@
     align-items: center;
     height: 100%;
     width: 65%;
+
+    background-color: magenta;
 }

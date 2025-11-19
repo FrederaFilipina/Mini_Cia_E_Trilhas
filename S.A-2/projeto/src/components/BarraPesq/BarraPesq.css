@@ -1,0 +1,11 @@
+.BarraPesq{
+    height: 80%;
+    width: 80%;
+
+    border: solid 2px;
+    border-color: black;
+    background-color:white;
+    border-radius: 10px;
+    font-size: large;
+    padding-left: 5px;
+}
