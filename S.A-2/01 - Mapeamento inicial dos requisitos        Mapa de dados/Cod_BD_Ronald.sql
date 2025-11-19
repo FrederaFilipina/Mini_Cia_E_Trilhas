@@ -183,3 +183,38 @@ DELETE FROM usuario WHERE id_usuario = 3;
 SELECT nome, dt_nascimento, cpf, sexo, num_celular, email FROM usuario WHERE id_usuario = 1;
 -- Comando para buscar o USUARIO por ID (i)
 
+SELECT
+u.id_usuario,
+    -- 1. Total de Trilhas Feitas
+    COUNT(t.id_trilha) AS Total_de_Trilhas_Feitas,
+
+    -- 9. Distância Total Feita
+    SUM(t.distancia) AS Distancia_Total_Percorrida_em_Km,
+
+    -- Quantidade de Trilhas por Região (2, 3, 4, 5)
+    SUM(CASE WHEN t.regiao = 'Norte' THEN 1 ELSE 0 END) AS Quantidade_de_Trilhas_na_Regiao_Norte,
+    SUM(CASE WHEN t.regiao = 'Central' THEN 1 ELSE 0 END) AS Quantidade_de_Trilhas_na_Regiao_Central,
+    SUM(CASE WHEN t.regiao = 'Leste' THEN 1 ELSE 0 END) AS Quantidade_de_Trilhas_na_Regiao_Leste,
+    SUM(CASE WHEN t.regiao = 'Sul' THEN 1 ELSE 0 END) AS Quantidade_de_Trilhas_na_Regiao_Sul,
+
+    -- Distância Total por Região (10, 11, 12, 13)
+    SUM(CASE WHEN t.regiao = 'Norte' THEN t.distancia ELSE 0 END) AS Distancia_Total_na_Regiao_Norte_em_Km,
+    SUM(CASE WHEN t.regiao = 'Central' THEN t.distancia ELSE 0 END) AS Distancia_Total_na_Regiao_Central_em_Km,
+    SUM(CASE WHEN t.regiao = 'Leste' THEN t.distancia ELSE 0 END) AS Distancia_Total_na_Regiao_Leste_em_Km,
+    SUM(CASE WHEN t.regiao = 'Sul' THEN t.distancia ELSE 0 END) AS Distancia_Total_na_Regiao_Sul_em_Km,
+
+    -- Quantidade de Trilhas por Dificuldade (6, 7, 8)
+    -- Assumindo X=1, Y=2 e Z=3 (Dificuldades presentes nos dados)
+    SUM(CASE WHEN t.dificuldade = 1 THEN 1 ELSE 0 END) AS Quantidade_de_Trilhas_Dificuldade_1,
+    SUM(CASE WHEN t.dificuldade = 2 THEN 1 ELSE 0 END) AS Quantidade_de_Trilhas_Dificuldade_2,
+    SUM(CASE WHEN t.dificuldade = 3 THEN 1 ELSE 0 END) AS Quantidade_de_Trilhas_Dificuldade_3
+
+FROM
+    usuario u
+JOIN
+    participante  p ON u.id_usuario = p.usuario_id
+JOIN
+    evento e ON p.evento_id = e.id_evento
+JOIN
+    trilha t ON e.trilha_id = t.id_trilha
+WHERE u.id_usuario = 2 

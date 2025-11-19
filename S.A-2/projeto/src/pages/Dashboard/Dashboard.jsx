@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../../components/Header/Header'
 import { Mycontext } from '../../context/ContextGlobalUser'
 import Login from '../../components/Login/Login'
+import Grafico from '../../components/Grafico/Grafico'
 
 function Dashboard() {
 
@@ -10,6 +11,7 @@ function Dashboard() {
     <div>
       {modalLogin && <Login/>}
      <Header />
+     <Grafico/>
 
     </div>
   )
