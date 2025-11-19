@@ -38,7 +38,7 @@
 
     background-color: aqua;
 }
-.Bttn {
+.Bttn-pesq {
     height: 75%;
     width: 90%;
 
@@ -47,6 +47,31 @@
     border-radius: 7px;
     cursor: pointer;
     background-color: white;
+}
+
+.Esq-Filtro {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    height: 50%;
+    width: 100%;
+    background-color: azure;
+}
+.Bttn-filtro {
+    height: 75%;
+    width: 10%;
+
+    border: solid 1px;
+    border-color: black;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color: white;
+}
+.filtros{
+    height: 75%;
+    width: 70%;
+    background-color: blue;
 }
 
 

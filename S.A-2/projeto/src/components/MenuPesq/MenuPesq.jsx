@@ -15,10 +15,13 @@ function MenuPesq() {
                 <div className='Esq-BarraPesq'>
                     <BarraPesq />
                     <div className='BarraPesq-Bttn'>
-                        <button className='Bttn'>Pesquisar</button>
+                        <button className='Bttn-pesq'>Pesquisar</button>
                         </div>
                 </div>
-                <div className='Esq-Filtro'></div>
+                <div className='Esq-Filtro'>
+                    <button className='Bttn-filtro'> Filtro </button>
+                    <div className='filtros'></div>
+                </div>
             </div>
 
             <div className='Dir'>
