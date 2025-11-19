@@ -7,10 +7,10 @@ const buscarCardsAgendaOff = async () => {
 
         const result = await axios("http://localhost:3000/buscar/cards/agenda/off")
 
-        return result.data
+        return {ok:true, resultado:result.data.result}
         
     } catch (error) {
-        return { mensagem: "Erro ao buscar cards", error }
+        return { ok:false , mensagem: "Erro ao buscar cards", error }
     }
 
 }

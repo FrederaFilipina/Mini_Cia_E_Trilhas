@@ -14,8 +14,16 @@ function Eventos() {
   async function pesquisaAPI(params) {
     
     const dados = await buscarCardsAgendaOff()
-    setAgenda (dados.result)
-    console.log("Aqui", dados)
+
+    if (dados.ok) {
+      
+      setAgenda (dados.resultado)
+      console.log("Aqui", dados)
+      return
+    }
+
+    console.log(`Erro ao fazer a busca ${dados}`);
+    
   }
 
 

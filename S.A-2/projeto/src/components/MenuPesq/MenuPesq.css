@@ -26,7 +26,7 @@
 
     height: 50%;
     width: 100%;
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
 }
 .BarraPesq-Bttn {
     display: flex;
@@ -36,7 +36,7 @@
     height: 100%;
     width: 20%;
 
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 .Bttn-pesq {
     height: 75%;
@@ -56,7 +56,7 @@
 
     height: 50%;
     width: 100%;
-    background-color: azure;
+    /* background-color: azure; */
 }
 .Bttn-filtro {
     height: 75%;
@@ -66,7 +66,7 @@
     border-color: black;
     border-radius: 7px;
     cursor: pointer;
-    background-color: white;
+    /* background-color: white; */
 }
 .filtros{
     height: 75%;
@@ -86,18 +86,19 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 45%;
+    width: 20%;
 
-    background-color: maroon;
+    /* background-color: maroon; */
 }
 .Dir-CdReg {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 5%;
 
     align-items: center;
     height: 100%;
-    width: 65%;
+    width: 80%;
 
-    background-color: magenta;
+    /* background-color: magenta; */
 }
