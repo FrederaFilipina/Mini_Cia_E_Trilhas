@@ -1,3 +1,4 @@
+   
     .cont-perfil-body {
         display: flex;
         justify-content: center;
@@ -18,7 +19,7 @@
         box-shadow: 0 5px rgba(0, 0, 0, 0.35);
         position: relative;
         overflow: hidden;
-        width: 768px;
+        width: 50vh;
         max-width: 100%;
         min-height: 480px;
     }
@@ -27,7 +28,42 @@
         display: flex;
         left: 50%;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
+        /* align-items: center;
+        justify-content: center; */
+        padding: 30px;
+
+    }
+
+    .meu_perfil {
+        display: flex;
+        justify-content: flex-start;
+        font-size: 20px;
+    }
+
+
+    .icone{
+        padding-top: 20px;
+    }
+    
+    .dados_usuario{
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        padding-top: 20px;
+    }
+
+    .dados_usuario p {
+        padding: 5px;
+    }
+
+    .botao_editar{
+        background-color: var(--colorButton);
+        color: #fff;
+        border-radius: 30px;
+        font-size: 20px;
+        border: none;
+        padding: 10px 45px;
+        cursor: pointer;
+         margin-top: 20px;
+
     }

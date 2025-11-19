@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Perfil from '../Perfil/Perfil';
 import { Form } from 'react-router-dom';
 import Form_perfil_nEditavel from './Form-perfil-nEditavel';
+import Form_perfil_editavel from './Form_perfil_editavel';
 
 function Form_perfil() {
 
@@ -9,6 +10,7 @@ function Form_perfil() {
     const [telefone, setTelefone] = React.useState('')
     const [senha, setsenha] = React.useState('')
     const [senhanova, setSenhanova] = React.useState('')
+    const [editar, setEditar] = React.useState(false)
 
     useEffect(() => {
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -46,8 +48,11 @@ function Form_perfil() {
     return (
         <div>
             <form className='form-perfil' >
+                {!editar ?
+                    <Form_perfil_nEditavel setEditar={setEditar} editar={editar} /> :
+                    <Form_perfil_editavel />
+                }
 
-            <Form_perfil_nEditavel/>
 
             </form>
         </div>

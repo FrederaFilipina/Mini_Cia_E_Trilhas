@@ -9,6 +9,7 @@ import { ContextGlobalUser } from './context/ContextGlobalUser.jsx'
 
 
 
+
 createRoot(document.getElementById('root')).render(
   <ContextGlobalUser>
     <RouterProvider router={router}>

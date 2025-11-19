@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react'
 import { Mycontext } from '../../context/ContextGlobalUser'
-
 import buscarDadosUsuario from '../../server/buscarDadosUsuario'
+import {VscAccount} from 'react-icons/vsc'
 
-function Form_perfil_nEditavel() {
 
-    const { user, setUser } = React.useContext(Mycontext)
-    const [infouser, setInfouser] = React.useState(false)
+
+function Form_perfil_nEditavel({ editar, setEditar }) {
+
+    const { user, setUser, infouser, setInfouser } = React.useContext(Mycontext)
     const [carregando, setCarregando] = React.useState(false)
+
+
 
 
     async function pucharDados() {
@@ -20,8 +23,8 @@ function Form_perfil_nEditavel() {
             setInfouser(dados)
             setCarregando(false)
 
-            ;
-        }, 2000);
+                ;
+        }, 1000);
 
 
     }
@@ -37,19 +40,32 @@ function Form_perfil_nEditavel() {
         return <p>Carregando...</p>
     }
 
+    function iniciarEdicao(e) {
+        e.preventDefault()
+        setEditar(true)
+
+    }
+
     return (
 
 
-        <div>
-            <label >Nome</label>
-            <input type="text" disabled value={infouser.nome} />
-            <label >E-mail</label>
-            <input type="text" disabled value={infouser.email} />
-            <label >CPF</label>
-            <input type="text" disabled value={infouser.cpf} />
-            <label>Telefone:</label>
-            <input type="tel" disabled value={infouser.telefone} />
-            <button >Editar</button>
+        <div className='body_nEditavel'>
+            <div className='meu_perfil'>
+                <h1>Meu perfil</h1>
+            </div>
+
+            <div className='icone'>
+                <VscAccount size={90} />
+            </div>
+
+            <div className='dados_usuario'>
+                <p>Nome: {infouser.nome}</p>
+                <p>E-mail: {infouser.email}</p>
+                <p>CPF: {infouser.cpf}</p>
+                <p>Telefone: {infouser.telefone} Ex: (48)99999-9999</p>
+            </div>
+                <button className='botao_editar'onClick={iniciarEdicao}>Editar</button>
+
         </div>
     )
 }
