@@ -25,14 +25,16 @@ function MenuPesq() {
             </div>
 
             <div className='Dir'>
-                <div className='Dir-TdsReg'>
-                    <BttnFln fun={() => setRegiao('Regiões')} fln={"Todas"} map={'Imgs/Geral.png'} />
-                </div>
+
                 <div className='Dir-CdReg'>
                     <BttnsReg funcao={() => setRegiao('Central')} nomeReg={"Central"} img={'Imgs/Central.png'}/>
                     <BttnsReg funcao={() => setRegiao('Norte')} nomeReg={"Norte"} img={'Imgs/Norte.png'}/>
                     <BttnsReg funcao={() => setRegiao('Leste')} nomeReg={"Leste"} img={'Imgs/Leste.png'}/>
                     <BttnsReg funcao={() => setRegiao('Sul')} nomeReg={"Sul"} img={'Imgs/Sul.png'}/>
+                </div>
+
+                <div className='Dir-TdsReg'>
+                    <BttnFln fun={() => setRegiao('Regiões')} fln={"Todas"} map={'Imgs/Geral.png'} />
                 </div>
             </div>
         </div>
