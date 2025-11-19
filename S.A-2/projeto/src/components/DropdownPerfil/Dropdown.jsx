@@ -10,17 +10,11 @@ function Dropdown({perfil}) {
     const [sair, setSair] = React.useState(false);
     const {user,setUser, setModalLogin, setModalPerfil,modalPerfil,meusDados, setMeusDados, setModalPerfi} = React.useContext(Mycontext)
 
-    //(e)=> setMeusDados(e.target.value)
 
     function botaoDeslogar() {
         setUser(false)
         localStorage.removeItem('user')
         
-    }
-
-    function botaoMeusDados(){
-
-
     }
 
     async function test() {

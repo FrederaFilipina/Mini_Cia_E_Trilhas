@@ -1,20 +1,55 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Mycontext } from '../../context/ContextGlobalUser'
+
+import buscarDadosUsuario from '../../server/buscarDadosUsuario'
 
 function Form_perfil_nEditavel() {
 
-    // const {user,setUser} = React.useContext(Mycontext)
-    
+    const { user, setUser } = React.useContext(Mycontext)
+    const [infouser, setInfouser] = React.useState(false)
+    const [carregando, setCarregando] = React.useState(false)
+
+
+    async function pucharDados() {
+        setCarregando(true)
+        const dados = await buscarDadosUsuario(user.token)
+        console.log(dados);
+
+        setTimeout(() => {
+
+            setInfouser(dados)
+            setCarregando(false)
+
+            ;
+        }, 2000);
+
+
+    }
+
+    useEffect(() => {
+
+        pucharDados()
+        console.log(infouser);
+
+    }, [])
+
+    if (carregando) {
+        return <p>Carregando...</p>
+    }
 
     return (
+
+
         <div>
             <label >Nome</label>
-            <input type="text"  />
+            <input type="text" disabled value={infouser.nome} />
+            <label >E-mail</label>
+            <input type="text" disabled value={infouser.email} />
+            <label >CPF</label>
+            <input type="text" disabled value={infouser.cpf} />
             <label>Telefone:</label>
-            <input type="text" disabled value={telefone} placeholder="Ex: (48) 9123-45678" onChange={e => setTelefone(e.target.value)} /> <button>Adicionar</button>
-
-            <label>Email:</label>
-            <input type="email" value={email} placeholder="Email" onChange={e => setEmail(e.target.value)} />
+            <input type="tel" disabled value={infouser.telefone} />
+            <button >Editar</button>
         </div>
     )
 }
