@@ -1,128 +1,157 @@
-.MenuPesq {
-    display: flex;
-    justify-content: center;
+.MenuPesq-cont{
     height: 93px;
-    width: 95%;
+    width: 1295px;
     border-radius: 20px;
     background-color: rgba(217, 217, 217, 1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.25% 1%;   
 }
 
 
 
+.Cont-esq{
+    height: 100%;
+    width: 50%;
 
-
-
-.Esq {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 48.5%;
-    /* background-color: palevioletred; */
-}
-.Esq-BarraPesq {
-    display: flex;
     justify-content: center;
     align-items: center;
-
+    gap: 2%;
+}
+.Esq-sup{
     height: 50%;
     width: 100%;
-    /* background-color: aquamarine; */
+
+    display: flex;
+    flex-direction: row;
+    
 }
-.BarraPesq-Bttn {
+.Sup-esq{
+    height: 100%;
+    width: 80%;
+
     display: flex;
     justify-content: center;
     align-items: center;
-
+}
+.Sup-dir{
     height: 100%;
     width: 20%;
 
-    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.Bttn-pesq {
-    height: 75%;
+.Sup-dir-BttnPesq{
+    height: 85%;
     width: 90%;
 
-    border: solid 1px;
+    border: solid 2px;
     border-color: black;
     border-radius: 7px;
     cursor: pointer;
     background-color: white;
 }
 
-.Esq-Filtro {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-
+.Esq-inf{
     height: 50%;
     width: 100%;
-    /* background-color: azure; */
+
+    display: flex;
+    flex-direction: row;
+
 }
-.Bttn-filtro {
-    height: 75%;
+.Inf-esq{
+    height: 100%;
     width: 10%;
+}
+.Inf-esq-BttnFiltro{
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+    border: none;
+    background-color: transparent;
+}
+.Inf-meio{
+    height: 100%;
+    width: 50%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0.25% 0%;  
+}
+.Inf-meio-FltrDT{
+    height: 100%;
+    width: 35%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+
+    
 
     border: solid 1px;
     border-color: black;
     border-radius: 7px;
     cursor: pointer;
-    /* background-color: white; */
-}
-.filtros{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 75%;
-    width: 70%;
-    background-color: blue;
-}
-.filtros-dd{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 75%;
-    width: 50%;
-    gap: 5%;
-    background-color: yellow;
-}
-.filtros-mn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 75%;
-    width: 50%;
-    gap: 5%;
-    background-color: yellowgreen;
-}
 
-
-.Dir {
-    display: flex;
+}
+.Inf-dir{
     height: 100%;
-    width: 48.5%;
-}
-.Dir-TdsReg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 20%;
+    width: 40%;
 
-    /* background-color: maroon; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.Inf-dir-FltrMN{
+    height: 100%;
+    width: 50%;
+
+    display: flex;
+    justify-content:space-around;
+    align-items: center;    
+
+    border: solid 1px;
+    border-color: black;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+
+.Cont-dir{
+    height: 100%;
+    width: 50%;
+
+    display: flex;
 }
 .Dir-CdReg {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 5%;
-
-    align-items: center;
     height: 100%;
     width: 80%;
 
-    /* background-color: magenta; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
 }
+.Dir-TdsReg {
+    height: 100%;
+    width: 20%;
 
-.icon{
-   
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

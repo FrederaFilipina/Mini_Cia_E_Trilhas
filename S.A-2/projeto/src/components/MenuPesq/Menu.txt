@@ -1,0 +1,34 @@
+        <div className='MenuPesq'>
+            <div className='Esq'>
+                <div className='Esq-BarraPesq'>
+                    <BarraPesq />
+                    <div className='BarraPesq-Bttn'>
+                        <button className='Bttn-pesq'>Pesquisar</button>
+                        </div>
+                </div>
+                <div className='Esq-Filtro'>
+                    <button onClick={FiltrarDT}
+                    className='Bttn-filtro'> <TbFilter size={45}/></button>
+
+
+                    <div className='filtros'>
+                        {fltrDT}
+                        {fltrMN}                        
+                    </div>
+                </div>
+            </div>
+
+            <div className='Dir'>
+
+                <div className='Dir-CdReg'>
+                    <BttnsReg funcao={() => setRegiao('Central')} nomeReg={"Central"} img={'Imgs/Central.png'}/>
+                    <BttnsReg funcao={() => setRegiao('Norte')} nomeReg={"Norte"} img={'Imgs/Norte.png'}/>
+                    <BttnsReg funcao={() => setRegiao('Leste')} nomeReg={"Leste"} img={'Imgs/Leste.png'}/>
+                    <BttnsReg funcao={() => setRegiao('Sul')} nomeReg={"Sul"} img={'Imgs/Sul.png'}/>
+                </div>
+
+                <div className='Dir-TdsReg'>
+                    <BttnFln fun={() => setRegiao('Regiões')} fln={"Todas"} map={'Imgs/Geral.png'} />
+                </div>
+            </div>
+        </div>
