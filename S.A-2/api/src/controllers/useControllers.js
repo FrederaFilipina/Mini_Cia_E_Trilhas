@@ -447,6 +447,47 @@ async function alterarEvento(req, res) {
 }
 
 
+async function buscarEvento(req,res) {
+
+    const { id } = req.params
+
+
+    try {
+
+        const [result] = await pool.query(`SELECT 
+                evento.id_evento,
+                evento.dia,
+                evento.horario AS horario,
+                evento.ponto_de_encontro AS pontoEncontro,
+                evento.vagas AS vagas,
+                trilha.nome AS nomeTrilha,
+                trilha.ponto_partida,
+                trilha.ponto_chegada,
+                trilha.dificuldade,
+                trilha.distancia
+            FROM evento
+            JOIN trilha 
+            ON trilha.id_trilha = evento.trilha_id
+			WHERE id_evento = ?`, [id])
+
+        // if (result.length === 0) {
+        //     return res.status(400).json({ mensagem: 'Dados do usuário não encontrado', result: result[0] })
+        // }
+
+        return res.status(200).json({ mensagem: 'Dados Evento/trilha ', result: result })
+
+
+    } catch (error) {
+
+        console.error(error)
+
+        return res.status(404).json({ mensagem: "Erro ao acessar usuário,logar novamente", error })
+
+    }
+    
+}
+
+
 async function deletarEvento(req,res) {
     
     const {id} = req.user
@@ -511,6 +552,7 @@ module.exports = {
     cadastrarEvento,
     concluriEvento,
     alterarEvento,
-    deletarEvento
+    deletarEvento,
+    buscarEvento
 
 }
