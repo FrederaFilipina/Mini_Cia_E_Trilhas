@@ -83,7 +83,18 @@ async function cadastroUser(req, res) {
 
         console.error(error)
 
-        return res.status(404).json({ mensagem: "Erro ao adicionar cliente", error })
+        if (error.code ==='ER_DUP_ENTRY') {
+
+          if (error.sqlMessage.includes('usuario.cpf')) {
+            return res.status(400).json({ mensagem: "Este CPF já está cadastrado" })
+        }
+
+        if (error.sqlMessage.includes('usuario.email')) {
+            return res.status(400).json({ mensagem: "Este email já está cadastrado" })
+        }
+    }
+
+        return res.status(404).json({mensagem: "Erro interno no servidor", error })
 
     }
 

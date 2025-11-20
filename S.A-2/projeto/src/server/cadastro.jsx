@@ -12,9 +12,15 @@ const cadastro = async (user) => {
 
     } catch (error) {
         console.log(error);
+
+        if (error.response) {
+
+            return {ok:false,mensagem: error.response.data.mensagem}
+            
+        }
         
 
-        return { mensagem: "Erro ao fazer o cadastro", error }
+        return { mensagem: "Erro interno no servidor", error }
 
     }
 }
