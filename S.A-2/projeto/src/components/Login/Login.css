@@ -247,3 +247,13 @@
     gap: 10px;
     padding: 0px 20px;
 }
+
+.alerta{
+    border-radius: 20px;
+
+    width: 25%;
+    height: 60%;
+    
+}
+
+

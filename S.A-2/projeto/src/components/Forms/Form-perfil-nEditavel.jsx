@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Mycontext } from '../../context/ContextGlobalUser'
 import buscarDadosUsuario from '../../server/buscarDadosUsuario'
-import {VscAccount} from 'react-icons/vsc'
+import { VscAccount } from 'react-icons/vsc'
 
 
 
@@ -50,21 +50,22 @@ function Form_perfil_nEditavel({ editar, setEditar }) {
 
 
         <div className='body_nEditavel'>
-            <div className='meu_perfil'>
-                <h1>Meu perfil</h1>
+
+
+            <div className='icone_nome'>
+                <VscAccount size={90} />
+            
+                <p>Nome: {infouser.nome}</p>
+
             </div>
 
-            <div className='icone'>
-                <VscAccount size={90} />
-            </div>
 
             <div className='dados_usuario'>
-                <p>Nome: {infouser.nome}</p>
                 <p>E-mail: {infouser.email}</p>
                 <p>CPF: {infouser.cpf}</p>
                 <p>Telefone: {infouser.telefone} Ex: (48)99999-9999</p>
             </div>
-                <button className='botao_editar'onClick={iniciarEdicao}>Editar</button>
+            <button className='botao_editar' onClick={iniciarEdicao}>Editar</button>
 
         </div>
     )

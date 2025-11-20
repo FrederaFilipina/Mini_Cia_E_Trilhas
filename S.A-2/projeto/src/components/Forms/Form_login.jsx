@@ -1,10 +1,11 @@
 import React from 'react'
 import login from '../../server/login'
 import { Mycontext } from '../../context/ContextGlobalUser'
+import Swal from 'sweetalert2'
 
 function Form_login() {
 
-    const {user, setUser, modalLogin, setModalLogin} = React.useContext(Mycontext)
+    const { user, setUser, modalLogin, setModalLogin } = React.useContext(Mycontext)
 
     async function logar(e) {
         e.preventDefault()
@@ -13,12 +14,22 @@ function Form_login() {
             email: email,
             senha: senha
         }
-        
+
         const resposta = await login(dados)
         console.log(resposta);
 
         if (resposta.status === 200) {
-            alert("Login realizado com sucesso!")
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Login realizado com sucesso!",
+                showConfirmButton: false,
+                timer: 1500,
+                customClass:{
+                    popup: 'alerta'
+                }
+                
+            });
             setUser(resposta.data.result)
             setModalLogin(false)
             setEmail('')
@@ -27,15 +38,15 @@ function Form_login() {
             return
         }
         alert("Erro ao fazer login, verifique seus dados.")
-        
+
 
     }
-    
+
     const [email, setEmail] = React.useState('')
     const [senha, setsenha] = React.useState('')
 
     return (
-        
+
         <form className='form-login'>
             <h1>Bem vindo de volta!</h1>
             <input type="text" placeholder='E-mail' value={email} onChange={e => setEmail(e.target.value)} />
