@@ -69,11 +69,31 @@
     /* background-color: white; */
 }
 .filtros{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 75%;
     width: 70%;
     background-color: blue;
 }
-
+.filtros-dd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75%;
+    width: 50%;
+    gap: 5%;
+    background-color: yellow;
+}
+.filtros-mn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75%;
+    width: 50%;
+    gap: 5%;
+    background-color: yellowgreen;
+}
 
 
 .Dir {
@@ -101,4 +121,8 @@
     width: 80%;
 
     /* background-color: magenta; */
+}
+
+.icon{
+   
 }

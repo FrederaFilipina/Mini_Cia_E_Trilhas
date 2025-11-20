@@ -4,6 +4,11 @@ import BttnsReg from '../BttnsReg/BttnRegs'
 import { useContext } from 'react'
 import { Mycontext } from '../../context/ContextGlobalUser'
 import BarraPesq from '../BarraPesq/BarraPesq'
+import { GiPathDistance } from "react-icons/gi"
+import { TiStopwatch } from "react-icons/ti"
+import { FaArrowDownShortWide } from "react-icons/fa6"
+import { FaArrowDownWideShort } from "react-icons/fa6"
+import { AiOutlineFilter } from "react-icons/ai"
 
 
 function MenuPesq() {
@@ -19,8 +24,17 @@ function MenuPesq() {
                         </div>
                 </div>
                 <div className='Esq-Filtro'>
-                    <button className='Bttn-filtro'> Filtro </button>
-                    <div className='filtros'></div>
+                    <button className='Bttn-filtro'> <AiOutlineFilter /> </button>
+                    <div className='filtros'>
+                        <div className='filtros-dd'>
+                            <button> <GiPathDistance /> </button>
+                            <button> <TiStopwatch /> </button>
+                        </div>
+                        <div className='filtros-mn'>
+                        <button> <FaArrowDownWideShort /> </button>
+                        <button> <FaArrowDownShortWide /> </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
