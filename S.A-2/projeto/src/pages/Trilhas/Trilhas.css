@@ -50,3 +50,10 @@
     height: 100%;
     width: 65%;
 }
+
+.Pag-cards{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

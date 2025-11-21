@@ -18,7 +18,6 @@ function Eventos() {
     if (dados.ok) {
       
       setAgenda (dados.resultado)
-      console.log("Aqui", dados)
       return
     }
 
