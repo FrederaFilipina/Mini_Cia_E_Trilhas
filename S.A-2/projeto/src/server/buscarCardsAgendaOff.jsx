@@ -10,7 +10,7 @@ const buscarCardsAgendaOff = async () => {
         return {ok:true, resultado:result.data.result}
         
     } catch (error) {
-        return { ok:false , mensagem: "Erro ao buscar cards", error }
+        return { ok:false , mensagem: "Erro ao buscar cards", error: error.response.data}
     }
 
 }

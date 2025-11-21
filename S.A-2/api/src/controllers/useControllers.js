@@ -11,8 +11,8 @@ async function loginUser(req, res) {
 
     const { email, senha } = req.body
 
-    if (!email|| !senha) {
-       return res.status(400).json({ mensagem: "Todos os campos são obrigatórios" })
+    if (!email || !senha) {
+        return res.status(400).json({ mensagem: "Todos os campos são obrigatórios" })
 
     }
 
@@ -24,7 +24,7 @@ async function loginUser(req, res) {
         const [result] = await pool.query('SELECT id_usuario, nome FROM usuario WHERE email = ? AND senha = ? ', [email, senha])
 
         if (result.length === 0) {
-            return res.status(400).json({ mensagem: "usuario ou senha incorretos", result })
+            return res.status(401).json({ mensagem: "Email ou senha incorretos", result })
         }
 
         const payload = {
@@ -47,7 +47,7 @@ async function loginUser(req, res) {
 
         console.error(error)
 
-        return res.status(404).json({ mensagem: "erro ao tentar acessar o login", result: error })
+        return res.status(500).json({ mensagem: "erro ao tentar acessar o login", result: error })
 
     }
 
@@ -57,8 +57,8 @@ async function cadastroUser(req, res) {
 
     const { nome, email, cpf, senha, sexo } = req.body
 
-    if (!nome|| !email|| !cpf|| !senha|| !sexo) {
-       return res.status(400).json({ mensagem: "Todos os campos são obrigatórios" })
+    if (!nome || !email || !cpf || !senha || !sexo) {
+        return res.status(400).json({ mensagem: "Todos os campos são obrigatórios" })
 
     }
 
@@ -83,18 +83,18 @@ async function cadastroUser(req, res) {
 
         console.error(error)
 
-        if (error.code ==='ER_DUP_ENTRY') {
+        if (error.code === 'ER_DUP_ENTRY') {
 
-          if (error.sqlMessage.includes('usuario.cpf')) {
-            return res.status(400).json({ mensagem: "Este CPF já está cadastrado" })
+            if (error.sqlMessage.includes('usuario.cpf')) {
+                return res.status(400).json({ mensagem: "Este CPF já está cadastrado" })
+            }
+
+            if (error.sqlMessage.includes('usuario.email')) {
+                return res.status(400).json({ mensagem: "Este email já está cadastrado" })
+            }
         }
 
-        if (error.sqlMessage.includes('usuario.email')) {
-            return res.status(400).json({ mensagem: "Este email já está cadastrado" })
-        }
-    }
-
-        return res.status(404).json({mensagem: "Erro interno no servidor", error })
+        return res.status(500).json({ mensagem: "Erro interno no servidor", error })
 
     }
 
@@ -115,7 +115,11 @@ async function cardsHome(req, res) {
             HAVING (evento.vagas - COUNT(participante.id_participante)) > 0
             AND evento.dia BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 5 DAY)`)
 
+        if (result.length === 0) {
 
+            return res.status(404).json({ mensagem: 'Nem um evento disponível no momento', result: result })
+
+        }
 
         res.status(200).json({ mensagem: 'Cards para home', result: result })
 
@@ -124,7 +128,7 @@ async function cardsHome(req, res) {
 
         console.error(error)
 
-        return res.status(404).json({ mensagem: "Erro ao buscar cards", error })
+        return res.status(500).json({ mensagem: "Erro ao buscar cards", error })
 
     }
 
@@ -148,6 +152,11 @@ async function cardsAgendaOff(req, res) {
 
 
 
+        if (result.length === 0) {
+
+            return res.status(404).json({ mensagem: 'Nem um evento disponível no momento', result: result })
+
+        }
         return res.status(200).json({ mensagem: 'Cards para agenda off', result: result })
 
 
@@ -155,7 +164,7 @@ async function cardsAgendaOff(req, res) {
 
         console.error(error)
 
-        return res.status(404).json({ mensagem: "Erro ao buscar cards para agenda off", error })
+        return res.status(500).json({ mensagem: "Erro ao buscar cards para agenda off", error })
 
     }
 
@@ -167,6 +176,12 @@ async function cardsTrilhaOff(req, res) {
 
         const [result] = await pool.query(`SELECT  trilha.id_trilha ,trilha.nome AS 'nomeTrilha', trilha.distancia AS 'distância', trilha.tempo AS 'tempo', trilha.dificuldade AS 'dificuldade' FROM trilha`)
 
+        if (result.length === 0) {
+
+            return res.status(404).json({ mensagem: 'Não foi encontrado trilhas', result: result })
+
+        }
+
         return res.status(200).json({ mensagem: 'Cards para Trilha off', result: result })
 
 
@@ -174,7 +189,7 @@ async function cardsTrilhaOff(req, res) {
 
         console.error(error)
 
-        return res.status(404).json({ mensagem: "Erro ao buscar cards", error })
+        return res.status(500).json({ mensagem: "Erro ao buscar cards", error })
 
     }
 
@@ -188,6 +203,12 @@ async function cardsTrilhaOn(req, res) {
 
         const [result] = await pool.query(`SELECT trilha.id_trilha ,trilha.nome AS 'nomeTrilha', trilha.ponto_partida AS 'pontoInicial', trilha.ponto_chegada AS 'pontoFinal', trilha.distancia AS 'distância', trilha.tempo AS 'tempo', trilha.relevo AS 'tipoRelevo', trilha.elevacao AS 'grauElevação', trilha.dificuldade AS 'dificuldade' FROM trilha`)
 
+        if (result.length === 0) {
+
+            return res.status(404).json({ mensagem: 'Não foi encontrado trilhas', result: result })
+
+        }
+
         return res.status(200).json({ mensagem: 'Cards para Trilha on', result: result })
 
 
@@ -195,7 +216,7 @@ async function cardsTrilhaOn(req, res) {
 
         console.error(error)
 
-        return res.status(404).json({ mensagem: "Erro ao buscar cards", error })
+        return res.status(500).json({ mensagem: "Erro ao buscar cards", error })
 
     }
 
@@ -206,8 +227,8 @@ async function updateUserEmailTef(req, res) {
     const { email, celular, senha } = req.body
     const { id } = req.user
 
-    if (!email|| !celular|| !senha) {
-       return res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
+    if (!email || !celular || !senha) {
+        return res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
 
     }
 
@@ -218,19 +239,30 @@ async function updateUserEmailTef(req, res) {
 
         if (result.affectedRows === 0) {
 
-            res.status(400).json({ mensagem: "Senha invalida ou dados incorretos", result })
+            res.status(401).json({ mensagem: "Senha invalida ou dados incorretos", result })
             return
 
         }
 
-        return res.status(200).json({ mensagem: 'Usuario Modificado', result: result })
+        return res.status(200).json({ mensagem: 'Usuário Modificado', result: result })
 
 
     } catch (error) {
 
         console.error(error)
 
-        return res.status(404).json({ mensagem: "Erro acessar update", error })
+        if (error.code) {
+            if (error.sqlMessage.includes('usuario.email')) {
+                return res.status(400).json({ mensagem: "Este email já está cadastrado" })
+            }
+
+            if (error.sqlMessage.includes('usuario.num_celular')) {
+                return res.status(400).json({ mensagem: "Este numero já está cadastrado" })
+            }
+
+        }
+
+        return res.status(500).json({ mensagem: "Erro acessar update", error })
 
     }
 
@@ -246,7 +278,7 @@ async function buscarInfsUser(req, res) {
         const [result] = await pool.query(`SELECT nome, dt_nascimento, cpf, sexo, num_celular, email FROM usuario WHERE id_usuario = ?;`, [id])
 
         if (result.length === 0) {
-            return res.status(400).json({ mensagem: 'Dados do usuário não encontrado', result: result[0] })
+            return res.status(404).json({ mensagem: 'Dados do usuário não encontrado', result: result })
         }
 
         return res.status(200).json({ mensagem: 'Dados do usuário', result: result[0] })
@@ -256,7 +288,7 @@ async function buscarInfsUser(req, res) {
 
         console.error(error)
 
-        return res.status(404).json({ mensagem: "Erro ao acessar usuário,logar novamente", error })
+        return res.status(500).json({ mensagem: "Erro ao acessar usuário,logar novamente", error })
 
     }
 
@@ -269,8 +301,8 @@ async function mudarSenha(req, res) {
     const { senha, novaSenha } = req.body
 
     if (!senha || !!novaSenha) {
-      return  res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
-        
+        return res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
+
     }
 
     try {
@@ -291,7 +323,13 @@ async function mudarSenha(req, res) {
 
         console.error(error)
 
-        return res.status(404).json({ mensagem: "Erro acessar ao tentar acessar troca de senha", error })
+        if (error.code) {
+
+            res.status(400).json({ mensagem: "Erro de insert", error: error.sqlMessage })
+
+        }
+
+        return res.status(500).json({ mensagem: "Erro acessar ao tentar acessar troca de senha", error })
 
     }
 
@@ -325,7 +363,7 @@ async function deletarUser(req, res) {
 
         console.error(error)
 
-        return res.status(404).json({ mensagem: "Erro acessar Deletar usuário", error })
+        return res.status(500).json({ mensagem: "Erro acessar Deletar usuário", error })
 
     }
 
@@ -338,8 +376,8 @@ async function cadastrarEvento(req, res) {
 
     const { id } = req.user
 
-    if (!dia|| !horario|| !ponto_de_encontro|| !vagas|| !trilha_id) {
-       return res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
+    if (!dia || !horario || !ponto_de_encontro || !vagas || !trilha_id) {
+        return res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
 
     }
 
@@ -350,7 +388,7 @@ async function cadastrarEvento(req, res) {
 
         if (resultEventoCriado.affectedRows === 0) {
 
-            return res.status(404).json({ mensagem: "Erro ao criar evento", error: resultEventoCriado })
+            return res.status(400).json({ mensagem: "Erro ao criar evento", error: resultEventoCriado })
         }
 
 
@@ -365,7 +403,7 @@ async function cadastrarEvento(req, res) {
 
             }
 
-            return res.status(404).json({ mensagem: "Erro ao adicionar criador do evento", error: resultCriador })
+            return res.status(400).json({ mensagem: "Erro ao adicionar criador do evento", error: resultCriador })
         }
 
         res.status(200).json({ mensagem: 'Evento agendado com sucesso', result: result })
@@ -375,7 +413,9 @@ async function cadastrarEvento(req, res) {
 
         console.error(error)
 
-        return res.status(404).json({ mensagem: "Erro ao acessar criação de evento", error })
+
+
+        return res.status(500).json({ mensagem: "Erro ao acessar criação de evento", error })
 
     }
 }
@@ -388,7 +428,7 @@ async function concluriEvento(req, res) {
     const { idevento } = req.params
 
     if (idevento.length === 0) {
-       return res.status(400).json({ mensagem: "Evento não informado!" })
+        return res.status(400).json({ mensagem: "Evento não informado!" })
     }
 
 
@@ -409,7 +449,7 @@ async function concluriEvento(req, res) {
 
         console.error(error);
 
-        return res.status(404).json({ mensagem: "Erro ao tentar acessar a requisição de encerramento", error })
+        return res.status(500).json({ mensagem: "Erro ao tentar acessar a requisição de encerramento", error })
 
 
     }
@@ -420,15 +460,15 @@ async function alterarEvento(req, res) {
 
     const { id } = req.user
 
-    const {dia,horario,ponto_de_encontro,vagas} = req.body
+    const { dia, horario, ponto_de_encontro, vagas } = req.body
 
     const { idevento } = req.params
 
     if (idevento.length === 0) {
-       return res.status(400).json({ mensagem: "Evento não informado!" })
+        return res.status(400).json({ mensagem: "Evento não informado!" })
     }
-     if (!dia ||!horario|| !ponto_de_encontro|| !vagas) {
-       return res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
+    if (!dia || !horario || !ponto_de_encontro || !vagas) {
+        return res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
 
     }
 
@@ -437,7 +477,7 @@ async function alterarEvento(req, res) {
         const [result] = await pool.query(`UPDATE evento
                                             JOIN participante ON evento.id_evento = participante.evento_id
                                             SET dia = ?, horario = ?, ponto_de_encontro = ?, vagas = ?  WHERE evento.id_evento = ? AND participante.usuario_id = ?  AND  participante.classe = 'C'  ;
-                                            `, [dia,horario,ponto_de_encontro,vagas,idevento, id])
+                                            `, [dia, horario, ponto_de_encontro, vagas, idevento, id])
 
         if (result.affectedRows === 0) {
 
@@ -450,7 +490,7 @@ async function alterarEvento(req, res) {
 
         console.error(error);
 
-        return res.status(404).json({ mensagem: "Erro ao tentar acessar a requisição de alteração", error })
+        return res.status(500).json({ mensagem: "Erro ao tentar acessar a requisição de alteração", error })
 
 
     }
@@ -458,7 +498,7 @@ async function alterarEvento(req, res) {
 }
 
 
-async function buscarEvento(req,res) {
+async function buscarEvento(req, res) {
 
     const { id } = req.params
 
@@ -481,37 +521,53 @@ async function buscarEvento(req,res) {
             ON trilha.id_trilha = evento.trilha_id
 			WHERE id_evento = ?`, [id])
 
-        // if (result.length === 0) {
-        //     return res.status(400).json({ mensagem: 'Dados do usuário não encontrado', result: result[0] })
-        // }
+        if (result.length === 0) {
 
-        return res.status(200).json({ mensagem: 'Dados Evento/trilha ', result: result })
+            return res.status(404).json({ mensagem: 'evento não encontrado', result: result })
+
+        }
+
+        const [usuarios] = await pool.query(`
+            SELECT 
+            usuario.id_usuario ,participante.classe, usuario.nome
+            FROM participante 
+            JOIN usuario ON usuario.id_usuario = participante.usuario_id
+            WHERE evento_id =?`, [id])
+
+
+        if (usuarios.length === 0) {
+            return res.status(404).json({ mensagem: 'Participantes do evento não encontrado', result: result[0] })
+        }
+
+        result[0].participantes = usuarios
+
+        return res.status(200).json({ mensagem: 'Dados evento ', result: result })
 
 
     } catch (error) {
 
         console.error(error)
 
-        return res.status(404).json({ mensagem: "Erro ao acessar usuário,logar novamente", error })
+        return res.status(500).json({ mensagem: "Erro buscar evento", error })
 
     }
-    
+
 }
 
 
-async function deletarEvento(req,res) {
-    
-    const {id} = req.user
+async function deletarEvento(req, res) {
 
-    const {idevento} = req.params
+    const { id } = req.user
 
-    if (!idevento ) {
+    const { idevento } = req.params
 
-        return res.status(400).json({mensagem: "Evento não informado!"})
+    if (!idevento) {
+
+        return res.status(400).json({ mensagem: "Evento não informado!" })
     }
 
     try {
-        
+
         const [resultDeleteParticipante] = await pool.query(`  
     DELETE p
     FROM participante p
@@ -519,33 +575,86 @@ async function deletarEvento(req,res) {
     ON autorizador.evento_id = p.evento_id
     WHERE p.evento_id = ?
     AND autorizador.usuario_id = ?
-    AND autorizador.classe = 'C'`,[idevento,id])
+    AND autorizador.classe = 'C'`, [idevento, id])
 
-        if (resultDeleteParticipante.affectedRows===0) {
+        if (resultDeleteParticipante.affectedRows === 0) {
 
-            return res.status(400).json({mensagem:"Nao foi possível deletar o evento", error:resultDeleteParticipante})
-    
+            return res.status(400).json({ mensagem: "Nao foi possível deletar o evento", error: resultDeleteParticipante })
+
         }
 
-        const [resultDeletarEvento] = await pool.query('DELETE FROM evento WHERE id_evento = ?',[idevento])
+        const [resultDeletarEvento] = await pool.query('DELETE FROM evento WHERE id_evento = ?', [idevento])
 
 
-        if (resultDeletarEvento.affectedRows===0) {
+        if (resultDeletarEvento.affectedRows === 0) {
 
-            res.status(404).json({mensagem:"Evento nao foi cancelado, tente mas tarde"})
-            
+            res.status(404).json({ mensagem: "Evento nao foi cancelado, tente mas tarde" })
+
         }
 
 
-        return res.status(200).json({mensagem:"Evento foi cancelado com sucesso"})
+        return res.status(200).json({ mensagem: "Evento foi cancelado com sucesso" })
 
     } catch (error) {
 
         console.error(error);
 
-        return res.status(404).json({mensagem:"Erro ao tentar acessar a função de excluir evento", error})
-        
+        return res.status(404).json({ mensagem: "Erro ao tentar acessar a função de excluir evento", error })
+
     }
+}
+
+
+async function participarEvento(req, res) {
+
+    const { id } = req.user
+
+    const { idevento } = req.params
+
+    if (idevento.length === 0) {
+        return res.status(400).json({ mensagem: "Evento não informado!" })
+    }
+
+
+
+    try {
+
+        const [verificacaoParticipante] = await pool.query(`SELECT 
+            usuario.id_usuario ,participante.classe, usuario.nome
+            FROM participante 
+            JOIN usuario ON usuario.id_usuario = participante.usuario_id
+            WHERE evento_id =?  AND usuario_id = ?`, [idevento, id])
+
+
+
+        if (verificacaoParticipante.length > 0) {
+
+            return res.status(401).json({ mensagem: "Você ja esta participando do evento" })
+
+        }
+
+
+        const [result] = await pool.query(`
+            INSERT INTO participante 
+            (classe, usuario_id, evento_id) 
+            VALUES('C',?,?)`, [id, idevento])
+
+        if (result.affectedRows === 0) {
+
+            return res.status(403).json({ mensagem: "Não foi possível participar do evento" })
+
+        }
+
+        return res.status(200).json({ mensagem: 'Você foi adicionado ao evento', result })
+    } catch (error) {
+
+        console.error(error);
+
+        return res.status(500).json({ mensagem: "Erro ao tentar acessar a requisição de participação", error })
+
+
+    }
+
 }
 
 
@@ -564,6 +673,7 @@ module.exports = {
     concluriEvento,
     alterarEvento,
     deletarEvento,
-    buscarEvento
+    buscarEvento,
+    participarEvento
 
 }
