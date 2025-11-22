@@ -377,7 +377,7 @@ async function cadastrarEvento(req, res) {
     const { id } = req.user
 
     if (!dia || !horario || !ponto_de_encontro || !vagas || !trilha_id) {
-        return res.status(404).json({ mensagem: "Todos os campos são obrigatórios" })
+        return res.status(400).json({ mensagem: "Todos os campos são obrigatórios" })
 
     }
 
@@ -399,14 +399,14 @@ async function cadastrarEvento(req, res) {
             const [deletarEvento] = await pool.query("DELETE FROM evento WHERE id_evento = ?", [resultEventoCriado.insertId])
 
             if (deletarEvento.affectedRows === 0) {
-                return res.status(404).json({ mensagem: "Fudeooooo!!!" })
+                return res.status(500).json({ mensagem: "Fudeooooo!!!" })
 
             }
 
-            return res.status(400).json({ mensagem: "Erro ao adicionar criador do evento", error: resultCriador })
+            return res.status(500).json({ mensagem: "Erro ao adicionar criador do evento", error: resultCriador })
         }
 
-        res.status(200).json({ mensagem: 'Evento agendado com sucesso', result: result })
+        res.status(200).json({ mensagem: 'Evento agendado com sucesso', result: resultEventoCriado })
 
 
     } catch (error) {
