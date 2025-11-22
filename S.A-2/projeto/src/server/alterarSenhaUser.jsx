@@ -22,15 +22,17 @@ const alterarSenhaUser = async (token, senha, novaSenha) => {
 
         if (resultado.status === 200) {
 
-            return resultado.data.mensagem
+            return {ok:true, mensagem:resultado.data.mensagem}
         }
 
     } catch (error) {
 
-        console.log(error);
+          if (error.response) {
+            
+            return  { ok:false, mensagem:error.response.data.mensagem}
+        }
 
-        
-        return error.response.data
+        return {ok:false, error:error,mensagem:"Sem resposta do servidor"}
     }
 
 }

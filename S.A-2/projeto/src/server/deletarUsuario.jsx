@@ -3,26 +3,29 @@ import axios from "axios"
 
 
 const deletarUsuario = async (token) => {
-  
+
     if (!token) {
 
-        return {mensagem: "Erro necessário token"}
-        
+        return { mensagem: "Erro necessário token" }
+
     }
 
-        try {
+    try {
 
-            const result = await axios.delete('http://localhost:3000/deletar/user',{headers:{Authorization: token}})
-            
-            return result
-            
-        } catch (error) {
+        const result = await axios.delete('http://localhost:3000/deletar/user', { headers: { Authorization: token } })
 
-            console.log(error);
-            
-            return error.response.data
-            
+        return result
+
+    } catch (error) {
+
+        if (error.response) {
+
+            return { ok: false, mensagem: error.response.data.mensagem }
         }
+
+        return { ok: false, error: error, mensagem: "Sem resposta do servidor" }
+
+    }
 }
 
 export default deletarUsuario

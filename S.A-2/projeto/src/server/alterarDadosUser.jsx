@@ -22,14 +22,18 @@ const alterarDadosUser = async (user, token) => {
             
             if (resultado.status===200) {
 
-                return resultado.data.mensagem
+                return {ok:true, mensagem:resultado.data.mensagem}
             }
 
     } catch (error) {
 
+        if (error.response) {
+            
+            return {ok:false, mensagem:resultado.data.mensagem}
+        }
+
+        return {ok:false, error:error,mensagem:"Sem resposta do servidor"}
         
-        
-        return error.response.data.mensagem
     }
 
 

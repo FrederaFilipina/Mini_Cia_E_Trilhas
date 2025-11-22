@@ -18,14 +18,18 @@ const buscarDadosUsuario = async (token) => {
 
         if (resultado.status === 200) {
 
-            return resultado.data.result
+            return { ok: true, result: resultado.data.result }
         }
 
     } catch (error) {
 
+        if (error.response) {
 
-        console.log(error)
-        return error.response.data.mensagem
+            return { ok: false, mensagem: error.response.data.mensagem }
+        }
+
+        return { ok: false, error: error, mensagem: "Sem resposta do servidor" }
+
     }
 
 

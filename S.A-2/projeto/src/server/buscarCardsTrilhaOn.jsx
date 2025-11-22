@@ -11,12 +11,23 @@ const buscarCardsTrilhaOn = async (token) => {
 
         const result = await axios.get("http://localhost:3000/buscar/cards/trilha/on",{headers:{Authorization: token}})
 
-        console.log(result)
-        return result
+        
+
+        if (result.status===200) {
+            
+            return {ok:true, result:result.data}
+        }
+
         
     } catch (error) {
 
-        return {mensagem: "Erro ao buscar cards", error}
+        if (error.response) {
+            
+            return {ok:false,mensagem:error.response.data.mensagem}
+        }
+
+        return {ok:false, error:error,mensagem:"Sem resposta do servidor"}
+        
     }   
   
 }
