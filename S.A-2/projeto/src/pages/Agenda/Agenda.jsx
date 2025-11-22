@@ -21,7 +21,7 @@ function Eventos() {
       return
     }
 
-    console.log(`Erro ao fazer a busca ${dados}`);
+    console.log(dados);
     
   }
 

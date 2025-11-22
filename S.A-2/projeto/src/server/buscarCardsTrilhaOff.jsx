@@ -12,7 +12,10 @@ const buscarCardsTrilhaOff = async () => {
    } catch (error) {
 
       // return {mensagem: "Erro ao buscar cards", error}
+      if (error.response) {
       return { ok: false, mensagem: "Erro ao buscar cards", error: error.response.data }
+      }
+       return {ok:false, error:error,mensagem:"Sem resposta do servidor"}
    }
 
 }
