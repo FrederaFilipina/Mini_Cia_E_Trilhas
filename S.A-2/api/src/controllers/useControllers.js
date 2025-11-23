@@ -172,7 +172,7 @@ async function cardsAgendaOff(req, res) {
 
 async function cardsAgendaOn(req, res) {
 
-    const {id} = req.user
+    const { id } = req.user
 
 
     try {
@@ -207,7 +207,7 @@ async function cardsAgendaOn(req, res) {
                 (evento.vagas - COUNT(participante.id_participante)) > 0
                 AND CONCAT(evento.dia, ' ', evento.horario) >= NOW()
 
-            ORDER BY evento.dia, evento.horario`,[id])
+            ORDER BY evento.dia, evento.horario`, [id])
 
 
 
@@ -475,7 +475,7 @@ async function cadastrarEvento(req, res) {
         if (error.code) {
 
             if (error.sqlMessage) {
-                return res.status(400).json({ mensagem: error.sqlMessage,error})
+                return res.status(400).json({ mensagem: error.sqlMessage, error })
             }
         }
 
@@ -553,6 +553,12 @@ async function alterarEvento(req, res) {
     } catch (error) {
 
         console.error(error);
+
+        if (error.code) {
+            if (error.sqlMessage) {
+                return res.status(400).json({ mensagem: error.sqlMessage })
+            }
+        }
 
         return res.status(500).json({ mensagem: "Erro ao tentar acessar a requisição de alteração", error })
 
@@ -723,7 +729,7 @@ async function participarEvento(req, res) {
 
 async function buscarMinhaAgenda(req, res) {
 
-    const {id} = req.user
+    const { id } = req.user
 
 
     try {
@@ -756,7 +762,7 @@ async function buscarMinhaAgenda(req, res) {
                 (evento.vagas - COUNT(participante.id_participante)) >= 0
                 AND CONCAT(evento.dia, ' ', evento.horario) >= NOW()
 
-            ORDER BY evento.dia, evento.horario`,[id])
+            ORDER BY evento.dia, evento.horario`, [id])
 
 
 

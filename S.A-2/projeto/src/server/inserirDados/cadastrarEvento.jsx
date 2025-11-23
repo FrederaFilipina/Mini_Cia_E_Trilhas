@@ -1,6 +1,6 @@
 import React from 'react'
 
-const cadastrarEvento = async (dadosEvento,token) => {
+const cadastrarEvento = async (token,dadosEvento) => {
 
     if (!token) {
 

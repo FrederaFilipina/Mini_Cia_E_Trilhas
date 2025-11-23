@@ -1,10 +1,8 @@
-
 import React from 'react'
-import axios from 'axios'
 
-const alterarDadosUser = async (token,user) => {
+const alterarDadosEvento = async(token,dadosEvento,idEvento) => {
 
-    if (!token) {
+     if (!token) {
 
         return { mensagem: "Erro necessário token" }
 
@@ -12,7 +10,7 @@ const alterarDadosUser = async (token,user) => {
 
     try {
 
-        const resultado = await axios.put("http://localhost:3000/modificar/user/dados", user,
+        const resultado = await axios.put(`http://localhost:3000/evento/atualizar/id/${idEvento}`, dadosEvento,
             {
                 headers: {
                     authorization: token,
@@ -35,8 +33,7 @@ const alterarDadosUser = async (token,user) => {
         return {ok:false, error:error,mensagem:"Sem resposta do servidor"}
         
     }
-
-
+  
 }
 
-export default alterarDadosUser
+export default alterarDadosEvento

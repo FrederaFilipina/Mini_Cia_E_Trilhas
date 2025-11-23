@@ -11,6 +11,7 @@ router.post('/cadastrar/usuario',cadastroUser)
 
 router.post('/cadastrar/evento',verificarToken,cadastrarEvento)
 
+router.post("/participar/evento/id/:idevento",verificarToken,participarEvento)
 
 
 // fazer login
@@ -46,7 +47,6 @@ router.put('/modificar/evento/concluir/id/:idevento',verificarToken,concluriEven
 
 router.put('/modificar/evento/atualizar/id/:idevento',verificarToken,alterarEvento)
 
-router.post("/participar/evento/id/:idevento",verificarToken,participarEvento)
 
 
 // deletar infos

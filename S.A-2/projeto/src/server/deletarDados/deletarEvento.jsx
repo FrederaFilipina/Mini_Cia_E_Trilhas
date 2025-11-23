@@ -1,9 +1,6 @@
 import React from 'react'
-import axios from "axios"
 
-
-const deletarUsuario = async (token) => {
-
+const deletarEvento = async(token,idEvento) => {
     if (!token) {
 
         return {ok:false, mensagem: "Erro necessário token" }
@@ -12,9 +9,9 @@ const deletarUsuario = async (token) => {
 
     try {
 
-        const result = await axios.delete('http://localhost:3000/deletar/user', { headers: { Authorization: token } })
+        const result = await axios.delete(`http://localhost:3000/deletar/evento/id/${idEvento}`, { headers: { Authorization: token } })
 
-        if (result.status === 200) {
+     if (result.status === 200) {
             
             return {ok:true, mensagem:result.data.mensagem , result}
         }
@@ -29,6 +26,7 @@ const deletarUsuario = async (token) => {
         return { ok: false, error: error, mensagem: "Sem resposta do servidor" }
 
     }
+ 
 }
 
-export default deletarUsuario
+export default deletarEvento

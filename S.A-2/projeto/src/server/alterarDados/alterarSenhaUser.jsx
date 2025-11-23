@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+
 const alterarSenhaUser = async (token, senha, novaSenha) => {
 
     const senhas = {senha:senha,novaSenha:novaSenha}

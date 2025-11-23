@@ -2,6 +2,8 @@ import axios from "axios"
 
 
 const cadastro = async (user) => {
+
+    
     try {
         const result = await axios.post("http://localhost:3000/cadastrar/usuario", user)
 
