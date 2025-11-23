@@ -3,7 +3,7 @@ import Header from '../../components/Header/Header'
 import Login from '../../components/Login/Login'
 import { Mycontext } from '../../context/ContextGlobalUser'
 import CardsEvento from '../../components/Cards/CardsEvento'
-import buscarCardsAgendaOff from '../../server/buscarCardsAgendaOff'
+import buscarCardsAgendaOff from '../../server/buscarInformacao/buscarCardsAgendaOff'
 import './Agenda.css'
 import MenuPesq from '../../components/MenuPesq/MenuPesq'
 

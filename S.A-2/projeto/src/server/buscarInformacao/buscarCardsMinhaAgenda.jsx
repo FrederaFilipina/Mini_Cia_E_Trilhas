@@ -1,18 +1,18 @@
-import axios from "axios"
+import React from 'react'
 
-const buscarCardsTrilhaOn = async (token) => {
+const buscarCardsMinhaAgenda = async(token) => {
 
-    if (!token) {
+    
+  if (!token) {
         
-        return {mensagem: "Token nao fornecido"}
+        return {ok:false, mensagem: "Token nao fornecido"}
     }
 
     try {
 
-        const result = await axios.get("http://localhost:3000/buscar/cards/trilha/on",{headers:{Authorization: token}})
+        const result = await axios.get("http://localhost:3000/buscar/cards/agenda/user",{headers:{Authorization: token}})
 
         
-
         if (result.status===200) {
             
             return {ok:true, result:result.data}
@@ -29,7 +29,6 @@ const buscarCardsTrilhaOn = async (token) => {
         return {ok:false, error:error,mensagem:"Sem resposta do servidor"}
         
     }   
-  
 }
 
-export default buscarCardsTrilhaOn
+export default buscarCardsMinhaAgenda

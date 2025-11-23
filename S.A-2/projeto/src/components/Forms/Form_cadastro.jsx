@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Mycontext } from '../../context/ContextGlobalUser'
-import cadastro from '../../server/cadastro';
+import cadastro from '../../server/inserirDados/cadastro';
 
 function Form_cadastro() {
 

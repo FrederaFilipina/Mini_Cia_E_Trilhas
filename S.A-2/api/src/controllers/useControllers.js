@@ -170,6 +170,65 @@ async function cardsAgendaOff(req, res) {
 
 }
 
+async function cardsAgendaOn(req, res) {
+
+    const {id} = req.user
+
+
+    try {
+
+        const [result] = await pool.query(`
+            SELECT 
+	            evento.id_evento,
+                trilha.nome AS 'nomeTrilha',
+                evento.dia AS 'data',
+                evento.horario AS 'horário',
+                (evento.vagas - COUNT(participante.id_participante)) AS 'vagasDisp'
+            FROM evento
+            JOIN trilha
+                ON evento.trilha_id = trilha.id_trilha
+
+            LEFT JOIN participante
+                ON participante.evento_id = evento.id_evento
+
+
+            LEFT JOIN participante p_user
+                ON p_user.evento_id = evento.id_evento
+                AND p_user.usuario_id = ?
+
+            WHERE 
+                evento.condicao = 'Ativo'
+                AND p_user.usuario_id IS NULL  
+
+            GROUP BY 
+                evento.id_evento,trilha.nome, evento.dia, evento.horario, evento.vagas
+
+            HAVING 
+                (evento.vagas - COUNT(participante.id_participante)) > 0
+                AND CONCAT(evento.dia, ' ', evento.horario) >= NOW()
+
+            ORDER BY evento.dia, evento.horario`,[id])
+
+
+
+        if (result.length === 0) {
+
+            return res.status(404).json({ mensagem: 'Nem um evento disponível no momento', result: result })
+
+        }
+        return res.status(200).json({ mensagem: 'Cards para agenda on', result: result })
+
+
+    } catch (error) {
+
+        console.error(error)
+
+        return res.status(500).json({ mensagem: "Erro ao buscar cards para agenda on", error })
+
+    }
+
+}
+
 async function cardsTrilhaOff(req, res) {
 
     try {
@@ -413,7 +472,12 @@ async function cadastrarEvento(req, res) {
 
         console.error(error)
 
+        if (error.code) {
 
+            if (error.sqlMessage) {
+                return res.status(400).json({ mensagem: error.sqlMessage,error})
+            }
+        }
 
         return res.status(500).json({ mensagem: "Erro ao acessar criação de evento", error })
 
@@ -657,6 +721,63 @@ async function participarEvento(req, res) {
 
 }
 
+async function buscarMinhaAgenda(req, res) {
+
+    const {id} = req.user
+
+
+    try {
+
+        const [result] = await pool.query(`
+           SELECT 
+	            evento.id_evento,
+                trilha.nome AS 'nomeTrilha',
+                evento.dia AS 'data',
+                evento.horario AS 'horário',
+                (evento.vagas - COUNT(participante.id_participante)) AS 'vagasDisp'
+            FROM evento
+            JOIN trilha
+                ON evento.trilha_id = trilha.id_trilha
+
+            LEFT JOIN participante
+                ON participante.evento_id = evento.id_evento
+
+
+            JOIN participante p_user
+                ON p_user.evento_id = evento.id_evento
+                AND p_user.usuario_id = ?
+            WHERE 
+                evento.condicao = 'Ativo'
+
+            GROUP BY 
+                evento.id_evento,trilha.nome, evento.dia, evento.horario, evento.vagas
+
+            HAVING 
+                (evento.vagas - COUNT(participante.id_participante)) >= 0
+                AND CONCAT(evento.dia, ' ', evento.horario) >= NOW()
+
+            ORDER BY evento.dia, evento.horario`,[id])
+
+
+
+        if (result.length === 0) {
+
+            return res.status(404).json({ mensagem: 'Sem eventos agendados no momento', result: result })
+
+        }
+        return res.status(200).json({ mensagem: 'Cards para Minha agenda', result: result })
+
+
+    } catch (error) {
+
+        console.error(error)
+
+        return res.status(500).json({ mensagem: "Erro ao buscar cards para minha agenda", error })
+
+    }
+
+}
+
 
 module.exports = {
     loginUser,
@@ -674,6 +795,8 @@ module.exports = {
     alterarEvento,
     deletarEvento,
     buscarEvento,
-    participarEvento
+    participarEvento,
+    cardsAgendaOn,
+    buscarMinhaAgenda
 
 }

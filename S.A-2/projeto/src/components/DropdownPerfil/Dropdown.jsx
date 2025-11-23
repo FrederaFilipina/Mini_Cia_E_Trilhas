@@ -2,7 +2,7 @@ import React from 'react'
 import './Dropdown.css'
 import { Link } from 'react-router-dom';
 import { Mycontext } from '../../context/ContextGlobalUser';
-import concluirEvento from '../../server/concluirEvento';
+import concluirEvento from '../../server/alterarDados/concluirEvento';
 
 function Dropdown({perfil}) {
 

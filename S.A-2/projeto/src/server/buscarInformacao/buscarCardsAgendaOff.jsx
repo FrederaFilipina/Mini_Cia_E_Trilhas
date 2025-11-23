@@ -5,11 +5,12 @@ const buscarCardsAgendaOff = async () => {
 
     try {
 
-        const result = await axios("http://localhost:3000/buscar/cards/agenda/off")
+        const result = await axios.get("http://localhost:3000/buscar/cards/c")
 
         return {ok:true, resultado:result.data.result}
         
     } catch (error) {
+
         if (error.response) {
             
             return {ok:false,mensagem:error.response.data.mensagem}
