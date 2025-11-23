@@ -1,0 +1,13 @@
+para achar o token quando o estiver logado basta acessar o contexto global user e botar user.token
+
+
+caso volte token expirado setUser para falso e abra o modal de login para logar novamente 
+
+os dados de eventos para alterar sao 
+
+dia, horario, ponto_de_encontro, vagas
+
+
+para alterar usuario sao 
+
+email, celular, senha
