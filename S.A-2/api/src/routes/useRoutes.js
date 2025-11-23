@@ -46,7 +46,7 @@ router.put('/modificar/evento/concluir/id/:idevento',verificarToken,concluriEven
 
 router.put('/modificar/evento/atualizar/id/:idevento',verificarToken,alterarEvento)
 
-router.put("/participar/evento/id/:idevento",verificarToken,participarEvento)
+router.post("/participar/evento/id/:idevento",verificarToken,participarEvento)
 
 
 // deletar infos
