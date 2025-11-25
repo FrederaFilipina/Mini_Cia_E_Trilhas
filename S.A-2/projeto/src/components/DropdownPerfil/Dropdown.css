@@ -7,12 +7,10 @@
 }
 
 
-
-
 /* Menu escondido */
 .dropdown-menu {
     position: absolute;
-    top: 65px;
+    top: 69px;
     background-color: #7b1e1e;
     border-radius: 12px;
     padding: 10px 0;
