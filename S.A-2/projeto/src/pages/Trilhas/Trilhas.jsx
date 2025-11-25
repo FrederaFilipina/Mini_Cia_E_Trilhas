@@ -5,7 +5,8 @@ import { Mycontext } from '../../context/ContextGlobalUser'
 import Login from '../../components/Login/Login'
 import MenuPesq from '../../components/MenuPesq/MenuPesq'
 import CardsTrilhaOff from '../../components/Cards/CardsTrilhaOff'
-import buscarCardsTrilhaOff from '../../server/buscarCardsTrilhaOff'
+import buscarCardsTrilhaOff from '../../server/buscarInformacao/buscarCardsTrilhaOff'
+
 
 
 

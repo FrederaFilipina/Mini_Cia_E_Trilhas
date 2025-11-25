@@ -12,7 +12,7 @@ const alterarDadosUser = async (token,user) => {
 
     try {
 
-        const resultado = await axios.put("http://localhost:3000/modificar/user/dados", user,
+        const resultado = await axios.put("https://api-mine-cia.vercel.app/modificar/user/dados", user,
             {
                 headers: {
                     authorization: token,

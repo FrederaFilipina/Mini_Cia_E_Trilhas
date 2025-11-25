@@ -10,7 +10,7 @@ const cadastrarEvento = async (token,dadosEvento) => {
 
 
   try {
-        const result = await axios.post("http://localhost:3000/cadastrar/evento", dadosEvento,
+        const result = await axios.post("https://api-mine-cia.vercel.app/cadastrar/evento", dadosEvento,
             {
                 headers: {
                     authorization: token,

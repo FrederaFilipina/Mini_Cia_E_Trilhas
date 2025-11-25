@@ -4,7 +4,7 @@ const login = async (user) => {
     console.log(user);
 
     try {
-        const result = await axios.post("http://localhost:3000/logar",user)
+        const result = await axios.post("https://api-mine-cia.vercel.app/logar",user)
 
         return result
 

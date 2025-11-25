@@ -13,7 +13,7 @@ const alterarSenhaUser = async (token, senha, novaSenha) => {
 
     try {
 
-        const resultado = await axios.put("http://localhost:3000/modificar/senha/user",senhas,
+        const resultado = await axios.put("https://api-mine-cia.vercel.app/modificar/senha/user",senhas,
             {
                 headers: {
                     authorization: token,

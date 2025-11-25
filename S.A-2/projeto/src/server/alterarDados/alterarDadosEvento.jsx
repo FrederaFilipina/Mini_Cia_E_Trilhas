@@ -10,7 +10,7 @@ const alterarDadosEvento = async(token,dadosEvento,idEvento) => {
 
     try {
 
-        const resultado = await axios.put(`http://localhost:3000/evento/atualizar/id/${idEvento}`, dadosEvento,
+        const resultado = await axios.put(`https://api-mine-cia.vercel.app/evento/atualizar/id/${idEvento}`, dadosEvento,
             {
                 headers: {
                     authorization: token,

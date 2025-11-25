@@ -3,7 +3,7 @@ import React from 'react'
 const participarEvento = async(token,idEvento) => {
 
      try {
-        const result = await axios.post(`http://localhost:3000/participar/evento/id/${idEvento}`, {
+        const result = await axios.post(`https://api-mine-cia.vercel.app/participar/evento/id/${idEvento}`, {
                 headers: {
                     authorization: token,
                     "Content-Type": "application/json"

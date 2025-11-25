@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { Mycontext } from '../../context/ContextGlobalUser'
-import buscarDadosUsuario from '../../server/buscarDadosUsuario'
+
 import { VscAccount } from 'react-icons/vsc'
+import buscarDadosUsuario from '../../server/buscarInformacao/buscarDadosUsuario'
 
 
 

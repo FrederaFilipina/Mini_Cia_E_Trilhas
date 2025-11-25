@@ -12,7 +12,7 @@ const deletarUsuario = async (token) => {
 
     try {
 
-        const result = await axios.delete('http://localhost:3000/deletar/user', { headers: { Authorization: token } })
+        const result = await axios.delete('https://api-mine-cia.vercel.app/deletar/user', { headers: { Authorization: token } })
 
         if (result.status === 200) {
             

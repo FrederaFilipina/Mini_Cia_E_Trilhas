@@ -12,7 +12,7 @@ const buscarDadosUsuario = async (token) => {
 
     try {
 
-        const resultado = await axios.get("http://localhost:3000/buscar/dados/user", { headers: { authorization: token } })
+        const resultado = await axios.get("https://api-mine-cia.vercel.app/buscar/dados/user", { headers: { authorization: token } })
 
         console.log(resultado);
 

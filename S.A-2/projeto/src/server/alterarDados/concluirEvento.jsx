@@ -12,7 +12,7 @@ const concluirEvento = async (token,idEvento) => {
 
     try {
 
-        const resulado = await axios.put(`http://localhost:3000/modificar/evento/concluir/id/${idEvento}`,{},{headers:{Authorization: token}})
+        const resulado = await axios.put(`https://api-mine-cia.vercel.app/modificar/evento/concluir/id/${idEvento}`,{},{headers:{Authorization: token}})
 
         if (resulado.status === 200) {
             

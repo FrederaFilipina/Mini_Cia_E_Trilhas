@@ -9,7 +9,7 @@ const deletarEvento = async(token,idEvento) => {
 
     try {
 
-        const result = await axios.delete(`http://localhost:3000/deletar/evento/id/${idEvento}`, { headers: { Authorization: token } })
+        const result = await axios.delete(`https://api-mine-cia.vercel.app/deletar/evento/id/${idEvento}`, { headers: { Authorization: token } })
 
      if (result.status === 200) {
             

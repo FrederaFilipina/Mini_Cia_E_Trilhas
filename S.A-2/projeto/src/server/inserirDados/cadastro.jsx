@@ -5,7 +5,7 @@ const cadastro = async (user) => {
 
     
     try {
-        const result = await axios.post("http://localhost:3000/cadastrar/usuario", user)
+        const result = await axios.post("https://api-mine-cia.vercel.app/cadastrar/usuario", user)
 
         console.log(result);
         

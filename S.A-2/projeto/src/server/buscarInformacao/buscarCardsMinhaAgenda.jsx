@@ -10,7 +10,7 @@ const buscarCardsMinhaAgenda = async(token) => {
 
     try {
 
-        const result = await axios.get("http://localhost:3000/buscar/cards/agenda/user",{headers:{Authorization: token}})
+        const result = await axios.get("https://api-mine-cia.vercel.app/buscar/cards/agenda/user",{headers:{Authorization: token}})
 
         
         if (result.status===200) {
