@@ -6,12 +6,16 @@
 
 }
 
+.transparente{
+    background-color: #7b1e1ecc;
+}
+
 
 /* Menu escondido */
 .dropdown-menu {
     position: absolute;
     top: 65px;
-    background-color: var(--colorNavBarOpacidade);
+    background-color: #7b1e1e;
     border-radius: 12px;
     padding: 10px 0;
     display: flex;
@@ -56,4 +60,5 @@
     opacity: 1;
     transform: translateY(0);
     pointer-events: all;
+    z-index: 900;
 }

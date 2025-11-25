@@ -1,47 +1,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 .cont-home {
+    width: 100vw;
+    height: 100vh;
     background-image: url('../../assets/img_home.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 100vw; 
-    height: 100vh;
+
+}
+
+.cont-info-home {
+    padding-left: 1.5rem;
+    height: 80%;
+    margin: 0%;
 }
 
 .cont-paragraphs {
-    padding: 20px;
+    padding: 1rem;
+    height: 60%;
+
     h1 {
-    font-size: 60px;
-    color: white;
-    padding: 20px;
-        
+        padding: .1rem;
+        font-size: clamp(1.5rem, 4vw, 4rem);
+        color: white;
+
+
     }
 
     p {
         font-family: poppins, sans-serif;
         font-weight: 600;
-        font-size: 25px;
+        font-size: clamp(.6rem, 3vw, 1.5rem);
         color: #fff;
-        padding: 20px;
-        
+        padding: 2%;
+
     }
-    
+
 }
 
-.cont-button-explore{
+.cont-button-explore {
     display: flex;
     width: 100%;
-    padding: 30px;
+    height: 20%;
+    padding: 1.8rem;
 
     button {
         font-family: 'Trade Winds', cursive;
-        padding: 35px 40px;
-        font-size: 60px;
+        padding: 0.2rem;
+        height: 15vh;
+        width: 35vw;
+        font-size: clamp(1.5rem, 3vw, 3rem);
         background-color: #7B1E1E;
         color: white;
         border: none;
-        border-radius: 30px;
+        border-radius: 1.5rem;
         cursor: pointer;
         transition: background-color 0.3s ease;
 

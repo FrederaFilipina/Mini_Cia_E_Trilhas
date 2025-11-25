@@ -4,10 +4,10 @@
     background-color: #7B1E1E;
     border-radius: 20px;
     width: 95%;
-    height: 80px;
+    height: 90%;
     align-items: center;
     justify-content: space-around;
-    font-size: 32px;
+    font-size: clamp(.7rem, 3vw, 2rem);
 
 }
 .link{

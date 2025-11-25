@@ -28,7 +28,7 @@ function NavBar({transparent=false}) {
         {user && <Link className='link' to={'/dashboard'} >DashBord</Link>}
         <Link className='link' to={'/eventos'} >Agenda</Link>
         <Link className='link' to={'/trilhas'} >Trilhas</Link>  
-        {!user ? <Link className='link' onClick={()=> setModalLogin(true)}>Login</Link>: <Dropdown perfil={modalPerfil}/> }
+        {!user ? <Link className='link' onClick={()=> setModalLogin(true)}>Login</Link>: <Dropdown transparent={transparent} perfil={modalPerfil}/> }
       
         {/* {!user && <Link className='link' to={'/cadastro'}>Cadastro</Link>}         */}
         
