@@ -6,9 +6,7 @@
 
 }
 
-.transparente{
-    background-color: #7b1e1ecc;
-}
+
 
 
 /* Menu escondido */
@@ -27,6 +25,9 @@
     pointer-events: none;
     transition: 0.3s ease;
 
+}
+.transparente{
+    background-color: #7b1e1ecc;
 }
 
 .dropdown-menu button{

@@ -19,13 +19,13 @@ function Form_perfil_nEditavel({ editar, setEditar }) {
         const dados = await buscarDadosUsuario(user.token)
         console.log(dados);
 
-        setTimeout(() => {
-
-            setInfouser(dados)
+    
+        if (dados.ok) {
+            setInfouser(dados.result)
             setCarregando(false)
+            return
+        }
 
-                ;
-        }, 1000);
 
 
     }

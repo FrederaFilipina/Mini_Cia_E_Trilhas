@@ -16,7 +16,7 @@ function NavBar({transparent=false}) {
   
 
   const navStyle = {
-    backgroundColor: transparent ? 'var(--colorNavBarOpacidade)' : '#7B1E1E',
+    backgroundColor: transparent ? '#7b1e1ec5' : '#7B1E1E',
   };
 
   const {user,setUser, setModalLogin, setModalPerfil,modalPerfil} = useContext(Mycontext)
