@@ -1,59 +1,16 @@
-.Trilhas-areaPg{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100vw;
-}
-
-.AreaPg-contFiltros{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 93px;
-    
-}
-.Cont-filtros{
-    display: flex;
-    justify-content: center;
-    height: 93px;
-    width: 95%;
-    border-radius: 20px;
-    background-color: rgba(217, 217, 217, 1);
-}
-
-
-.Filtros-pesqFiltro{
+.Trilha-cont{
     height: 100%;
-    width: 48.5%;
-    background-color: palevioletred;
-}
-.Filtros-regioes{
-    display: flex;
-    height: 100%;
-    width: 48.5%;
-    
-}
-.Regioes-todas{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 45%;
+    width: 100%;
 
-}
-.Regioes-bttns{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    align-items: center;
-    height: 100%;
-    width: 65%;
-}
-
-.Pag-cards{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 12px;
 }
+
+.Cont-cards{
+    height: 100%;
+    width: 1295px;
+}
+

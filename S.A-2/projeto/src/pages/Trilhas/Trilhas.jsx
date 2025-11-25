@@ -11,52 +11,55 @@ import buscarCardsTrilhaOff from '../../server/buscarInformacao/buscarCardsTrilh
 
 
 function Trilhas() {
-  
+
   const [TrilhasBD, setTrilhasBD] = useState([])
 
   async function pesquisaAPI(params) {
-
-    const infsTrilhas= await buscarCardsTrilhaOff()
+    const infsTrilhas = await buscarCardsTrilhaOff()
 
     if (infsTrilhas.ok) {
-
-      setTrilhasBD (infsTrilhas.resultado)
+      setTrilhasBD(infsTrilhas.resultado)
       return
     }
-
     console.log(`Erro ao fazer a busca ${infsTrilhas}`);
-    
   }
 
-  useEffect(()=> {pesquisaAPI()}, [])
+  useEffect(() => { pesquisaAPI() }, [])
   const { modalLogin, setModalLogin, regTrilhas, setRegiao } = useContext(Mycontext)
 
 
   return (
-    <div className='Trilhas-areaPg'>
-
+    <div>
       <div>
-      <Header/>
-      {modalLogin && <Login/>}
+        <Header />
+        {modalLogin && <Login />}
+      </div>
+
+      <div className='Trilha-cont'>
+
+        <MenuPesq />
+
+        <div className='Cont-cards'>
+
+          <div className='Cards-trilhas'>
+            {console.log(TrilhasBD)}
+
+            {TrilhasBD.length > 0 && TrilhasBD.map(trilha => (
+              <CardsTrilhaOff
+                nome={trilha["nomeTrilha"]}
+                dis={trilha["distância"]}
+                tmp={trilha["tempo"]}
+                dif={trilha["dificuldade"]}
+              />
+            ))}
+          </div>
+          
+        </div>
+
       </div>
 
 
-      <div className='AreaPg-contFiltros'> <MenuPesq /> </div>
 
-      <div className='Pag-cards'>
-        {console.log(TrilhasBD)}
-        
-        {TrilhasBD.length > 0 && TrilhasBD.map(trilha =>(
-          <CardsTrilhaOff
-          nome={trilha["nomeTrilha"]}
-          dis={trilha["distância"]}
-          tmp={trilha["tempo"]}
-          dif={trilha["dificuldade"]}
-          />
-        )
-      )}
-        
-      </div>
 
     </div>
   )

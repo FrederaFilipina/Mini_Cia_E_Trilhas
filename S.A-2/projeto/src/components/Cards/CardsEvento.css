@@ -2,15 +2,48 @@
     height: 100px;
 }
 
+.Cont-CardsTrilhasOff{
+    height: 200px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    border: solid 2px;
+    border-color: black;
+}
+
 .CardsTrilhasOff{
-    height: 125px;
-    width: 1295px;
+
+    height: 100%;
+    width: 80%;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
+}
 
-    border: solid 2px;
-    border-color: black;
+.Login-bttn{
+
+    height: 100%;
+    width: 20%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Bttn{
+    height: 95%;
+    width: 95%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Bttn-img{
+    height: 95%;
+    width: 95%;
 }
