@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import { Mycontext } from '../../context/ContextGlobalUser'
+import { SlClose } from "react-icons/sl";
+
 
 import { VscAccount } from 'react-icons/vsc'
 import buscarDadosUsuario from '../../server/buscarInformacao/buscarDadosUsuario'
@@ -8,7 +10,7 @@ import buscarDadosUsuario from '../../server/buscarInformacao/buscarDadosUsuario
 
 function Form_perfil_nEditavel({ editar, setEditar }) {
 
-    const { user, setUser, infouser, setInfouser } = React.useContext(Mycontext)
+    const { setMeusDados, user, setUser, infouser, setInfouser } = React.useContext(Mycontext)
     const [carregando, setCarregando] = React.useState(false)
 
 
@@ -50,25 +52,25 @@ function Form_perfil_nEditavel({ editar, setEditar }) {
     return (
 
 
-        <div className='body_nEditavel'>
-
+        <>
 
             <div className='icone_nome'>
+                <button className='close_button' onClick={()=> setMeusDados(false)}><SlClose color='#fff'/></button>
                 <VscAccount size={90} />
             
-                <p>Nome: {infouser.nome}</p>
+                <h1>{infouser.nome}</h1>
 
             </div>
 
-
+            <div className='linha'></div>
             <div className='dados_usuario'>
                 <p>E-mail: {infouser.email}</p>
                 <p>CPF: {infouser.cpf}</p>
                 <p>Telefone: {infouser.telefone} Ex: (48)99999-9999</p>
+            <button className='botao_editar' onClick={iniciarEdicao}>Editar Perfil</button>
             </div>
-            <button className='botao_editar' onClick={iniciarEdicao}>Editar</button>
 
-        </div>
+        </>
     )
 }
 

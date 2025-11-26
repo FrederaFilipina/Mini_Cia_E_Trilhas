@@ -11,28 +11,23 @@
         left: 0;
         width: 100vw;
         height: 100vh;
+        z-index: 9000;
     }
 
     .const-perfil {
-        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        background-image: linear-gradient(150deg, #700808d3, #1e0202f6);
         border-radius: 30px;
-        box-shadow: 0 5px rgba(0, 0, 0, 0.35);
+        /* box-shadow: 0 5px rgba(0, 0, 0, 0.35); */
         position: relative;
         overflow: hidden;
         width: 50vh;
         max-width: 100%;
         min-height: 480px;
+        
     }
 
-    .form-perfil {
-        display: flex;
-        left: 50%;
-        flex-direction: column;
-        /* align-items: center;
-        justify-content: center; */
-        padding: 30px;
-
-    }
 
     .meu_perfil {
         display: flex;
@@ -45,17 +40,7 @@
         padding-top: 20px;
     }
     
-    .dados_usuario{
-        display: flex;
-        align-items: flex-start;
-        flex-direction: column;
-        padding-top: 20px;
-    }
-
-    .dados_usuario p {
-        padding: 5px;
-    }
-
+    
     .botao_editar{
         background-color: var(--colorButton);
         color: #fff;
@@ -64,6 +49,67 @@
         border: none;
         padding: 10px 45px;
         cursor: pointer;
-         margin-top: 20px;
+        margin-top: 20px;
+        
+    }
 
+    .close_button{
+        align-self: flex-end;
+        border: none;
+        font-size: 19px;
+        background-color: transparent;
+    }
+
+    .icone_nome{
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+      
+        flex-direction: column;
+        gap: 1.5rem;
+        color: #fff;
+        height: 250px;
+        
+    }
+    
+    .icone_nome h1{
+    font-size: 2.5rem; 
+    margin: 0;
+
+    }
+    
+    
+    .linha{
+        border: 0.1rem solid var(--colorButton); 
+        border-radius:  50px;
+        width: 80%;
+        align-self: center;
+        
+    }
+    
+    .body_nEditavel{
+      
+    }
+    .dados_usuario{
+     
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        padding-top: 20px;
+        color: #fff;
+        height: 200px;
+        
+       
+    }
+
+    .dados_usuario p {
+        padding: 5px;
+        padding-left: 10%;
+        color: #fff;
+    }
+
+    .botao_editar{
+        width: 90%;
+        align-self: center;
+        color: #fff;
     }

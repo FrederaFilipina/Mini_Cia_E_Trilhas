@@ -12,13 +12,7 @@ function Perfil() {
 
         <div className='const-perfil'>
 
-            <div className='forms'>
                 <Form_perfil />
-            </div>
-
-            <div className='dropdown'>
-                <Dropdown />
-            </div>
 
         </div>
 

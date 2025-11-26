@@ -15,16 +15,14 @@
 
 
 .close-button {
-    position: absolute;
+    margin-bottom: 30rem;
     background-color: transparent;
     border: none;
-    top: 18%;
-    right: 26%;
     font-size: 35px;
     font-weight: bold;
     cursor: pointer;
     z-index: 1000;
-    transition: transform 0.2s ease, color 0.2s ease;
+    transition: .2s ease, color 0.2s ease;
 }
 
 .cont-login {

@@ -18,15 +18,22 @@ function Dropdown({perfil,transparent}) {
         
     }
 
+    function abrirdados(){
+        setMeusDados(true)
+        setModalPerfil(false)
+    }
+
 
     return (
         <div className='dropdown'>
             <Link className='link' onClick={()=> modalPerfil? setModalPerfil(false):setModalPerfil(true) }>Perfil</Link>
+          
             <div className={`dropdown-menu ${perfil ? 'show' : ''} ${transparent? "transparente": ""}`}>
-                <button onClick={()=> setMeusDados(true)}>Meus dados</button>
+                <button onClick={abrirdados}>Meus dados</button>
                 <button onClick={(e)=> setAlterarSenha(e.target.value)}>Alterar senha</button>
                 <button onClick={botaoDeslogar}>Sair</button>
             </div>
+            
         </div>
     )
 }

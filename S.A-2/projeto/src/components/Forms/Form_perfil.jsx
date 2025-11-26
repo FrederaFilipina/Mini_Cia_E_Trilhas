@@ -46,16 +46,14 @@ function Form_perfil() {
 
 
     return (
-        <div>
-            <form className='form-perfil' >
+            <>
                 {!editar ?
                     <Form_perfil_nEditavel setEditar={setEditar} editar={editar} /> :
                     <Form_perfil_editavel />
                 }
 
 
-            </form>
-        </div>
+            </>
     )
 }
 
